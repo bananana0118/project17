@@ -22,7 +22,7 @@ const PorducSchema = new Schema(
       type: String,
       required: true,
     },
-    manufacture: {
+    manufacturer: {
         type: String,
         required: true,
       },
