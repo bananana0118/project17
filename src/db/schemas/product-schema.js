@@ -14,6 +14,11 @@ const PorducSchema = new Schema(
       type: String,
       required: true,
     },
+    img:
+    {
+        data: Buffer,
+        contentType: String
+    },
     description: {
       type: String,
       required: false,
