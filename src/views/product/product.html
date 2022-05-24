@@ -6,10 +6,27 @@
     <title>node js upload image to mongodb</title>
 </head>
 <body>
-    <h1>Upload Image</h1>
-    <form action="/uploadphoto" enctype="multipart/form-data" method="POST">
-        <input type="file" name="myImage" accept="image/*">
-        <input type="submit" value="Upload Photo">
+    <h1>Prodcut Specification</h1>
+    <form action="/UploadProduct" enctype="multipart/form-data" method="POST">
+        <h2>상품 이름</h2>
+        <input type="text" name="productName" placeholder="상품명">
+        <h2>상품 가격</h2>
+        <input type="text" name="productPrice" placeholder="10000">
+        <h2>상품 카테고리</h2>
+        <input type="radio" name="productCategory" value="남성"> 남자옷
+        <input type="radio" name="productCategory" value="여성"> 여자옷
+        <h2>상품 설명</h2>
+        <input type="text" name="productDescription" placeholder="이 제품은...">
+        <h2>상품 사이즈</h2>
+        <input type="radio" name="productSize" value="XL"> XL
+        <input type="radio" name="productSize" value="L"> L
+        <input type="radio" name="productSize" value="M"> M
+        <input type="radio" name="productSize" value="S"> S
+        <h2>상품 제작사</h2>
+        <input type="text" name="productManufacturer" placeholder="이 제품은...">
+        <h2>상품 이미지 업로드</h2>
+        <input type="file" name="productImage" accept="image/*">
+        <input type="submit" value="upload prodcut">
     </form>
 </body>
 </html>
