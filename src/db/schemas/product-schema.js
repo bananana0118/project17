@@ -1,32 +1,32 @@
 import { Schema } from 'mongoose';
 
-const PorducSchema = new Schema(
+const ProductSchema = new Schema(
   {
-    name: {
+    productName: {
       type: String,
       required: true,
     },
-    price: {
-      type: Number,
-      required: true,
-    },
-    size: {
+    productPrice: {
       type: String,
       required: true,
     },
-    description: {
+    productSize: {
+      type: String,
+      required: true,
+    },
+    productDescription: {
       type: String,
       required: false,
     },
-    categories: {
+    productCategory: {
       type: String,
       required: true,
     },
-    manufacturer: {
+    productManufacturer: {
         type: String,
         required: true,
-      },
+    },
 }
 );
 
-export { PorducSchema };
+export { ProductSchema };

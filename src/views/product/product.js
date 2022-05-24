@@ -34,7 +34,7 @@ async function handleSubmit(e) {
   try {
     const data = { productName, productPrice, productCategory, productDescription, productSize, productManufacturer};
 
-    await Api.post('/api2/product', data);
+    await Api.post('/pro/product', data);
 
     alert(`정상적으로 등록되었습니다.`);
 
