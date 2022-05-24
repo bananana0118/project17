@@ -50,6 +50,7 @@ async function handleSubmit(e) {
   try {
     const data = { fullName, email, password };
 
+    // 회원가입 전달 
     await Api.post('/api/register', data);
 
     alert(`정상적으로 회원가입되었습니다.`);

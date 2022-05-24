@@ -2,13 +2,10 @@ import { Router } from 'express';
 
 const productRouter = Router();
 
-productRouter.get("/",(req,res)=>{
-  res.render("index");
+productRouter.post("/product",(req,res)=>{
+  console.log("test");
 })
 
-productRouter.post('/uploadphoto', async function (req, res, next) {
-  res.redirect('/');
-});
 
 
 export { productRouter };
