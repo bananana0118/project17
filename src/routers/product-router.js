@@ -20,7 +20,6 @@ productRouter.post("/product",async(req,res)=>{
   const productSize = req.body.productSize;
   const productManufacturer = req.body.productManufacturer;
 
-  console.log(productName);
 
   // debug 필요
   const newProduct = await productService.addProduct({
@@ -36,6 +35,17 @@ productRouter.post("/product",async(req,res)=>{
 
 })
 
+productRouter.get('/productlist', async function (req, res, next) {
+  try {
+    console.log("test");
+    // 전체 사용자 목록을 얻음
+    const products = await productService.getProducts();
 
+    // 사용자 목록(배열)을 JSON 형태로 프론트에 보냄
+    res.status(200).json(products);
+  } catch (error) {
+    next(error);
+  }
+});
 
 export { productRouter };

@@ -8,6 +8,13 @@ export class ProductModel {
     const createdNewProduct = await Product.create(productInfo);
     return createdNewProduct;
   }
+
+  async findAll() {
+    const products = await Product.find({});
+    return products;
+  }
+
+
 }
 
 const productModel = new ProductModel();
