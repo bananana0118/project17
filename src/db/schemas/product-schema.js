@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Schema, Types } from "mongoose";
 
 const ProductSchema = new Schema({
     productName: {
@@ -19,6 +19,7 @@ const ProductSchema = new Schema({
     },
     productCategory: {
         type: String,
+        // ref: "CateogrySchema",
         required: true,
     },
     productManufacturer: {
