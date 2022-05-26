@@ -58,3 +58,5 @@ async function getDataFromApi() {
     console.log({ data });
     console.log({ random });
 }
+
+되라 쫌
