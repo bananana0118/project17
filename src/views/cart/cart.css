@@ -68,6 +68,22 @@ ul {
     vertical-align: baseline;
 }
 
+/* footer  */
+footer {
+    margin: 0 auto;
+    margin-top: 5vh;
+    padding-top: 5vh;
+    border-top: 1px solid rgba(0, 0, 0, 0.081);
+    display: flex;
+    justify-content: space-between;
+    height: 20vh;
+    width: 70%;
+}
+
+.footer-col:first-child span {
+    font-size: 2rem;
+}
+
 /* content */
 .cart-container{
     display: flex;
@@ -80,6 +96,7 @@ ul {
 
 .item-list{
     display: flex;
+    position:relative;
     flex-direction: column;
     width: 100%;
     margin-top: 50px;
@@ -132,7 +149,6 @@ ul {
     color: rgb(0,0,0, 0.5);
 }
 
-
 .cart-list-name a{
     font-size: 14px;
 }
@@ -163,19 +179,83 @@ ul {
     cursor: pointer;
 }
 
-.cart-summary{
+.cart-summary-container{
     display: flex;
     flex-direction: column;
-    text-align: right;
+}
+
+.cart-summary{
+    border-top: 2px solid #000;
+    border-bottom: 1px solid #e1e1e1;
+    padding: 10px;
+    display: flex;
     width: 100%;
-    margin: 30px 0px 100px 0;
+    margin: 30px 0px 0px 0;
 }
  
+.cart-summary div{
+    text-align: center;
+    flex:1;
+}
+
+.cart-summary-info div{
+    text-align: center;
+    flex:1;
+    height: 100px;
+    line-height: 100px;
+    padding:0px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-right: 1px solid #e1e1e1;
+}
+
+.cart-summary div span{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.cart-summary-info{
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #000;
+}
+
+.payment-btn{
+    margin-top: 20px;
+    float: right;
+    text-align: right;
+    cursor: pointer;
+    transition: ease 0.5s;
+    font-weight: bold;
+}
+
+.payment-btn:hover{
+    color:#E1E1E1;
+}
+
 #text-payment{
     font-size: 14px;
     margin-top: 10px;
     font-weight: bold;
     cursor: pointer;
+    transition: ease 0.5s;
+}
+
+#text-payment:hover{
+    color:#a9a9a9;
+}
+
+#delete-all-item{
+    position: absolute;
+    top:-2%;left:0;   
+    cursor: pointer;
+    transition: ease 0.5s;
+    font-size:14px;
+    padding: 2px 20px;
+}
+
+#delete-all-item:hover{
+    color:#a9a9a9;
 }
 
 /* media query */
@@ -205,6 +285,10 @@ ul {
 
     .cart-summary span{
         margin-left:5px;
+    }
+
+    #delete-all-item{
+        top:-3%;
     }
 }
 

@@ -110,3 +110,5 @@ function showImage() {
 }
 
 window.onload = showImage();
+
+// 상품 이름, 가격, 할인 가격 불러오기
