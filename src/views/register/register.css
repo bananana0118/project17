@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+a {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+.container {
+    margin: 0 auto;
+    width: 70%;
+}
+
+ul {
+    list-style: none;
+}
+
+/* navBar */
+.navBar {
+    box-shadow: 1px 1px 2px rgb(236, 236, 236);
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    z-index: 99;
+}
+
+.navBar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: inherit;
+    padding: 1rem;
+}
+
+.nav-category_list a {
+    display: flex;
+}
+
+.nav-brand,
+.nav-category,
+.nav-menu {
+    display: flex;
+    width: 33%;
+    align-items: center;
+}
+
+.nav-category {
+    justify-content: space-around;
+    font-size: 1rem;
+}
+
+.nav-menu {
+    justify-content: flex-end;
+}
+
+.nav-menu_icon,
+.nav-brand {
+    font-size: 2rem;
+    vertical-align: baseline;
+}
+
+/* register */
+
+#register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #f8f8ff;
+}
+
+.register-user-form-container {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 700px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    background-color: white;
+}
+
+.register-form {
+    width: 80%;
+}
+
+.title {
+    font-size: 2.5rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.register-form_input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 50px;
+    height: 300px;
+}
+
+#submitButton {
+    margin-top: 50px;
+    background-color: #4d61a9;
+    color: white;
+}
+
+input,
+button {
+    width: 100%;
+    height: 2.8rem;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 3px;
+}
+
+input {
+    border: 1px solid #bfbfbf;
+    background-color: #f6f6f6;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* nav media query */
+@media screen and (max-width: 900px) {
+    .container {
+        width: 90%;
+    }
+    .navBar-container {
+        margin: 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .nav-category {
+        visibility: hidden;
+    }
+}
+
+/* mobile register media query */
+@media screen and (max-width: 400px) {
+    html {
+        font-size: 10px;
+    }
+    .register-user-form-container {
+        width: 250px;
+        height: 500px;
+    }
+    .register-form_input {
+        margin-top: 50px;
+        height: 200px;
+    }
+}

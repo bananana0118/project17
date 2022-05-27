@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 폰트 어썸: 아이콘 -->
+    <script
+        defer
+        src="https://kit.fontawesome.com/7630448495.js"
+        crossorigin="anonymous"
+    ></script>
+    <!-- google fonts icon -->
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="cart.css"/>
+    <script src="cart.js" type="module" defer></script>
+</head>
+<body>
+     <!-- nav bar -->
+     <nav class="navBar" role="navigation" aria-label="main navigation">
+        <div class="navBar-container container">
+            <a href="../home/index.html" class="nav-brand">
+                <!-- 로고 이미지 추가 시 추가 작성-->
+                <span class="nav-brand_name">Project17</span>
+            </a>
+            <ul class="nav-category">
+                <li class="nav-category_list"><a href="#">new</a></li>
+                <li class="nav-category_list"><a href="#">product</a></li>
+                <li class="nav-category_list"><a href="#">sales</a></li>
+                <li class="nav-category_list"><a href="#">about</a></li>
+            </ul>
+            <div class="nav-menu">
+                <a href="#">
+                    <i class="material-symbols-outlined nav-menu_icon">
+                        search
+                    </i>
+                </a>
+                <a href="#">
+                    <i class="material-symbols-outlined nav-menu_icon">
+                        shopping_bag
+                    </i>
+                </a>
+                <a href="../login/login.html">
+                    <i class="material-symbols-outlined nav-menu_icon">
+                        person
+                    </i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="cart-container">
+        <span>장바구니</span>
+        <div class="item-list">   
+            <ul id="list-ul">
+                <span id="item-info-text">제품 상세 정보</span>
+                
+            </ul>
+            <div class="cart-summary">
+                <span id="item-sale-text">
+                    배송비 <d>무료</d>
+                </span>
+                <span id="item-sale-text">
+                    상품합계금액 <d id="total-price">W75000</d>
+                </span>
+                <span id="text-payment">결제하기</span>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

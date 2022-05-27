@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>쇼핑-17팀</title>
+        <!-- 아이콘 -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/elice-rabbit-favicon.png"
+        />
+        <!-- bulma css 관련 -->
+        <!-- <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+        /> -->
+        <!-- 폰트 어썸: 아이콘 -->
+        <script
+            defer
+            src="https://kit.fontawesome.com/7630448495.js"
+            crossorigin="anonymous"
+        ></script>
+        <!-- google fonts -->
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+            rel="stylesheet"
+        />
+        <!-- 구글 OAuth -->
+        <script
+            src="https://accounts.google.com/gsi/client"
+            async
+            defer
+        ></script>
+        <!-- 카카오 OAuth -->
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <!-- 커스텀 css, js -->
+        <link rel="stylesheet" href="register.css" />
+        <script src="register.js" type="module" defer></script>
+    </head>
+    <body>
+        <!-- 헤더 -->
+        <!-- nav bar -->
+        <nav class="navBar" role="navigation" aria-label="main navigation">
+            <div class="navBar-container container">
+                <a href="../home/index.html" class="nav-brand">
+                    <!-- 로고 이미지 추가 시 추가 작성-->
+                    <span class="nav-brand_name">Project17</span>
+                </a>
+                <ul class="nav-category">
+                    <li class="nav-category_list"><a href="#">new</a></li>
+                    <li class="nav-category_list"><a href="#">product</a></li>
+                    <li class="nav-category_list"><a href="#">sales</a></li>
+                    <li class="nav-category_list"><a href="#">about</a></li>
+                </ul>
+                <div class="nav-menu">
+                    <a href="#">
+                        <i class="material-symbols-outlined nav-menu_icon">
+                            search
+                        </i>
+                    </a>
+                    <a href="#">
+                        <i class="material-symbols-outlined nav-menu_icon">
+                            shopping_bag
+                        </i>
+                    </a>
+                    <a href="../login/login.html">
+                        <i class="material-symbols-outlined nav-menu_icon">
+                            person
+                        </i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 회원가입 폼(Form) -->
+        <main id="register">
+            <div class="register-user-form-container">
+                <form class="register-form">
+                    <div class="title">
+                        <p>Project17</p>
+                        <p class="subtitle">Register</p>
+                    </div>
+                    <div class="register-form_input">
+                        <!-- <label class="label" for="fullNameInput">이름</label> -->
+                        <!-- 데모페이지처럼 label을 사용할 것인지 없이 할 것인지 -->
+                        <!-- 가입 작성 항목에 뭘 넣을 것인지(주소찾기, 인증 등) -->
+
+                        <div class="control">
+                            <input
+                                class="input"
+                                id="fullNameInput"
+                                type="text"
+                                placeholder="성함"
+                                autocomplete="on"
+                            />
+                        </div>
+                        <div class="control">
+                            <input
+                                class="input"
+                                id="emailInput"
+                                type="email"
+                                placeholder="이메일 주소"
+                                autocomplete="on"
+                            />
+                        </div>
+                        <div class="control">
+                            <input
+                                class="input"
+                                id="passwordInput"
+                                type="password"
+                                placeholder="비밀번호"
+                                autocomplete="off"
+                            />
+                        </div>
+                        <div class="control">
+                            <input
+                                class="input"
+                                id="passwordConfirmInput"
+                                type="password"
+                                placeholder="비밀번호 확인"
+                                autocomplete="off"
+                            />
+                        </div>
+                        <div class="control">
+                            <input
+                                class="input"
+                                id="mobileNumber"
+                                type="number"
+                                placeholder="휴대폰 번호"
+                                autocomplete="on"
+                            />
+                        </div>
+                        <div class="control">
+                            <input
+                                class="input"
+                                id="address"
+                                type="text"
+                                placeholder="주소찾기ㅏㅊ푸미"
+                                autocomplete="off"
+                            />
+                        </div>
+                    </div>
+                    <button id="submitButton">가입하기</button>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>
