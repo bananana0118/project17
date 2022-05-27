@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
         <!-- 커스텀 css, js -->
         <link rel="stylesheet" href="goods.css" />
-        <script src="shop.js" type="module" defer></script>
+        <script src="goods.js" type="module" defer></script>
         <script src="../navBar.js" type="module" defer></script>
     </head>
 
@@ -23,7 +23,7 @@
         </nav>
 
         <section>
-            <div class="main-image"><img src="../shop/img/item_1.jpg"></div>
+            <div class="main-image"><img src=""></div>
             <div class="image-info">
                 <ul>
                     <li class="name">LACE SLEEVELESS CARDIGAN SET *에스파 윈터 착용*</li>
@@ -55,6 +55,20 @@
             </div>
         </section>
 
+        <!-- POPUP -->
+        <div class="basket-add">
+            <div class="header">
+                <h3>장바구니 담기</h3>
+            </div>
+            <div class="content">
+                <p>장바구니에 상품이 정상적으로 담겼습니다.</p>
+            </div>
+            <div class="base-button">
+                <a href="" class="btnSubmitFix sizeS">장바구니 이동</a>
+                <a href="" class="btnNormalFix sizeS" onclick="$('#confirmLayer').remove();" complete="complete">쇼핑계속하기</a>
+            </div>
+        </div>
+        
         <!-- FOOTER -->
         <footer>
             <div class="footer-col">
