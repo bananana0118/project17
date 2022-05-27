@@ -1,80 +1,177 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>쇼핑-n팀</title>
-    <!-- 아이콘 -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/elice-rabbit-favicon.png"
-    />
-    <!-- bulma css -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-    />
-    <!-- 폰트 어썸: 아이콘 -->
-    <script
-      defer
-      src="https://kit.fontawesome.com/7630448495.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- 커스텀 css, js -->
-    <link rel="stylesheet" href="home.css" />
-    <script src="home.js" type="module" defer></script>
-  </head>
-  <body>
-    <!-- 헤더 -->
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="container mt-3">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="/">
-            <img src="/elice-rabbit.png" width="30" height="30" />
-            <span class="has-text-link">쇼핑-n팀</span>
-          </a>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>쇼핑-17팀</title>
+        <!-- 아이콘 -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/elice-rabbit-favicon.png"
+        />
+        <!-- bulma css -->
+        <!-- <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+        /> -->
+        <!-- 폰트 어썸: 아이콘 -->
+        <script
+            defer
+            src="https://kit.fontawesome.com/7630448495.js"
+            crossorigin="anonymous"
+        ></script>
+        <!-- google fonts icon -->
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+            rel="stylesheet"
+        />
+        <!-- 커스텀 css, js -->
+        <link rel="stylesheet" href="home.css" />
+        <script src="home.js" type="module" defer></script>
+        <script src="../navBar.js" type="module" defer></script>
+    </head>
+    <body>
+        <!-- nav bar -->
+        <nav class="navBar" role="navigation" aria-label="main navigation">
+        </nav>
 
-          <a
-            role="button"
-            class="navbar-burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasicExample"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
+        <!-- main -->
+        <main>
+            <!-- 메인 이미지 슬라이더 -->
+            <section class="main-slide">
+                <div class="main-slide_contents">
+                    <div class="main-slide_content index1"></div>
+                    <div class="main-slide_content index2"></div>
+                    <div class="main-slide_content index3"></div>
+                </div>
+            </div>
+            </section>
 
-          <div class="navbar-end breadcrumb my-auto" aria-label="breadcrumbs">
-            <ul id="navbar">
-              <li><a href="/login">로그인</a></li>
-              <li><a href="/register">회원가입</a></li>
-              <li>
-                <a href="#cart" aria-current="page">
-                  <span class="icon">
-                    <i class="fas fa-cart-shopping"></i>
-                  </span>
-                  <span>카트</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
+            <!-- 주요 상품 매거진 형식 -->
+            <section class="magazine container">
+                <div class="magazine-wrapper">
+                    <div class="magazine-product">
+                        <!-- 이미지 태그의 링크는 감쌀 때 레이아웃에 문제가 발생하여 onclick 사용예정 -->
+                        <img src="https://images.unsplash.com/photo-1618225747659-433d5a5c6af7?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores provident ipsa, eligendi ratione officia quis facilis numquam accusamus in natus dignissimos tempora. Nihil pariatur alias</span>
+                    </div>
+                    <div class="magazine-product">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores provident ipsa, eligendi ratione officia quis facilis numquam accusamus in natus dignissimos tempora. Nihil pariatur alias</span>
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920">
+                    </div>
+                    <div class="magazine-product">
+                        <img src="https://images.unsplash.com/photo-1600075870742-9dad98f20d88?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores provident ipsa, eligendi ratione</span>
+                    </div>
+                </div>
+                <div class="seperator"></div>
+            </section>
 
-    <div class="div-container">
-      <div class="landing" id="landingDiv">
-        <h1>랜딩 페이지</h1>
-      </div>
-      <div class="greeting" id="greetingDiv">
-        <h1>안녕하세요!</h1>
-      </div>
-    </div>
+            <!-- 상품 -->
+            <section class="product-container">
+                <div class="product-info">
+                    <span>Product</span>
+                    <ul>
+                        <!-- js 사용시 button에 class, id 추가하여 사용 -->
+                        <li class="product-info_list"><button>All</button></li>
+                        <li class="product-info_list"><button>Top</button></li>
+                        <li class="product-info_list"><button>Bottom</button></li>
+                        <li class="product-info_list"><button>Outer</button></li>
+                        <li class="product-info_list"><button>Shoes</button></li>
+                    </ul>
+                </div>
+                <ul class="product-items">
+                    <li class="product-item">
+                        <div class="product-item_imgCover">
+                            <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715">
+                        </div>
+                        <div class="product-item_info">
+                            <span>title : abascv90</span>
+                            <span>price : $1,890</span>
+                        </div>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-item_imgCover">
+                            <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715">
+                        </div>
+                        <div class="product-item_info">
+                            <span>title : abascv90</span>
+                            <span>price : $1,890</span>
+                        </div>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-item_imgCover">
+                            <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715">
+                        </div>
+                        <div class="product-item_info">
+                            <span>title : abascv90</span>
+                            <span>price : $1,890</span>
+                        </div>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-item_imgCover">
+                            <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715">
+                        </div>
+                        <div class="product-item_info">
+                            <span>title : abascv90</span>
+                            <span>price : $1,890</span>
+                        </div>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-item_imgCover">
+                            <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715">
+                        </div>
+                        <div class="product-item_info">
+                            <span>title : abascv90</span>
+                            <span>price : $1,890</span>
+                        </div>
+                    </li>
+                    <!-- 화살표 클릭 시 옆으로 넘길 수 있게? -->
+                    <li class="product-item">
+                        <div class="product-item_imgCover">
+                            <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715">
+                        </div>
+                        <div class="product-item_info">
+                            <span>title : abascv90</span>
+                            <span>price : $1,890</span>
+                        </div>
+                    </li>
+                    <li class="product-item">
+                        <div class="product-item_imgCover">
+                            <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715">
+                        </div>
+                        <div class="product-item_info">
+                            <span>title : abascv90</span>
+                            <span>price : $1,890</span>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </section>
 
-  </body>
+            <section>
+                <div class="plus">
+                    <span>?</span>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-col">
+                <span style="margin-right:1rem;">Project17</span>
+            </div>
+            <div class="footer-col">
+                <span>Contributors<br><br><br>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium, quaerat.</span>
+            </div>
+            <div class="footer-col">
+                <span>Links<br><br><br>KDC</span>
+            </div>
+        </footer>
+    </body>
 </html>
