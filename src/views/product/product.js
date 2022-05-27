@@ -3,7 +3,7 @@ import * as Api from "/api.js";
 // 요소(element), input 혹은 상수
 const productNameInput = document.querySelector("#productName");
 const productPriceInput = document.querySelector("#productPrice");
-const productCategoryInput = document.querySelector("#productCategory");
+const productCategoryInput = document.querySelector(".Category");
 const productDescriptionInput = document.querySelector("#productDescription");
 const productSizeInput = document.querySelector("#productSize");
 const productManufacturerInput = document.querySelector("#productManufacturer");
@@ -23,7 +23,7 @@ function addAllEvents() {
 // 상품 등록 진행
 async function handleSubmit(e) {
     e.preventDefault();
-
+    console.log(productCategoryInput);
     const productName = productNameInput.value;
     const productPrice = productPriceInput.value;
     const productCategory = productCategoryInput.value;
@@ -43,12 +43,12 @@ async function handleSubmit(e) {
             productImg,
         };
 
-        await Api.post("/pro/product", data);
+        await Api.post("/product/addproduct", data);
 
         alert(`정상적으로 등록되었습니다.`);
 
         // 기본 페이지로 이동
-        window.location.href = "/product";
+        window.location.href = "/product/productlist";
     } catch (err) {
         console.error(err.stack);
         alert(
