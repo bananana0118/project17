@@ -3,9 +3,7 @@ import * as Api from "/api.js";
 // 요소(element), input 혹은 상수
 const productNameInput = document.querySelector("#productName");
 const productPriceInput = document.querySelector("#productPrice");
-const productCategoryInput = document.querySelector(
-    'input[name="productCategory"]'
-);
+const productCategoryInput = document.querySelector(".Category");
 const productDescriptionInput = document.querySelector("#productDescription");
 const productSizeInput = document.querySelector("#productSize");
 const productManufacturerInput = document.querySelector("#productManufacturer");
