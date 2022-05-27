@@ -7,11 +7,11 @@ const productPrice = document.querySelector('#product-price');
 const productCategory = document.querySelector('#input-category');
 const productManufacturer = document.querySelector('#input-manufacturer');
 const productSize = document.querySelector('#input-size');
-const producetQuantity = document.querySelector('#input-quantity');    
+const productQuantity = document.querySelector('#input-quantity');    
 const productInfo = document.querySelector('#input-product-detail')
 const inputItems = document.getElementsByName('product-input')
 let uploadFiles = []
-
+inputItems[0].focus();
 
 /* 리펙토링 필요 
 *  EnterKey 입력시 focus 이동 
@@ -22,13 +22,12 @@ function keyevent(event){
     
     if(code === 'Enter'){
         if(event.shiftKey){
-            console.log(inputItems[idx].value)
         }
         else{
-            if(idx === (inputItems.length-1)){
-                submmitBtn.focus();
+            if(idx === (inputItems.length -2)){
+                
             }
-            else{
+            else{  
                 inputItems[idx+1].focus();
             }
         }
@@ -39,17 +38,18 @@ function keyevent(event){
 for(var i=0; i<inputItems.length; i++){
     inputItems[i].addEventListener('keydown', keyevent)        
 };
+
 const register = async () => {
-    const data = { prodctName: productName.value, 
+    const data = { productName: productName.value, 
                 productPrice: productPrice.value,
                 productSize: productSize.value,
                 productDetail: productInfo.value,
                 productCategory: productCategory.value,
+                productQuantity: productQuantity.value,
                 productManufacturer: productManufacturer.value,
                 }
-
+    
     if(data.productName === ''){
-        console.log(!data.prodctName)
         alert('상품명을 입력해주세요!')
         productName.focus();
     }else if(data.productCategory === ''){
