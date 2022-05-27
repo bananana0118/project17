@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { CateogrySchema } from "./schemas/category-schema";
 
 const DB_URL =
     process.env.MONGODB_URL ||
