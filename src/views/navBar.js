@@ -25,7 +25,7 @@ function navBarCreate() {
                                     shopping_bag
                                 </i>
                             </a>
-                            <a href="../personalPage/personalPage.html">
+                            <a id="personalPage" href="#">
                                 <i class="material-symbols-outlined nav-menu_icon">
                                     person
                                 </i>
@@ -38,9 +38,11 @@ function navBarCreate() {
                         `;
 }
 
+//navBar component 분리
 navBarCreate();
 const logoutBtn = document.querySelector("#logout");
 const loginBtn = document.querySelector("#login");
+const personalPage = document.querySelector("#personalPage");
 
 function logoutAppear() {
     const token = sessionStorage.getItem("token");
@@ -53,6 +55,7 @@ function logoutAppear() {
     }
 }
 
+// 로그아웃 버튼 => 세션스토리지 내 토큰 삭제
 function logout(e) {
     e.preventDefault();
     sessionStorage.removeItem("token");
@@ -60,5 +63,18 @@ function logout(e) {
     logoutAppear();
 }
 
+// 로그인 되어 있으면 토큰 확인해서 사용자페이지로 이동
+// 그렇지 않을 시 로그인 페이지로 이동
+function myPageLoad() {
+    const token = sessionStorage.getItem("token");
+    console.log("?");
+    if (!token) {
+        location.href = "./login/login.html";
+    } else {
+        location.href = "./personalPage/personalPage.html";
+    }
+}
+
 logoutBtn.addEventListener("click", logout);
+personalPage.addEventListener("click", myPageLoad);
 logoutAppear();
