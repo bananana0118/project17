@@ -11,7 +11,7 @@
             sizes="16x16"
             href="/elice-rabbit-favicon.png"
         />
-        <!-- bulma css 관련 -->
+        <!-- bulma css -->
         <!-- <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
@@ -22,7 +22,7 @@
             src="https://kit.fontawesome.com/7630448495.js"
             crossorigin="anonymous"
         ></script>
-        <!-- google fonts -->
+        <!-- google fonts icon -->
         <link
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
@@ -31,66 +31,27 @@
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
             rel="stylesheet"
         />
-        <!-- 구글 OAuth -->
-        <script
-            src="https://accounts.google.com/gsi/client"
-            async
-            defer
-        ></script>
-        <!-- 카카오 OAuth -->
-        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
         <!-- 커스텀 css, js -->
-        <link rel="stylesheet" href="register.css" />
-        <script src="register.js" type="module" defer></script>
+        <link rel="stylesheet" href="personalPage.css" />
+        <script src="personalPage.js" type="module" defer></script>
+        <script src="../navBar.js" type="module" defer></script>
     </head>
     <body>
-        <!-- 헤더 -->
         <!-- nav bar -->
-        <nav class="navBar" role="navigation" aria-label="main navigation">
-            <div class="navBar-container container">
-                <a href="../home/index.html" class="nav-brand">
-                    <!-- 로고 이미지 추가 시 추가 작성-->
-                    <span class="nav-brand_name">Project17</span>
-                </a>
-                <ul class="nav-category">
-                    <li class="nav-category_list"><a href="#">new</a></li>
-                    <li class="nav-category_list"><a href="#">product</a></li>
-                    <li class="nav-category_list"><a href="#">sales</a></li>
-                    <li class="nav-category_list"><a href="#">about</a></li>
-                </ul>
-                <div class="nav-menu">
-                    <a href="#">
-                        <i class="material-symbols-outlined nav-menu_icon">
-                            search
-                        </i>
-                    </a>
-                    <a href="#">
-                        <i class="material-symbols-outlined nav-menu_icon">
-                            shopping_bag
-                        </i>
-                    </a>
-                    <a href="../login/login.html">
-                        <i class="material-symbols-outlined nav-menu_icon">
-                            person
-                        </i>
-                    </a>
-                </div>
-            </div>
-        </nav>
+        <nav
+            class="navBar"
+            role="navigation"
+            aria-label="main navigation"
+        ></nav>
 
-        <!-- 회원가입 폼(Form) -->
-        <main id="register">
-            <div class="register-user-form-container">
-                <form class="register-form">
+        <!-- main -->
+        <main id="profileUpdate">
+            <div class="profileUpdate-form-container">
+                <form class="profileUpdate-form">
                     <div class="title">
-                        <p>Project17</p>
-                        <p class="subtitle">Register</p>
+                        <p class="subtitle">정보 수정하기</p>
                     </div>
-                    <div class="register-form_input">
-                        <!-- <label class="label" for="fullNameInput">이름</label> -->
-                        <!-- 데모페이지처럼 label을 사용할 것인지 없이 할 것인지 -->
-                        <!-- 가입 작성 항목에 뭘 넣을 것인지(주소찾기, 인증 등) -->
-
+                    <div class="profileUpdate-form_input">
                         <div class="control">
                             <input
                                 class="input"
@@ -146,9 +107,25 @@
                             />
                         </div>
                     </div>
-                    <button id="submitButton">가입하기</button>
+                    <button id="submitButton">수정하기</button>
                 </form>
             </div>
         </main>
+
+        <!-- footer -->
+        <footer>
+            <div class="footer-col">
+                <span style="margin-right: 1rem">Project17</span>
+            </div>
+            <div class="footer-col">
+                <span
+                    >Contributors<br /><br /><br />Lorem, ipsum dolor sit amet
+                    consectetur adipisicing elit. Laudantium, quaerat.</span
+                >
+            </div>
+            <div class="footer-col">
+                <span>Links<br /><br /><br />KDC</span>
+            </div>
+        </footer>
     </body>
 </html>
