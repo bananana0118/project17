@@ -18,8 +18,7 @@ const ProductSchema = new Schema({
         required: false,
     },
     productCategory: {
-        type: String,
-        // ref: "CateogrySchema",
+        type: Number,
         required: true,
     },
     productManufacturer: {

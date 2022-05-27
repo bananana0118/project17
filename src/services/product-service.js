@@ -40,6 +40,7 @@ class ProductService {
 
         return product;
     }
+    // 상품 삭제
     async delProduct(productId) {
         const products = await this.productModel.findAndDel(productId);
         return products;

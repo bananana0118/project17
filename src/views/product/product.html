@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쇼핑-데모</title>
     <script src="product.js" type="module" defer></script>
-
 </head>
 <body>
     <h1>Prodcut Specification</h1>
@@ -15,7 +14,10 @@
         <h2>상품 가격</h2>
         <input type="text" id="productPrice" value="10000">
         <h2>상품 카테고리</h2>
-        <input type="text" id="productCategory" value="남성">
+        <input type="radio" name="productCategory" id="top" value= 1> 상의 <br>  
+        <input type="radio" name="productCategory" id="bottom" value= 2> 하의 <br>
+        <input type="radio" name="productCategory" id="socks" value= 3> 양말 <br> 
+
         <h2>상품 설명</h2>
         <input type="text" id="productDescription" value="이 제품은...">
         <h2>상품 사이즈</h2>
@@ -28,7 +30,8 @@
         <br> 
         <button class="button is-primary is-fullwidth" id="submitButton">
             상품등록하기
-          </button>
+        </button>
+
     </form>
 </body>
 </html>

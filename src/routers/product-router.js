@@ -5,7 +5,7 @@ import { productService } from "../services";
 
 const productRouter = Router();
 
-productRouter.post("/product", async (req, res) => {
+productRouter.post("/addproduct", async (req, res) => {
     if (is.emptyObject(req.body)) {
         throw new Error(
             "headers의 Content-Type을 application/json으로 설정해주세요"
