@@ -4,7 +4,7 @@ function navBarCreate() {
     const nav = document.querySelector("nav");
 
     nav.innerHTML = `<div class="navBar-container container">
-                        <a href="../home/index.html" class="nav-brand">
+                        <a href="/" class="nav-brand">
                             <!-- 로고 이미지 추가 시 추가 작성-->
                             <span class="nav-brand_name">Project17</span>
                         </a>
@@ -31,7 +31,7 @@ function navBarCreate() {
                                 </i>
                             </a>
                             <!-- 로그아웃 버튼 -->
-                            <a href="../login/login.html"><button id="login">로그인</button></a>
+                            <a href="/login"><button id="login">로그인</button></a>
                             <button id="logout">로그아웃</button>
                         </div>
                         <script>
@@ -69,7 +69,7 @@ function myPageLoad() {
     const token = sessionStorage.getItem("token");
     console.log("?");
     if (!token) {
-        location.href = "./login/login.html";
+        location.href = "./login";
     } else {
         location.href = "./personalPage/personalPage.html";
     }
