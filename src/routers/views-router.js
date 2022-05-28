@@ -11,7 +11,7 @@ viewsRouter.use("/", serveStatic("home"));
 viewsRouter.use("/register", serveStatic("register"));
 viewsRouter.use("/login", serveStatic("login"));
 viewsRouter.use("/product", serveStatic("product"));
-viewsRouter.use("/Profile", serveStatic("Profile"));
+viewsRouter.use("/profile", serveStatic("profile"));
 viewsRouter.use("/cart", serveStatic("cart"));
 viewsRouter.use("/shop", serveStatic("shop"));
 viewsRouter.use("/goods", serveStatic("goods"));
@@ -22,11 +22,11 @@ viewsRouter.use("/", serveStatic(""));
 // views폴더 내의 ${resource} 폴더 내의 모든 파일을 웹에 띄우며,
 // 이 때 ${resource}.html 을 기본 파일로 설정함.
 function serveStatic(resource) {
-  const resourcePath = path.join(__dirname, `../views/${resource}`);
-  const option = { index: `${resource}.html` };
+    const resourcePath = path.join(__dirname, `../views/${resource}`);
+    const option = { index: `${resource}.html` };
 
-  // express.static 은 express 가 기본으로 제공하는 함수임
-  return express.static(resourcePath, option);
+    // express.static 은 express 가 기본으로 제공하는 함수임
+    return express.static(resourcePath, option);
 }
 
 export { viewsRouter };

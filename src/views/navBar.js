@@ -69,9 +69,9 @@ function myPageLoad() {
     const token = sessionStorage.getItem("token");
     console.log("?");
     if (!token) {
-        location.href = "./login";
+        location.href = "/login";
     } else {
-        location.href = "./personalPage/personalPage.html";
+        location.href = "/profile";
     }
 }
 
