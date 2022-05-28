@@ -29,7 +29,7 @@ const getMydata = async function () {
 
   //     const data = { fullName, email, password, passwordConfirm };
   //     const user = await Api.patch("/profile/edit", data);
-  //     //에러가 난다면 강예정과 이야기 해 봅시다.
+  //     //에러가 난다면 강예정과 이야기 해봅시다.
   //     console.log(user);
 
   //   //===================================================
