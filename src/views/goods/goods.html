@@ -13,45 +13,17 @@
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
         <!-- 커스텀 css, js -->
         <link rel="stylesheet" href="goods.css" />
-        <script src="shop.js" type="module" defer></script>
+        <script src="goods.js" type="module" defer></script>
+        <script src="../navBar.js" type="module" defer></script>
     </head>
 
     <body>
         <!-- nav bar -->
         <nav class="navBar" role="navigation" aria-label="main navigation">
-            <div class="navBar-container container">
-                <a href="../home/index.html" class="nav-brand">
-                    <!-- 로고 이미지 추가 시 추가 작성-->
-                    <span class="nav-brand_name">Project17</span>
-                </a>
-                <ul class="nav-category">
-                    <li class="nav-category_list"><a href="#">new</a></li>
-                    <li class="nav-category_list"><a href="#">product</a></li>
-                    <li class="nav-category_list"><a href="#">sales</a></li>
-                    <li class="nav-category_list"><a href="#">about</a></li>
-                </ul>
-                <div class="nav-menu">
-                    <a href="#">
-                        <i class="material-symbols-outlined nav-menu_icon">
-                            search
-                        </i>
-                    </a>
-                    <a href="#">
-                        <i class="material-symbols-outlined nav-menu_icon">
-                            shopping_bag
-                        </i>
-                    </a>
-                    <a href="../login/login.html">
-                        <i class="material-symbols-outlined nav-menu_icon">
-                            person
-                        </i>
-                    </a>
-                </div>
-            </div>
         </nav>
 
         <section>
-            <div class="main-image"><img src="../shop/img/item_1.jpg"></div>
+            <div class="main-image"><img src=""></div>
             <div class="image-info">
                 <ul>
                     <li class="name">LACE SLEEVELESS CARDIGAN SET *에스파 윈터 착용*</li>
@@ -83,6 +55,20 @@
             </div>
         </section>
 
+        <!-- POPUP -->
+        <div class="basket-add">
+            <div class="header">
+                <h3>장바구니 담기</h3>
+            </div>
+            <div class="content">
+                <p>장바구니에 상품이 정상적으로 담겼습니다.</p>
+            </div>
+            <div class="base-button">
+                <a href="" class="btnSubmitFix sizeS">장바구니 이동</a>
+                <a href="" class="btnNormalFix sizeS" onclick="$('#confirmLayer').remove();" complete="complete">쇼핑계속하기</a>
+            </div>
+        </div>
+        
         <!-- FOOTER -->
         <footer>
             <div class="footer-col">

@@ -14,86 +14,157 @@
     <!-- 커스텀 css, js -->
     <link rel="stylesheet" href="shop.css" />
     <script src="shop.js" type="module" defer></script>
+    <script src="../navBar.js" type="module" defer></script>
 </head>
 <body>
     <!-- nav bar -->
     <nav class="navBar" role="navigation" aria-label="main navigation">
-        <div class="navBar-container container">
-            <a href="../home/index.html" class="nav-brand">
-                <!-- 로고 이미지 추가 시 추가 작성-->
-                <span class="nav-brand_name">Project17</span>
-            </a>
-            <ul class="nav-category">
-                <li class="nav-category_list"><a href="#">new</a></li>
-                <li class="nav-category_list"><a href="#">product</a></li>
-                <li class="nav-category_list"><a href="#">sales</a></li>
-                <li class="nav-category_list"><a href="#">about</a></li>
-            </ul>
-            <div class="nav-menu">
-                <a href="#">
-                    <i class="material-symbols-outlined nav-menu_icon">
-                        search
-                    </i>
-                </a>
-                <a href="#">
-                    <i class="material-symbols-outlined nav-menu_icon">
-                        shopping_bag
-                    </i>
-                </a>
-                <a href="../login/login.html">
-                    <i class="material-symbols-outlined nav-menu_icon">
-                        person
-                    </i>
-                </a>
-            </div>
-        </div>
     </nav>
     
     <section>
         <div class="items">
             <div class="category">바지</span>
             <div class="category-detail">
-                <a href="">&nbsp;&nbsp;ALL&nbsp;&nbsp;</a>
-                <div class="line"></div>
-                <a href="">&nbsp;&nbsp;롱팬츠&nbsp;&nbsp;</a>
-                <div class="line"></div>
-                <a href="">&nbsp;&nbsp;숏팬츠&nbsp;&nbsp;</a>
-                <div class="line"></div>
-                <a href="">&nbsp;&nbsp;슬랙스&nbsp;&nbsp;</a>
-                <div class="line"></div>
-                <a href="">&nbsp;&nbsp;점프 슈트&nbsp;&nbsp;</a>
-                <div class="line"></div>
-                <a href="">&nbsp;&nbsp;트레이닝 / 조거팬츠&nbsp;&nbsp;</a>
+                <li><a href="">ALL</a></li>
+                <li><a href="">롱팬츠</a></li>
+                <li><a href="">숏팬츠</a></li>
+                <li><a href="">슬랙스</a></li>
+                <li><a href="">점프 슈트</a></li>
+                <li><a href="">트레이닝 / 조거팬츠</a></li>
             </div>
-            <div class="first-item-box">
-                <div class="first-box-1">
-                    <img src="img/item_1.jpg">
-                </div>
-                <div class="first-box-2">
-                    <img src="img/item_1.jpg">
-                </div>
-                <div class="first-box-3">
-                    <img src="img/item_1.jpg">
-                </div>
-                <div class="first-box-4">
-                    <img src="img/item_1.jpg">
-                </div>
+            <div class="item-container">
+                <ul class="item-box" id="ul">
+                    <li class="item" id="item-1">
+                        <div class="thumbnail">
+                            <a href="">
+                                <img class="introimg">
+                                <div class="white_cover"> </div>
+                            </a>
+                        </div>
+                        <div class="description">
+                            <strong class="name">이름</strong>
+                            <ul class="product-description">
+                                <li class="price">가격</li>
+                                <li class="sale">세일가격</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item" id="item-2">
+                        <div class="thumbnail">
+                            <a href="">
+                                <img class="introimg">
+                                <div class="white_cover"> </div>
+                            </a>
+                        </div>
+                        <div class="description">
+                            <strong class="name">이름</strong>
+                            <ul class="product-description">
+                                <li class="price">가격</li>
+                                <li class="sale">세일가격</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item" id="item-3">
+                        <div class="thumbnail">
+                            <a href="">
+                                <img class="introimg">
+                                <div class="white_cover"> </div>
+                            </a>
+                        </div>
+                        <div class="description">
+                            <strong class="name">이름</strong>
+                            <ul class="product-description">
+                                <li class="price">가격</li>
+                                <li class="sale">세일가격</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item" id="item-4">
+                        <div class="thumbnail">
+                            <a href="">
+                                <img class="introimg">
+                                <div class="white_cover"> </div>
+                            </a>
+                        </div>
+                        <div class="description">
+                            <strong class="name">이름</strong>
+                            <ul class="product-description">
+                                <li class="price">가격</li>
+                                <li class="sale">세일가격</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item" id="item-5">
+                        <div class="thumbnail">
+                            <a href="">
+                                <img class="introimg">
+                                <div class="white_cover"> </div>
+                            </a>
+                        </div>
+                        <div class="description">
+                            <strong class="name">이름</strong>
+                            <ul class="product-description">
+                                <li class="price">가격</li>
+                                <li class="sale">세일가격</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item" id="item-6">
+                        <div class="thumbnail">
+                            <a href="">
+                                <img class="introimg">
+                                <div class="white_cover"> </div>
+                            </a>
+                        </div>
+                        <div class="description">
+                            <strong class="name">이름</strong>
+                            <ul class="product-description">
+                                <li class="price">가격</li>
+                                <li class="sale">세일가격</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item" id="item-7">
+                        <div class="thumbnail">
+                            <a href="">
+                                <img class="introimg">
+                                <div class="white_cover"> </div>
+                            </a>
+                        </div>
+                        <div class="description">
+                            <strong class="name">이름</strong>
+                            <ul class="product-description">
+                                <li class="price">가격</li>
+                                <li class="sale">세일가격</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item" id="item-8">
+                        <div class="thumbnail">
+                            <a href="">
+                                <img class="introimg">
+                                <div class="white_cover"> </div>
+                            </a>
+                        </div>
+                        <div class="description">
+                            <strong class="name">이름</strong>
+                            <ul class="product-description">
+                                <li class="price">가격</li>
+                                <li class="sale">세일가격</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <!-- 리스트를 컨트롤 할 엘리먼트 -->
+                <button class="prev">
+                    <a href="#"
+                        onclick="moveList('prev', 'best', 5, 1);return false;">이전</a>
+                </button>
+                <button class="next">
+                    <a href="#"
+                        onclick="moveList('next', 'best', 5, 1);return false;">다음</a>
+                </button>
             </div>
-            <div class="second-item-box">
-                <div class="second-box-1">
-                    <img src="img/item_1.jpg">
-                </div>
-                <div class="second-box-2">
-                    <img src="img/item_1.jpg">
-                </div>
-                <div class="second-box-3">
-                    <img src="img/item_1.jpg">
-                </div>
-                <div class="second-box-4">
-                    <img src="img/item_1.jpg">
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- FOOTER -->

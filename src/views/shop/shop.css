@@ -18,7 +18,7 @@ a:visited {
     width: 70%;
 }
 
-ul {
+ul, li {
     list-style: none;
 }
 
@@ -67,7 +67,7 @@ ul {
     vertical-align: baseline;
 }
 
-/* 전체 item box*/
+/* item box */
 .items {
     text-align: center;
     display: block;
@@ -86,59 +86,93 @@ ul {
     font-size: 1rem;
 }
 
-.items .category-detail .line {
-    border-left: 1.5px solid rgba(68, 68, 68, 0.6);
-    height: 3.3vh;
+.items .category-detail li {
+    margin: 0.7em 1em ;
 }
 
 /* Item list */
-.first-item-box img {
+
+/* ul */
+.item-box {
+    display: inline-block;
+    min-width: 100%;
+    margin: 2vw;
+    font-size: 0;
+    line-height: 0
+}
+    
+.item-box li {
+    position: relative;
+    width: 20vw;
+    float: left;
+    margin-left: 3vw;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.item-box .item:nth-of-type(7n-2) {
+    display: block;
+    clear: left;
+}
+
+.item-box .thumbnail {
+    position: relative;
+    margin: 0 0 4vh;
+    text-align: center
+}
+
+.item-box .thumbnail a {
+    display: block;
+    position: relative;
+}
+
+.item-box .thumbnail a img {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.item-box .thumbnail .white_cover {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
 }
 
-.first-item-box {
+.item-box .description {
+    margin: 0px auto 0;
+    padding: 0;
+    line-height: 2em;
+    transition: all 0.3s ease; 
+}
+
+.item-box .description .name {
+    display: block;
+    text-align: left;
+    margin-bottom: 1em;
+    padding: 0 0.3em 1.4em;
+    border-bottom: 1px solid #ececec;
+    font-size: small;
+}
+
+.item-box .description .product-description {
+    margin: 0;
+    margin-bottom: 8vh;
+    display: flex;
+    align-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.item-box .description .product-description li {
+    line-height: 2em;
+    font-size: small;
+    margin: 0;
     width: 100%;
-    height: auto;
-    background: rgba(255, 255, 255, 1);
-    margin-top: 10vh;
-    text-align: center;
-}
-
-.first-box-1,
-.first-box-2,
-.first-box-3,
-.first-box-4 {
-    width: 18vw;
-    height: auto;
-    background: rgba(217, 217, 217, 1);
-    display: inline-block;
-    margin-right: 1vw;
-}
-
-/* 둘째 줄 아이템 박스*/
-.second-item-box img {
-    width: 100%;
-    height: 100%;
-}
-
-.second-item-box {
-    width: 100%;
-    height: auto;
-    background: rgba(255, 255, 255, 1);
-    margin-top: 4vh;
-    text-align: center;
-}
-
-.second-box-1,
-.second-box-2,
-.second-box-3,
-.second-box-4 {
-    width: 18vw;
-    height: auto;
-    background: rgba(217, 217, 217, 1);
-    display: inline-block;
-    margin-right: 1vw;
 }
 
 /* footer  */
@@ -186,25 +220,21 @@ footer {
         font-size: 1.4rem;
     }
 
-    .first-item-box,
-    .second-item-box {
-        margin-top: 2vh;
-        text-align: center;
-    }
-
-    .first-box-1,
-    .first-box-2,
-    .first-box-3,
-    .first-box-4,
-    .second-box-1,
-    .second-box-2,
-    .second-box-3,
-    .second-box-4 {
-        width: 35vw;
-        margin: 3vh 2vh;
-    }
-
     .items .category-detail .line {
         height: 3vh;
+    }
+
+    .item-box li {
+        width: 40vw;
+        margin-left: 4.7vw;
+    }
+
+    .item-box .thumbnail {
+        width: 100%;
+    }
+
+    .item-box .item:nth-of-type(2n-9) {
+        display: block;
+        clear: left;
     }
 }
