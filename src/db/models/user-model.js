@@ -32,21 +32,13 @@ export class UserModel {
     return updatedUser;
   }
 
-  async updateByEmail({ email, update }) {
-    const filter = { email };
+  async delete(userId) {
+    const filter = { _id: userId };
     const option = { returnOriginal: false };
 
-    const updatedUser = await User.findOneAndUpdate(filter, update, option);
-    return updatedUser;
-  }
+    const deletedUser = await User.findByIdAndDelete(filter, option);
 
-  async delete({ userEmail, password }) {
-    const filter = { email: userEmail };
-    const option = { returnOriginal: false };
-
-    const updatedUsers = await User.findByIdAndDelete(filter, update, option);
-
-    return updatedUsers;
+    return deletedUser;
   }
 }
 

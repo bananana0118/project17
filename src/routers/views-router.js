@@ -11,13 +11,13 @@ viewsRouter.use("/", serveStatic("home"));
 viewsRouter.use("/register", serveStatic("register"));
 viewsRouter.use("/login", serveStatic("login"));
 viewsRouter.use("/product", serveStatic("product"));
-viewsRouter.use("/Profile", serveStatic("Profile"));
+viewsRouter.use("/profile", serveStatic("profile")); //시급한부분
 viewsRouter.use("/cart", serveStatic("cart"));
 viewsRouter.use("/shop", serveStatic("shop"));
 viewsRouter.use("/goods", serveStatic("goods"));
 
 // views 폴더의 최상단 파일인 rabbit.png, api.js 등을 쓸 수 있게 함
-viewsRouter.use("/", serveStatic(""));
+viewsRouter.use("/", serveStatic("")); //없어지면 navBar 안보임 삭제하지 말것
 
 // views폴더 내의 ${resource} 폴더 내의 모든 파일을 웹에 띄우며,
 // 이 때 ${resource}.html 을 기본 파일로 설정함.
