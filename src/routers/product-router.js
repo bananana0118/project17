@@ -48,7 +48,7 @@ productRouter.get("/productlist", async function (req, res, next) {
 
 // 상품 정보 수정
 // (예를 들어 /api/users/abc12345 로 요청하면 req.params.userId는 'abc12345' 문자열로 됨)
-productRouter.patch("/product/:productId", async function (req, res, next) {
+productRouter.patch("/patch/:productId", async function (req, res, next) {
     try {
         // content-type 을 application/json 로 프론트에서
         // 설정 안 하고 요청하면, body가 비어 있게 됨.
@@ -90,7 +90,7 @@ productRouter.patch("/product/:productId", async function (req, res, next) {
     }
 });
 
-productRouter.delete("/delete/:id", async (req, res) => {
+productRouter.delete("/delete/:productId", async (req, res) => {
     try {
         // content-type 을 application/json 로 프론트에서
         // 설정 안 하고 요청하면, body가 비어 있게 됨.
@@ -99,7 +99,7 @@ productRouter.delete("/delete/:id", async (req, res) => {
                 "headers의 Content-Type을 application/json으로 설정해주세요"
             );
         }
-        const productId = req.params.id;
+        const productId = req.params.productId;
 
         const deleteProductInfo = await productService.delProduct(productId);
         res.status(200).json(deleteProductInfo);
