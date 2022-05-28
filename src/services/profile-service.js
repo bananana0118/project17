@@ -21,7 +21,6 @@ class ProfileService {
     // 객체 destructuring
     const { email, fullName, password, passwordConfirm } = userInfoRequired;
 
-
     // 우선 해당 id의 유저가 db에 있는지 확인
     let user = await this.userModel.findByEmail(email);
 
@@ -56,13 +55,15 @@ class ProfileService {
     return user;
   }
 
-  async deleteUser(userInfo) {
-    const { userEmail, password } = userInfo;
+  async deleteUser(userEmail) {
+    const email = userEmail;
 
-    //user비밀번호가 일치하나 검증하고
     // 삭제함
-    //문제가 있을경우 비밀번호가 다릅니다 라는 말 리턴
-    let user = await this.userModel.findById(userEmail);
+    //앞에서 비밀번호 검사를 했으므로 삭제하곘다는 글자 입력시 삭제
+
+    let user = await userModel.deleteByEmail(email);
+
+    return user;
   }
 }
 
