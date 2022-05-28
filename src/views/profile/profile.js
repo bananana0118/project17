@@ -5,7 +5,6 @@
 
 import * as Api from "/api.js";
 import { validateEmail } from "/useful-functions.js";
-import jwt from "jsonwebtoken";
 
 const profileUpdate = document.querySelector("#submitButton");
 const profileDelete = document.querySelector("#profileDeleteButton");
@@ -16,19 +15,11 @@ const passwordConfirmInput = document.querySelector("#passwordConfirmInput");
 // const mobileNumberInput = document.querySelector("#mobileNumber");
 // const addressInput = document.querySelector("#address");
 
-async function getAccount(e) {
-    // const testEmail = "dd@dd.com";
-    const userToken = sessionStorage.getItem("token");
-    console.log(userToken);
-    console.log(process.env.JWT_SECRET_KEY);
-    const secretKey = process.env.JWT_SECRET_KEY || "secret-key";
-    const jwtDecoded = await jwt.verify(userToken, secretKey);
-
-    const userId = jwtDecoded.userId;
-    console.log(userId);
-
-    // const data = await Api.get("/profile", userId);
-    // console.log(data);
+async function getAccount() {
+    const userId = "kdc@kdc.com";
+    // console.log(userId);
+    const data = await Api.get("/profile");
+    console.log(data);
 }
 
 getAccount();
