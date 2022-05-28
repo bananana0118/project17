@@ -23,7 +23,7 @@
         </nav>
 
         <section>
-            <div class="main-image"><img src=""></div>
+            <div class="main-image"><img src="https://images.unsplash.com/photo-1609505848912-b7c3b8b4beda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80"></div>
             <div class="image-info">
                 <ul>
                     <li class="name">LACE SLEEVELESS CARDIGAN SET *에스파 윈터 착용*</li>
@@ -42,11 +42,11 @@
                         </div>
                     </li>
                     <li class="size">SIZE*</li>
-                    <select class="size-option" size="1">
-                        <option value="">SIZE (필수)</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
+                    <select class="size-option">
+                        <option value="1">SIZE (필수)</option>
+                        <option value="2">S</option>
+                        <option value="3">M</option>
+                        <option value="4">L</option>
                     </select>
                     <br><br>
                 </ul>
@@ -56,16 +56,17 @@
         </section>
 
         <!-- POPUP -->
-        <div class="basket-add">
+        <div class="basket-add" style="display: none;">
             <div class="header">
                 <h3>장바구니 담기</h3>
+                <button class="close">X</button>
             </div>
             <div class="content">
                 <p>장바구니에 상품이 정상적으로 담겼습니다.</p>
             </div>
             <div class="base-button">
-                <a href="" class="btnSubmitFix sizeS">장바구니 이동</a>
-                <a href="" class="btnNormalFix sizeS" onclick="$('#confirmLayer').remove();" complete="complete">쇼핑계속하기</a>
+                <a href="" class="move-to-cart" type="button">장바구니 이동</a>
+                <a href="" class="stay-here" type="button">쇼핑 계속하기</a>
             </div>
         </div>
         

@@ -24,6 +24,9 @@ function navBarCreate() {
                                 <i class="material-symbols-outlined nav-menu_icon">
                                     shopping_bag
                                 </i>
+                                <span class="count">
+                                    <span>0</span>
+                                </span>
                             </a>
                             <a href="../personalPage/personalPage.html">
                                 <i class="material-symbols-outlined nav-menu_icon">
