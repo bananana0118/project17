@@ -36,11 +36,24 @@ productRouter.post("/addproduct", async (req, res) => {
 
 productRouter.get("/productlist", async function (req, res, next) {
     try {
-        // 전체 사용자 목록을 얻음
+        // 전체 상품 목록을 얻음
         const products = await productService.getProducts();
 
-        // 사용자 목록(배열)을 JSON 형태로 프론트에 보냄
+        // 상품 목록(배열)을 JSON 형태로 프론트에 보냄
         res.status(200).json(products);
+    } catch (error) {
+        next(error);
+    }
+});
+
+productRouter.get("/get/:productNo", async function (req, res, next) {
+    try {
+        // 특정 상품 데이터를 얻음
+        const productNo = req.params.productNo;
+        const product = await productService.getProduct(productNo);
+
+        // 사용자 목록(배열)을 JSON 형태로 프론트에 보냄
+        res.status(200).json(product);
     } catch (error) {
         next(error);
     }
