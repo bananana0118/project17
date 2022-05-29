@@ -67,7 +67,6 @@ function logout(e) {
 // 그렇지 않을 시 로그인 페이지로 이동
 function myPageLoad() {
     const token = sessionStorage.getItem("token");
-    console.log("?");
     if (!token) {
         location.href = "/login";
     } else {
