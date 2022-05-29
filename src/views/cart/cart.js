@@ -1,7 +1,9 @@
 import { addCommas } from "../useful-functions.js";
+import { createItem } from "../utils.js";
+
 const dummycartItems = [
     {
-        zproduct:"Short Sleeve Comfor Shirt-Navy",
+        product:"Short Sleeve Comfor Shirt-Navy",
         sie: 5,
         quantity: 1,
         price: 35000,
@@ -105,41 +107,12 @@ const renderPage = () => {
     }
 
     cartItems.map(el => {
-        const li = document.createElement('li');
-        const html = `
-            <div class="item-list-img">
-                <img src="${el.src}" class="item-img">
-            </div>
-            <div class="item-list-product">
-                <div class="cart-list-name">
-                    <p>
-                        <b>제품</b>
-                        <a href="/product/detail.html?product_no=961&amp;cate_no=186">${el.product}</a>
-                    </p>
-                    <p>
-                        <b>사이즈</b>
-                        <span> ${el.size}</span>
-                    </p>
-                </div>
-                <div class="cart-list-quantity">
-                    <b>수량</b>
-                    <button id="minus-btn">-</button>
-                    <span>${el.quantity}</span>
-                    <button id="plus-btn">+</button> 
-                </div>
-                <div>
-                    <b>금액</b>
-                    <span>KRW ${el.totalprice}</span>
-                </div>
-            </div>
-            <div id="delete-item">X</div>
-            `   
-        li.innerHTML = html;
+        const li = createItem(el);
         ul.appendChild(li);
         sumPrice += el.totalprice;
     })
     
-    /* template literal 에서 메소드 처리할 수 잇도록 리펙토링 예정*/
+    /* template literal 에서 메소드 처리할 수 잇도록 리펙토링 예정 */
     const cartItems1 = Array.from(document.querySelectorAll('#delete-item'));
     const cartItems2 = Array.from(document.querySelectorAll('#minus-btn'));
     const cartItems3 = Array.from(document.querySelectorAll('#plus-btn'));
