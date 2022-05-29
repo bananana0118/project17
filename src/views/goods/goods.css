@@ -188,11 +188,11 @@ ul {
     top: 35%;
     left: 35%;
     width: 30vw;
-    background-color: rgb(195, 193, 193);
+    background-color: #fff;
 }
 
 .basket-add .header {
-    padding: 0.6em 1.2em;
+    padding: 0.2em 1em;
     color: #fff;
     background: #8c8c8c;
     display: flex;
@@ -216,6 +216,7 @@ ul {
     padding: 10vh 2vw 6vh;
     text-align: center;
     font-size: 0.9em;
+    font-weight: 600;
 }
 
 .basket-add .base-button {
@@ -233,6 +234,12 @@ ul {
     margin: 1em;
     padding: 0.5em 1em;
     border: 1px solid black;
+}
+
+.move-to-cart:hover,
+.stay-here:hover {
+    color: white;
+    background-color: black;
 }
 
 /* footer */
