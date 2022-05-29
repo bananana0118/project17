@@ -1,5 +1,7 @@
 // 각 페이지 <nav>태그 안의 요소를 모두 지우고 밑에 내용을 head에 추가해주세요
 // <script src="../navBar.js" type="module" defer></script>
+import * as Api from "/api.js";
+
 function navBarCreate() {
     const nav = document.querySelector("nav");
 
@@ -61,16 +63,23 @@ function logout(e) {
     sessionStorage.removeItem("token");
     alert("정상적으로 로그아웃되었습니다.");
     logoutAppear();
+    location.href = "/";
 }
 
 // 로그인 되어 있으면 토큰 확인해서 사용자페이지로 이동
 // 그렇지 않을 시 로그인 페이지로 이동
-function myPageLoad() {
+async function myPageLoad() {
     const token = sessionStorage.getItem("token");
     if (!token) {
         location.href = "/login";
     } else {
-        location.href = "/profile";
+        const user = await Api.get("/api/profile/myProfile");
+        const role = user.role;
+        console.log(role);
+        role === "admin"
+            ? (location.href = "/admin")
+            : (location.href = "/profile");
+        // location.href = "/profile";
     }
 }
 

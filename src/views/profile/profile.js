@@ -15,27 +15,10 @@ const passwordConfirmInput = document.querySelector("#passwordConfirmInput");
 // const mobileNumberInput = document.querySelector("#mobileNumber");
 // const addressInput = document.querySelector("#address");
 
-// async function updateAccount(e) {
-
-//     // 유저정보 수정 요청
-//     try {
-//         const data = { fullName, email, password };
-//         // 주소, 전화번호 등 정보 추가 시 추가할 것
-//         const userId = data.email;
-//         await Api.patch("/api/users", userId, data);
-//         console.log(data);
-//         alert(`정상적으로 수정되었습니다.`);
-//         history.back();
-//     } catch (err) {
-//         console.error(err.stack);
-//         alert(`문제 발생: ${err.message}`);
-//     }
-// }
-
 // =================================================
 //GET: 사용자 정보가져오기
 //===================================================
-const getAcoountInfo = async function () {
+const getAcountInfo = async function () {
     const user = await Api.get("/api/profile/myProfile");
     console.log(user);
     fullNameInput.value = user.fullName;
@@ -45,7 +28,9 @@ const getAcoountInfo = async function () {
 // ================================================
 // PATCH : 사용자 정보 수정 (오류 생길 수 있음)
 // ================================================
-const updateAccountInfo = async function () {
+const updateAccountInfo = async function (e) {
+    e.preventDefault();
+    const currentPassword = prompt("현재 비밀번호를 입력하세요");
     const fullName = fullNameInput.value;
     const email = emailInput.value;
     const password = passwordInput.value;
@@ -72,7 +57,13 @@ const updateAccountInfo = async function () {
     }
 
     try {
-        const data = { fullName, email, password, passwordConfirm };
+        const data = {
+            fullName,
+            email,
+            password,
+            passwordConfirm,
+            currentPassword,
+        };
         const userUpdate = await Api.patch("/api/profile/edit", "", data);
         console.log(userUpdate);
         alert("정보 수정 완료");
@@ -86,15 +77,15 @@ const updateAccountInfo = async function () {
 // DELETE:사용자 정보 지우기
 // ===================================================
 
-const deleteAccount = async function () {
+const deleteAccount = async function (e) {
+    e.preventDefault();
     await Api.delete("/api/profile/quit");
-    // 삭제는 되는데 그후가 동작을 안함 왜인지 모르겠음.
+    alert("회원 탈퇴 완료");
     sessionStorage.removeItem("token");
     location.href = "/";
-    alert("회원 탈퇴 완료");
 };
 
-getAcoountInfo();
+profileDelete.addEventListener("click", deleteAccount);
+getAcountInfo();
 
 profileUpdate.addEventListener("click", updateAccountInfo);
-profileDelete.addEventListener("click", deleteAccount);
