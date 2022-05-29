@@ -9,23 +9,21 @@ class ProductService {
     // 상품 추가
     async addProduct(productInfo) {
         // db에 저장
-        const createdNewProduct = await this.productModel.create(productInfo);
+        let createdNewProduct = await this.productModel.create(productInfo);
 
         return createdNewProduct;
     }
 
     // 상품 목록을 받음.
     async getProducts() {
-        const products = await this.productModel.findAll();
+        let products = await this.productModel.findAll();
         return products;
     }
 
     // 상품정보 수정
-    async setProduct(toUpdate) {
-        const productName = toUpdate.productName;
-
+    async setProduct(productNo, toUpdate) {
         // 우선 해당 상품 이름이 db에 있는지 확인
-        let product = await this.productModel.findById(productName);
+        let product = await this.productModel.findById(productNo);
 
         // db에서 찾지 못한 경우, 에러 메시지 반환
         if (!product) {
@@ -34,15 +32,15 @@ class ProductService {
 
         // 업데이트 진행
         product = await this.productModel.update({
-            productName,
+            productNo,
             update: toUpdate,
         });
 
         return product;
     }
     // 상품 삭제
-    async delProduct(productId) {
-        const products = await this.productModel.findAndDel(productId);
+    async delProduct(productNo) {
+        let products = await this.productModel.findAndDel(productNo);
         return products;
     }
 }

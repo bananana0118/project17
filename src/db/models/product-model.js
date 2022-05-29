@@ -14,13 +14,13 @@ export class ProductModel {
         return products;
     }
 
-    async findById(productName) {
-        const product = await Product.findOne({ _id: productName });
+    async findById(productNo) {
+        const product = await Product.findOne({ no: productNo });
         return product;
     }
 
-    async update({ productName, update }) {
-        const filter = { _id: productName };
+    async update({ productNo, update }) {
+        const filter = { no: productNo };
         const option = { returnOriginal: false };
 
         const updatedProduct = await Product.findOneAndUpdate(
@@ -31,9 +31,9 @@ export class ProductModel {
         return updatedProduct;
     }
 
-    async findAndDel(productId) {
+    async findAndDel(productNo) {
         const product = await Product.findOneAndDelete({
-            productName: productId,
+            no: productNo,
         });
         return product;
     }
