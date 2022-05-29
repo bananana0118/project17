@@ -25,7 +25,7 @@ class ProductService {
         const productName = toUpdate.productName;
 
         // 우선 해당 상품 이름이 db에 있는지 확인
-        let product = await this.productModel.findByName(productName);
+        let product = await this.productModel.findById(productName);
 
         // db에서 찾지 못한 경우, 에러 메시지 반환
         if (!product) {

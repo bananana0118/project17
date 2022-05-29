@@ -1,4 +1,5 @@
 // api 로 GET 요청 (/endpoint/params 형태로 요청함)
+//                  Api.get(/profile,?=)
 async function get(endpoint, params = "") {
     const apiUrl = `${endpoint}/${params}`;
     console.log(`%cGET 요청: ${apiUrl} `, "color: #a25cd1;");
@@ -96,7 +97,6 @@ async function patch(endpoint, params = "", data) {
 async function del(endpoint, params = "", data = {}) {
     const apiUrl = `${endpoint}/${params}`;
     const bodyData = JSON.stringify(data);
-
     console.log(`DELETE 요청 ${apiUrl}`);
     console.log(`DELETE 요청 데이터: ${bodyData}`);
 
