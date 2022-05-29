@@ -20,6 +20,12 @@ class ProductService {
         return products;
     }
 
+    // 상품 상세 정보 확인
+    async getProduct(productNo) {
+        let product = await this.productModel.findByNo(productNo);
+        return product;
+    }
+
     // 상품정보 수정
     async setProduct(productNo, toUpdate) {
         // 우선 해당 상품 이름이 db에 있는지 확인
@@ -38,6 +44,7 @@ class ProductService {
 
         return product;
     }
+
     // 상품 삭제
     async delProduct(productNo) {
         let products = await this.productModel.findAndDel(productNo);
