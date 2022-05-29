@@ -22,6 +22,12 @@ ul {
     list-style: none;
 }
 
+button {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
 /* navBar */
 .navBar {
     box-shadow: 1px 1px 2px rgb(236, 236, 236);
@@ -29,6 +35,7 @@ ul {
     background-color: white;
     position: fixed;
     z-index: 99;
+    top: 0;
 }
 
 .navBar-container {
@@ -68,13 +75,16 @@ ul {
 
 /* profileUpdate */
 
-#profileUpdate {
+.personalPage {
     display: flex;
-    justify-content: center;
+    width: 70%;
+    margin: auto;
+    margin-top: 100px;
+}
+.personalPage-menu {
     align-items: center;
-    height: 100vh;
-    text-align: center;
-    background-color: #f8f8ff;
+    justify-content: flex-start;
+    width: 30%;
 }
 
 .profileUpdate-form-container {
@@ -133,6 +143,12 @@ input {
 
 button {
     cursor: pointer;
+}
+
+#personalPage,
+#login,
+#logout {
+    width: auto;
 }
 
 /* nav media query */

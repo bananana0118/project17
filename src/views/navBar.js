@@ -30,7 +30,7 @@ function navBarCreate() {
                                     <span>0</span>
                                 </span>
                             </a>
-                            <a id="personalPage" href="#">
+                            <button id="personalPage">
                                 <i class="material-symbols-outlined nav-menu_icon">
                                     person
                                 </i>

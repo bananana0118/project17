@@ -73,9 +73,12 @@ profileRouter.patch("/edit", loginRequired, async function (req, res, next) {
     }
 });
 //DELETE : 탈퇴하기
-profileRouter.delete("/quit", loginRequired, async function (req, res) {
+profileRouter.delete("/quit", loginRequired, async function (req, res, next) {
     try {
         const userId = req.currentUserId;
+        console.log("test");
+        const password = req.body.password;
+        console.log(password);
         const deletedUser = await userService.deleteUser(userId);
         console.log(deletedUser);
         res.status(200).json(deletedUser);
