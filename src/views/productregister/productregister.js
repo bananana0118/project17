@@ -8,7 +8,7 @@ const productCategory = document.querySelector('#input-category');
 const productManufacturer = document.querySelector('#input-manufacturer');
 const productSize = document.querySelector('#input-size');
 const productQuantity = document.querySelector('#input-quantity');    
-const productInfo = document.querySelector('#input-product-detail')
+const productDescription = document.querySelector('#input-product-detail')
 const inputItems = document.getElementsByName('product-input')
 let uploadFiles = []
 inputItems[0].focus();
@@ -21,8 +21,7 @@ function keyevent(event){
     const idx = Array.from(inputItems).indexOf(event.target);
     
     if(code === 'Enter'){
-        if(event.shiftKey){
-        }
+        if(event.shiftKey){}
         else{
             if(idx === (inputItems.length -2)){
                 
@@ -32,7 +31,6 @@ function keyevent(event){
             }
         }
     }
-
 }
  
 for(var i=0; i<inputItems.length; i++){
@@ -40,14 +38,15 @@ for(var i=0; i<inputItems.length; i++){
 };
 
 const register = async () => {
-    const data = { productName: productName.value, 
+    const data = { 
+                productName: productName.value, 
                 productPrice: productPrice.value,
                 productSize: productSize.value,
-                productDetail: productInfo.value,
+                productDescription: productDescription.value,
                 productCategory: productCategory.value,
                 productQuantity: productQuantity.value,
                 productManufacturer: productManufacturer.value,
-                }
+            }
     
     if(data.productName === ''){
         alert('상품명을 입력해주세요!')
@@ -82,6 +81,13 @@ const register = async () => {
 
 submmitBtn.addEventListener('click', register)
 
+
+/**
+ * 
+ * @param {event} e 
+ * @param {URLFIle} file 
+ * @returns 
+ */
 const createElement = (e, file) => {
     const img = document.createElement('img');
     img.setAttribute('src', e.target.result);
@@ -101,6 +107,7 @@ const getImageFiles = (e) => {
     uploadFiles = [];
     const files = e.currentTarget.files;
     const imgPreview = document.querySelector('.image-preview');
+    
     let lastImg = imgPreview.lastChild;
     while(lastImg){
         imgPreview.removeChild(lastImg);

@@ -28,8 +28,7 @@ ul {
     width: 100%;
     background-color: white;
     position: fixed;
-    z-index: 99;
-    top:0;
+    top: 0;
     opacity: 0.5;
 }
 
@@ -91,7 +90,7 @@ footer {
     width: 80%;
     font-size: 12px;
     margin: 0 auto;
-    margin-top:100px;
+    margin-top: 100px;
     
 }
 
@@ -221,7 +220,7 @@ footer {
 
 /* 체크박스 높이 맞추기 */
 input[id="onSale"]{
-    position:relative;
+    position: relative;
     top: 2px;
 }
 
@@ -229,22 +228,22 @@ input[id="onSale"]{
     align-items: center;
     border: 2px solid #ddd;
     margin-top: 20px;
-    padding:10px;   
+    padding: 10px;   
     height: 200px;
 }
 
 .product-register-btn{
-    float:right;
+    float: right;
     background: transparent;
     border: none;
-    padding:10px;
+    padding: 10px;
     font-size: 16px;
     transition: ease 0.5s;
     margin-top: 10px;;
 }
 
 .product-register-btn:hover{
-    color:#a9a9a9;
+    color: #a9a9a9;
     cursor: pointer;
 }
 
