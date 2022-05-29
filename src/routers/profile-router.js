@@ -40,7 +40,6 @@ profileRouter.patch("/edit", loginRequired, async function (req, res, next) {
 
         // body data로부터, 확인용으로 사용할 현재 비밀번호를 추출함.
         const currentPassword = req.body.currentPassword;
-        console.log(currentPassword);
 
         // currentPassword 없을 시, 진행 불가
         if (!currentPassword) {
@@ -73,12 +72,10 @@ profileRouter.patch("/edit", loginRequired, async function (req, res, next) {
     }
 });
 //DELETE : 탈퇴하기
-profileRouter.delete("/quit", loginRequired, async function (req, res, next) {
+profileRouter.delete("/quit", loginRequired, async function (req, res) {
     try {
+        const pass = req.body.password;
         const userId = req.currentUserId;
-        console.log("test");
-        const password = req.body.password;
-        console.log(password);
         const deletedUser = await userService.deleteUser(userId);
         console.log(deletedUser);
         res.status(200).json(deletedUser);

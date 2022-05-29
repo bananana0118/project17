@@ -76,19 +76,17 @@ const updateAccountInfo = async function (e) {
 // ===================================================
 // DELETE:사용자 정보 지우기
 // ===================================================
-
 const deleteAccount = async function (e) {
     e.preventDefault();
     const confirm = window.confirm("정말 탈퇴하시나요?");
     if (confirm) {
         const password = prompt("비밀번호를 입력해주세요");
-        await Api.delete("/api/profile/quit", "", password);
+        await Api.delete("/api/profile/quit", "", { password: password });
         alert("회원 탈퇴 완료");
         sessionStorage.removeItem("token");
         location.href = "/";
     }
 };
-
 profileDelete.addEventListener("click", deleteAccount);
 getAcountInfo();
 
