@@ -66,9 +66,9 @@ ul {
     vertical-align: baseline;
 }
 
-/* register */
+/* profileUpdate */
 
-#register {
+#profileUpdate {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,7 +77,7 @@ ul {
     background-color: #f8f8ff;
 }
 
-.register-user-form-container {
+.profileUpdate-form-container {
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -89,7 +89,7 @@ ul {
     background-color: white;
 }
 
-.register-form {
+.profileUpdate-form {
     width: 80%;
 }
 
@@ -102,7 +102,7 @@ ul {
     margin-top: 10px;
 }
 
-.register-form_input {
+.profileUpdate-form_input {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -110,11 +110,7 @@ ul {
     height: 300px;
 }
 
-<<<<<<< HEAD
-.register-submitButton {
-=======
 #submitButton {
->>>>>>> fb303ef8d3277db5f720f8fb0982fe591b93379e
     margin-top: 50px;
     background-color: #4d61a9;
     color: white;
@@ -154,16 +150,16 @@ button {
     }
 }
 
-/* mobile register media query */
+/* mobile profileUpdate media query */
 @media screen and (max-width: 400px) {
     html {
         font-size: 10px;
     }
-    .register-user-form-container {
+    .profileUpdate-form-container {
         width: 250px;
         height: 500px;
     }
-    .register-form_input {
+    .profileUpdate-form_input {
         margin-top: 50px;
         height: 200px;
     }

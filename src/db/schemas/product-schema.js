@@ -1,4 +1,8 @@
-import { Schema, Types } from "mongoose";
+
+import mongoose, { Schema, Types } from "mongoose";
+const autoIncrement = require("mongoose-auto-increment");
+
+autoIncrement.initialize(mongoose);
 
 const ProductSchema = new Schema({
     productName: {
@@ -18,14 +22,23 @@ const ProductSchema = new Schema({
         required: false,
     },
     productCategory: {
-        type: String,
-        // ref: "CateogrySchema",
-        required: true,
+
+        type: Number,
     },
-    productManufacturer: {
+
+    productImg: {
         type: String,
-        required: true,
+        required: false,
     },
+    no: Number,
+});
+
+ProductSchema.plugin(autoIncrement.plugin, {
+    model: "products",
+    field: "no",
+    startAt: 1,
+    incrementBy: 1,
+
 });
 
 export { ProductSchema };

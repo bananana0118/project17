@@ -14,7 +14,12 @@
         "dotenv": "^16.0.0",
         "express": "^4.17.3",
         "jsonwebtoken": "^8.5.1",
+<<<<<<< HEAD
         "mongoose": "^6.3.1"
+=======
+        "mongoose": "^6.3.1",
+        "mongoose-auto-increment": "^5.0.1"
+>>>>>>> fb303ef8d3277db5f720f8fb0982fe591b93379e
     },
     "devDependencies": {
         "@babel/cli": "^7.17.6",

@@ -1,11 +1,11 @@
-import { model } from 'mongoose';
-import { UserSchema } from '../schemas/user-schema';
+import { model } from "mongoose";
+import { UserSchema } from "../schemas/user-schema";
 
-const User = model('users', UserSchema);
+const User = model("users", UserSchema);
 
 export class UserModel {
   async findByEmail(email) {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email });
     return user;
   }
 
@@ -30,6 +30,15 @@ export class UserModel {
 
     const updatedUser = await User.findOneAndUpdate(filter, update, option);
     return updatedUser;
+  }
+
+  async delete(userId) {
+    const filter = { _id: userId };
+    const option = { returnOriginal: false };
+
+    const deletedUser = await User.findByIdAndDelete(filter, option);
+
+    return deletedUser;
   }
 }
 

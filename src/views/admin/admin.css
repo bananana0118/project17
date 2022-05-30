@@ -1,0 +1,177 @@
+.div-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .landing {
+    cursor: pointer;
+    border: 1px solid red;
+    padding: 10px;
+  }
+  
+  .greeting {
+    cursor: pointer;
+    border: 1px solid blue;
+    padding: 10px;
+    margin-left: 3rem;
+  }
+  
+.manage-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:0px 50px;
+}
+
+.menu-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    margin: 50px 0px
+}
+
+.menu{
+    width: 300px;
+    height: 300px;
+    margin:10px;
+    cursor: pointer;
+    border-radius: 5%;
+    box-shadow: 2px 2px 1px rgb(0, 0, 0, 0.2), -2px -2px 1px rgb(0,0,0, 0.2);
+}
+
+.menu:hover{
+    transform: scale(1.05);
+    background-color: #ddd;
+    transition: all 0.3s ease-in-out;
+}
+
+#header-text{
+    font-size:20px;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    margin-bottom: 20px;
+}
+
+.menu-text-icon{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+#manage-font{
+    font-size:20px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+#menu-select{
+    padding: 2px 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 1px rgb(0,0,0,0.2);
+    border-radius: 5%;
+}
+
+.static-box{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 200px;
+}
+
+.graph{
+    display: flex;
+    flex:1;
+    position: relative;
+    width: 600px;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 3px rgb(0,0,0,0.3);
+    border-radius: 5%;
+    padding: 20px;
+    margin-right: 50px;
+}
+
+.fa-arrow-right{
+    font-size: 26px;
+    color: #ddd;
+    position: absolute;
+    right:20px; top:20px;
+    cursor: pointer;
+}
+
+.fa-arrow-right:hover{
+    color:#000;
+}
+
+.static-info{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 1px rgb(0,0,0,0.2);
+    border-radius: 5%;
+    padding: 10px;
+    width: 600px;
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+.static-header-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    font-size: 15px;
+    padding: 0 10px;
+    letter-spacing: -.5px;
+    margin-top: 20px;
+}
+
+.admin-sale-date-txt{
+    width: 15%;
+}
+
+.admin-sale-id-txt{
+    width: 25%;
+}
+
+.admin-sale-order-txt{
+    width: 25%;
+}
+
+.admin-sale-price-txt{
+    width: 20%;
+}
+
+@keyframes slidein {
+    from{
+        margin-left: -100px;
+        transform: scale(0.3);
+    }
+    to{
+        margin-left: 0px;;
+        transform: scale(1.0);
+    }
+}
+
+@keyframes slideout {
+    from{
+        margin-left: 0px;
+        transform: scale(1.0);
+    }
+    to{
+        margin-left: -100px;;
+        transform: scale(0.3);
+    }
+}
