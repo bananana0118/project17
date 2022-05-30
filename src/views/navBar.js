@@ -27,13 +27,13 @@ function navBarCreate() {
                                     search
                                 </i>
                             </a>
-                            <a href="/cart">
+                            <a class="cart" href="/cart">
                                 <i class="material-symbols-outlined nav-menu_icon">
                                     shopping_bag
                                 </i>
-                                <span class="count">
-                                    <span>0</span>
-                                </span>
+                                <div class="count">
+                                    <span>1</span>
+                                </div>
                             </a>
                             <div class="personalMenu">
                                 <button id="personalIcon">
@@ -99,7 +99,7 @@ navBarCreate();
 const logoutBtn = document.querySelector("#logout");
 const personalIcon = document.querySelector("#personalIcon");
 const personalMenu = document.querySelector(".personalMenu-buttons");
-personalMenu.style.display = "none";
+// const allArea = document.querySelector("main");
 
 //login modal
 const loginModal = document.querySelector(".modal");
@@ -112,6 +112,7 @@ const modalOverlay = document.querySelector(".modal-overlay");
 // 로그인 되어 있으면 토큰 확인해서 사용자페이지로 이동
 // 그렇지 않을 시 로그인 모달창 생성
 
+personalMenu.style.display = "none";
 async function personalIconClick() {
     const token = sessionStorage.getItem("token");
 
@@ -122,8 +123,14 @@ async function personalIconClick() {
         personalMenu.style.display === "block"
             ? (personalMenu.style.display = "none")
             : (personalMenu.style.display = "block");
+        console.log("hi");
     }
 }
+
+//personalMenu > 화면 다른 곳 눌러도 꺼지도록
+// allArea.addEventListener("click", () => {
+//     personalMenu.style.display = "none";
+// });
 
 //모달 창 닫기
 function modalCloseClick() {

@@ -41,7 +41,7 @@ ul {
     width: 70%;
     align-items: center;
     height: inherit;
-    padding: 1em;
+    padding: 0.7em;
 }
 
 .nav-category_list a {
@@ -67,8 +67,30 @@ ul {
 
 .nav-menu_icon,
 .nav-brand {
-    font-size: 2rem;
+    font-size: 2.3rem;
     vertical-align: baseline;
+}
+
+.cart {
+    position: relative;
+}
+
+.count {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    background-color: rgb(250, 135, 135);
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.count span {
+    font-size: 0.8rem;
+    color: white;
 }
 
 .personalMenu {
@@ -80,7 +102,22 @@ ul {
     position: absolute;
     right: 0%;
     top: 100%;
-    box-shadow: 1px 1px 8px rgb(158, 158, 158);
+    box-shadow: 1px 1px 8px rgb(163, 163, 163);
+    border-radius: 8px;
+    animation: personalMenuAppear 0.5s;
+}
+
+#personalIcon {
+    display: flex;
+}
+
+@keyframes personalMenuAppear {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
 }
 
 .personalMenu-buttons button {
@@ -90,10 +127,21 @@ ul {
     font-size: 1rem;
 }
 
+.personalMenu-buttons button:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.personalMenu-buttons button:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
 /* footer  */
 footer {
     margin: 0 auto;
     margin-top: 5vh;
+    padding: 0 0.7em;
     padding-top: 5vh;
     border-top: 1px solid rgba(0, 0, 0, 0.081);
     display: flex;
