@@ -24,6 +24,9 @@ function navBarCreate() {
                                 <i class="material-symbols-outlined nav-menu_icon">
                                     shopping_bag
                                 </i>
+                                <span class="count">
+                                    <span>0</span>
+                                </span>
                             </a>
                             <a id="personalPage" href="#">
                                 <i class="material-symbols-outlined nav-menu_icon">
@@ -78,3 +81,13 @@ function myPageLoad() {
 logoutBtn.addEventListener("click", logout);
 personalPage.addEventListener("click", myPageLoad);
 logoutAppear();
+
+// 장바구니 아이콘 아이템 수
+var count = 0;
+var allQuantity = JSON.parse(localStorage.getItem("cart"));
+for (let i = 0; i < allQuantity.length; i++) {
+    count += Number(allQuantity[i].productQuantity)
+}
+
+const addShoppingCart = document.querySelector(".count");
+addShoppingCart.innerHTML = `<span>${count}</span>`;
