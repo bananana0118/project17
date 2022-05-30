@@ -75,7 +75,8 @@ ul {
     position: relative;
 }
 
-.count {
+.count,
+.check {
     position: absolute;
     top: 50%;
     right: 0%;
@@ -89,8 +90,17 @@ ul {
 }
 
 .count span {
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     color: white;
+}
+
+.check {
+    background-color: rgba(207, 207, 207);
+    cursor: pointer;
+}
+
+.check span {
+    font-size: 0.5rem;
 }
 
 .personalMenu {
@@ -98,10 +108,10 @@ ul {
 }
 
 .personalMenu-buttons {
-    width: 10em;
+    width: 8em;
     position: absolute;
     right: 0%;
-    top: 100%;
+    top: 110%;
     box-shadow: 1px 1px 8px rgb(163, 163, 163);
     border-radius: 8px;
     animation: personalMenuAppear 0.5s;
@@ -122,7 +132,7 @@ ul {
 
 .personalMenu-buttons button {
     border: 1px solid rgb(196, 196, 196);
-    padding: 5px;
+    padding: 0.5em;
     width: 100%;
     font-size: 1rem;
 }
@@ -135,6 +145,10 @@ ul {
 .personalMenu-buttons button:last-child {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+}
+
+#logout {
+    color: rgb(255, 56, 56);
 }
 
 /* footer  */
@@ -267,6 +281,21 @@ footer {
 .modal-content {
     position: fixed;
     z-index: 10;
+    animation: modalAppear 0.5s;
+}
+
+@keyframes modalAppear {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .hidden {
@@ -283,9 +312,6 @@ footer {
 
 /* modal media query */
 @media screen and (max-width: 400px) {
-    html {
-        font-size: 8px;
-    }
     .login-form-container {
         width: 250px;
         height: 400px;

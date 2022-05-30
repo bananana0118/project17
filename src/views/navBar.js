@@ -43,8 +43,11 @@ function navBarCreate() {
                                 </button>
                                 <div class="personalMenu-buttons">
                                     <button>마이페이지</button>
-                                    <button>회원정보관리</button>
+                                    <button>계정관리</button>
                                     <button id="logout">로그아웃</button>
+                                </div>
+                                <div class="check">
+                                    <span>✔️</span>
                                 </div>
                             </div>
                         </div>
@@ -108,6 +111,7 @@ const passwordInput = document.querySelector("#passwordInput");
 const submitButton = document.querySelector(".loginButton");
 const modalClose = document.querySelector(".closeBtn");
 const modalOverlay = document.querySelector(".modal-overlay");
+const loginCheck = document.querySelector(".check");
 
 // 로그인 되어 있으면 토큰 확인해서 사용자페이지로 이동
 // 그렇지 않을 시 로그인 모달창 생성
@@ -127,10 +131,15 @@ async function personalIconClick() {
     }
 }
 
-//personalMenu > 화면 다른 곳 눌러도 꺼지도록
-// allArea.addEventListener("click", () => {
-//     personalMenu.style.display = "none";
-// });
+//로그인 체크 표시 (로그인/로그아웃 완료 시 작동하도록 추가)
+function loginCheckAppear() {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+        loginCheck.style.display = "";
+    } else {
+        loginCheck.style.display = "none";
+    }
+}
 
 //모달 창 닫기
 function modalCloseClick() {
@@ -153,6 +162,7 @@ async function personalPageLoad() {
 function logout(e) {
     e.preventDefault();
     sessionStorage.removeItem("token");
+    loginCheckAppear();
     alert("정상적으로 로그아웃되었습니다.");
     location.href = "/";
 }
@@ -191,6 +201,7 @@ async function handleSubmit(e) {
 
         // 로그인모달 없애서 현재 페이지에 잔류
         loginModal.classList.add("hidden");
+        loginCheckAppear();
     } catch (err) {
         console.error(err.stack);
         alert(
@@ -201,7 +212,11 @@ async function handleSubmit(e) {
 
 logoutBtn.addEventListener("click", logout);
 personalIcon.addEventListener("click", personalIconClick);
+loginCheck.addEventListener("click", personalIconClick);
 personalMenu.addEventListener("click", personalPageLoad);
 
 // 로그인
 submitButton.addEventListener("click", handleSubmit);
+
+//로그인 체크
+loginCheckAppear();
