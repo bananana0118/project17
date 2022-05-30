@@ -12,6 +12,7 @@ const fullNameInput = document.querySelector("#fullNameInput");
 const emailInput = document.querySelector("#emailInput");
 const passwordInput = document.querySelector("#passwordInput");
 const passwordConfirmInput = document.querySelector("#passwordConfirmInput");
+const greeting = document.querySelector(".greetings");
 // const mobileNumberInput = document.querySelector("#mobileNumber");
 // const addressInput = document.querySelector("#address");
 
@@ -23,6 +24,7 @@ const getAcountInfo = async function () {
     console.log(user);
     fullNameInput.value = user.fullName;
     emailInput.value = user.email;
+    greeting.innerHTML = `${user.fullName}님 환영합니다!`;
 };
 
 // ================================================

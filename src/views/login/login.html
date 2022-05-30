@@ -32,47 +32,25 @@
             rel="stylesheet"
         />
         <!-- 커스텀 css, js -->
+        <link rel="stylesheet" href="../navBar.css" />
         <link rel="stylesheet" href="login.css" />
-        <script src="login.js" type="module" defer></script>
+        <script src="../navBar.js" type="module" defer></script>
     </head>
     <body>
         <!-- 헤더 -->
         <!-- nav bar -->
-        <nav class="navBar" role="navigation" aria-label="main navigation">
-            <div class="navBar-container container">
-                <a href="/" class="nav-brand">
-                    <!-- 로고 이미지 추가 시 추가 작성-->
-                    <span class="nav-brand_name">Project17</span>
-                </a>
-                <ul class="nav-category">
-                    <li class="nav-category_list"><a href="#">new</a></li>
-                    <li class="nav-category_list"><a href="#">product</a></li>
-                    <li class="nav-category_list"><a href="#">sales</a></li>
-                    <li class="nav-category_list"><a href="#">about</a></li>
-                </ul>
-                <div class="nav-menu">
-                    <a href="#">
-                        <i class="material-symbols-outlined nav-menu_icon">
-                            search
-                        </i>
-                    </a>
-                    <a href="#">
-                        <i class="material-symbols-outlined nav-menu_icon">
-                            shopping_bag
-                        </i>
-                    </a>
-                    <a href="#">
-                        <i class="material-symbols-outlined nav-menu_icon">
-                            person
-                        </i>
-                    </a>
-                </div>
-            </div>
-        </nav>
+        <nav
+            class="navBar"
+            role="navigation"
+            aria-label="main navigation"
+        ></nav>
 
         <!-- 로그인 폼(Form) -->
-        <main id="login">
-            <div class="login-form-container">
+        <div class="loginModal"></div>
+        <!-- <div class="login modal hidden">
+            <div class="modal-overlay"></div>
+            <div class="login-form-container modal-content">
+                <span class="closeBtn">X</span>
                 <form class="login-form">
                     <div class="title">
                         <p>Project17</p>
@@ -98,17 +76,18 @@
                                 autocomplete="on"
                             />
                         </div>
-                        <a href="#" class="findAccount">아이디/비밀번호 찾기</a>
                     </div>
                     <div class="submitBtns">
-                        <button id="submitButton">로그인</button>
-                        <button id="login-submitButton">
+                        <button class="loginButton">로그인</button>
+                        <button class="login-submitButton">
                             카카오계정 로그인
                         </button>
-                        <button id="login-submitButton">구글계정 로그인</button>
+                        <button class="login-submitButton">
+                            구글계정 로그인
+                        </button>
                     </div>
                 </form>
             </div>
-        </main>
+        </div> -->
     </body>
 </html>

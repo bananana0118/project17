@@ -32,9 +32,10 @@
             rel="stylesheet"
         />
         <!-- 커스텀 css, js -->
+        <link rel="stylesheet" href="../navBar.css" />
         <link rel="stylesheet" href="profile.css" />
-        <script src="profile.js" type="module" defer></script>
         <script src="../navBar.js" type="module" defer></script>
+        <script src="profile.js" type="module" defer></script>
     </head>
     <body>
         <!-- nav bar -->
@@ -47,16 +48,16 @@
         <!-- main -->
         <main class="personalPage">
             <div class="personalPage-menu">
-                <div class="greetings">000님 환영합니다!</div>
-                <button>주문내역</button>
-                <button>사용자 정보 수정</button>
-                <button id="profileDeleteButton">회원탈퇴</button>
+                <div class="greetings"></div>
+                <div class="personalPage-menu_Btns">
+                    <button>주문내역</button>
+                    <button><a href="/profile">계정관리</a></button>
+                    <button id="profileDeleteButton">회원탈퇴</button>
+                </div>
             </div>
             <div class="profileUpdate-form-container">
                 <form class="profileUpdate-form">
-                    <div class="title">
-                        <p class="subtitle">정보 수정하기</p>
-                    </div>
+                    <p class="title">정보 수정하기</p>
                     <div class="profileUpdate-form_input">
                         <div class="control">
                             <input
