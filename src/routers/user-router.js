@@ -55,10 +55,11 @@ userRouter.post("/login", async function (req, res, next) {
     if (is.emptyObject(req.body)) {
       throw new Error(
         "headers의 Content-Type을 application/json으로 설정해주세요"
-      );
-
-    }
-  }});
+      );}
+    }catch (error) {
+      next(error);
+  }
+});
 
 // 전체 유저 목록을 가져옴 (배열 형태임)
 // 미들웨어로 loginRequired 를 썼음 (이로써, jwt 토큰이 없으면 사용 불가한 라우팅이 됨)
