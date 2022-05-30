@@ -5,33 +5,39 @@
 import * as Api from "/api.js";
 import { randomId } from "/useful-functions.js";
 
-// import { navBarCreate } from "../navBar.js";
+const mainSlides = document.querySelector(".main-slide_contents");
+const mainSlide = document.querySelectorAll(".main-slide_content");
 
-// navBarCreate();
+let currentSlide = 0;
 
-// const logoutBtn = document.querySelector("#logout");
-// const loginBtn = document.querySelector("#login");
-
-// function buttonAppear() {
-//     const token = sessionStorage.getItem("token");
-//     if (!token) {
-//         logoutBtn.style.display = "none";
-//         loginBtn.style.display = "block";
-//     } else if (token) {
-//         logoutBtn.style.display = "block";
-//         loginBtn.style.display = "none";
-//     }
-// }
-
-// function logout(e) {
-//     e.preventDefault();
-//     sessionStorage.removeItem("token");
-//     alert("정상적으로 로그아웃되었습니다.");
-//     buttonAppear();
-// }
-
-// logoutBtn.addEventListener("click", logout);
-// buttonAppear();
+setInterval(function () {
+    let from;
+    let to;
+    if (matchMedia("screen and (max-width: 900px").matches) {
+        from = -(100 * currentSlide);
+        to = from - 100;
+    } else {
+        from = -(50 * currentSlide);
+        to = from - 50;
+    }
+    console.log(from);
+    console.log(to);
+    mainSlides.animate(
+        {
+            marginLeft: [from + "%", to + "%"],
+        },
+        {
+            duration: 1000,
+            iterations: 1,
+            easing: "ease",
+            fill: "both",
+        }
+    );
+    currentSlide++;
+    if (currentSlide === mainSlide.length - 2) {
+        currentSlide = 0;
+    }
+}, 2000);
 
 // 요소(element), input 혹은 상수
 

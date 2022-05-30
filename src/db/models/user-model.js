@@ -5,7 +5,7 @@ const User = model("users", UserSchema);
 
 export class UserModel {
   async findByEmail(email) {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email });
     return user;
   }
 
@@ -26,6 +26,14 @@ export class UserModel {
 
   async update({ userId, update }) {
     const filter = { _id: userId };
+    const option = { returnOriginal: false };
+
+    const updatedUser = await User.findOneAndUpdate(filter, update, option);
+    return updatedUser;
+  }
+
+  async updateByEmail({ email, update }) {
+    const filter = { email };
     const option = { returnOriginal: false };
 
     const updatedUser = await User.findOneAndUpdate(filter, update, option);
