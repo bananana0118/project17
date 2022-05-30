@@ -1,8 +1,19 @@
 import cors from "cors";
 import express from "express";
+<<<<<<< HEAD
 import { viewsRouter, userRouter, productRouter, adminRouter } from "./routers";
 import { areYouAdmin, errorHandler, loginRequired } from "./middlewares";
 import { profileRouter } from "./routers/profile-router";
+=======
+import {
+    viewsRouter,
+    userRouter,
+    productRouter,
+    profileRouter,
+} from "./routers";
+import { errorHandler } from "./middlewares";
+// import { profileRouter } from "./routers/profile-router";
+>>>>>>> front
 
 const app = express();
 
