@@ -14,15 +14,6 @@ export class ProductModel {
         return products;
     }
 
-<<<<<<< HEAD
-    async findByName(productName) {
-        const product = await Product.findOne({ _id: productName });
-        return product;
-    }
-
-    async update({ productName, update }) {
-        const filter = { _id: productName };
-=======
     async findByNo(productNo) {
         const product = await Product.findOne({ no: productNo });
         return product;
@@ -30,7 +21,7 @@ export class ProductModel {
 
     async update({ productNo, update }) {
         const filter = { no: productNo };
->>>>>>> fb303ef8d3277db5f720f8fb0982fe591b93379e
+
         const option = { returnOriginal: false };
 
         const updatedProduct = await Product.findOneAndUpdate(
@@ -41,15 +32,11 @@ export class ProductModel {
         return updatedProduct;
     }
 
-<<<<<<< HEAD
-    async findAndDel(productId) {
-        const product = await Product.findOneAndDelete({
-            productName: productId,
-=======
+
     async findAndDel(productNo) {
         const product = await Product.findOneAndDelete({
             no: productNo,
->>>>>>> fb303ef8d3277db5f720f8fb0982fe591b93379e
+
         });
         return product;
     }
