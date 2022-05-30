@@ -5,7 +5,7 @@ const User = model("users", UserSchema);
 
 export class UserModel {
   async findByEmail(email) {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email });
     return user;
   }
 
@@ -32,13 +32,13 @@ export class UserModel {
     return updatedUser;
   }
 
-  async delete({ userEmail, password }) {
-    const filter = { email: userEmail };
+  async delete(userId) {
+    const filter = { _id: userId };
     const option = { returnOriginal: false };
 
-    const updatedUsers = await User.findByIdAndDelete(filter, update, option);
+    const deletedUser = await User.findByIdAndDelete(filter, option);
 
-    return updatedUsers;
+    return deletedUser;
   }
 }
 
