@@ -11,7 +11,7 @@ productRouter.post("/addproduct", async (req, res) => {
             "headers의 Content-Type을 application/json으로 설정해주세요"
         );
     }
-    console.log('asdf')
+    
     const productName = req.body.productName;
     const productPrice = req.body.productPrice;
     const productCategory = req.body.productCategory;
@@ -30,7 +30,7 @@ productRouter.post("/addproduct", async (req, res) => {
         productManufacturer,
         productImg,
     });
-
+    
     res.status(201).json(newProduct);
 });
 

@@ -3,11 +3,7 @@
 
 export * from "./views-router";
 export * from "./user-router";
-<<<<<<< HEAD
 export * from "./profile-router";
 export * from "./product-router";
 export * from "./admin-router";
-=======
-export * from "./product-router";
-export * from "./profile-router";
->>>>>>> front
+

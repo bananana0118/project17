@@ -1,19 +1,8 @@
 import cors from "cors";
 import express from "express";
-<<<<<<< HEAD
 import { viewsRouter, userRouter, productRouter, adminRouter } from "./routers";
 import { areYouAdmin, errorHandler, loginRequired } from "./middlewares";
 import { profileRouter } from "./routers/profile-router";
-=======
-import {
-    viewsRouter,
-    userRouter,
-    productRouter,
-    profileRouter,
-} from "./routers";
-import { errorHandler } from "./middlewares";
-// import { profileRouter } from "./routers/profile-router";
->>>>>>> front
 
 const app = express();
 
@@ -34,7 +23,7 @@ app.use(viewsRouter);
 // /api/login 으로 요청을 해야 하게 됨. 백엔드용 라우팅을 구분하기 위함임.
 app.use("/api", userRouter);
 
-app.use("api/product", productRouter);
+app.use("/api/product", productRouter);
 app.use("api/profile", profileRouter);
 app.use("api/admin", adminRouter);
 // 순서 중요 (errorHandler은 다른 일반 라우팅보다 나중에 있어야 함)

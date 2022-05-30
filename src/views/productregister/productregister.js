@@ -43,11 +43,11 @@ const register = async () => {
                 productCategory: 0,
                 productSize: productSize.value,
                 productDescription: productDescription.value,
-                productSize: productQuantity.value,
+                productQuantity: productQuantity.value,
                 productManufacturer: productManufacturer.value,
                 productImg: uploadFiles
             }
-    
+
     if(data.productName === ''){
         alert('상품명을 입력해주세요!')
         productName.focus();
@@ -57,7 +57,7 @@ const register = async () => {
     }else if(data.productPrice === ''){
         alert('상품가격을 입력해주세요!')
         productPrice.focus();
-    }else if(data.producetQuantity === ''){
+    }else if(data.productQuantity === ''){
         alert('상품 수량을 선택해주세요!')
         productQuantity.focus();
     }
@@ -69,13 +69,13 @@ const register = async () => {
         alert('상품 사이즈를 선택해주세요!')
         productSize.focus();
     }
-    else if(data.productDetail === ''){
+    else if(data.productDescription === ''){
         alert('상품정보를 입력해주세요!!')
-        productDetail.focus();
+        productDescription.focus();
     }
     else{
-        const res = await Api.post('/product/addproduct', data);
-        console.log(res)
+        const res = await Api.post("/api/product/addproduct", data);
+        
         if(res.ok){
             window.location.href = "/";
         }
@@ -90,7 +90,7 @@ submmitBtn.addEventListener('click', register)
  * @param {URLFIle} file 
  * @returns 
  */
-const createElement = (e, file, url) => {
+const createElement = (e, file) => {
     const img = document.createElement('img');
     
     img.setAttribute('src', e.target.result);
@@ -131,8 +131,6 @@ const getImageFiles = (e) => {
         
         reader.readAsDataURL(file);
     })
-
-    console.log(uploadFiles)
 }
 
 
