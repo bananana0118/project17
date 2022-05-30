@@ -1,4 +1,21 @@
 import { productModel } from "../db";
+const multer = require("multer");
+const multerS3 = require("multer-s3");
+const aws = require("aws-sdk");
+aws.config.loadFromPath(__dirname + "/s3.json");
+const s3 = new aws.S3();
+
+const upload = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: "juyong-ccp-2022-v1",
+        acl: "public-read-write",
+        contentType: multerS3.AUTO_CONTENT_TYPE,
+        key: function (req, file, cb) {
+            cb(null, `${Date.now()}_${file.originalname}`);
+        },
+    }),
+});
 
 class ProductService {
     // 본 파일의 맨 아래에서, new UserService(userModel) 하면, 이 함수의 인자로 전달됨
@@ -54,4 +71,4 @@ class ProductService {
 
 const productService = new ProductService(productModel);
 
-export { productService };
+export { productService, upload };

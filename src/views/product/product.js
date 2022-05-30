@@ -7,7 +7,7 @@ const productCategoryInput = document.querySelector(".Category");
 const productDescriptionInput = document.querySelector("#productDescription");
 const productSizeInput = document.querySelector("#productSize");
 const productManufacturerInput = document.querySelector("#productManufacturer");
-const productImgInput = document.querySelector("#productImg");
+const submitButton = document.querySelector("#submitButton");
 
 addAllElements();
 addAllEvents();
@@ -23,14 +23,17 @@ function addAllEvents() {
 // 상품 등록 진행
 async function handleSubmit(e) {
     e.preventDefault();
-    console.log(productCategoryInput);
+    let formData = new FormData();
+    formData.append("image", e.target.files[0]);
+    console.log(formData);
+
     const productName = productNameInput.value;
     const productPrice = productPriceInput.value;
     const productCategory = productCategoryInput.value;
     const productDescription = productDescriptionInput.value;
     const productSize = productSizeInput.value;
     const productManufacturer = productManufacturerInput.value;
-    const productImg = productImgInput.value;
+    const productImg = formData;
 
     try {
         const data = {
@@ -43,12 +46,12 @@ async function handleSubmit(e) {
             productImg,
         };
 
-        await Api.post("/product/addproduct", data);
+        await Api.post("/api/product/addproduct", data);
 
         alert(`정상적으로 등록되었습니다.`);
 
         // 기본 페이지로 이동
-        window.location.href = "/product/productlist";
+        window.location.href = "/api/product/productlist";
     } catch (err) {
         console.error(err.stack);
         alert(

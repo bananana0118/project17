@@ -1,11 +1,11 @@
 import { Router } from "express";
 import is from "@sindresorhus/is";
 
-import { productService } from "../services";
+import { productService, upload } from "../services";
 
 const productRouter = Router();
 
-productRouter.post("/addproduct", async (req, res) => {
+productRouter.post("/addproduct", upload.single("image"), async (req, res) => {
     if (is.emptyObject(req.body)) {
         throw new Error(
             "headers의 Content-Type을 application/json으로 설정해주세요"
@@ -18,7 +18,7 @@ productRouter.post("/addproduct", async (req, res) => {
     const productDescription = req.body.productDescription;
     const productSize = req.body.productSize;
     const productManufacturer = req.body.productManufacturer;
-    const productImg = req.body.productImg;
+    const productImg = req.file.location;
 
     // debug 필요
     const newProduct = await productService.addProduct({
