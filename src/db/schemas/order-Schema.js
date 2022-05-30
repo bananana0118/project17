@@ -1,12 +1,15 @@
 import { Schema } from "mongoose";
+import { shortId } from "./types/shortId";
 const autoIncrement = require("mongoose-auto-increment");
 
 autoIncrement.initialize(mongoose);
 
 const OrderSchema = new Schema(
   {
+    //nanoid 추가
+    shortId,
     orderNumber: {
-      //autuIncrement로 수정
+      type: Number, //autuIncrement로 수정
     },
     orderProducts: {
       type: Schema.Types.ObjectId,
@@ -31,8 +34,8 @@ const OrderSchema = new Schema(
 );
 
 OrderSchema.plugin(autoIncrement.plugin, {
-  model: "products",
-  field: "no",
+  model: "order",
+  field: "orderNumber",
   startAt: 1,
   incrementBy: 1,
 });
