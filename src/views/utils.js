@@ -7,28 +7,28 @@
     const li = document.createElement('li');
     const html = `
         <div class="item-list-img">
-            <img src="${item.src}" class="item-img">
+            <img src="${item.productImg}" class="item-img">
         </div>
         <div class="item-list-product">
             <div class="cart-list-name">
                 <p>
                     <b>제품</b>
-                    <a href="/product/detail.html?product_no=961&amp;cate_no=186">${item.product}</a>
+                    <a href="/product/detail.html?product_no=961&amp;cate_no=186">${item.productName}</a>
                 </p>
                 <p>
                     <b>사이즈</b>
-                    <span> ${item.size}</span>
+                    <span> ${item.productSize}</span>
                 </p>
             </div>
             <div class="cart-list-quantity">
                 <b>수량</b>
                 <button id="minus-btn">-</button>
-                <span>${item.quantity}</span>
+                <span>${item.productQuantity}</span>
                 <button id="plus-btn">+</button> 
             </div>
             <div>
                 <b>금액</b>
-                <span>KRW ${item.totalprice}</span>
+                <span>KRW ${item.productTotalprice}</span>
             </div>
         </div>
         <div id="delete-item">X</div>`

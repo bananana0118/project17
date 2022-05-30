@@ -1,5 +1,5 @@
-// import * as Api from "/api.js";
-import {addCommas} from "../useful-functions.js";
+import * as Api from "../api.js";
+
 const submmitBtn = document.querySelector('.product-register-btn')
 const inputFile = document.querySelector('#image-input')
 const productName = document.querySelector('#product-name');
@@ -10,7 +10,8 @@ const productSize = document.querySelector('#input-size');
 const productQuantity = document.querySelector('#input-quantity');    
 const productDescription = document.querySelector('#input-product-detail')
 const inputItems = document.getElementsByName('product-input')
-let uploadFiles = []
+
+let uploadFiles = ''
 inputItems[0].focus();
 
 /* 리펙토링 필요 
@@ -23,9 +24,7 @@ function keyevent(event){
     if(code === 'Enter'){
         if(event.shiftKey){}
         else{
-            if(idx === (inputItems.length -2)){
-                
-            }
+            if(idx === (inputItems.length -2)){}
             else{  
                 inputItems[idx+1].focus();
             }
@@ -41,11 +40,12 @@ const register = async () => {
     const data = { 
                 productName: productName.value, 
                 productPrice: productPrice.value,
+                productCategory: 0,
                 productSize: productSize.value,
                 productDescription: productDescription.value,
-                productCategory: productCategory.value,
-                productQuantity: productQuantity.value,
+                productSize: productQuantity.value,
                 productManufacturer: productManufacturer.value,
+                productImg: uploadFiles
             }
     
     if(data.productName === ''){
@@ -74,13 +74,15 @@ const register = async () => {
         productDetail.focus();
     }
     else{
-        // const res = await Api.post('Api/post', data);
-        console.log(data);
+        const res = await Api.post('/product/addproduct', data);
+        console.log(res)
+        if(res.ok){
+            window.location.href = "/";
+        }
     } 
 }
 
 submmitBtn.addEventListener('click', register)
-
 
 /**
  * 
@@ -88,8 +90,9 @@ submmitBtn.addEventListener('click', register)
  * @param {URLFIle} file 
  * @returns 
  */
-const createElement = (e, file) => {
+const createElement = (e, file, url) => {
     const img = document.createElement('img');
+    
     img.setAttribute('src', e.target.result);
     img.setAttribute('data-file', file.name);
     img.addEventListener('click', function(){
@@ -115,14 +118,21 @@ const getImageFiles = (e) => {
     }
 
     [...files].forEach(file =>{
-        uploadFiles.push(file);
+        const url = URL.createObjectURL(file);
         const reader = new FileReader();
+        
+        // uploadFiles.push(url);
+        uploadFiles = url
         reader.onload = (e) => {
             const preview = createElement(e, file);
+            // preview.setAttribute('src', url);
             imgPreview.appendChild(preview);
         }
+        
         reader.readAsDataURL(file);
     })
+
+    console.log(uploadFiles)
 }
 
 
