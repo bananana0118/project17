@@ -223,9 +223,14 @@ loginCheckAppear();
 
 // 장바구니 아이콘 아이템 수
 var count = 0;
-var allQuantity = JSON.parse(localStorage.getItem("cart"));
-for (let i = 0; i < allQuantity.length; i++) {
-    count += Number(allQuantity[i].productQuantity);
+let cartItems = !JSON.parse(localStorage.getItem('cart')) ? [] : JSON.parse(localStorage.getItem('cart'));
+
+if (cartItems === []) {
+    count = 0;
+} else {
+    for (let i = 0; i < cartItems.length; i++) {
+        count += Number(cartItems[i].productQuantity);
+    }
 }
 
 const addShoppingCart = document.querySelector(".count");
