@@ -12,6 +12,7 @@ const productDescription = document.querySelector('#input-product-detail')
 const inputItems = document.getElementsByName('product-input')
 
 inputItems[0].focus();
+let uploadFiles = []
 let formData = new FormData();
 
 /* 리펙토링 필요 
@@ -107,8 +108,12 @@ const createElement = (e, file) => {
  * 추가된 파일의 이미지 파일을 가지고 온다.
  */
 const getImageFiles = (e) => {
-    uploadFiles = [];
+    uploadFiles = []
     const files = e.currentTarget.files;
+    if(files.length > 3){
+        alert('사진은 3장 이하로 올려주세요!')
+        return 
+    }
     formData.append('image', e.target.files[0]);
     
     const imgPreview = document.querySelector('.image-preview');
@@ -120,14 +125,11 @@ const getImageFiles = (e) => {
     }
 
     [...files].forEach(file =>{
-        const url = URL.createObjectURL(file);
         const reader = new FileReader();
         
-        // uploadFiles.push(url);
-        uploadFiles = url
+        uploadFiles.push(file);
         reader.onload = (e) => {
             const preview = createElement(e, file);
-            // preview.setAttribute('src', url);
             imgPreview.appendChild(preview);
         }
         
