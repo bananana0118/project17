@@ -8,6 +8,7 @@ const userRouter = Router();
 
 // 회원가입 api (아래는 /register이지만, 실제로는 /api/register로 요청해야 함.)
 userRouter.post("/register", async (req, res, next) => {
+
   try {
     // Content-Type: application/json 설정을 안 한 경우, 에러를 만들도록 함.
     // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.
@@ -43,29 +44,20 @@ userRouter.post("/register", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+
 });
 
 // 로그인 api (아래는 /login 이지만, 실제로는 /api/login로 요청해야 함.)
 userRouter.post("/login", async function (req, res, next) {
+
   try {
     // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.
     if (is.emptyObject(req.body)) {
       throw new Error(
         "headers의 Content-Type을 application/json으로 설정해주세요"
-      );
-    }
-
-    // req (request) 에서 데이터 가져오기
-    const email = req.body.email;
-    const password = req.body.password;
-
-    // 로그인 진행 (로그인 성공 시 jwt 토큰을 프론트에 보내 줌)
-    const userToken = await userService.getUserToken({ email, password });
-
-    // jwt 토큰을 프론트에 보냄 (jwt 토큰은, 문자열임)
-    res.status(200).json(userToken);
-  } catch (error) {
-    next(error);
+      );}
+    }catch (error) {
+      next(error);
   }
 });
 // 로그인 두번
@@ -73,6 +65,7 @@ userRouter.post("/login", async function (req, res, next) {
 // 전체 유저 목록을 가져옴 (배열 형태임)
 // 미들웨어로 loginRequired 를 썼음 (이로써, jwt 토큰이 없으면 사용 불가한 라우팅이 됨)
 userRouter.get("/userlist", loginRequired, async function (req, res, next) {
+
   try {
     // 전체 사용자 목록을 얻음
     const users = await userService.getUsers();
@@ -92,6 +85,7 @@ userRouter.get("/userlist", loginRequired, async function (req, res, next) {
 // (예를 들어 /api/users/abc12345 로 요청하면 req.params.userId는 'abc12345' 문자열로 됨)
 //특정유저의 정보 수정
 userRouter.patch(
+
   "/users/:userId",
   loginRequired,
   async function (req, res, next) {
@@ -144,8 +138,19 @@ userRouter.patch(
       res.status(200).json(updatedUserInfo);
     } catch (error) {
       next(error);
+
     }
+  });
+
+userRouter.post("/checkUser", async (req, res, next) => {
+  try {
+    const userEmail = req.body.email;
+    const isEmailExist = await userService.isEmailExist(userEmail);
+
+    res.status(200).json(isEmailExist);
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 export { userRouter };
