@@ -30,7 +30,7 @@ userRouter.post("/register", async (req, res, next) => {
       email,
       password,
       phoneNumber,
-      address
+      address,
     });
 
     // 추가된 유저의 db 데이터를 프론트에 다시 보내줌
@@ -68,6 +68,7 @@ userRouter.post("/login", async function (req, res, next) {
     next(error);
   }
 });
+// 로그인 두번
 
 // 전체 유저 목록을 가져옴 (배열 형태임)
 // 미들웨어로 loginRequired 를 썼음 (이로써, jwt 토큰이 없으면 사용 불가한 라우팅이 됨)
@@ -146,5 +147,16 @@ userRouter.patch(
     }
   }
 );
+
+userRouter.post("/checkUser", async (req, res, next) => {
+  try {
+    const userEmail = req.body.email;
+    const isEmailExist = await userService.isEmailExist(userEmail);
+
+    res.status(200).json(isEmailExist);
+  } catch (error) {
+    next(error);
+  }
+});
 
 export { userRouter };

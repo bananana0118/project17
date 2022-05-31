@@ -173,10 +173,30 @@ footer {
     width: 12px;
 }
 
+#plus-btn,
+#minus-btn{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color:#000;
+}
+#plus-btn:hover,
+#minus-btn:hover{
+    transform: scale(1.4);
+    opacity: 0.5;
+}
+
 #delete-item{
     font-size: 15px;
     color : rgb(0,0,0, 0.5);
     cursor: pointer;
+    font-weight: bold;
+    transition: ease 0.5s;
+}
+
+#delete-item:hover{
+    color:#000;
 }
 
 .cart-summary-container{
@@ -209,6 +229,11 @@ footer {
     border-right: 1px solid #e1e1e1;
 }
 
+#total-price-box,
+#ship-price-box{
+    position: relative;
+}
+
 .cart-summary div span{
     font-size: 16px;
     font-weight: 500;
@@ -216,8 +241,18 @@ footer {
 
 .cart-summary-info{
     display: flex;
+    z-index:0;
     width: 100%;
     border-bottom: 1px solid #000;
+}
+
+#plus-icon,
+#equal-icon{
+    font-size: 30px;
+    position: absolute;
+    top: calc(50% - 18px); right:-18px;;
+    padding: 2px 4px;
+    border-radius: 10%;
 }
 
 .payment-btn{

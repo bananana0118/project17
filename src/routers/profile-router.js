@@ -17,7 +17,7 @@ profileRouter.get("/myProfile", loginRequired, async function (req, res) {
 });
 
 //PATCH : 사용자 정보 변경하기
-profileRouter.patch("/edit", loginRequired, async function (req, res) {
+profileRouter.patch("/edit", loginRequired, async function (req, res, next) {
   try {
     // content-type 을 application/json 로 프론트에서
     // 설정 안 하고 요청하면, body가 비어 있게 됨.
@@ -29,15 +29,18 @@ profileRouter.patch("/edit", loginRequired, async function (req, res) {
 
     // params로부터 id를 가져옴
     const userId = req.currentUserId;
+    const role = req.role;
 
     // body data 로부터 업데이트할 사용자 정보를 추출함.
     const fullName = req.body.fullName;
     const password = req.body.password;
     const address = req.body.address;
     const phoneNumber = req.body.phoneNumber;
+    console.log(role);
 
     // body data로부터, 확인용으로 사용할 현재 비밀번호를 추출함.
     const currentPassword = req.body.currentPassword;
+
 
     // currentPassword 없을 시, 진행 불가
     if (!currentPassword) {
@@ -68,11 +71,16 @@ profileRouter.patch("/edit", loginRequired, async function (req, res) {
 });
 //DELETE : 탈퇴하기
 profileRouter.delete("/quit", loginRequired, async function (req, res) {
-  const userId = req.currentUserId;
-
-  const deletedUser = await userService.deleteUser(userId);
-  console.log(deletedUser);
-  res.status(200).json(deletedUser);
+  try {
+    const pass = req.body.password;
+    const userId = req.currentUserId;
+    const deletedUser = await userService.deleteUser(userId);
+    console.log(deletedUser);
+    res.status(200).json(deletedUser);
+  } catch (error) {
+    console.log("탈퇴하기 백엔드에서 에러가 났습니다.");
+    next(error);
+  }
 });
 
 export { profileRouter };
