@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import { model } from "mongoose";
-import { OrderSchema } from "../schemas/category-schema";
-
-const Order = model("orders", OrderSchema); //db에는 orders 변수는 Order로 접근
-=======
 import mongoose, { model } from "mongoose";
 import { userModel, productModel } from "..";
 import { OrderSchema } from "../schemas/order-Schema";
@@ -78,7 +72,6 @@ class OrderModel {
   //     return updatedUser;
   //   }
 }
->>>>>>> 62d8994caa487708456fa704d0a03d56cccc5f10
 
 const orderModel = new OrderModel();
 

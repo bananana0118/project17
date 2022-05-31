@@ -1,32 +1,4 @@
 import { Router } from "express";
-<<<<<<< HEAD
-import { loginRequired, areYouAdmin } from "../middlewares";
-import { orderModel,productModel,userModel } from "../db/models/order-model";
-
-
-const orderRouter = Router();
-
-
-
-//만들고 분리하자
-
-orderRouter.get("/getOrder",loginRequired, (req,res,next)=>{
-    //get요청시 populate로 특정항목값을 불러오기
-    //req.currentUserId
-    //userId로 유저를 검색한 다음
-    const orders = orderModel.find({}).populate("user");
-
-    
-    console.log(orders);
-    res.status(200).render(orders);
-});
-
-
-
-
-
-
-=======
 import req from "express/lib/request";
 import { loginRequired, areYouAdmin } from "../middlewares";
 import { orderModel, userModel } from "../db";
@@ -97,7 +69,6 @@ orderRouter.delete(
   }
 );
 
-
 //4. 요청을 보내면 배송상태가 수정됨
 orderRouter.patch(
   "/updateOrder/:orderNumber",
@@ -109,6 +80,4 @@ orderRouter.patch(
     res.status(200).json(updatedStatus);
   }
 );
->>>>>>> 62d8994caa487708456fa704d0a03d56cccc5f10
-
 export { orderRouter };

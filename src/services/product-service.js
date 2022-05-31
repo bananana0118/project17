@@ -44,18 +44,11 @@ class ProductService {
 
     return product;
   }
-<<<<<<< HEAD
 
   // 상품 삭제
   async delProduct(productNo) {
     const products = await this.productModel.findAndDel(productNo);
 
-=======
-
-  // 상품 삭제
-  async delProduct(productNo) {
-    const products = await this.productModel.findAndDel(productNo);
->>>>>>> 62d8994caa487708456fa704d0a03d56cccc5f10
     return products;
   }
 }
