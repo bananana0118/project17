@@ -153,4 +153,7 @@ userRouter.post("/checkUser", async (req, res, next) => {
   }
 });
 
+userRouter.get("areYouAdmin")
+
+
 export { userRouter };

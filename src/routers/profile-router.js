@@ -36,8 +36,8 @@ profileRouter.patch("/edit", loginRequired, async function (req, res, next) {
         const password = req.body.password;
         const address = req.body.address;
         const phoneNumber = req.body.phoneNumber;
+        const role = req.role;
         console.log(role);
-
         // body data로부터, 확인용으로 사용할 현재 비밀번호를 추출함.
         const currentPassword = req.body.currentPassword;
 
@@ -72,16 +72,15 @@ profileRouter.patch("/edit", loginRequired, async function (req, res, next) {
     }
 });
 //DELETE : 탈퇴하기
-profileRouter.delete("/quit", loginRequired, async function (req, res) {
+
+profileRouter.delete("/quit", loginRequired, async function (req, res, next) {
     try {
-        const pass = req.body.password;
         const userId = req.currentUserId;
         const deletedUser = await userService.deleteUser(userId);
         console.log(deletedUser);
-        res.status(200).json(deletedUser);
+        res.status(200);
     } catch (error) {
         console.log("탈퇴하기 백엔드에서 에러가 났습니다.");
-        next(error);
     }
 });
 

@@ -19,6 +19,7 @@ const greeting = document.querySelector(".greetings");
 // =================================================
 //GET: 사용자 정보가져오기
 //===================================================
+
 const getAcountInfo = async function () {
     const user = await Api.get("/api/profile/myProfile");
     console.log(user);
@@ -31,6 +32,7 @@ const getAcountInfo = async function () {
 // PATCH : 사용자 정보 수정 (오류 생길 수 있음)
 // ================================================
 const updateAccountInfo = async function (e) {
+
     e.preventDefault();
     const currentPassword = prompt("현재 비밀번호를 입력하세요");
     const fullName = fullNameInput.value;
@@ -73,11 +75,13 @@ const updateAccountInfo = async function (e) {
         console.error(err.stack);
         alert(`문제 발생: ${err.message}`);
     }
+
 };
 
 // ===================================================
 // DELETE:사용자 정보 지우기
 // ===================================================
+
 const deleteAccount = async function (e) {
     e.preventDefault();
     const confirm = window.confirm("정말 탈퇴하시나요?");
