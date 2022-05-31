@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"
     />
+    <!-- navBar css 분리 -->
+    <link rel="stylesheet" href="../navBar.css">
     <!-- 커스텀 css, js -->
     <link rel="stylesheet" href="shop.css" />
     <script src="shop.js" type="module" defer></script>
@@ -20,6 +22,10 @@
     <!-- nav bar -->
     <nav class="navBar" role="navigation" aria-label="main navigation">
     </nav>
+
+    <!-- login modal -->
+    <div class="loginModal">
+    </div>
     
     <section>
         <div class="items">
@@ -34,7 +40,7 @@
             </div>
             <div class="item-container">
                 <ul class="item-box" id="ul">
-                    <li class="item" id="item-1">
+                    <!-- <li class="item" id="item-1">
                         <div class="thumbnail">
                             <a href="">
                                 <img class="introimg">
@@ -153,7 +159,7 @@
                                 <li class="sale">세일가격</li>
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
                 <!-- 리스트를 컨트롤 할 엘리먼트 -->
                 <button class="prev">

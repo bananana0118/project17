@@ -20,8 +20,6 @@ setInterval(function () {
         from = -(50 * currentSlide);
         to = from - 50;
     }
-    console.log(from);
-    console.log(to);
     mainSlides.animate(
         {
             marginLeft: [from + "%", to + "%"],
@@ -38,23 +36,6 @@ setInterval(function () {
         currentSlide = 0;
     }
 }, 2000);
-
-// 요소(element), input 혹은 상수
-
-// addAllElements();
-// addAllEvents();
-
-// // html에 요소를 추가하는 함수들을 묶어주어서 코드를 깔끔하게 하는 역할임.
-// async function addAllElements() {
-//     insertTextToLanding();
-//     insertTextToGreeting();
-// }
-
-// // 여러 개의 addEventListener들을 묶어주어서 코드를 깔끔하게 하는 역할임.
-// function addAllEvents() {
-//     landingDiv.addEventListener("click", alertLandingText);
-//     greetingDiv.addEventListener("click", alertGreetingText);
-// }
 
 async function getDataFromApi() {
     // 예시 URI입니다. 현재 주어진 프로젝트 코드에는 없는 URI입니다.
