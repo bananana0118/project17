@@ -6,7 +6,7 @@ async function areYouAdmin(req, res, next) {
     const userId = req.currentUserId;
     const user = await userService.getUser(userId);
     const userRole = user.role;
-    const isAdmin = userRole === "admin" ? true : false;
+    const isAdmin = userRole === "admin" ? "admin" : "basic-user";
 
     req.isAdmin = isAdmin; //req.isAdmin 추가
 

@@ -1,0 +1,263 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+a {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+.container {
+    margin: 0 auto;
+    width: 70%;
+}
+
+ul {
+    list-style: none;
+}
+
+/* navBar */
+.navBar {
+    box-shadow: 1px 1px 2px rgb(236, 236, 236);
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    opacity: 0.5;
+}
+
+.navBar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: inherit;
+    padding: 1em;
+}
+
+.nav-category_list a {
+    display: flex;
+}
+
+.nav-brand,
+.nav-category,
+.nav-menu {
+    display: flex;
+    width: 33%;
+    align-items: center;
+}
+
+.nav-category {
+    justify-content: space-around;
+    font-size: 1rem;
+}
+
+.nav-menu {
+    justify-content: flex-end;
+}
+
+.nav-menu_icon,
+.nav-brand {
+    font-size: 2rem;
+    vertical-align: baseline;
+}
+
+/* footer  */
+footer {
+    margin: 0 auto;
+    margin-top: 5vh;
+    padding-top: 5vh;
+    border-top: 1px solid rgba(0, 0, 0, 0.081);
+    display: flex;
+    justify-content: space-between;
+    height: 20vh;
+    width: 70%;
+}
+
+.footer-col:first-child span {
+    font-size: 2rem;
+}
+
+.product-register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    font-size: 12px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.image-preview {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    overflow-x: scroll;
+    width: 100%
+}
+
+.image-preview img {
+    height: 250px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.register-box {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+    min-width: 410px;
+    max-width: 1200px;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.image-register-btn {
+    display: flex;
+    position:absolute;
+    top:0px; right:10px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.price-container,
+.product-sale-info {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+/* 수량, 사이즈 를 나태나는 div */
+.product-sale-info div {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+    width: 30%;
+}
+
+.sale-price {
+    width: 50%;
+}
+
+#image-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px; height:150px;
+    opacity: 0.3;
+}
+
+#image-box i {
+    font-size: 120px;
+}
+
+#product-name,
+#input-size {
+    width: 50%;
+    border: 0;
+    background: transparent;
+    box-sizing: border-box;
+    padding: 3px 2px;
+    color: #333;
+    font-size: 12px;
+    font-family: inherit;
+    border-bottom: 1px solid #ddd;
+}
+
+#input-category {
+    width: 50%;
+    border: 0;
+    background: transparent;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 12px;
+    font-family: inherit;
+    border-bottom: 1px solid #ddd;
+}
+
+/* price input box */
+
+.price-input-box {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.price-input-box span {
+    flex:1;
+    margin-right: 3px;
+}
+
+#product-price,
+#input-quantity,
+#input-manufacturer {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    box-sizing: border-box;
+    padding: 3px 0;
+    color: #333;
+    font-size: 12px;
+    font-family: inherit;
+    border-bottom: 1px solid #ddd;
+}
+
+#onSale {
+    margin-top: 10px;
+}
+
+
+/* 체크박스 높이 맞추기 */
+input[id="onSale"] {
+    position: relative;
+    top: 2px;
+}
+
+#input-product-detail {
+    align-items: center;
+    border: 2px solid #ddd;
+    margin-top: 20px;
+    padding: 10px;   
+    height: 200px;
+}
+
+.product-register-btn {
+    float: right;
+    background: transparent;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    transition: ease 0.5s;
+    margin-top: 10px;;
+}
+
+.product-register-btn:hover {
+    color: #a9a9a9;
+    cursor: pointer;
+}
+
+/* media query */
+@media screen and (max-width: 900px) {
+    
+    .navBar-container {
+        margin: 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .nav-category {
+        visibility: hidden;
+    }
+    
+    #image-box i{
+        font-size:80px;
+    }
+}

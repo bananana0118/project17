@@ -1,3 +1,4 @@
+
 import mongoose, { Schema, Types } from "mongoose";
 const autoIncrement = require("mongoose-auto-increment");
 
@@ -40,6 +41,7 @@ ProductSchema.plugin(autoIncrement.plugin, {
     field: "no",
     startAt: 1,
     incrementBy: 1,
+
 });
 
 export { ProductSchema };

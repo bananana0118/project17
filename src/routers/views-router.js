@@ -1,4 +1,5 @@
 import express from "express";
+import { Server } from "http";
 import path from "path";
 
 const viewsRouter = express.Router();
@@ -8,14 +9,18 @@ const viewsRouter = express.Router();
 // http://localhost:5000/register 에서는 views/register/register.html 파일을 화면에 띄움
 
 viewsRouter.use("/", serveStatic("home"));
+viewsRouter.use("/profile", serveStatic("profile")); //시급한부분
 viewsRouter.use("/register", serveStatic("register"));
 viewsRouter.use("/login", serveStatic("login"));
 viewsRouter.use("/product", serveStatic("product"));
-viewsRouter.use("/profile", serveStatic("profile")); //시급한부분
+viewsRouter.use("/profile", serveStatic("profile"));
 viewsRouter.use("/cart", serveStatic("cart"));
 viewsRouter.use("/shop", serveStatic("shop"));
 viewsRouter.use("/goods", serveStatic("goods"));
 viewsRouter.use("/admin", serveStatic("admin"));
+viewsRouter.use("/productregister", serveStatic("productregister"));
+viewsRouter.use("/order", serveStatic("order"));
+viewsRouter.use("/payment", serveStatic("payment"));
 
 // views 폴더의 최상단 파일인 rabbit.png, api.js 등을 쓸 수 있게 함
 viewsRouter.use("/", serveStatic("")); //없어지면 navBar 안보임 삭제하지 말것
