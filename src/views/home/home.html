@@ -31,48 +31,21 @@
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
             rel="stylesheet"
         />
+        <!-- navBar css 분리 -->
+        <link rel="stylesheet" href="../navBar.css">
         <!-- 커스텀 css, js -->
         <link rel="stylesheet" href="home.css" />
         <script src="home.js" type="module" defer></script>
-
         <script src="../navBar.js" type="module" defer></script>
-
     </head>
     <body>
         <!-- nav bar -->
-        <nav class="navBar" role="navigation" aria-label="main navigation">
-
-            <div class="navBar-container container">
-                <a href="../home/index.html" class="nav-brand">
-                    <!-- 로고 이미지 추가 시 추가 작성-->
-                    <span class="nav-brand_name">Project17</span>
-                </a>
-                <ul class="nav-category">
-                    <li class="nav-category_list"><a href="#">new</a></li>
-                    <li class="nav-category_list"><a href="/pro/productlist">product</a></li>
-                    <li class="nav-category_list"><a href="#">sales</a></li>
-                    <li class="nav-category_list"><a href="#">about</a></li>
-                </ul>
-                <div class="nav-menu">
-                    <a href="#">
-                        <i class="material-symbols-outlined nav-menu_icon">
-                            search
-                        </i>
-                    </a>
-                    <a href="#">
-                        <i class="material-symbols-outlined nav-menu_icon">
-                            shopping_bag
-                        </i>
-                    </a>
-                    <a href="../login/login.html">
-                        <i class="material-symbols-outlined nav-menu_icon">
-                            person
-                        </i>
-                    </a>
-                </div>
-            </div>
-
+        <nav class="navBar">
         </nav>
+
+        <!-- login modal -->
+        <div class="loginModal">
+        </div>
 
         <!-- main -->
         <main>
@@ -110,7 +83,6 @@
                 </div>
                 <div class="seperator"></div>
             </section>
-
 
             <!-- 상품 -->
             <section class="product-container">
@@ -200,7 +172,6 @@
                 </div>
             </section>
         </main>
-
 
         <footer>
             <div class="footer-col">

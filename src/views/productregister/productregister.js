@@ -1,5 +1,5 @@
-// import * as Api from "/api.js";
-import {addCommas} from "../useful-functions.js";
+import * as Api from "../api.js";
+
 const submmitBtn = document.querySelector('.product-register-btn')
 const inputFile = document.querySelector('#image-input')
 const productName = document.querySelector('#product-name');
@@ -8,10 +8,12 @@ const productCategory = document.querySelector('#input-category');
 const productManufacturer = document.querySelector('#input-manufacturer');
 const productSize = document.querySelector('#input-size');
 const productQuantity = document.querySelector('#input-quantity');    
-const productInfo = document.querySelector('#input-product-detail')
+const productDescription = document.querySelector('#input-product-detail')
 const inputItems = document.getElementsByName('product-input')
-let uploadFiles = []
+
 inputItems[0].focus();
+let uploadFiles = []
+let formData = new FormData();
 
 /* 리펙토링 필요 
 *  EnterKey 입력시 focus 이동 
@@ -21,18 +23,14 @@ function keyevent(event){
     const idx = Array.from(inputItems).indexOf(event.target);
     
     if(code === 'Enter'){
-        if(event.shiftKey){
-        }
+        if(event.shiftKey){}
         else{
-            if(idx === (inputItems.length -2)){
-                
-            }
+            if(idx === (inputItems.length -2)){}
             else{  
                 inputItems[idx+1].focus();
             }
         }
     }
-
 }
  
 for(var i=0; i<inputItems.length; i++){
@@ -40,15 +38,17 @@ for(var i=0; i<inputItems.length; i++){
 };
 
 const register = async () => {
-    const data = { productName: productName.value, 
+    const data = { 
+                productName: productName.value, 
                 productPrice: productPrice.value,
+                productCategory: 0,
                 productSize: productSize.value,
-                productDetail: productInfo.value,
-                productCategory: productCategory.value,
+                productDescription: productDescription.value,
                 productQuantity: productQuantity.value,
                 productManufacturer: productManufacturer.value,
-                }
-    
+                productImg: formData
+            }
+
     if(data.productName === ''){
         alert('상품명을 입력해주세요!')
         productName.focus();
@@ -58,7 +58,7 @@ const register = async () => {
     }else if(data.productPrice === ''){
         alert('상품가격을 입력해주세요!')
         productPrice.focus();
-    }else if(data.producetQuantity === ''){
+    }else if(data.productQuantity === ''){
         alert('상품 수량을 선택해주세요!')
         productQuantity.focus();
     }
@@ -70,20 +70,30 @@ const register = async () => {
         alert('상품 사이즈를 선택해주세요!')
         productSize.focus();
     }
-    else if(data.productDetail === ''){
+    else if(data.productDescription === ''){
         alert('상품정보를 입력해주세요!!')
-        productDetail.focus();
+        productDescription.focus();
     }
     else{
-        // const res = await Api.post('Api/post', data);
-        console.log(data);
+        const res = await Api.post("/api/product/addproduct", data);
+        
+        if(res.ok){
+            window.location.href = "/";
+        }
     } 
 }
 
 submmitBtn.addEventListener('click', register)
 
+/**
+ * 
+ * @param {event} e 
+ * @param {URLFIle} file 
+ * @returns 
+ */
 const createElement = (e, file) => {
     const img = document.createElement('img');
+    
     img.setAttribute('src', e.target.result);
     img.setAttribute('data-file', file.name);
     img.addEventListener('click', function(){
@@ -98,9 +108,16 @@ const createElement = (e, file) => {
  * 추가된 파일의 이미지 파일을 가지고 온다.
  */
 const getImageFiles = (e) => {
-    uploadFiles = [];
+    uploadFiles = []
     const files = e.currentTarget.files;
+    if(files.length > 3){
+        alert('사진은 3장 이하로 올려주세요!')
+        return 
+    }
+    formData.append('image', e.target.files[0]);
+    
     const imgPreview = document.querySelector('.image-preview');
+    
     let lastImg = imgPreview.lastChild;
     while(lastImg){
         imgPreview.removeChild(lastImg);
@@ -108,15 +125,17 @@ const getImageFiles = (e) => {
     }
 
     [...files].forEach(file =>{
-        uploadFiles.push(file);
         const reader = new FileReader();
+        
+        uploadFiles.push(file);
         reader.onload = (e) => {
             const preview = createElement(e, file);
             imgPreview.appendChild(preview);
         }
+        
         reader.readAsDataURL(file);
     })
 }
 
-
 inputFile.addEventListener('change', getImageFiles)
+

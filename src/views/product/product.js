@@ -85,7 +85,7 @@ async function handleSubmit(e) {
             productImg,
         };
 
-        await Api.post("/product/addproduct", data);
+        await Api.post("/api/product/addproduct", data);
 
         alert(`정상적으로 등록되었습니다.`);
 
