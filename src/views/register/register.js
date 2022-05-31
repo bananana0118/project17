@@ -57,7 +57,8 @@ async function handleSubmit(e) {
         alert(`정상적으로 회원가입되었습니다.`);
 
         // 로그인 페이지 이동
-        window.location.href = "/login";
+        // 로그인 창을 모달로 구현함에 따라 이전페이지로 이동으로 변경
+        history.back();
     } catch (err) {
         console.error(err.stack);
         alert(

@@ -1,89 +1,50 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-}
-
-a {
-    color: black;
-}
-
-a:visited {
-    color: black;
-}
-
-.container {
-    margin: 0 auto;
-    width: 70%;
-}
-
-ul {
-    list-style: none;
-}
-
-/* navBar */
-.navBar {
-    box-shadow: 1px 1px 2px rgb(236, 236, 236);
-    width: 100%;
-    background-color: white;
-    position: fixed;
-    z-index: 99;
-}
-
-.navBar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: inherit;
-    padding: 1rem;
-}
-
-.nav-category_list a {
-    display: flex;
-}
-
-.nav-brand,
-.nav-category,
-.nav-menu {
-    display: flex;
-    width: 33%;
-    align-items: center;
-}
-
-.nav-category {
-    justify-content: space-around;
-    font-size: 1rem;
-}
-
-.nav-menu {
-    justify-content: flex-end;
-}
-
-.nav-menu_icon,
-.nav-brand {
-    font-size: 2rem;
-    vertical-align: baseline;
-}
-
 /* profileUpdate */
 
-#profileUpdate {
+.personalPage {
+    width: 70%;
+    margin: auto;
+    margin-top: 8em;
+}
+
+.personalPage-menu {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.personalPage-menu_Btns {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+}
+
+.greetings {
+    font-size: 2rem;
+    font-weight: bolder;
     text-align: center;
-    background-color: #f8f8ff;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    padding-bottom: 0.5em;
+}
+
+.personalPage-menu_Btns {
+    margin-top: 2em;
+}
+
+.personalPage-menu_Btns button {
+    border: none;
+    background-color: white;
+    margin: 0 2.5em;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 .profileUpdate-form-container {
-    margin: 0 auto;
+    margin: auto;
+    margin-top: 3em;
+    padding: 5em 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 500px;
-    height: 700px;
+    width: 30em;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     background-color: white;
@@ -94,12 +55,8 @@ ul {
 }
 
 .title {
-    font-size: 2.5rem;
-}
-
-.subtitle {
     font-size: 1.5rem;
-    margin-top: 10px;
+    text-align: center;
 }
 
 .profileUpdate-form_input {
@@ -110,14 +67,8 @@ ul {
     height: 300px;
 }
 
-#submitButton {
-    margin-top: 50px;
-    background-color: #4d61a9;
-    color: white;
-}
-
-input,
-button {
+.profileUpdate-form input,
+.profileUpdate-form button {
     width: 100%;
     height: 2.8rem;
     font-size: 0.9rem;
@@ -126,39 +77,39 @@ button {
     border-radius: 3px;
 }
 
-input {
+.profileUpdate-form input {
     border: 1px solid #bfbfbf;
     background-color: #f6f6f6;
 }
 
-button {
+.profileUpdate-form button {
     cursor: pointer;
 }
 
-/* nav media query */
-@media screen and (max-width: 900px) {
-    .container {
-        width: 90%;
-    }
-    .navBar-container {
-        margin: 0;
-        width: 100%;
-        justify-content: space-between;
-    }
-    .nav-category {
-        visibility: hidden;
-    }
+#updateSubmitButton {
+    margin-top: 50px;
+    background-color: #4d61a9;
+    color: white;
 }
 
 /* mobile profileUpdate media query */
-@media screen and (max-width: 400px) {
+/* @media screen and (max-width: 1280px) {
+    .profileUpdate-form-container {
+        width: 80%;
+    }
+} */
+
+@media screen and (max-width: 600px) {
     html {
         font-size: 10px;
     }
-    .profileUpdate-form-container {
-        width: 250px;
-        height: 500px;
+    .personalPage {
+        width: 90%;
     }
+    /* .profileUpdate-form-container {
+        width: 80%;
+        height: 400px;
+    } */
     .profileUpdate-form_input {
         margin-top: 50px;
         height: 200px;
