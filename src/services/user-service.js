@@ -141,6 +141,15 @@ class UserService {
   async deleteUser(userId) {
     return userModel.delete(userId);
   }
+
+  //email찾기 - kakao 이메일 검사
+  async isEmailExist(email) {
+    const isExist = await userModel.findByEmail(email);
+    console.log(isExist);
+    const isEmailExist = isExist ? true : false;
+
+    return isEmailExist;
+  }
 }
 
 const userService = new UserService(userModel);

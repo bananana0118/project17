@@ -3,17 +3,16 @@
 //                  Api.get(/profile,?=)
 async function get(endpoint, params = "") {
   const apiUrl = `${endpoint}/${params}`;
-
   console.log(`%cGET 요청: ${apiUrl} `, "color: #a25cd1;");
 
   const res = await fetch(apiUrl, {
     // JWT 토큰을 헤더에 담아 백엔드 서버에 보냄.
     headers: {
       Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      Accept: "application / json",
     },
   });
 
-  console.log(res);
   // 응답 코드가 4XX 계열일 때 (400, 403 등)
   if (!res.ok) {
     const errorContent = await res.json();
@@ -45,7 +44,6 @@ async function post(endpoint, data) {
     },
     body: bodyData,
   });
-
   // 응답 코드가 4XX 계열일 때 (400, 403 등)
   if (!res.ok) {
     const errorContent = await res.json();
@@ -62,8 +60,7 @@ async function post(endpoint, data) {
 // api 로 PATCH 요청 (/endpoint/params 로, JSON 데이터 형태로 요청함)
 async function patch(endpoint, params = "", data) {
   const apiUrl = `${endpoint}/${params}`;
-  console.log(endpoint);
-  console.log(params);
+  console.log(data);
   // JSON.stringify 함수: Javascript 객체를 JSON 형태로 변환함.
   // 예시: {name: "Kim"} => {"name": "Kim"}
 
@@ -71,7 +68,6 @@ async function patch(endpoint, params = "", data) {
   //     console.log("data is null");
   //   }
   const bodyData = JSON.stringify(data);
-  console.log(bodyData);
   console.log(`%cPATCH 요청: ${apiUrl}`, "color: #059c4b;");
   console.log(`%cPATCH 요청 데이터: ${bodyData}`, "color: #059c4b;");
   console.log("url " + apiUrl);
@@ -101,11 +97,9 @@ async function patch(endpoint, params = "", data) {
 // 여기서는 우선 delete 대신 del로 쓰고 아래 export 시에 delete로 alias 함.
 async function del(endpoint, params = "", data = {}) {
   const apiUrl = `${endpoint}/${params}`;
-
   const bodyData = JSON.stringify(data);
-  console.log(data);
-  console.log(`%cDELETE 요청 ${apiUrl}`, "color: #059c4b;");
-  console.log(`%cDELETE 요청 데이터: ${bodyData}`, "color: #059c4b;");
+  console.log(`DELETE 요청 ${apiUrl}`);
+  console.log(`DELETE 요청 데이터: ${bodyData}`);
 
   const res = await fetch(apiUrl, {
     method: "DELETE",
@@ -124,7 +118,12 @@ async function del(endpoint, params = "", data = {}) {
         throw new Error(reason);
     }
 
+<<<<<<< HEAD
     const result = await res.json();
+=======
+  const result = await res.json();
+  console.log(result);
+>>>>>>> 62d8994caa487708456fa704d0a03d56cccc5f10
 
     return result;
 }

@@ -1,4 +1,5 @@
 import express from "express";
+import { Server } from "http";
 import path from "path";
 
 const viewsRouter = express.Router();
@@ -11,7 +12,7 @@ viewsRouter.use("/", serveStatic("home"));
 viewsRouter.use("/register", serveStatic("register"));
 viewsRouter.use("/login", serveStatic("login"));
 viewsRouter.use("/product", serveStatic("product"));
-viewsRouter.use("/profile", serveStatic("profile")); //시급한부분
+viewsRouter.use("/profile", serveStatic("profile"));
 viewsRouter.use("/cart", serveStatic("cart"));
 viewsRouter.use("/shop", serveStatic("shop"));
 viewsRouter.use("/goods", serveStatic("goods"));
