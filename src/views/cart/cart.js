@@ -1,6 +1,6 @@
 import { addCommas } from "../useful-functions.js";
-import { createItem } from "../utils.js";
-
+import { createItem } from "../common.js";
+import * as Api from '../api.js';
 // const dummycartItems = [
 //     {
 //         productName:"Short Sleeve Comfor Shirt-Navy",
@@ -138,6 +138,8 @@ const renderPage = (cartItems) => {
 
 const load = async (cartItems) => {
     // cartItems = await Api.get('/product/productlist');
+    const data = await Api.get('/api/product/productlist');
+    console.log(data);
     renderPage(cartItems);
 }
 

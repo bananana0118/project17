@@ -11,8 +11,8 @@ const productQuantity = document.querySelector('#input-quantity');
 const productDescription = document.querySelector('#input-product-detail')
 const inputItems = document.getElementsByName('product-input')
 
-let uploadFiles = ''
 inputItems[0].focus();
+let formData = new FormData();
 
 /* 리펙토링 필요 
 *  EnterKey 입력시 focus 이동 
@@ -45,7 +45,7 @@ const register = async () => {
                 productDescription: productDescription.value,
                 productQuantity: productQuantity.value,
                 productManufacturer: productManufacturer.value,
-                productImg: uploadFiles
+                productImg: formData
             }
 
     if(data.productName === ''){
@@ -109,6 +109,8 @@ const createElement = (e, file) => {
 const getImageFiles = (e) => {
     uploadFiles = [];
     const files = e.currentTarget.files;
+    formData.append('image', e.target.files[0]);
+    
     const imgPreview = document.querySelector('.image-preview');
     
     let lastImg = imgPreview.lastChild;
@@ -133,5 +135,5 @@ const getImageFiles = (e) => {
     })
 }
 
-
 inputFile.addEventListener('change', getImageFiles)
+
