@@ -1,5 +1,7 @@
 import * as Api from "/api.js";
 
+const formData = new FormData();
+
 // 요소(element), input 혹은 상수
 const productNameInput = document.querySelector("#productName");
 const productPriceInput = document.querySelector("#productPrice");
@@ -7,6 +9,7 @@ const productCategoryInput = document.querySelector(".Category");
 const productDescriptionInput = document.querySelector("#productDescription");
 const productSizeInput = document.querySelector("#productSize");
 const productManufacturerInput = document.querySelector("#productManufacturer");
+const productImageInput = document.querySelector("#productImg");
 const submitButton = document.querySelector("#submitButton");
 
 addAllElements();
@@ -18,15 +21,18 @@ async function addAllElements() {}
 // 여러 개의 addEventListener들을 묶어주어서 코드를 깔끔하게 하는 역할임.
 function addAllEvents() {
     submitButton.addEventListener("click", handleSubmit);
+    productImageInput.addEventListener("change", (e) => {
+        formData.append("image", e.target.files[0]);
+        console.log(formData);
+        // for (var pair of formData.entries()) {
+        //     console.log(pair[0] + ", " + pair[1]);
+        // }
+    });
 }
 
 // 상품 등록 진행
 async function handleSubmit(e) {
     e.preventDefault();
-    let formData = new FormData();
-    formData.append("image", e.target.files[0]);
-    console.log(formData);
-
     const productName = productNameInput.value;
     const productPrice = productPriceInput.value;
     const productCategory = productCategoryInput.value;
@@ -46,7 +52,9 @@ async function handleSubmit(e) {
             productImg,
         };
 
-        await Api.post("/api/product/addproduct", data);
+        await Api.post("/api/product/up", formData);
+
+        // await Api.post("/api/product/addproduct", data);
 
         alert(`정상적으로 등록되었습니다.`);
 

@@ -22,14 +22,14 @@ const ProductSchema = new Schema({
     },
     productCategory: {
         type: Number,
-        required: true,
+        required: false,
     },
     productManufacturer: {
         type: String,
         required: true,
     },
     productImg: {
-        type: String,
+        type: [String],
         required: false,
     },
     no: Number,
