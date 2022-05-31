@@ -32,7 +32,7 @@
 
 .image-info .description {
     font-size: 1vw;
-    color: rgba(0, 0, 0, 0.5)
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .image-info .description .delivery-info {
@@ -67,9 +67,11 @@
     border: none;
     width: 13.3vw;
     height: 5vh;
-    background: linear-gradient(90deg,
-            rgba(129, 230, 217, 1) 0%,
-            rgba(79, 209, 197, 1) 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(129, 230, 217, 1) 0%,
+        rgba(79, 209, 197, 1) 100%
+    );
     border-radius: 5em;
     color: darkslategray;
     cursor: pointer;
@@ -83,9 +85,11 @@
     border: none;
     width: 13.3vw;
     height: 5vh;
-    background: linear-gradient(90deg,
-            rgba(129, 230, 217, 1) 0%,
-            rgba(79, 209, 197, 1) 100%);
+    background: linear-gradient(
+        90deg,
+        rgba(129, 230, 217, 1) 0%,
+        rgba(79, 209, 197, 1) 100%
+    );
     border-radius: 5em;
     color: darkslategray;
     cursor: pointer;
@@ -155,29 +159,12 @@
     background-color: black;
 }
 
-/* footer */
-footer {
-    margin: 0 auto;
-    margin-top: 5vh;
-    padding-top: 5vh;
-    border-top: 1px solid rgba(0, 0, 0, 0.081);
-    display: flex;
-    justify-content: space-between;
-    height: 20vh;
-    width: 70%;
-}
-
-.footer-col:first-child span {
-    font-size: 2rem;
-}
-
 /* media query */
 @media screen and (max-width: 900px) {
     html {
         font-size: 10px;
     }
 
-    .container,
     footer {
         width: 90%;
     }

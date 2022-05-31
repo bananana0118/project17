@@ -121,17 +121,6 @@ async function del(endpoint, params = "", data = {}) {
     const result = await res.json();
 
     return result;
-    // 응답 코드가 4XX 계열일 때 (400, 403 등)
-    if (!res.ok) {
-        const errorContent = await res.json();
-        const { reason } = errorContent;
-
-        throw new Error(reason);
-    }
-
-    const result = await res.json();
-
-    return result;
 }
 
 // 아래처럼 export하면, import * as Api 로 할 시 Api.get, Api.post 등으로 쓸 수 있음.
