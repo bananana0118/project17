@@ -12,7 +12,7 @@ class UserService {
   // 회원가입
   async addUser(userInfo) {
     // 객체 destructuring
-    const { email, fullName, password } = userInfo;
+    const { email, fullName, password, address, phoneNumber } = userInfo;
 
     // 이메일 중복 확인
     const user = await this.userModel.findByEmail(email);
@@ -27,7 +27,13 @@ class UserService {
     // 우선 비밀번호 해쉬화(암호화)
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUserInfo = { fullName, email, password: hashedPassword };
+    const newUserInfo = {
+      fullName,
+      email,
+      password: hashedPassword,
+      address,
+      phoneNumber,
+    };
 
     // db에 저장
     const createdNewUser = await this.userModel.create(newUserInfo);
@@ -71,7 +77,7 @@ class UserService {
     // 2개 프로퍼티를 jwt 토큰에 담음
     const token = jwt.sign({ userId: user._id, role: user.role }, secretKey);
 
-    return { token };
+    return { token }; //  Qusetion , 토큰을 왜 객체로 반환하는거지?
   }
 
   // 사용자 목록을 받음.
@@ -127,9 +133,13 @@ class UserService {
     return user;
   }
 
-  async getUser(email) {
-    const user = await this.userModel.findByEmail(email);
+  async getUser(userId) {
+    const user = await this.userModel.findById(userId);
     return user;
+  }
+
+  async deleteUser(userId) {
+    return userModel.delete(userId);
   }
 }
 
