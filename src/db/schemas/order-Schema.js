@@ -15,14 +15,17 @@ const OrderSchema = new Schema(
     //주문자Id
     orderNumber: {},
     userId: {
-      type: String,
-      required: true,
-    },
-    orderProduct: {
       type: Schema.Types.ObjectId,
-      ref: "products",
+      ref: "users",
       required: true,
     },
+    orderProduct: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "products",
+        required: true,
+      },
+    ],
     address: {
       type: String,
       required: true,
@@ -38,6 +41,8 @@ const OrderSchema = new Schema(
       required: true,
       default: 11,
     },
+
+    //[상품준비중,배송준비중, 배송중, 배송완료]
     status: {
       type: String,
       required: false,

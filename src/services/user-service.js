@@ -80,15 +80,6 @@ class UserService {
     return { token }; //  Qusetion , 토큰을 왜 객체로 반환하는거지?
   }
 
-  //email찾기 - kakao 이메일 검사
-  async isEmailExist(email) {
-    const isExist = await userModel.findByEmail(email);
-    console.log(isExist);
-    const isEmailExist = isExist ? true : false;
-
-    return isEmailExist;
-  }
-
   // 사용자 목록을 받음.
   async getUsers() {
     const users = await this.userModel.findAll();
@@ -149,6 +140,15 @@ class UserService {
 
   async deleteUser(userId) {
     return userModel.delete(userId);
+  }
+
+  //email찾기 - kakao 이메일 검사
+  async isEmailExist(email) {
+    const isExist = await userModel.findByEmail(email);
+    console.log(isExist);
+    const isEmailExist = isExist ? true : false;
+
+    return isEmailExist;
   }
 }
 

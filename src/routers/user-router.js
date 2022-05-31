@@ -88,17 +88,6 @@ userRouter.get("/userlist", loginRequired, async function (req, res, next) {
   }
 });
 
-userRouter.get("/checkUser", async (req, res, next) => {
-  try {
-    const userEmail = req.body.email;
-    const isEmailExist = await userService.isEmailExist(userEmail);
-
-    res.status(200).json(isEmailExist);
-  } catch (error) {
-    next(error);
-  }
-});
-
 // 사용자 정보 수정
 // (예를 들어 /api/users/abc12345 로 요청하면 req.params.userId는 'abc12345' 문자열로 됨)
 //특정유저의 정보 수정
@@ -158,5 +147,16 @@ userRouter.patch(
     }
   }
 );
+
+userRouter.post("/checkUser", async (req, res, next) => {
+  try {
+    const userEmail = req.body.email;
+    const isEmailExist = await userService.isEmailExist(userEmail);
+
+    res.status(200).json(isEmailExist);
+  } catch (error) {
+    next(error);
+  }
+});
 
 export { userRouter };

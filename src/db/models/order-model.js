@@ -4,11 +4,15 @@ import { OrderSchema } from "../schemas/order-Schema";
 
 const Order = model("orders", OrderSchema); //db에는 orders 변수는 Order로 접근
 class OrderModel {
+  //order생성
   async create(orderInfo) {
     const order = new Order({
       _id: new mongoose.Types.ObjectId(),
-      userId: orderInfo.ordererId,
+      address: orderInfo.address,
+      phoneNumber: orderInfo.phoneNumber,
+      totalPrice: orderInfo.totalPrice,
       orderProduct: orderInfo.productId,
+      userId: orderInfo.userId,
     });
 
     order.save(function (err) {
@@ -18,34 +22,45 @@ class OrderModel {
       }
     });
 
-    //버튼 클릭시 필욜한 정보
-    //사용자의 userId = orderer Id, Products Info
-
     return order;
   }
 
-  //find 조건찾기 조건을 하나 넣어주기
-  async findAll(userId) {
-    const orders = await Order.find({ orderderId: userId })
-      .populate("orderProduct")
-      .exec();
-    return orders;
-  }
-
-  async findOrderer() {
-    const orderer = await Order.find({ orderId: userId }).populate({
-      path: "orderer",
-    });
-
-    return orderer;
-  }
-
-  async addOrder(orderInfo) {
-    // const order = await Order.find({}).populate({"orderProduct"});
-  }
-
+  //orderId로 주문 찾기
   async findById(orderId) {
     const order = await Order.findOne({ _id: orderId });
+    return order;
+  }
+
+  //user가 시킨 주문 보기
+  async findByUserId(orderInfo) {
+    const order = await Order.findOne({ userId: orderInfo.userId })
+      .populate("userId")
+      .populate("orderProduct");
+    return order;
+  }
+
+  //주문삭제
+  async delete(orderNumber) {
+    const deletedOrder = await Order.findOneAndDelete({ orderNumber });
+    return deletedOrder;
+  }
+
+  async statusUpdate(orderNumber) {
+    const order = await Order.findOne({ orderNumber });
+    const productStatus = [
+      "상품 준비 중",
+      "배송 준비 중",
+      " 배송 중",
+      " 배송완료",
+    ];
+    for (let i = 0; i < 4; i++) {
+      console.log(order.status);
+      if (order.status === productStatus[i]) {
+        order.status = productStatus[i + 1];
+        break;
+      }
+    }
+
     return order;
   }
 
@@ -56,16 +71,6 @@ class OrderModel {
   //     const updatedUser = await User.findOneAndUpdate(filter, update, option);
   //     return updatedUser;
   //   }
-
-  //   async delete(userId) {
-  //     const filter = { _id: userId };
-  //     const option = { returnOriginal: false };
-
-  //     const deletedUser = await User.findByIdAndDelete(filter, option);
-
-  //     return deletedUser;
-  //   }
-  // }
 }
 
 const orderModel = new OrderModel();

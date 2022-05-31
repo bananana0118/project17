@@ -16,6 +16,14 @@ class OrderService {
 
     return newOrder;
   }
+
+  async deleteOrder(orderNumber) {
+    return orderModel.delete(orderNumber);
+  }
+
+  async statusUpdate(orderNumber) {
+    return orderModel.statusUpdate(orderNumber);
+  }
 }
 
 const orderService = new OrderService(orderModel);
