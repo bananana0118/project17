@@ -32,7 +32,7 @@ function navBarCreate() {
                                     shopping_bag
                                 </i>
                                 <div class="count">
-                                    <span>1</span>
+                                    <span>0</span>
                                 </div>
                             </a>
                             <div class="personalMenu">
