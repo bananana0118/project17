@@ -1,26 +1,43 @@
-import { Schema } from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
+import { model } from "mongoose";
 import { shortId } from "./types/shortId";
+import { UserSchema } from "../schemas/user-schema";
+import { stringify } from "nodemon/lib/utils";
+//import shortId from "shortid";
+
 const autoIncrement = require("mongoose-auto-increment");
+const User = model("users", UserSchema);
 
 autoIncrement.initialize(mongoose);
 
 const OrderSchema = new Schema(
   {
-    //nanoid 추가
-    shortId,
-    orderNumber: {
-      type: Number, //autuIncrement로 수정
-    },
-    orderProducts: {
-      type: Schema.Types.ObjectId,
+    //주문자Id
+    orderNumber: {},
+    userId: {
+      type: String,
       required: true,
-      ref: "productModel",
     },
-    orderer: {
+    orderProduct: {
       type: Schema.Types.ObjectId,
+      ref: "products",
       required: true,
-      ref: "userModel",
-    }, //주문자
+    },
+    address: {
+      type: String,
+      required: true,
+      default: "test",
+    },
+    phoneNumber: {
+      type: String,
+      required: true,
+      default: "test",
+    },
+    totalPrice: {
+      type: Number,
+      required: true,
+      default: 11,
+    },
     status: {
       type: String,
       required: false,
@@ -34,7 +51,7 @@ const OrderSchema = new Schema(
 );
 
 OrderSchema.plugin(autoIncrement.plugin, {
-  model: "order",
+  model: "orders",
   field: "orderNumber",
   startAt: 1,
   incrementBy: 1,
