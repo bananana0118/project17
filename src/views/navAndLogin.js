@@ -144,12 +144,6 @@ function kakaoLogin() {
                             console.log(err);
                         }
                     } else {
-                        // const keys = Object.keys(localStorage);
-                        // const kakaoKey = keys.find((e) =>
-                        //     e.startsWith("kakao")
-                        // );
-                        // const kakaoToken = localStorage.getItem(kakaoKey);
-                        // sessionStorage.setItem("token", kakaoToken);
                         try {
                             const data = { email, password };
                             const result = await Api.post("/api/login", data);
@@ -159,7 +153,7 @@ function kakaoLogin() {
                             // 물론 다른 스토리지여도 됨
                             sessionStorage.setItem("token", token);
 
-                            alert(`정상적으로 로그인되었습니다.`);
+                            alert(`카카오톡 계정으로 로그인되었습니다.`);
 
                             // 로그인 성공
 
