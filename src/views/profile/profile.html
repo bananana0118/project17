@@ -1,259 +1,86 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>쇼핑-17팀</title>
-    <!-- 아이콘 -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/elice-rabbit-favicon.png"
-    />
-    <!-- bulma css -->
-    <!-- <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-        /> -->
-    <!-- 폰트 어썸: 아이콘 -->
-    <script
-      defer
-      src="https://kit.fontawesome.com/7630448495.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- google fonts icon -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
-    <!-- 커스텀 css, js -->
-    <link rel="stylesheet" href="profile.css" />
-    <script src="profile.js" type="module" defer></script>
-    <script src="../navBar.js" type="module" defer></script>
-  </head>
-  <body>
-    <!-- nav bar -->
-    <nav class="navBar" role="navigation" aria-label="main navigation"></nav>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>쇼핑-17팀</title>
+		<!-- 아이콘 -->
+		<link rel="icon" type="image/png" sizes="16x16" href="/elice-rabbit-favicon.png" />
+		<!-- bulma css -->
+		<!-- <link
+				rel="stylesheet"
+				href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+			/> -->
+		<!-- 폰트 어썸: 아이콘 -->
+		<script defer src="https://kit.fontawesome.com/7630448495.js" crossorigin="anonymous"></script>
+		<!-- google fonts icon -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+		<!-- 커스텀 css, js -->
+		<link rel="stylesheet" href="../navBar.css" />
+		<link rel="stylesheet" href="profile.css" />
+		<script src="profile.js" type="module" defer></script>
+		<script src="../navBar.js" type="module" defer></script>
+	</head>
 
-    <!-- main -->
-    <main id="profileUpdate">
-      <div class="profileUpdate-form-container">
-        <form class="profileUpdate-form">
-          <div class="title">
-            <p class="subtitle">정보 수정하기</p>
-          </div>
-          <div class="profileUpdate-form_input">
-            <div class="control">
-              <input
-                class="input"
-                id="fullNameInput"
-                type="text"
-                placeholder="성함"
-                autocomplete="on"
-              />
-            </div>
-            <div class="control">
-              <input
-                class="input"
-                id="emailInput"
-                type="email"
-                placeholder="이메일 주소"
-                autocomplete="on"
-              />
-            </div>
-            <div class="control">
-              <input
-                class="input"
-                id="passwordInput"
-                type="password"
-                placeholder="비밀번호"
-                autocomplete="off"
-              />
-            </div>
-            <div class="control">
-              <input
-                class="input"
-                id="passwordConfirmInput"
-                type="password"
-                placeholder="비밀번호 확인"
-                autocomplete="off"
-              />
-            </div>
-            <div class="control">
-              <input
-                class="input"
-                id="mobileNumber"
-                type="number"
-                placeholder="휴대폰 번호"
-                autocomplete="on"
-              />
-            </div>
-            <div class="control">
-              <input
-                class="input"
-                id="address"
-                type="text"
-                placeholder="주소찾기ㅏㅊ푸미"
-                autocomplete="off"
-              />
-            </div>
-          </div>
-          <button id="submitButton">수정하기</button>
-        </form>
-      </div>
-    </main>
+	<body>
+		<!-- nav bar -->
+		<nav class="navBar" role="navigation" aria-label="main navigation"></nav>
 
-    <!-- footer -->
-    <footer>
-      <div class="footer-col">
-        <span style="margin-right: 1rem">Project17</span>
-      </div>
-      <div class="footer-col">
-        <span
-          >Contributors<br /><br /><br />Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Laudantium, quaerat.</span
-        >
-      </div>
-      <div class="footer-col">
-        <span>Links<br /><br /><br />KDC</span>
-      </div>
-    </footer>
-  </body>
-=======
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>쇼핑-17팀</title>
-        <!-- 아이콘 -->
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/elice-rabbit-favicon.png"
-        />
-        <!-- bulma css -->
-        <!-- <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-        /> -->
-        <!-- 폰트 어썸: 아이콘 -->
-        <script
-            defer
-            src="https://kit.fontawesome.com/7630448495.js"
-            crossorigin="anonymous"
-        ></script>
-        <!-- google fonts icon -->
-        <link
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-            rel="stylesheet"
-        />
-        <!-- 커스텀 css, js -->
-        <link rel="stylesheet" href="profile.css" />
-        <script src="profile.js" type="module" defer></script>
-        <script src="../navBar.js" type="module" defer></script>
-    </head>
-    <body>
-        <!-- nav bar -->
-        <nav
-            class="navBar"
-            role="navigation"
-            aria-label="main navigation"
-        ></nav>
+		<!-- login modal -->
+		<div class="loginModal"></div>
 
-        <!-- main -->
-        <main id="profileUpdate">
-            <div class="profileUpdate-form-container">
-                <form class="profileUpdate-form">
-                    <div class="title">
-                        <p class="subtitle">정보 수정하기</p>
-                    </div>
-                    <div class="profileUpdate-form_input">
-                        <div class="control">
-                            <input
-                                class="input"
-                                id="fullNameInput"
-                                type="text"
-                                placeholder="성함"
-                                autocomplete="on"
-                            />
-                        </div>
-                        <div class="control">
-                            <input
-                                class="input"
-                                id="emailInput"
-                                type="email"
-                                placeholder="이메일 주소"
-                                autocomplete="on"
-                            />
-                        </div>
-                        <div class="control">
-                            <input
-                                class="input"
-                                id="passwordInput"
-                                type="password"
-                                placeholder="비밀번호"
-                                autocomplete="off"
-                            />
-                        </div>
-                        <div class="control">
-                            <input
-                                class="input"
-                                id="passwordConfirmInput"
-                                type="password"
-                                placeholder="비밀번호 확인"
-                                autocomplete="off"
-                            />
-                        </div>
-                        <div class="control">
-                            <input
-                                class="input"
-                                id="mobileNumber"
-                                type="number"
-                                placeholder="휴대폰 번호"
-                                autocomplete="on"
-                            />
-                        </div>
-                        <div class="control">
-                            <input
-                                class="input"
-                                id="address"
-                                type="text"
-                                placeholder="주소찾기"
-                                autocomplete="off"
-                            />
-                        </div>
-                    </div>
-                    <button id="submitButton">수정하기</button>
-                    <button id="profileDeleteButton">회원탈퇴</button>
-                </form>
-            </div>
-        </main>
+		<!-- main -->
+		<main class="personalPage">
+			<div class="personalPage-menu">
+				<div class="greetings"></div>
+				<div class="personalPage-menu_Btns">
+					<button>주문내역</button>
+					<button><a href="/profile">계정관리</a></button>
+					<button id="profileDeleteButton">회원탈퇴</button>
+				</div>
+			</div>
+			<div class="profileUpdate-form-container">
+				<form class="profileUpdate-form">
+					<p class="title">정보 수정하기</p>
+					<div class="profileUpdate-form_input">
+						<div class="control">
+							<input class="input" id="fullNameInput" type="text" placeholder="성함" autocomplete="on" />
+						</div>
+						<div class="control">
+							<input class="input" id="emailInput" type="email" placeholder="이메일 주소" autocomplete="on" />
+						</div>
+						<div class="control">
+							<input class="input" id="passwordInput" type="password" placeholder="비밀번호" autocomplete="off" />
+						</div>
+						<div class="control">
+							<input class="input" id="passwordConfirmInput" type="password" placeholder="비밀번호 확인"
+								autocomplete="off" />
+						</div>
+						<div class="control">
+							<input class="input" id="mobileNumber" type="number" placeholder="휴대폰 번호" autocomplete="on" />
+						</div>
+						<div class="control">
+							<input class="input" id="address" type="text" placeholder="주소찾기ㅏㅊ푸미" autocomplete="off" />
+						</div>
+					</div>
+					<button id="updateSubmitButton">수정하기</button>
+				</form>
+			</div>
+		</main>
 
-        <!-- footer -->
-        <footer>
-            <div class="footer-col">
-                <span style="margin-right: 1rem">Project17</span>
-            </div>
-            <div class="footer-col">
-                <span
-                    >Contributors<br /><br /><br />Lorem, ipsum dolor sit amet
-                    consectetur adipisicing elit. Laudantium, quaerat.</span
-                >
-            </div>
-            <div class="footer-col">
-                <span>Links<br /><br /><br />KDC</span>
-            </div>
-        </footer>
-    </body>
->>>>>>> front
+		<!-- footer -->
+		<footer>
+			<div class="footer-col">
+				<span style="margin-right: 1rem">Project17</span>
+			</div>
+			<div class="footer-col">
+				<span>Contributors<br /><br /><br />Lorem, ipsum dolor sit amet
+					consectetur adipisicing elit. Laudantium, quaerat.</span>
+			</div>
+			<div class="footer-col">
+				<span>Links<br /><br /><br />KDC</span>
+			</div>
+		</footer>
+	</body>
 </html>
