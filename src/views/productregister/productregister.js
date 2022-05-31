@@ -11,8 +11,9 @@ const productQuantity = document.querySelector('#input-quantity');
 const productDescription = document.querySelector('#input-product-detail')
 const inputItems = document.getElementsByName('product-input')
 
-let uploadFiles = ''
 inputItems[0].focus();
+let uploadFiles = []
+let formData = new FormData();
 
 /* 리펙토링 필요 
 *  EnterKey 입력시 focus 이동 
@@ -43,11 +44,11 @@ const register = async () => {
                 productCategory: 0,
                 productSize: productSize.value,
                 productDescription: productDescription.value,
-                productSize: productQuantity.value,
+                productQuantity: productQuantity.value,
                 productManufacturer: productManufacturer.value,
-                productImg: uploadFiles
+                productImg: formData
             }
-    
+
     if(data.productName === ''){
         alert('상품명을 입력해주세요!')
         productName.focus();
@@ -57,7 +58,7 @@ const register = async () => {
     }else if(data.productPrice === ''){
         alert('상품가격을 입력해주세요!')
         productPrice.focus();
-    }else if(data.producetQuantity === ''){
+    }else if(data.productQuantity === ''){
         alert('상품 수량을 선택해주세요!')
         productQuantity.focus();
     }
@@ -69,13 +70,13 @@ const register = async () => {
         alert('상품 사이즈를 선택해주세요!')
         productSize.focus();
     }
-    else if(data.productDetail === ''){
+    else if(data.productDescription === ''){
         alert('상품정보를 입력해주세요!!')
-        productDetail.focus();
+        productDescription.focus();
     }
     else{
-        const res = await Api.post('/product/addproduct', data);
-        console.log(res)
+        const res = await Api.post("/api/product/addproduct", data);
+        
         if(res.ok){
             window.location.href = "/";
         }
@@ -90,7 +91,7 @@ submmitBtn.addEventListener('click', register)
  * @param {URLFIle} file 
  * @returns 
  */
-const createElement = (e, file, url) => {
+const createElement = (e, file) => {
     const img = document.createElement('img');
     
     img.setAttribute('src', e.target.result);
@@ -107,8 +108,14 @@ const createElement = (e, file, url) => {
  * 추가된 파일의 이미지 파일을 가지고 온다.
  */
 const getImageFiles = (e) => {
-    uploadFiles = [];
+    uploadFiles = []
     const files = e.currentTarget.files;
+    if(files.length > 3){
+        alert('사진은 3장 이하로 올려주세요!')
+        return 
+    }
+    formData.append('image', e.target.files[0]);
+    
     const imgPreview = document.querySelector('.image-preview');
     
     let lastImg = imgPreview.lastChild;
@@ -118,22 +125,17 @@ const getImageFiles = (e) => {
     }
 
     [...files].forEach(file =>{
-        const url = URL.createObjectURL(file);
         const reader = new FileReader();
         
-        // uploadFiles.push(url);
-        uploadFiles = url
+        uploadFiles.push(file);
         reader.onload = (e) => {
             const preview = createElement(e, file);
-            // preview.setAttribute('src', url);
             imgPreview.appendChild(preview);
         }
         
         reader.readAsDataURL(file);
     })
-
-    console.log(uploadFiles)
 }
 
-
 inputFile.addEventListener('change', getImageFiles)
+

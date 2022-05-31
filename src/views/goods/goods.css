@@ -1,8 +1,7 @@
 /* section */
 .section {
-    width: 80%;
+    width: 100%;
     height: 100%;
-    text-align: center;
     float: left;
 }
 
@@ -64,7 +63,7 @@
     box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
 }
 
-.image-info .cart {
+.image-info .cartBtn {
     border: none;
     width: 13.3vw;
     height: 5vh;
@@ -82,7 +81,7 @@
     margin: 0.5vw;
 }
 
-.image-info .buy {
+.image-info .buyBtn {
     border: none;
     width: 13.3vw;
     height: 5vh;

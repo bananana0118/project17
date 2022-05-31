@@ -2,6 +2,7 @@ import { addCommas } from "../useful-functions.js";
 
 const dummycartItems = [
     {
+        productNo: 1,
         productName:"Short Sleeve Comfor Shirt-Navy",
         productSize: 5,
         productQuantity: 1,
@@ -10,6 +11,7 @@ const dummycartItems = [
         productImg: "//www.ptry.co.kr/web/product/tiny/202203/3de7dfaf7b490de83b166ed36d9505c2.jpg"
     },
     {
+        productNumber: 2,
         productName:"Short Sleeve Comfor Shirt-Navy",
         productSize: 5,
         productQuantity: 1,
@@ -18,6 +20,7 @@ const dummycartItems = [
         productImg: "//www.ptry.co.kr/web/product/tiny/202203/3de7dfaf7b490de83b166ed36d9505c2.jpg"
     },
     {
+        productNumber: 3,
         productName:"Short Sleeve Comfor Shirt-Navy3",
         productSize: 5,
         productQuantity: 1,
@@ -26,6 +29,7 @@ const dummycartItems = [
         productImg: "https://anotheroffice.co.kr/web/upload/NNEditor/20220519/SANTIAGO_SLACKS_GRAPHITE_SANGSE.jpg"
     },
     {
+        productNumber: 4,
         productName:"Short Sleeve Comfor Shirt-Navy",
         productSize: 5,
         productQuantity: 1,
