@@ -28,8 +28,7 @@ ul {
     width: 100%;
     background-color: white;
     position: fixed;
-    z-index: 99;
-    top:0;
+    top: 0;
     opacity: 0.5;
 }
 
@@ -84,18 +83,17 @@ footer {
     font-size: 2rem;
 }
 
-.product-register-container{
+.product-register-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 80%;
     font-size: 12px;
     margin: 0 auto;
-    margin-top:100px;
-    
+    margin-top: 100px;
 }
 
-.image-preview{
+.image-preview {
     display: flex;
     justify-content: center;
     margin-top: 30px;
@@ -104,13 +102,13 @@ footer {
     width: 100%
 }
 
-.image-preview img{
+.image-preview img {
     height: 250px;
     margin-right: 10px;
     cursor: pointer;
 }
 
-.register-box{
+.register-box {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -122,7 +120,7 @@ footer {
     border-radius: 5px;
 }
 
-.image-register-btn{
+.image-register-btn {
     display: flex;
     position:absolute;
     top:0px; right:10px;
@@ -131,25 +129,25 @@ footer {
 }
 
 .price-container,
-.product-sale-info{
+.product-sale-info {
     display: flex;
     flex-direction: row;
     margin-top: 20px;
 }
 
 /* 수량, 사이즈 를 나태나는 div */
-.product-sale-info div{
+.product-sale-info div {
     display: flex;
     flex-direction: column;
     margin-right: 5px;
     width: 30%;
 }
 
-.sale-price{
+.sale-price {
     width: 50%;
 }
 
-#image-box{
+#image-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -158,13 +156,12 @@ footer {
     opacity: 0.3;
 }
 
-#image-box i{
+#image-box i {
     font-size: 120px;
 }
 
 #product-name,
-#input-size
-{
+#input-size {
     width: 50%;
     border: 0;
     background: transparent;
@@ -176,7 +173,7 @@ footer {
     border-bottom: 1px solid #ddd;
 }
 
-#input-category{
+#input-category {
     width: 50%;
     border: 0;
     background: transparent;
@@ -189,20 +186,20 @@ footer {
 
 /* price input box */
 
-.price-input-box{
+.price-input-box {
     display: flex;
     align-items: center;
     text-align: center;
 }
 
-.price-input-box span{
+.price-input-box span {
     flex:1;
     margin-right: 3px;
 }
 
 #product-price,
 #input-quantity,
-#input-manufacturer{
+#input-manufacturer {
     width: 100%;
     border: 0;
     background: transparent;
@@ -214,37 +211,37 @@ footer {
     border-bottom: 1px solid #ddd;
 }
 
-#onSale{
+#onSale {
     margin-top: 10px;
 }
 
 
 /* 체크박스 높이 맞추기 */
-input[id="onSale"]{
-    position:relative;
+input[id="onSale"] {
+    position: relative;
     top: 2px;
 }
 
-#input-product-detail{
+#input-product-detail {
     align-items: center;
     border: 2px solid #ddd;
     margin-top: 20px;
-    padding:10px;   
+    padding: 10px;   
     height: 200px;
 }
 
-.product-register-btn{
-    float:right;
+.product-register-btn {
+    float: right;
     background: transparent;
     border: none;
-    padding:10px;
+    padding: 10px;
     font-size: 16px;
     transition: ease 0.5s;
     margin-top: 10px;;
 }
 
-.product-register-btn:hover{
-    color:#a9a9a9;
+.product-register-btn:hover {
+    color: #a9a9a9;
     cursor: pointer;
 }
 
