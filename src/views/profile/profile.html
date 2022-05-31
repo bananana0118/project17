@@ -32,10 +32,12 @@
             rel="stylesheet"
         />
         <!-- 커스텀 css, js -->
-        <link rel="stylesheet" href="../navBar.css" />
+        <link rel="stylesheet" href="../navAndLogin.css" />
         <link rel="stylesheet" href="profile.css" />
         <script src="profile.js" type="module" defer></script>
-        <script src="../navBar.js" type="module" defer></script>
+        <script src="../navAndLogin.js" type="module" defer></script>
+        <!-- 카카오 로그인 -->
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     </head>
     <body>
         <!-- nav bar -->
@@ -83,6 +85,24 @@
                         <div class="control">
                             <input
                                 class="input"
+                                id="mobileNumber"
+                                type="number"
+                                placeholder="휴대폰 번호 ( - 없이 입력)"
+                                autocomplete="on"
+                            />
+                        </div>
+                        <div class="control">
+                            <input
+                                class="input"
+                                id="address"
+                                type="text"
+                                placeholder="주소찾기"
+                                autocomplete="off"
+                            />
+                        </div>
+                        <div class="control">
+                            <input
+                                class="input"
                                 id="passwordInput"
                                 type="password"
                                 placeholder="비밀번호"
@@ -95,24 +115,6 @@
                                 id="passwordConfirmInput"
                                 type="password"
                                 placeholder="비밀번호 확인"
-                                autocomplete="off"
-                            />
-                        </div>
-                        <div class="control">
-                            <input
-                                class="input"
-                                id="mobileNumber"
-                                type="number"
-                                placeholder="휴대폰 번호"
-                                autocomplete="on"
-                            />
-                        </div>
-                        <div class="control">
-                            <input
-                                class="input"
-                                id="address"
-                                type="text"
-                                placeholder="주소찾기ㅏㅊ푸미"
                                 autocomplete="off"
                             />
                         </div>
