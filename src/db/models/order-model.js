@@ -60,9 +60,10 @@ class OrderModel {
                 break;
             }
         }
-
         return order;
     }
+
+
     async findAll() {
         const orders = await Order.find({})
             .populate("userId")
