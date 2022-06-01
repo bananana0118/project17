@@ -106,6 +106,7 @@
     left: 35%;
     width: 30vw;
     background-color: #fff;
+    animation: modalAppear 0.5s;
 }
 
 .basket-add .header {
@@ -157,6 +158,36 @@
 .stay-here:hover {
     color: white;
     background-color: black;
+}
+
+@keyframes modalAppear {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* footer */
+footer {
+    margin: 0 auto;
+    margin-top: 5vh;
+    padding-top: 5vh;
+    border-top: 1px solid rgba(0, 0, 0, 0.081);
+    display: flex;
+    justify-content: space-between;
+    height: 20vh;
+    width: 70%;
+}
+
+.footer-col:first-child span {
+    font-size: 2rem;
 }
 
 /* media query */
