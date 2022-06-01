@@ -100,7 +100,7 @@ productRouter.post("/addproduct", upload.array("image"), async (req, res) => {
 
     const productName = req.body.productname;
     const productPrice = parseInt(req.body.productprice);
-    // const productCategory = req.body.category;
+    const productCategory = parseInt(req.body.category);
     const productDescription = req.body.productdescription;
     const productSize = req.body.productsize;
     const productManufacturer = req.body.productmanufacturer;
@@ -116,7 +116,7 @@ productRouter.post("/addproduct", upload.array("image"), async (req, res) => {
     const newProduct = await productService.addProduct({
         productName,
         productPrice,
-        // productCategory,
+        productCategory,
         productDescription,
         productSize,
         productManufacturer,
@@ -152,7 +152,7 @@ productRouter.get("/get/:productNo", async function (req, res, next) {
 });
 
 productRouter.get(
-    "/get/:productCategoryNumber",
+    "/get/category/:productCategoryNumber",
     async function (req, res, next) {
         try {
             // 특정 상품 데이터를 얻음
