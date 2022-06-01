@@ -35,7 +35,7 @@ profileRouter.patch("/edit", loginRequired, async function (req, res, next) {
         const address = req.body.address;
         const phoneNumber = req.body.phoneNumber;
         const role = req.role;
-        console.log(role);
+
         // body data로부터, 확인용으로 사용할 현재 비밀번호를 추출함.
         const currentPassword = req.body.currentPassword;
 
@@ -73,7 +73,19 @@ profileRouter.patch("/edit", loginRequired, async function (req, res, next) {
 
 profileRouter.delete("/quit", loginRequired, async function (req, res, next) {
     try {
+        //** 현재의 비밀번호가 일치할때 탈퇴 가능하게  */
         const userId = req.currentUserId;
+        const user = userService.getUser(userId);
+
+        const userInfo = { email: user.email, password: user.password };
+        const token = userService.getUserToken(userInfo);
+
+        //token이 없다면
+        if (!token) {
+            console.log("이메일 또는 비밀번호를 확인해주세요.");
+            return;
+        }
+
         const deletedUser = await userService.deleteUser(userId);
         console.log(deletedUser);
         res.status(200);

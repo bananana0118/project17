@@ -63,7 +63,7 @@ orderRouter.post(
     }
 );
 
-//1. 유저의 주문 내역 보기
+//4.
 orderRouter.get("/myOrder", loginRequired, async (req, res, next) => {
     try {
         const userId = req.currentUserId;

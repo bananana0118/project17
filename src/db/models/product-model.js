@@ -23,11 +23,16 @@ export class ProductModel {
         const products = await Product.find({
             productCategory: productCategory,
         });
-    return products;
-}
+        return products;
+    }
 
     async findByName() {
         const product = await Product.findOne({ productName: name });
+        return product;
+    }
+
+    async findById(productId) {
+        const product = await Product.findOne({ _id: productId });
         return product;
     }
 
