@@ -1,3 +1,5 @@
+import * as Api from '/api.js';
+
 /**
  * Template literal을 사용하여 생성된 html 반환
  * @param { 장바구니아이템 } item 
@@ -39,12 +41,16 @@
 
 export const createOrderItem = (item) => {
     const div = document.createElement('div');
+    console.log(item)
+    const date = new Date(item.createdAt);
+    const style = item.status === "배송 준비 중" ? "color: blue" : "color:red"
     const html = `
         <div class="manage-info">
-            <div id="data-info">${item.createAt}</div>
-            <div id="order-info"></div>
-            <div id="order-state-info"></div>
-            <button id="state-change-btn"></button>
+            <div id="data-info">${date.toLocaleString()}</div>
+            <div id="order-info">${item.orderProduct[0].productName} 외 ${item.orderProduct.length -1}종</div>
+            <div id="user-name">${item.userId.email}</div>
+            <div id="order-state-info" style="${style}">${item.status}</div>
+            <button id="state-change-btn" >상태 변경</button>
         </div>
     `
     div.innerHTML = html;

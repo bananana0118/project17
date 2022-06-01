@@ -28,6 +28,7 @@ ul {
     margin: 0 auto;
     margin-top: 100px;   
     text-align: center;
+    min-width: 750px;
 }
 
 #header-text {
@@ -50,20 +51,25 @@ ul {
 }
 
 #order-info {
-    width: 50%;
+    width: 40%;
+}
+
+#user-name{
+    width: 20%;
 }
 
 #order-state-info,
 #order-application-info{
-    width: 15%;
+    width: 10%;
 }
 
 #state-change-btn {
-    width: 15%;
+    width: 10%;
     background: transparent;
     border: none;
     font-weight: bold;
     transition: ease 0.5s;
+    font-size: 10px;
 }
 
 #state-change-btn:hover {
@@ -81,6 +87,7 @@ ul {
 .manage-info {
     display: flex;
     border-bottom: 1px solid #000;
+    align-items: center;
     padding: 10px 0px;
     font-size: 12px;
 }
