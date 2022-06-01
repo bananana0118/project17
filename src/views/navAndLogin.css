@@ -162,14 +162,10 @@ ul {
 /* footer  */
 footer {
     margin: 0 auto;
-    margin-top: 5vh;
-    padding: 0 0.7em;
-    padding-top: 5vh;
+    margin-top: 4em;
+    padding: 1em 0;
     border-top: 1px solid rgba(0, 0, 0, 0.081);
-    display: flex;
-    justify-content: space-between;
-    height: 20vh;
-    width: 70%;
+    width: 90%;
 }
 
 .footer-brandName {
@@ -185,7 +181,7 @@ footer {
 }
 
 /* nav media query */
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
     html {
         font-size: 10px;
     }

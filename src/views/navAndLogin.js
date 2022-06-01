@@ -9,11 +9,12 @@ import { validateEmail } from "/useful-functions.js";
 function navBarCreate() {
     const nav = document.querySelector("nav");
     const loginModal = document.querySelector(".loginModal");
+    const footer = document.querySelector("footer");
 
     nav.innerHTML = `<div class="navBar-container">
                         <a href="/" class="nav-brand">
                             <!-- 로고 이미지 추가 시 추가 작성-->
-                            <span class="nav-brand_name">Grada</span>
+                            <span class="nav-brand_name">Project17</span>
                         </a>
                         <ul class="nav-category">
                             <li class="nav-category_list"><a href="#">new</a></li>
@@ -93,6 +94,12 @@ function navBarCreate() {
                                     </form>
                                 </div>
                             </div>`;
+
+    footer.innerHTML = `<div class="footer-col">
+                            <div class="footer-brandName" style="margin-right:1rem;">Project17</div>
+                            <div class="footer-slogan">/SIMPLE IS BEST/</div>
+                            <div class="footer-contributor">Contributed By @강예정 @김동철 @이용준 @조희승 @심주용</div>
+                        </div>`;
 }
 
 //navBar component 분리

@@ -161,28 +161,6 @@
 
 /* media query */
 @media screen and (max-width: 900px) {
-    html {
-        font-size: 10px;
-    }
-
-    footer {
-        width: 90%;
-    }
-
-    .navBar-container {
-        margin: 0;
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .nav-category {
-        visibility: hidden;
-    }
-
-    .nav-menu .count {
-        margin-top: 0.02vh;
-    }
-
     .main-image img {
         width: 100%;
         margin: 5vh 50%;

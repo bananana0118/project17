@@ -191,29 +191,12 @@
     align-items: center;
 }
 
-/* footer  */
-footer {
-    margin: 0 auto;
-    margin-top: 5vh;
-    padding-top: 5vh;
-    border-top: 1px solid rgba(0, 0, 0, 0.081);
-    display: flex;
-    justify-content: space-between;
-    height: 20vh;
-    width: 70%;
-}
-
-.footer-col:first-child span {
-    font-size: 2rem;
-}
-
 /* media query */
 @media screen and (max-width: 900px) {
     .magazine {
         margin-top: 4vh;
     }
     .product-container {
-        margin-top: 100%;
         margin-left: 5%;
     }
     .product-item_imgCover {
