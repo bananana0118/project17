@@ -139,9 +139,6 @@ const renderPage = (cartItems) => {
 }
 
 const load = async (cartItems) => {
-    // cartItems = await Api.get('/product/productlist');
-    const data = await Api.get('/api/product/productlist');
-    console.log(data);
     renderPage(cartItems);
 }
 

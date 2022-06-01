@@ -37,3 +37,16 @@
     return li
 }
 
+export const createOrderItem = (item) => {
+    const div = document.createElement('div');
+    const html = `
+        <div class="manage-info">
+            <div id="data-info">${item.createAt}</div>
+            <div id="order-info"></div>
+            <div id="order-state-info"></div>
+            <button id="state-change-btn"></button>
+        </div>
+    `
+    div.innerHTML = html;
+    return div
+}
