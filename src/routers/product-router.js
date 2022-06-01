@@ -127,7 +127,6 @@ productRouter.post("/addproduct", upload.array("image"), async (req, res) => {
 
 productRouter.get("/productlist", async function (req, res, next) {
     try {
-
         // 전체 상품 목록을 얻음
         const products = await productService.getProducts();
 
@@ -138,7 +137,6 @@ productRouter.get("/productlist", async function (req, res, next) {
         next(error);
     }
 });
-
 
 productRouter.get("/get/:productNo", async function (req, res, next) {
     try {
@@ -153,10 +151,29 @@ productRouter.get("/get/:productNo", async function (req, res, next) {
     }
 });
 
+productRouter.get(
+    "/get/:productCategoryNumber",
+    async function (req, res, next) {
+        try {
+            // 특정 상품 데이터를 얻음
+            const productCategoryNo = parseInt(
+                req.params.productCategoryNumber
+            );
+            const products = await productService.getProductByCategory(
+                productCategoryNo
+            );
+
+            // 사용자 목록(배열)을 JSON 형태로 프론트에 보냄
+            res.status(200).json(products);
+        } catch (error) {
+            next(error);
+        }
+    }
+);
+
 // 상품 정보 수정
 // (예를 들어 /api/users/abc12345 로 요청하면 req.params.userId는 'abc12345' 문자열로 됨)
 productRouter.patch("/patch/:productNo", async function (req, res, next) {
-
     try {
         // content-type 을 application/json 로 프론트에서
         // 설정 안 하고 요청하면, body가 비어 있게 됨.
@@ -191,12 +208,10 @@ productRouter.patch("/patch/:productNo", async function (req, res, next) {
 
         // 상품 정보를 업데이트함.
 
-
         const updatedProductInfo = await productService.setProduct(
             productNo,
             toUpdate
         );
-
 
         // 업데이트 이후의 유저 데이터를 프론트에 보내 줌
         res.status(200).json(updatedProductInfo);
@@ -206,7 +221,6 @@ productRouter.patch("/patch/:productNo", async function (req, res, next) {
 });
 
 productRouter.delete("/delete/:productNo", async (req, res) => {
-
     try {
         // content-type 을 application/json 로 프론트에서
         // 설정 안 하고 요청하면, body가 비어 있게 됨.
