@@ -295,15 +295,21 @@ loginCheckAppear();
 
 // 장바구니 아이콘 아이템 수
 var count = 0;
-let cartItems = !JSON.parse(localStorage.getItem('cart')) ? [] : JSON.parse(localStorage.getItem('cart'));
+export const loadCartItem = () => {
+    count = 0
+    let cartItems = !JSON.parse(localStorage.getItem('cart')) ? [] : JSON.parse(localStorage.getItem('cart'));
 
-if (cartItems === []) {
-    count = 0;
-} else {
-    for (let i = 0; i < cartItems.length; i++) {
-        count += Number(cartItems[i].productQuantity);
+    if (cartItems === []) {
+        count = 0;
+    } else {
+        for (let i = 0; i < cartItems.length; i++) {
+            count += Number(cartItems[i].productQuantity);
+        }
     }
+    const addShoppingCart = document.querySelector(".count");
+    addShoppingCart.innerHTML = `<span>${count}</span>`;
 }
 
-const addShoppingCart = document.querySelector(".count");
-addShoppingCart.innerHTML = `<span>${count}</span>`;
+loadCartItem();
+
+
