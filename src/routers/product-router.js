@@ -100,7 +100,7 @@ productRouter.post("/addproduct", upload.array("image"), async (req, res) => {
 
     const productName = req.body.productname;
     const productPrice = parseInt(req.body.productprice);
-    // const productCategory = req.body.category;
+    const productCategory = parseInt(req.body.category);
     const productDescription = req.body.productdescription;
     const productSize = req.body.productsize;
     const productManufacturer = req.body.productmanufacturer;
@@ -116,7 +116,7 @@ productRouter.post("/addproduct", upload.array("image"), async (req, res) => {
     const newProduct = await productService.addProduct({
         productName,
         productPrice,
-        // productCategory,
+        productCategory,
         productDescription,
         productSize,
         productManufacturer,
@@ -152,6 +152,27 @@ productRouter.get("/get/:productNo", async function (req, res, next) {
         next(error);
     }
 });
+
+productRouter.get(
+    "/get/category/:productCategoryNumber",
+    async function (req, res, next) {
+        try {
+            // 특정 상품 데이터를 얻음
+            const productCategoryNo = parseInt(
+                req.params.productCategoryNumber
+            );
+            const products = await productService.getProductByCategory(
+                productCategoryNo
+            );
+
+            // 사용자 목록(배열)을 JSON 형태로 프론트에 보냄
+            res.status(200).json(products);
+        } catch (error) {
+            next(error);
+        }
+    }
+);
+
 
 // 상품 정보 수정
 // (예를 들어 /api/users/abc12345 로 요청하면 req.params.userId는 'abc12345' 문자열로 됨)
