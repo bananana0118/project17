@@ -67,6 +67,23 @@ ul {
     vertical-align: baseline;
 }
 
+.nav-menu .count {
+    position: absolute;
+    margin-top: 0.6vh;
+    margin-left: -1em;
+}
+
+.nav-menu .count span {
+    display: block;
+    padding: 0 0.3vw;
+    height: 15px;
+    line-height: 15px;
+    font-size: 1px;
+    color: #fff;
+    background: #222;
+    border-radius: 50%;
+}
+
 /* section */
 .section {
     width: 80%;
@@ -81,18 +98,18 @@ ul {
     float: left;
 }
 
-.main-image img{
+.main-image img {
     width: 55%;
     height: auto;
-    margin: 20vh 0 20vh 30vh;
+    margin: 20vh 20vw;
 }
 
 .image-info {
     width: 30%;
     float: left;
-    margin: 6.8em 1em;
-    font-size: 1.3em;
-    line-height: 1.9em;
+    margin: 20vh 0;
+    font-size: 1.2vw;
+    line-height: 4vh;
 }
 
 .image-info .price {
@@ -101,30 +118,31 @@ ul {
 }
 
 .image-info .description {
-    font-size: 0.8em;
+    font-size: 1vw;
     color: rgba(0, 0, 0, 0.5)
 }
 
 .image-info .description .delivery-info {
-    font-size: 0.7em;
-    line-height: 1.7em;
+    font-size: 0.8vw;
+    line-height: 2.2vh;
     margin-bottom: 2em;
 }
 
+.image-info .quantity,
 .image-info .size {
-    font-size: 0.8em;
+    font-size: 0.8vw;
+    line-height: 4vh;
 }
 
+.image-info .quantity-option,
 .image-info .size-option {
     width: 30vw;
-    font-size: 0.8em;
-    font-weight: 400;
-    line-height: 1.5;
+    font-size: 1vw;
 
     color: #444;
     background-color: #fff;
 
-    padding: 0.6em 1.4em 0.5em 0.8em;
+    padding: 0.3em 1.4em;
     margin: 0;
 
     border: 1px solid #aaa;
@@ -134,37 +152,97 @@ ul {
 
 .image-info .cart {
     border: none;
-    width: 45%;
-    height: 6vh;
+    width: 13.3vw;
+    height: 5vh;
     background: linear-gradient(90deg,
             rgba(129, 230, 217, 1) 0%,
             rgba(79, 209, 197, 1) 100%);
     border-radius: 5em;
     color: darkslategray;
     cursor: pointer;
-    box-shadow: 1em 1em 2em rgba(79, 209, 197, 0.64);
+    box-shadow: 1vh 1vh 2vh rgba(79, 209, 197, 0.64);
     font-weight: 700;
     transition: 0.3s;
-    margin: 0.5em;
+    margin: 0.5vw;
 }
 
 .image-info .buy {
     border: none;
-    width: 45%;
-    height: 6vh;
+    width: 13.3vw;
+    height: 5vh;
     background: linear-gradient(90deg,
             rgba(129, 230, 217, 1) 0%,
             rgba(79, 209, 197, 1) 100%);
     border-radius: 5em;
     color: darkslategray;
     cursor: pointer;
-    box-shadow: 1em 1em 2em rgba(79, 209, 197, 0.64);
+    box-shadow: 1vh 1vh 2vh rgba(79, 209, 197, 0.64);
     font-weight: 700;
     transition: 0.3s;
-    margin: 0.5em;
+    margin: 0.5vw;
 }
 
-/* footer  */
+/* Cart Popup */
+.basket-add {
+    position: fixed;
+    top: 35%;
+    left: 35%;
+    width: 30vw;
+    background-color: #fff;
+}
+
+.basket-add .header {
+    padding: 0.2em 1em;
+    color: #fff;
+    background: #8c8c8c;
+    display: flex;
+    justify-content: space-between;
+}
+
+.basket-add .header h3 {
+    padding: 0.3em;
+    font-size: 1em;
+}
+
+.basket-add .header .close {
+    padding: 0.3em 0;
+    font-size: 1.2em;
+    background: #8c8c8c;
+    border: none;
+    color: #fff;
+}
+
+.basket-add .content {
+    padding: 10vh 2vw 6vh;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.basket-add .base-button {
+    padding: 1vw;
+    text-align: center;
+    margin-bottom: 1em;
+    font-size: 1vw;
+}
+
+.move-to-cart,
+.stay-here {
+    width: 9vw;
+    word-break: keep-all;
+    word-wrap: break-word;
+    margin: 1em;
+    padding: 0.5em 1em;
+    border: 1px solid black;
+}
+
+.move-to-cart:hover,
+.stay-here:hover {
+    color: white;
+    background-color: black;
+}
+
+/* footer */
 footer {
     margin: 0 auto;
     margin-top: 5vh;
@@ -201,26 +279,35 @@ footer {
         visibility: hidden;
     }
 
+    .nav-menu .count {
+        margin-top: 0.02vh;
+    }
+
     .main-image img {
         width: 100%;
-        margin-top: 5vh;
-        margin-bottom: 5vh;
+        margin: 5vh 50%;
     }
 
     .image-info {
         width: 50%;
-        margin: 0 30vh;
-    }
-
-    .image-info .size-option {
-        width: 45vw;
-        font-size: 0.8em;
+        margin: 0 25%;
     }
 
     .image-info .cart,
     .image-info .buy {
         margin-bottom: 3em;
-        width: 42%;
-        height: 3.5em;
+        width: 20vw;
+        height: 5vh;
+    }
+
+    .basket-add {
+        left: 30%;
+        width: 40vw;
+    }
+
+    .basket-add .base-button {
+        text-align: center;
+        margin-bottom: 4em;
+        font-size: 0.1vw;
     }
 }

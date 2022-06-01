@@ -1,24 +1,23 @@
 import { Router } from "express";
 import is from "@sindresorhus/is";
 // 폴더에서 import하면, 자동으로 폴더의 index.js에서 가져옴
-import { loginRequired, adminRequired } from "../middlewares";
+import { loginRequired } from "../middlewares";
 import { userService, productService } from "../services";
 import { productModel, userModel } from "../db";
 
 const profileRouter = Router();
 
-//사용자 정보 가져오기
-//이메일에 맞는유저정보를 불러와서 반환함
-profileRouter.get("/:email", async (req, res) => {
-  const userEmail = req.params.email;
-  const user = await userService.getUser(userEmail);
+//GET: 사용자 정보 가져오기
+//loginRequired 를 통해 userId를 받아온 후, user의 정보를 가져옴
+profileRouter.get("/myProfile", loginRequired, async function (req, res) {
+  const userId = req.currentUserId;
+  const user = await userService.getUser(userId);
 
-  res.send(user);
-  console.log("유저정보를 전송했습니다..");
+  res.status(200).json(user);
 });
 
-//사용자 정보 수정
-profileRouter.patch("/:email", loginRequired, async function (req, res, next) {
+//PATCH : 사용자 정보 변경하기
+profileRouter.patch("/edit", loginRequired, async function (req, res) {
   try {
     // content-type 을 application/json 로 프론트에서
     // 설정 안 하고 요청하면, body가 비어 있게 됨.
@@ -29,17 +28,16 @@ profileRouter.patch("/:email", loginRequired, async function (req, res, next) {
     }
 
     // params로부터 id를 가져옴
-    const userId = req.params.email;
+    const userId = req.currentUserId;
 
     // body data 로부터 업데이트할 사용자 정보를 추출함.
-    const fullName = req.body.fullName; //이름
-    const password = req.body.password; //비밀번호
-    const address = req.body.address; //주소
-    const phoneNumber = req.body.phoneNumber; //핸드폰번호
+    const fullName = req.body.fullName;
+    const password = req.body.password;
+    const address = req.body.address;
+    const phoneNumber = req.body.phoneNumber;
 
     // body data로부터, 확인용으로 사용할 현재 비밀번호를 추출함.
     const currentPassword = req.body.currentPassword;
-    //currentPassword 는 확인용 변경
 
     // currentPassword 없을 시, 진행 불가
     if (!currentPassword) {
@@ -55,39 +53,26 @@ profileRouter.patch("/:email", loginRequired, async function (req, res, next) {
       ...(password && { password }),
       ...(address && { address }),
       ...(phoneNumber && { phoneNumber }),
+      ...(role && { role }),
     };
 
     // 사용자 정보를 업데이트함.
-    const updatedUserInfo = await userService.setUser(
-      userInfoRequired,
-      toUpdate
-    );
 
     // 업데이트 이후의 유저 데이터를 프론트에 보내 줌
-    res.status(200).json(updatedUserInfo);
+    const updatedUser = await userService.setUser(userInfoRequired, toUpdate);
+
+    res.status(200).json(updatedUser);
   } catch (error) {
     next(error);
   }
 });
+//DELETE : 탈퇴하기
+profileRouter.delete("/quit", loginRequired, async function (req, res) {
+  const userId = req.currentUserId;
 
-profileRouter.delete("/:email", async (req, res) => {
-  try {
-    // content-type 을 application/json 로 프론트에서
-    // 설정 안 하고 요청하면, body가 비어 있게 됨.
-    if (is.emptyObject(req.body)) {
-      throw new Error(
-        "headers의 Content-Type을 application/json으로 설정해주세요"
-      );
-    }
-    const userEmail = req.params.email;
-    const password = req.body.password;
-    
-    userService.delete({ userEmail, password });
-    
-    res.status(200).json(deleteProductInfo);
-  } catch (error) {
-    next(error);
-  }
+  const deletedUser = await userService.deleteUser(userId);
+  console.log(deletedUser);
+  res.status(200).json(deletedUser);
 });
 
 export { profileRouter };
