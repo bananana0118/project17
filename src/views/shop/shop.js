@@ -1,3 +1,5 @@
+import * as Api from "/api.js";
+import { addCommas } from "../useful-functions.js";
 
 /* 초기화 initView(ul엘리먼트의 id, 최초 보여지는 li 엘리먼트 갯수, display 값) */
 function initView(el_id, view_item_count, style) {
@@ -87,28 +89,66 @@ imgArray[14] = "https://images.unsplash.com/photo-1551854838-212c50b4c184?crop=e
 imgArray[15] = "https://images.unsplash.com/photo-1638394440667-aa54a7c0a703?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
 
 
-const imgNum = []
-for (let i = 0; i < 8; i++) {
-    imgNum.push(i * 2);
-}
+// const imgNum = []
+// for (let i = 0; i < 8; i++) {
+//     imgNum.push(i * 2);
+// }
 
-function showImage() {  
-    const objImg = document.getElementsByClassName("introimg");
+// function showImage() {  
+//     const objImg = document.getElementsByClassName("introimg");
 
-    for (let i = 0; i < 8; i++) {
-        objImg[i].src = imgArray[imgNum[i]];
-        imgNum[i] += 1;
-    }
+//     for (let i = 0; i < 8; i++) {
+//         objImg[i].src = imgArray[imgNum[i]];
+//         imgNum[i] += 1;
+//     }
 
-    if (imgNum[0] > 1) {
-        for (let i = 0; i < 8; i++) {
-            imgNum[i] = i * 2;
-        }
-    }
+//     if (imgNum[0] > 1) {
+//         for (let i = 0; i < 8; i++) {
+//             imgNum[i] = i * 2;
+//         }
+//     }
 
-    setTimeout(showImage, 2000);
-}
+//     setTimeout(showImage, 2000);
+// }
 
-window.onload = showImage();
+// window.onload = showImage();
 
 // 상품 이름, 가격, 할인 가격 불러오기
+async function handleProductList() {
+    const productList = await Api.get("/api/product/productlist");
+    console.log(productList);
+    productList.forEach(function (product) {
+        const {
+            productNo,
+            productName,
+            productPrice,
+            productCategory,
+            productDescription,
+            productSize,
+            productManufacturer,
+            productImg
+        } = product;
+        
+        const productSalePrice = productPrice * 0.9;
+
+        const itemBox = document.querySelector(".item-box");
+        itemBox.innerHTML += `<li class="item" id="item-1">
+                                <div class="thumbnail">
+                                    <a href="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387">
+                                        <img class="introimg">
+                                        <div class="white_cover"> </div>
+                                    </a>
+                                </div>
+                                <div class="description">
+                                    <strong class="name">${productName}</strong>
+                                    <ul class="product-description">
+                                        <li class="price">원가 : KRW ${productPrice}</li>
+                                        <li class="sale">할인가 : KRW ${productSalePrice}</li>
+                                    </ul>
+                                </div>
+                            </li>`
+    })
+    
+}
+
+await handleProductList();
