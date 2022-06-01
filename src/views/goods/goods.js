@@ -78,7 +78,7 @@ window.onload = async function() {
                 productImg
             };
 
-           
+
             //추후 id로 변경
             if (cartItems.find(x => x._id === itemData._id && x.productSize === itemData.productSize)) {
                 var confirm = window.confirm(`장바구니에 동일한 상품이 있습니다. \n장바구니로 이동하시겠어요?`);
@@ -115,7 +115,7 @@ window.onload = async function() {
     function showImage() {
         const objImg = document.querySelector(".image-image");
         objImg.src = productImg[0];
-        
+
         setInterval(() => {
             objImg.src = productImg[1];
         }, 2000);

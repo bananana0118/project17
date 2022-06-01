@@ -15,57 +15,57 @@ async function initView(el_id, view_item_count, style) {
     }
 }
 
-/* 목록 이동 moveList(이동시킬방향 prev 또는 next, 이동시킬 ul 엘리먼트의 id, 보여질 목록 갯수, 이동시킬 갯수, display 값) */
-async function moveList(direction, el_id, view_item_count, scroll_count, style) {
-    var menu = document.getElementById(el_id);
-    var menu_list = menu.getElementsByClassName('item');
-    console.log(menu_list);
-    var menu_count = menu_list.length;
-    var start_no = 0;
-    style = (typeof (style) != 'undefined') ? style : 'block';
+// /* 목록 이동 moveList(이동시킬방향 prev 또는 next, 이동시킬 ul 엘리먼트의 id, 보여질 목록 갯수, 이동시킬 갯수, display 값) */
+// async function moveList(direction, el_id, view_item_count, scroll_count, style) {
+//     var menu = document.getElementById(el_id);
+//     var menu_list = menu.getElementsByClassName('item');
+//     console.log(menu_list);
+//     var menu_count = menu_list.length;
+//     var start_no = 0;
+//     style = (typeof (style) != 'undefined') ? style : 'block';
     
-    // 현재 보여지고 있는 엘리먼트의 시작을 확인    
-    for (var i = 0; i < menu_count; i++){
-        if (menu_list[i].style.display == style) {
-            start_no = i; break;
-        }
-    }
+//     // 현재 보여지고 있는 엘리먼트의 시작을 확인    
+//     for (var i = 0; i < menu_count; i++){
+//         if (menu_list[i].style.display == style) {
+//             start_no = i; break;
+//         }
+//     }
 
-    // 방향에 따른 이동    
-    if (direction == 'next') {
-        if (menu_list[menu_count - 1].style.display == style)
-            return false;
-        else {
-            for (var i = 0; i < menu_count; i++){
-                if (i >= start_no + scroll_count && i < start_no + scroll_count + view_item_count) {
-                    menu_list[i].style.display = style;
-                } else {
-                    menu_list[i].style.display = 'none';
-                }
-            }
-        }
-    } else if (direction == 'prev') {
-        if (menu_list[0].style.display == style)
-            return false;
-        else {
-            for (var i = 0; i < menu_count; i++){
-                if (i >= start_no - scroll_count && i < start_no - scroll_count + view_item_count) {
-                    menu_list[i].style.display = style;
-                } else {
-                    menu_list[i].style.display = 'none';
-                }
-            }
-        }
-    }
-}
+//     // 방향에 따른 이동    
+//     if (direction == 'next') {
+//         if (menu_list[menu_count - 1].style.display == style)
+//             return false;
+//         else {
+//             for (var i = 0; i < menu_count; i++){
+//                 if (i >= start_no + scroll_count && i < start_no + scroll_count + view_item_count) {
+//                     menu_list[i].style.display = style;
+//                 } else {
+//                     menu_list[i].style.display = 'none';
+//                 }
+//             }
+//         }
+//     } else if (direction == 'prev') {
+//         if (menu_list[0].style.display == style)
+//             return false;
+//         else {
+//             for (var i = 0; i < menu_count; i++){
+//                 if (i >= start_no - scroll_count && i < start_no - scroll_count + view_item_count) {
+//                     menu_list[i].style.display = style;
+//                 } else {
+//                     menu_list[i].style.display = 'none';
+//                 }
+//             }
+//         }
+//     }
+// }
 
 // 8개씩 출력
-initView('ul', 1);
+initView('ul', 24);
 const prevBtn = document.querySelector(".prev");
 const nextBtn = document.querySelector(".next");
 
-prevBtn.addEventListener("click", moveList('prev', 'ul', 4, 1, 'inline'));
-nextBtn.addEventListener("click", moveList('next', 'ul', 4, 1, 'inline'));
+//prevBtn.addEventListener("click", moveList('prev', 'ul', 4, 1, 'inline'));
+//nextBtn.addEventListener("click", moveList('next', 'ul', 4, 1, 'inline'));
 
 // 상품 이름, 가격, 할인 가격 불러오기
 async function handleProductList() {
@@ -89,7 +89,7 @@ async function handleProductList() {
         itemBox.innerHTML += `<li class="item" id="item-1">
                                 <div class="thumbnail">
                                     <a href="">
-                                        <img class="introimg" src="${productImg[0]}">
+                                        <img class="introimg" src="">
                                         <div class="white_cover"> </div>
                                     </a>
                                 </div>
@@ -106,30 +106,24 @@ async function handleProductList() {
     });
 
     // 이미지 슬라이드
-    // const imgNum = [0, 1, 2, 3, 4, 5, 6, 7];
+    async function showImage() {
+        const imgArray = productList.map(el => el.productImg);
+        const objImg = document.getElementsByClassName("introimg");
 
-    // async function showImage() {
-    //     const imgArray = productList.map(el => el.productImg);
-    //     console.log(imgArray);
-    //     const objImg = document.getElementsByClassName("introimg");
+        for (let i = 0; i < imgArray.length; i++) {
+            objImg[i].src = imgArray[i][0];
+        }
 
-    //     for (let i = 0; i < 8; i++) {
-    //         for (let j = 0; j < 2; j++){
-    //             objImg[i].src = imgArray[i][j];
-    //             console.log(objImg[i].src);
-    //         }
-    //     }
+        setInterval(() => {
+            for (let i = 0; i < imgArray.length; i++) {
+                objImg[i].src = imgArray[i][1];
+            }
+        }, 2000);
 
-    //     if (imgNum[0] > 1) {
-    //         for (let i = 0; i < 8; i++) {
-    //             imgNum[i] = i;
-    //         }
-    //     }
+        setTimeout(showImage, 4000);
+    }
 
-    //     setTimeout(showImage, 2000);
-    // }
-
-    // showImage();
+    showImage();
 }
 
 await handleProductList();
