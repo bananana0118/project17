@@ -29,6 +29,11 @@ export class ProductModel {
         return product;
     }
 
+    async findById(productId) {
+        const product = await Product.findOne({ _id: productId });
+        return product;
+    }
+
     async update({ productNo, update }) {
         const filter = { no: productNo };
         const option = { returnOriginal: false };

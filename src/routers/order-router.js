@@ -50,16 +50,17 @@ orderRouter.post(
     loginRequired,
     cartOrdered,
     async (req, res, next) => {
-        // const cartData = req.body;
-        // const userId = req.currentUserId;
-        // let cartProductId = [];
-        // for (let i = 0; i < cartData.length; i++) {
-        //     cartProductId.push(cartData[i]._id);
-        // }
-        console.log(req.orderInfo);
+        const { address, phoneNumber, totalPrice } = req.body;
+        const orderInfo = req.orderInfo;
+
+        orderInfo.address = address;
+        orderInfo.phoneNumber = phoneNumber;
+        orderInfo.totalPrice = totalPrice;
+
+        console.log(orderInfo);
         const myOrder = await orderModel.create(orderInfo);
 
-        res.status(200);
+        res.status(200).json(myOrder);
     }
 );
 

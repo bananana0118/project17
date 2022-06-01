@@ -58,6 +58,11 @@ class ProductService {
 
         return products;
     }
+
+    async getProductById(productId) {
+        const product = await this.productModel.findById(productId);
+        return product;
+    }
 }
 
 const productService = new ProductService(productModel);

@@ -6,7 +6,7 @@ async function cartOrdered(req, res, next) {
     const user = await userService.getUser(userId);
 
     //prodjct id 가져오기
-    const cartData = req.body;
+    const cartData = req.cartData;
     let orderedProduct = [];
 
     for (let i = 0; i < cartData.length; i++) {
@@ -20,7 +20,7 @@ async function cartOrdered(req, res, next) {
         orderProduct: orderedProduct,
     };
 
-    req.orderInfo;
+    req.orderInfo = orderInfo;
     next();
 }
 
