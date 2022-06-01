@@ -5,50 +5,37 @@
 import * as Api from "/api.js";
 import { randomId } from "/useful-functions.js";
 
-// import { navBarCreate } from "../navBar.js";
+const mainSlides = document.querySelector(".main-slide_contents");
+const mainSlide = document.querySelectorAll(".main-slide_content");
 
-// navBarCreate();
+let currentSlide = 0;
 
-// const logoutBtn = document.querySelector("#logout");
-// const loginBtn = document.querySelector("#login");
-
-// function buttonAppear() {
-//     const token = sessionStorage.getItem("token");
-//     if (!token) {
-//         logoutBtn.style.display = "none";
-//         loginBtn.style.display = "block";
-//     } else if (token) {
-//         logoutBtn.style.display = "block";
-//         loginBtn.style.display = "none";
-//     }
-// }
-
-// function logout(e) {
-//     e.preventDefault();
-//     sessionStorage.removeItem("token");
-//     alert("정상적으로 로그아웃되었습니다.");
-//     buttonAppear();
-// }
-
-// logoutBtn.addEventListener("click", logout);
-// buttonAppear();
-
-// 요소(element), input 혹은 상수
-
-// addAllElements();
-// addAllEvents();
-
-// // html에 요소를 추가하는 함수들을 묶어주어서 코드를 깔끔하게 하는 역할임.
-// async function addAllElements() {
-//     insertTextToLanding();
-//     insertTextToGreeting();
-// }
-
-// // 여러 개의 addEventListener들을 묶어주어서 코드를 깔끔하게 하는 역할임.
-// function addAllEvents() {
-//     landingDiv.addEventListener("click", alertLandingText);
-//     greetingDiv.addEventListener("click", alertGreetingText);
-// }
+setInterval(function () {
+    let from;
+    let to;
+    if (matchMedia("screen and (max-width: 900px").matches) {
+        from = -(100 * currentSlide);
+        to = from - 100;
+    } else {
+        from = -(50 * currentSlide);
+        to = from - 50;
+    }
+    mainSlides.animate(
+        {
+            marginLeft: [from + "%", to + "%"],
+        },
+        {
+            duration: 1000,
+            iterations: 1,
+            easing: "ease",
+            fill: "both",
+        }
+    );
+    currentSlide++;
+    if (currentSlide === mainSlide.length - 2) {
+        currentSlide = 0;
+    }
+}, 2000);
 
 async function getDataFromApi() {
     // 예시 URI입니다. 현재 주어진 프로젝트 코드에는 없는 URI입니다.
