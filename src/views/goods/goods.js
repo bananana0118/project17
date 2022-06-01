@@ -1,9 +1,10 @@
 import * as Api from "/api.js";
 import { addCommas } from "../useful-functions.js";
+import {loadCartItem} from '../navAndLogin.js';
 
 window.onload = async function() {
     const product = await Api.get("/api/product/get/5");
-    console.log(product)
+    
     const {
             _id,
             productName,
@@ -14,7 +15,7 @@ window.onload = async function() {
             productManufacturer,
             productImg
     } = product;
-    console.log(_id)
+    
     const section = document.querySelector(".section");
     section.innerHTML = `<div class="main-image">
                             <img src="${productImg}">
@@ -83,6 +84,7 @@ window.onload = async function() {
                 var confirm = window.confirm(`장바구니에 동일한 상품이 있습니다. \n장바구니로 이동하시겠어요?`);
                 if (confirm === true) {
                     window.location.href ="/cart";
+                    return 
                 } else {
                     //아래 분기를 안타고 return
                     return
@@ -90,12 +92,11 @@ window.onload = async function() {
             }   
 
             // 최신 추가 아이템
-            localStorage.setItem("addCart", JSON.stringify(itemData));
-            cartItems.push(JSON.parse(localStorage.getItem("addCart")));
-
+            // localStorage.setItem("addCart", JSON.stringify(itemData));
+            // cartItems.push(JSON.parse(localStorage.getItem("addCart")));
+            cartItems.push(itemData)
             localStorage.setItem("cart", JSON.stringify(cartItems));
-            localStorage.removeItem("addCart");
-
+            loadCartItem();
             // 장바구니에 추가 되었다는 Modal
             basketAdd.style.display = "block";
 
