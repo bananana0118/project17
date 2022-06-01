@@ -130,6 +130,7 @@ function kakaoLogin() {
                     const password = "Q1W2E3R4T5Y7U8Z0K3ADN9";
 
                     // 이미 등록된 이메일인지 확인
+
                     const isEmail = await Api.post("/api/checkUser", { email });
                     const data = { email, fullName, password };
 
@@ -295,7 +296,9 @@ loginCheckAppear();
 
 // 장바구니 아이콘 아이템 수
 var count = 0;
-let cartItems = !JSON.parse(localStorage.getItem('cart')) ? [] : JSON.parse(localStorage.getItem('cart'));
+let cartItems = !JSON.parse(localStorage.getItem("cart"))
+    ? []
+    : JSON.parse(localStorage.getItem("cart"));
 
 if (cartItems === []) {
     count = 0;

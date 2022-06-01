@@ -48,6 +48,7 @@ userRouter.post("/register", async (req, res, next) => {
 // 로그인 api (아래는 /login 이지만, 실제로는 /api/login로 요청해야 함.)
 userRouter.post("/login", async function (req, res, next) {
     try {
+        console.log(req.body);
         // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.
         if (is.emptyObject(req.body)) {
             throw new Error(
@@ -150,6 +151,7 @@ userRouter.patch(
     }
 );
 
+// 같은 이메일 가입자가 있는지 체크
 userRouter.post("/checkUser", async (req, res, next) => {
     try {
         const userEmail = req.body.email;
