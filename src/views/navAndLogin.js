@@ -13,17 +13,17 @@ function navBarCreate() {
     nav.innerHTML = `<div class="navBar-container">
                         <a href="/" class="nav-brand">
                             <!-- 로고 이미지 추가 시 추가 작성-->
-                            <span class="nav-brand_name">Project17</span>
+                            <span class="nav-brand_name">Grada</span>
                         </a>
                         <ul class="nav-category">
                             <li class="nav-category_list"><a href="#">new</a></li>
-                            <li class="nav-category_list"><a href="/product">product</a></li>
-                            <li class="nav-category_list"><a href="/shop">shop</a></li>
+                            <li class="nav-category_list"><a href="/product">event</a></li>
+                            <li class="nav-category_list"><a href="/shop">product</a></li>
                             <li class="nav-category_list"><a href="#">about</a></li>
                         </ul>
                         <div class="nav-menu">
                             <a href="#">
-                                <i class="material-symbols-outlined nav-menu_icon">
+                                <i class="material-symbols-outlined nav-menu_icon search">
                                     search
                                 </i>
                             </a>

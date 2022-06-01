@@ -1,9 +1,13 @@
+/* noto-sans font */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
 /* 모든페이지에 적용되는 navBar, footer 분리 */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
 a {
@@ -151,6 +155,10 @@ ul {
     color: rgb(255, 56, 56);
 }
 
+.search {
+    display: none;
+}
+
 /* footer  */
 footer {
     margin: 0 auto;
@@ -164,12 +172,20 @@ footer {
     width: 70%;
 }
 
-.footer-col:first-child span {
+.footer-brandName {
     font-size: 2rem;
 }
 
+.footer-slogan {
+    font-size: 2rem;
+}
+.footer-contributor {
+    font-size: 1rem;
+    color: rgb(177, 177, 177);
+}
+
 /* nav media query */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 450px) {
     html {
         font-size: 10px;
     }
@@ -210,7 +226,7 @@ footer {
     align-items: center;
     justify-content: center;
     width: 450px;
-    height: 650px;
+    height: 600px;
     border-radius: 20px;
     background-color: #f8f8ff;
 }
@@ -229,13 +245,18 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin-top: 50px;
+    margin-top: 1em;
     height: 170px;
+}
+
+.login-form .submitBtns {
+    margin-top: 3em;
 }
 
 .login-form_input .register {
     text-align: end;
     font-size: 0.8rem;
+    margin-top: 3em;
 }
 
 .login-form_input input,
@@ -246,6 +267,10 @@ footer {
     padding: 0.5rem;
     border: none;
     border-radius: 3px;
+}
+
+.login-form_input input {
+    border: 1px solid rgb(235, 235, 235);
 }
 
 .submitBtns button {
@@ -318,7 +343,6 @@ footer {
     }
     .login-form_input,
     .login-form .submitBtns {
-        margin-top: 30px;
         height: 100px;
     }
 }

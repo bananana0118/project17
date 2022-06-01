@@ -12,9 +12,11 @@ const fullNameInput = document.querySelector("#fullNameInput");
 const emailInput = document.querySelector("#emailInput");
 const passwordInput = document.querySelector("#passwordInput");
 const passwordConfirmInput = document.querySelector("#passwordConfirmInput");
-const greeting = document.querySelector(".greetings");
+const greeting = document.querySelector(".greetings-name");
 const phoneNumberInput = document.querySelector("#phoneNumber");
-// const addressInput = document.querySelector("#address");
+const zipcodeInput = document.querySelector("#zipcode");
+const address1Input = document.querySelector("#input-address1");
+const address2Input = document.querySelector("#input-address2");
 
 // =================================================
 //GET: 사용자 정보가져오기
@@ -24,8 +26,13 @@ const getAcountInfo = async function () {
     const user = await Api.get("/api/profile/myProfile");
     fullNameInput.value = user.fullName;
     emailInput.value = user.email;
-    if (user.phoneNumber) phoneNumberInput.value = user.phoneNumber; // 이야기 해야함. 스키마 설정
-    greeting.innerHTML = `${user.fullName}님 환영합니다!`;
+    if (user.phoneNumber) phoneNumberInput.value = user.phoneNumber;
+    if (user.address) {
+        zipcodeInput.value = user.address.postalCode;
+        address1Input.value = user.address.address1;
+        address2Input.value = user.address.address2;
+    }
+    greeting.innerHTML = `${user.fullName}`;
 };
 
 // ================================================
@@ -39,7 +46,10 @@ const updateAccountInfo = async function (e) {
     const password = passwordInput.value;
     const passwordConfirm = passwordConfirmInput.value;
     const phoneNumber = phoneNumberInput.value;
-    // const address = addressInput.value;
+    const postalCode = zipcodeInput.value;
+    const address1 = address1Input.value;
+    const address2 = address2Input.value;
+    const address = { postalCode, address1, address2 };
 
     // 잘 입력했는지 확인
     const isFullNameValid = fullName.length >= 2;
@@ -75,6 +85,7 @@ const updateAccountInfo = async function (e) {
             password,
             passwordConfirm,
             phoneNumber,
+            address,
             currentPassword,
         };
         const userUpdate = await Api.patch("/api/profile/edit", "", data);
@@ -94,11 +105,16 @@ const deleteAccount = async function (e) {
     e.preventDefault();
     const confirm = window.confirm("정말 탈퇴하시나요?");
     if (confirm) {
-        const password = prompt("비밀번호를 입력해주세요");
-        await Api.delete("/api/profile/quit", "", { password: password });
-        alert("회원 탈퇴 완료");
-        sessionStorage.removeItem("token");
-        location.href = "/";
+        try {
+            const password = prompt("비밀번호를 입력해주세요");
+            await Api.delete("/api/profile/quit", "", { password: password });
+            alert("회원 탈퇴 완료");
+            sessionStorage.removeItem("token");
+            location.href = "/";
+        } catch (err) {
+            console.log(err.stack);
+            alert(`문제 : ${err.message}`);
+        }
     }
 };
 profileDelete.addEventListener("click", deleteAccount);
