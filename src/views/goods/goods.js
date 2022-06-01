@@ -3,10 +3,9 @@ import { addCommas } from "../useful-functions.js";
 
 window.onload = async function() {
     const product = await Api.get("/api/product/get/5");
-    console.log(product);
-
+    console.log(product)
     const {
-            productNo,
+            _id,
             productName,
             productPrice,
             productCategory,
@@ -15,7 +14,7 @@ window.onload = async function() {
             productManufacturer,
             productImg
     } = product;
-    
+    console.log(_id)
     const section = document.querySelector(".section");
     section.innerHTML = `<div class="main-image">
                             <img src="${productImg}">
@@ -70,7 +69,7 @@ window.onload = async function() {
             alert("필수 옵션을 선택해주세요.");
         } else {
             var itemData = {
-                productNo,
+                _id,
                 productName,
                 productPrice: Number(productPrice),
                 productSize: Number(sizeOption.value),
@@ -80,7 +79,7 @@ window.onload = async function() {
 
            
             //추후 id로 변경
-            if (cartItems.find(x => x.productNo === itemData.productNo && x.productSize === itemData.productSize)) {
+            if (cartItems.find(x => x._id === itemData._id && x.productSize === itemData.productSize)) {
                 var confirm = window.confirm(`장바구니에 동일한 상품이 있습니다. \n장바구니로 이동하시겠어요?`);
                 if (confirm === true) {
                     window.location.href ="/cart";
