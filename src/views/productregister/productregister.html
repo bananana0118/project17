@@ -22,7 +22,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
         rel="stylesheet"
     />
-    <link rel="stylesheet" href="../navAndLogin.css" />
+    <link rel="stylesheet" href="../navAndLogin.css">
     <script src="../navAndLogin.js" type="module" defer></script>
     <!-- 카카오 로그인 -->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -32,6 +32,10 @@
     <nav class="navBar" role="navigation" aria-label="main navigation">
         </div>
     </nav>
+    
+    <!-- login modal -->
+    <div class="loginModal">
+    </div>
 
     <div class="product-register-container">
         <span style="width:100%;font-size:14px;margin-bottom: 50px; text-align: center;">상품등록</span>
@@ -58,7 +62,7 @@
                     <span>판매가(KRW)</span>
                     <i class="fa-regular fa-circle-question"></i>
                     <div class="price-input-box">
-                        <span>$</span>
+                        <span>W</span>
                         <input id="product-price" type="text" placeholder="판매가격을 입력하세요." name="product-input">
                     </div>
                         <input type="checkbox" id="onSale">
@@ -69,7 +73,7 @@
                     <span>할인이전 가격(KRW)</span>
                     <i class="fa-regular fa-circle-question"></i>
                     <div class="price-input-box">
-                        <span>$</span>
+                        <span>W</span>
                         <input id="product-price" type="text" placeholder="할인이전가격을 입력하세요." name="product-input">
                     </div>
                 </div>
