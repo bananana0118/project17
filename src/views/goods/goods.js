@@ -1,34 +1,34 @@
 import * as Api from "/api.js";
 import { addCommas } from "../useful-functions.js";
 
-window.onload = async function() {
-    const product = await Api.get("/api/product/get/5");
+window.onload = async function () {
+    const product = await Api.get("/api/product/get/43");
     console.log(product);
 
     const {
-            productNo,
-            productName,
-            productPrice,
-            productCategory,
-            productDescription,
-            productSize,
-            productManufacturer,
-            productImg
+        productNo,
+        productName,
+        productPrice,
+        productCategory,
+        productDescription,
+        productSize,
+        productManufacturer,
+        productImg
     } = product;
-    
+
     const section = document.querySelector(".section");
     section.innerHTML = `<div class="main-image">
-                            <img src="${productImg}">
+                            <img src="${productImg[0]}">
                         </div>
                         <div class="image-info">
                             <ul>
                                 <li class="name">${productName}</li>
-                                <li class="price">KRW ${productPrice}</li>
+                                <li class="price">KRW ${addCommas(productPrice)}</li>
                                 <br>
                                 <hr>
                                 <li class="description">${productDescription}
                                     <div class="delivery-info">
-                                        구매혜택 ${productPrice * 0.01} 포인트 적립예정<br>
+                                        구매혜택 ${addCommas(productPrice * 0.01)} 포인트 적립예정<br>
                                         배송 방법 택배<br>
                                         배송비 3,500원 (30,000원 이상 무료배송)
                                     </div>
@@ -64,6 +64,8 @@ window.onload = async function() {
     cartBtn.addEventListener("click", addCart);
     closeBtn.addEventListener("click", closeCart);
     stayHereBtn.addEventListener("click", closeCart);
+    buyBtn.addEventListener("click", moveToBuy);
+    moveToCartBtn.addEventListener("click", moveToCart);
 
     function addCart() {
         if (sizeOption.value === "0") {
@@ -72,13 +74,16 @@ window.onload = async function() {
             var itemData = {
                 productNo,
                 productName,
+                productCategory,
+                productDescription,
                 productPrice: Number(productPrice),
                 productSize: Number(sizeOption.value),
                 productQuantity: Number(quantityOption.value),
+                productManufacturer,
                 productImg
             };
 
-           
+
             //추후 id로 변경
             if (cartItems.find(x => x.productNo === itemData.productNo && x.productSize === itemData.productSize)) {
                 var confirm = window.confirm(`장바구니에 동일한 상품이 있습니다. \n장바구니로 이동하시겠어요?`);
@@ -110,6 +115,33 @@ window.onload = async function() {
         e.preventDefault();
         basketAdd.style.display = "none";
         document.querySelector("section").style.opacity = 1;
+    }
+
+    function moveToCart(e) {
+        e.preventDefault();
+
+    }
+
+    function moveToBuy(e) {
+        if (sizeOption.value === "0") {
+            alert("필수 옵션을 선택해주세요.");
+        } else {
+            var itemData = {
+                productNo,
+                productName,
+                productCategory,
+                productDescription,
+                productPrice: Number(productPrice),
+                productSize: Number(sizeOption.value),
+                productQuantity: Number(quantityOption.value),
+                productManufacturer,
+                productImg
+            };
+
+            localStorage.setItem("buyItem", JSON.stringify(itemData));
+
+            window.location.href = "/payment";
+        }
     }
 }
 

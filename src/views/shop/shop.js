@@ -2,9 +2,9 @@ import * as Api from "/api.js";
 import { addCommas } from "../useful-functions.js";
 
 /* 초기화 initView(ul엘리먼트의 id, 최초 보여지는 li 엘리먼트 갯수, display 값) */
-function initView(el_id, view_item_count, style) {
+async function initView(el_id, view_item_count, style) {
     var menu = document.getElementById(el_id);
-    var menu_list = menu.getElementsByTagName('li');
+    var menu_list = menu.getElementsByClassName('item');
     var menu_count = menu_list.length;
     style = (typeof (style) != 'undefined') ? style : 'block';
     for (var i = 0; i < menu_count; i++){
@@ -16,9 +16,10 @@ function initView(el_id, view_item_count, style) {
 }
 
 /* 목록 이동 moveList(이동시킬방향 prev 또는 next, 이동시킬 ul 엘리먼트의 id, 보여질 목록 갯수, 이동시킬 갯수, display 값) */
-function moveList(direction, el_id, view_item_count, scroll_count, style) {
+async function moveList(direction, el_id, view_item_count, scroll_count, style) {
     var menu = document.getElementById(el_id);
-    var menu_list = menu.getElementsByClassName('thumbnail');
+    var menu_list = menu.getElementsByClassName('item');
+    console.log(menu_list);
     var menu_count = menu_list.length;
     var start_no = 0;
     style = (typeof (style) != 'undefined') ? style : 'block';
@@ -59,59 +60,12 @@ function moveList(direction, el_id, view_item_count, scroll_count, style) {
 }
 
 // 8개씩 출력
-initView('ul', 24);
+initView('ul', 1);
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
 
-
-// 이미지 슬라이드
-var imgArray = new Array();
-imgArray[0] = "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
-imgArray[1] = "https://images.unsplash.com/photo-1614251055880-ee96e4803393?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
-
-imgArray[2] = "https://images.unsplash.com/photo-1584865288642-42078afe6942?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80";
-imgArray[3] = "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687";
-
-imgArray[4] = "https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
-imgArray[5] = "https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
-
-imgArray[6] = "https://images.unsplash.com/photo-1551854838-212c50b4c184?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
-imgArray[7] = "https://images.unsplash.com/photo-1638394440667-aa54a7c0a703?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
-
-imgArray[8] = "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
-imgArray[9] = "https://images.unsplash.com/photo-1614251055880-ee96e4803393?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
-
-imgArray[10] = "https://images.unsplash.com/photo-1584865288642-42078afe6942?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80";
-imgArray[11] = "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687";
-
-imgArray[12] = "https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
-imgArray[13] = "https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
-
-imgArray[14] = "https://images.unsplash.com/photo-1551854838-212c50b4c184?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
-imgArray[15] = "https://images.unsplash.com/photo-1638394440667-aa54a7c0a703?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
-
-
-// const imgNum = []
-// for (let i = 0; i < 8; i++) {
-//     imgNum.push(i * 2);
-// }
-
-// function showImage() {  
-//     const objImg = document.getElementsByClassName("introimg");
-
-//     for (let i = 0; i < 8; i++) {
-//         objImg[i].src = imgArray[imgNum[i]];
-//         imgNum[i] += 1;
-//     }
-
-//     if (imgNum[0] > 1) {
-//         for (let i = 0; i < 8; i++) {
-//             imgNum[i] = i * 2;
-//         }
-//     }
-
-//     setTimeout(showImage, 2000);
-// }
-
-// window.onload = showImage();
+prevBtn.addEventListener("click", moveList('prev', 'ul', 4, 1, 'inline'));
+nextBtn.addEventListener("click", moveList('next', 'ul', 4, 1, 'inline'));
 
 // 상품 이름, 가격, 할인 가격 불러오기
 async function handleProductList() {
@@ -128,27 +82,54 @@ async function handleProductList() {
             productManufacturer,
             productImg
         } = product;
-        
+
         const productSalePrice = productPrice * 0.9;
 
         const itemBox = document.querySelector(".item-box");
         itemBox.innerHTML += `<li class="item" id="item-1">
                                 <div class="thumbnail">
-                                    <a href="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387">
-                                        <img class="introimg">
+                                    <a href="">
+                                        <img class="introimg" src="${productImg[0]}">
                                         <div class="white_cover"> </div>
                                     </a>
                                 </div>
                                 <div class="description">
                                     <strong class="name">${productName}</strong>
                                     <ul class="product-description">
-                                        <li class="price">원가 : KRW ${productPrice}</li>
-                                        <li class="sale">할인가 : KRW ${productSalePrice}</li>
+                                        <li class="price">원가 : KRW ${addCommas(productPrice)}</li>
+                                        <li class="sale">할인가 : KRW ${addCommas(productSalePrice)}</li>
                                     </ul>
                                 </div>
                             </li>`
-    })
-    
+        
+
+    });
+
+    // 이미지 슬라이드
+    // const imgNum = [0, 1, 2, 3, 4, 5, 6, 7];
+
+    // async function showImage() {
+    //     const imgArray = productList.map(el => el.productImg);
+    //     console.log(imgArray);
+    //     const objImg = document.getElementsByClassName("introimg");
+
+    //     for (let i = 0; i < 8; i++) {
+    //         for (let j = 0; j < 2; j++){
+    //             objImg[i].src = imgArray[i][j];
+    //             console.log(objImg[i].src);
+    //         }
+    //     }
+
+    //     if (imgNum[0] > 1) {
+    //         for (let i = 0; i < 8; i++) {
+    //             imgNum[i] = i;
+    //         }
+    //     }
+
+    //     setTimeout(showImage, 2000);
+    // }
+
+    // showImage();
 }
 
 await handleProductList();
