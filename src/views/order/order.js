@@ -1,52 +1,60 @@
+import * as Api from "/api.js";
+
 import { addCommas } from "../useful-functions.js";
 
 const dummycartItems = [
     {
         productNo: 1,
-        productName:"Short Sleeve Comfor Shirt-Navy",
+        productName: "Short Sleeve Comfor Shirt-Navy",
         productSize: 5,
         productQuantity: 1,
         productprice: 35000,
         productTotalprice: 35000,
-        productImg: "//www.ptry.co.kr/web/product/tiny/202203/3de7dfaf7b490de83b166ed36d9505c2.jpg"
+        productImg:
+            "//www.ptry.co.kr/web/product/tiny/202203/3de7dfaf7b490de83b166ed36d9505c2.jpg",
     },
     {
         productNumber: 2,
-        productName:"Short Sleeve Comfor Shirt-Navy",
+        productName: "Short Sleeve Comfor Shirt-Navy",
         productSize: 5,
         productQuantity: 1,
         productprice: 25000,
         productTotalprice: 25000,
-        productImg: "//www.ptry.co.kr/web/product/tiny/202203/3de7dfaf7b490de83b166ed36d9505c2.jpg"
+        productImg:
+            "//www.ptry.co.kr/web/product/tiny/202203/3de7dfaf7b490de83b166ed36d9505c2.jpg",
     },
     {
         productNumber: 3,
-        productName:"Short Sleeve Comfor Shirt-Navy3",
+        productName: "Short Sleeve Comfor Shirt-Navy3",
         productSize: 5,
         productQuantity: 1,
         productprice: 45000,
         productTotalprice: 45000,
-        productImg: "https://anotheroffice.co.kr/web/upload/NNEditor/20220519/SANTIAGO_SLACKS_GRAPHITE_SANGSE.jpg"
+        productImg:
+            "https://anotheroffice.co.kr/web/upload/NNEditor/20220519/SANTIAGO_SLACKS_GRAPHITE_SANGSE.jpg",
     },
     {
         productNumber: 4,
-        productName:"Short Sleeve Comfor Shirt-Navy",
+        productName: "Short Sleeve Comfor Shirt-Navy",
         productSize: 5,
         productQuantity: 1,
         productprice: 25000,
         productTotalprice: 25000,
-        productImg: "//www.ptry.co.kr/web/product/tiny/202203/3de7dfaf7b490de83b166ed36d9505c2.jpg"
-    }
-]
+        productImg:
+            "//www.ptry.co.kr/web/product/tiny/202203/3de7dfaf7b490de83b166ed36d9505c2.jpg",
+    },
+];
 
-const ul = document.querySelector('#list-ul');
-const totalprice = document.getElementById('total-price');
-localStorage.setItem('cart', JSON.stringify(dummycartItems));
-let cartItems = !JSON.parse(localStorage.getItem('cart')) ? [] : JSON.parse(localStorage.getItem('cart')) ;
-let sumPrice = 0
+const ul = document.querySelector("#list-ul");
+const totalprice = document.getElementById("total-price");
+localStorage.setItem("cart", JSON.stringify(dummycartItems));
+let cartItems = !JSON.parse(localStorage.getItem("cart"))
+    ? []
+    : JSON.parse(localStorage.getItem("cart"));
+let sumPrice = 0;
 
 function createItem(item) {
-    const li = document.createElement('li');
+    const li = document.createElement("li");
     const html = `
         <div class="item-list-info">
             <div class="item-list-img">
@@ -78,30 +86,32 @@ function createItem(item) {
         </div>
         <div class="order-list-status">
             <span>${item.productStatus}</span> 
-        </div>`
-    
+        </div>`;
+
     li.innerHTML = html;
-    return li
+    return li;
 }
 
 const renderPage = (cartItems) => {
-    sumPrice = 0
-    while(ul.hasChildNodes()){
+    sumPrice = 0;
+    while (ul.hasChildNodes()) {
         ul.removeChild(ul.firstChild);
     }
 
-    cartItems.map(el => {
+    cartItems.map((el) => {
         const li = createItem(el);
         ul.appendChild(li);
         sumPrice += el.productTotalprice;
-    })
+    });
 
-    totalprice.innerHTML = `<span>총 구매 가격 : ${addCommas(sumPrice)}원</span>`;
-}
+    totalprice.innerHTML = `<span>총 구매 가격 : ${addCommas(
+        sumPrice
+    )}원</span>`;
+};
 
 const load = async (cartItems) => {
     // cartItems = await Api.get('/product/productlist');
     renderPage(cartItems);
-}
+};
 
 load(cartItems);

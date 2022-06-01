@@ -156,6 +156,7 @@ userRouter.post("/checkUser", async (req, res, next) => {
     try {
         const userEmail = req.body.email;
         const isEmailExist = await userService.isEmailExist(userEmail);
+
         res.status(200).json(isEmailExist);
     } catch (error) {
         next(error);

@@ -1,6 +1,7 @@
 import { addCommas } from "../useful-functions.js";
 import { createItem } from "../common.js";
 import * as Api from '../api.js';
+import {loadCartItem} from "../navAndLogin.js";
 // const dummycartItems = [
 //     {
 //         productName:"Short Sleeve Comfor Shirt-Navy",
@@ -134,6 +135,7 @@ const renderPage = (cartItems) => {
         document.getElementById('payment').innerHTML = `
             ${addCommas(sumPrice + 3500)}<span style="font-productSize:14px">원</span>`
     }
+    loadCartItem();
 }
 
 const load = async (cartItems) => {

@@ -4,40 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쇼핑-데모</title>
+    <!-- <script src="product.js" type="module" defer></script> -->
     <script src="product.js" type="module" defer></script>
 </head>
 <body>
     <h1>Prodcut Specification</h1>
-    <form>
+    <form action="http://localhost:3000/api/product/addproduct" method="post" enctype="multipart/form-data">
         <h2>상품 이름</h2>
-        <input type="text" id="productName" value="상품명">
+        <input type="text" id="productName" name="productname">
         <h2>상품 가격</h2>
-        <input type="text" id="productPrice" value="10000">
+        <input type="text" id="productPrice" name="productprice">
         <h2>상품 카테고리</h2>
-        <select class="Category" size="1">
-            <option value="">SIZE (필수)</option>
-            <option value="1">상의</option>
-            <option value="2">하의</option>
-            <option value="3">양말</option>
+        <select class="Category" size="1" name="category">
+            <option name="">SIZE (필수)</option>
+            <option name="top">상의</option>
+            <option name="bottn">하의</option>
+            <option name="outer">양말</option>
         </select>
         <!-- <input type="radio" name="productCategory" id="top" value= 1> 상의 <br>  
         <input type="radio" name="productCategory" id="bottom" value= 2> 하의 <br>
         <input type="radio" name="productCategory" id="socks" value= 3> 양말 <br>  -->
-
         <h2>상품 설명</h2>
-        <input type="text" id="productDescription" value="이 제품은...">
+        <input type="text" id="productDescription" name="productdescription">
         <h2>상품 사이즈</h2>
-        <input type="text" id="productSize" value="XL">
+        <input type="text" id="productSize" name="productsize">
         <h2>상품 제작사</h2>
-        <input type="text" id="productManufacturer" value="이 제품은...">
-        <h2>상품 이미지 URL</h2>
-        <input type="text" id="productImg" value="Image URL은 ...">
-        <br>
-        <br> 
+        <input type="text" id="productManufacturer" name="productmanufacturer">
+        <h2>상품 이미지</h2>
+            <input
+              type='file'
+              id='productImg'
+              name='image'
+              accept='image/*'
+              multiple
+            ></input>
         <button class="button is-primary is-fullwidth" id="submitButton">
             상품등록하기
-        </button>
-
+          </button>
     </form>
 </body>
 </html>

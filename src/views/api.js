@@ -1,4 +1,5 @@
 // api 로 GET 요청 (/endpoint/params 형태로 요청함)
+
 //                  Api.get(/profile,?=)
 async function get(endpoint, params = "") {
     const apiUrl = `${endpoint}/${params}`;
@@ -59,7 +60,7 @@ async function post(endpoint, data) {
 // api 로 PATCH 요청 (/endpoint/params 로, JSON 데이터 형태로 요청함)
 async function patch(endpoint, params = "", data) {
     const apiUrl = `${endpoint}/${params}`;
-    console.log(data);
+
     // JSON.stringify 함수: Javascript 객체를 JSON 형태로 변환함.
     // 예시: {name: "Kim"} => {"name": "Kim"}
 
@@ -69,7 +70,7 @@ async function patch(endpoint, params = "", data) {
     const bodyData = JSON.stringify(data);
     console.log(`%cPATCH 요청: ${apiUrl}`, "color: #059c4b;");
     console.log(`%cPATCH 요청 데이터: ${bodyData}`, "color: #059c4b;");
-    console.log("url " + apiUrl);
+
     const res = await fetch(apiUrl, {
         method: "PATCH",
         headers: {
@@ -118,7 +119,6 @@ async function del(endpoint, params = "", data = {}) {
     }
 
     const result = await res.json();
-    console.log(result);
 
     return result;
 }

@@ -1,31 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <!-- 폰트 어썸: 아이콘 -->
-        <script defer src="https://kit.fontawesome.com/7630448495.js" crossorigin="anonymous"></script>
+        <script
+            defer
+            src="https://kit.fontawesome.com/7630448495.js"
+            crossorigin="anonymous"
+        ></script>
         <!-- google fonts icon -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+            rel="stylesheet"
+        />
         <!-- navBar css 분리 -->
-        <link rel="stylesheet" href="../navBar.css">
+        <link rel="stylesheet" href="../navAndLogin.css" />
         <!-- 커스텀 css, js -->
         <link rel="stylesheet" href="order.css" />
         <script src="order.js" type="module" defer></script>
-        <script src="../navBar.js" type="module" defer></script>
+        <script src="../navAndLogin.js" type="module" defer></script>
+        <!-- 카카오 로그인 -->
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     </head>
 
     <body>
         <!-- nav bar -->
-        <nav class="navBar" role="navigation" aria-label="main navigation">
-        </nav>
+        <nav
+            class="navBar"
+            role="navigation"
+            aria-label="main navigation"
+        ></nav>
 
         <!-- login modal -->
-        <div class="loginModal">
-        </div>
+        <div class="loginModal"></div>
 
         <div class="order-container">
             <span>주문내역</span>
@@ -42,7 +56,7 @@
                             <span>주문번호</span>
                         </div>
                         <div style="flex: 1">
-                            <span>주문금액<br>(수량)</span>
+                            <span>주문금액<br />(수량)</span>
                         </div>
                         <div style="flex: 1">
                             <span>주문 상태</span>
@@ -57,16 +71,17 @@
         </div>
         <footer>
             <div class="footer-col">
-                <span style="margin-right:1rem;">Project17</span>
+                <span style="margin-right: 1rem">Project17</span>
             </div>
             <div class="footer-col">
-                <span>Contributors<br><br><br>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-                    quaerat.</span>
+                <span
+                    >Contributors<br /><br /><br />Lorem, ipsum dolor sit amet
+                    consectetur adipisicing elit. Laudantium, quaerat.</span
+                >
             </div>
             <div class="footer-col">
-                <span>Links<br><br><br>KDC</span>
+                <span>Links<br /><br /><br />KDC</span>
             </div>
         </footer>
-
     </body>
 </html>
