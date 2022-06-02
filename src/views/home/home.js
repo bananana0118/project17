@@ -52,29 +52,13 @@ async function getDataFromApi() {
     console.log({ random });
 }
 
-<<<<<<< HEAD
-async function moveToShopAll() {
-    const urlParams = new URLSearchParams(widow.location.search);
-    const categoryID = urlParams.get("categoryNo");
-    window.location.href = "/order?storeName=order";
-    console.log(result);
-=======
 function moveToShopAll(e) {
     e.preventDefault();
     window.location.href = "/shop";
->>>>>>> e9e59389c3f3bbe387125ee420393eebe4b46852
 }
 
 function moveToShopTop(e) {
     e.preventDefault();
-<<<<<<< HEAD
-    window.location.href = "/shop";
-}
-
-const mainSlideLinkTo = document.querySelector(".main-slide");
-
-mainSlideLinkTo.addEventListener("click", moveToShopTop);
-=======
     window.location.href = "/shop?category=1";
 }
 
@@ -98,4 +82,3 @@ topBtn.addEventListener("click", moveToShopTop);
 bottomBtn.addEventListener("click", moveToShopBottom);
 outerBtn.addEventListener("click", moveToShopOuter);
 shoesBtn.addEventListener("click", moveToShopShoes);
->>>>>>> e9e59389c3f3bbe387125ee420393eebe4b46852
