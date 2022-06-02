@@ -4,14 +4,12 @@ import { addCommas } from "../useful-functions.js";
 /* 초기화 initView(ul엘리먼트의 id, 최초 보여지는 li 엘리먼트 갯수, display 값) */
 async function initView(el_id, view_item_count, style) {
     var menu = document.getElementById(el_id);
-    var menu_list = menu.getElementsByClassName('item');
+    var menu_list = menu.getElementsByClassName("item");
     var menu_count = menu_list.length;
-    style = (typeof (style) != 'undefined') ? style : 'block';
-    for (var i = 0; i < menu_count; i++){
-        if (i < view_item_count)
-            menu_list[i].style.display = style;
-        else
-            menu_list[i].style.display = 'none';
+    style = typeof style != "undefined" ? style : "block";
+    for (var i = 0; i < menu_count; i++) {
+        if (i < view_item_count) menu_list[i].style.display = style;
+        else menu_list[i].style.display = "none";
     }
 }
 
@@ -23,15 +21,15 @@ async function initView(el_id, view_item_count, style) {
 //     var menu_count = menu_list.length;
 //     var start_no = 0;
 //     style = (typeof (style) != 'undefined') ? style : 'block';
-    
-//     // 현재 보여지고 있는 엘리먼트의 시작을 확인    
+
+//     // 현재 보여지고 있는 엘리먼트의 시작을 확인
 //     for (var i = 0; i < menu_count; i++){
 //         if (menu_list[i].style.display == style) {
 //             start_no = i; break;
 //         }
 //     }
 
-//     // 방향에 따른 이동    
+//     // 방향에 따른 이동
 //     if (direction == 'next') {
 //         if (menu_list[menu_count - 1].style.display == style)
 //             return false;
@@ -60,7 +58,7 @@ async function initView(el_id, view_item_count, style) {
 // }
 
 // 8개씩 출력
-initView('ul', 24);
+initView("ul", 24);
 const prevBtn = document.querySelector(".prev");
 const nextBtn = document.querySelector(".next");
 
@@ -80,7 +78,7 @@ async function handleProductList() {
             productDescription,
             productSize,
             productManufacturer,
-            productImg
+            productImg,
         } = product;
 
         const productSalePrice = productPrice * 0.9;
@@ -96,18 +94,20 @@ async function handleProductList() {
                                 <div class="description">
                                     <strong class="name">${productName}</strong>
                                     <ul class="product-description">
-                                        <li class="price">원가 : KRW ${addCommas(productPrice)}</li>
-                                        <li class="sale">할인가 : KRW ${addCommas(productSalePrice)}</li>
+                                        <li class="price">Price : ${addCommas(
+                                            productPrice
+                                        )} $</li>
+                                        <li class="sale">Sale : ${addCommas(
+                                            productSalePrice
+                                        )} $</li>
                                     </ul>
                                 </div>
-                            </li>`
-        
-
+                            </li>`;
     });
 
     // 이미지 슬라이드
     async function showImage() {
-        const imgArray = productList.map(el => el.productImg);
+        const imgArray = productList.map((el) => el.productImg);
         const objImg = document.getElementsByClassName("introimg");
 
         for (let i = 0; i < imgArray.length; i++) {
