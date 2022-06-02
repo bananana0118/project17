@@ -88,6 +88,7 @@ window.onload = async function () {
                 productPrice: Number(productPrice),
                 productSize: Number(sizeOption.value),
                 productQuantity: Number(quantityOption.value),
+                productTotalprice: Number(productPrice) * Number(quantityOption.value),
                 productImg,
                 href: `/goods?productNo=${no}`,
             };
@@ -138,12 +139,15 @@ window.onload = async function () {
                 productPrice: Number(productPrice),
                 productSize: Number(sizeOption.value),
                 productQuantity: Number(quantityOption.value),
+                productTotalprice: Number(productPrice) * Number(quantityOption.value),
                 productManufacturer,
                 productImg,
                 href: `/goods?productNo=${no}`,
             };
-
-            localStorage.setItem("buyOne", JSON.stringify(itemData));
+            
+            const data = []
+            data.push(itemData);
+            localStorage.setItem("buyOne", JSON.stringify(data));
 
             window.location.href = "/payment";
             return;

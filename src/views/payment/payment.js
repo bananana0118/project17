@@ -17,8 +17,8 @@ let sumPrice = 0;
 let orderItems = ! localStorage.getItem('buyOne') 
                  ? JSON.parse(localStorage.getItem('cart'))
                  : JSON.parse(localStorage.getItem('buyOne'));
-
 localStorage.removeItem('buyOne');
+
 const register = async () => {
     const orderProduct = orderItems;
     console.log(orderProduct)
