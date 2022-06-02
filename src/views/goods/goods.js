@@ -3,7 +3,9 @@ import { addCommas } from "../useful-functions.js";
 import {loadCartItem} from '../navAndLogin.js';
 
 window.onload = async function() {
-    const product = await Api.get("/api/product/get/5");
+    const urlParams = new URLSearchParams(location.search).get("productNo");
+    
+    const product = await Api.get(`/api/product/get/${urlParams}`);
     
     const {
             _id,
@@ -64,7 +66,9 @@ window.onload = async function() {
     cartBtn.addEventListener("click", addCart);
     closeBtn.addEventListener("click", closeCart);
     stayHereBtn.addEventListener("click", closeCart);
-
+    buyBtn.addEventListener("click", moveToBuy);
+    moveToCartBtn.addEventListener("click", moveToCart);
+    
     function addCart() {
         if (sizeOption.value === "0") {
             alert("필수 옵션을 선택해주세요.");
@@ -106,6 +110,34 @@ window.onload = async function() {
         }
     }
 
+    function moveToBuy(e) {
+        if (sizeOption.value === "0") {
+            alert("필수 옵션을 선택해주세요.");
+        } else {
+            var itemData = {
+                _id,
+                productName,
+                productCategory,
+                productDescription,
+                productPrice: Number(productPrice),
+                productSize: Number(sizeOption.value),
+                productQuantity: Number(quantityOption.value),
+                productManufacturer,
+                productImg
+            };
+    
+            localStorage.setItem("buyItem", JSON.stringify(itemData));
+    
+            window.location.href = "/payment";
+            return;
+        }
+    }
+    
+    function moveToCart() {
+        window.location.href = "/cart";
+        return 
+    }
+    
     function closeCart(e) {
         e.preventDefault();
         basketAdd.style.display = "none";
@@ -123,6 +155,6 @@ window.onload = async function() {
         setTimeout(showImage, 4000);
     }
 
+    // window.location.href = `/shop?category=1` 
     showImage();
 }
-

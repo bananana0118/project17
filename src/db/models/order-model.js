@@ -6,19 +6,22 @@ const Order = model("orders", OrderSchema); //db에는 orders 변수는 Order로
 class OrderModel {
     //order생성
     async create(orderInfo) {
+        
         const order = new Order({
             _id: new mongoose.Types.ObjectId(),
             address: orderInfo.address,
             phoneNumber: orderInfo.phoneNumber,
             totalPrice: orderInfo.totalPrice,
-            orderProduct: orderInfo.productId,
+            orderProduct: orderInfo.orderProduct,
             userId: orderInfo.userId,
         });
-
+        console.log(orderInfo.orderProduct);
+        console.log(order.orderProduct)
         order.save(function (err) {
             if (err) return console.log(err);
             else {
                 console.log("order가 생성됐습니다.");
+                console.log(order);
             }
         });
 

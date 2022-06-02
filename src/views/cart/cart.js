@@ -3,50 +3,22 @@ import { createItem } from "../common.js";
 import * as Api from "../api.js";
 import { loadCartItem } from "../navAndLogin.js";
 
-// const dummycartItems = [
-//     {
-//         productName:"Short Sleeve Comfor Shirt-Navy",
-//         productSize: 5,
-//         productQuantity: 1,
-//         productprice: 35000,
-//         productTotalprice: 35000,
-//         productImg: "//www.ptry.co.kr/web/product/tiny/202203/3de7dfaf7b490de83b166ed36d9505c2.jpg"
-//     },
-//     {
-//         productName:"Short Sleeve Comfor Shirt-Navy",
-//         productSize: 5,
-//         productQuantity: 1,
-//         productprice: 25000,
-//         productTotalprice: 25000,
-//         productImg: "//www.ptry.co.kr/web/product/tiny/202203/3de7dfaf7b490de83b166ed36d9505c2.jpg"
-//     },
-//     {
-//         productName:"Short Sleeve Comfor Shirt-Navy3",
-//         productSize: 5,
-//         productQuantity: 1,
-//         productprice: 45000,
-//         productTotalprice: 45000,
-//         productImg: "https://anotheroffice.co.kr/web/upload/NNEditor/20220519/SANTIAGO_SLACKS_GRAPHITE_SANGSE.jpg"
-//     },
-//     {
-//         productName:"Short Sleeve Comfor Shirt-Navy",
-//         productSize: 5,
-//         productQuantity: 1,
-//         productprice: 25000,
-//         productTotalprice: 25000,
-//         productImg: "//www.ptry.co.kr/web/product/tiny/202203/3de7dfaf7b490de83b166ed36d9505c2.jpg"
-//     }
-// ]
-
 const ul = document.querySelector("#list-ul");
 const totalprice = document.getElementById("total-price");
-// localStorage.setItem('cart', JSON.stringify(dummycartItems));
+const paymentBtn = document.getElementById("payment-btn")
+const deleteAllBtn = document.getElementById("delete-all-item");
+
 let cartItems = !JSON.parse(localStorage.getItem("cart"))
     ? []
     : JSON.parse(localStorage.getItem("cart"));
 
-const deleteAllBtn = document.getElementById("delete-all-item");
 let sumPrice = 0;
+
+const onClickPaymentBtn = () => {
+    window.location.href = '/payment';
+}
+
+paymentBtn.addEventListener('click', onClickPaymentBtn);
 
 /* 컴포넌트 클릭시 이벤트 종류마다 분기되도록 리펙토링 예정*/
 
@@ -153,7 +125,6 @@ const renderPage = (cartItems) => {
 };
 
 const load = async (cartItems) => {
-    const result = Api.post("/api/order/cart", cartItems);
     renderPage(cartItems);
 };
 

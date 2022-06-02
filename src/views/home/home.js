@@ -5,6 +5,12 @@
 import * as Api from "/api.js";
 import { randomId } from "/useful-functions.js";
 
+const allBtn = document.querySelector("#all");
+const topBtn = document.querySelector("#top");
+const bottomBtn = document.querySelector("#bottom");
+const outerBtn = document.querySelector("#outer");
+const shoesBtn = document.querySelector("#shoes");
+
 const mainSlides = document.querySelector(".main-slide_contents");
 const mainSlide = document.querySelectorAll(".main-slide_content");
 
@@ -45,3 +51,17 @@ async function getDataFromApi() {
     console.log({ data });
     console.log({ random });
 }
+
+async function moveToShopAll() {
+    const urlParams = new URLSearchParams(widow.location.search);
+    const categoryID = urlParams.get('categoryNo');
+    window.location.href = '/order?storeName=order'; 
+    console.log(result);
+}
+
+function moveToShopTop(e) {
+    e.preventDefault();
+    window.location.href = "shop/category?=1";
+}
+
+topBtn.addEventListener("click", moveToShopTop);

@@ -41,6 +41,13 @@ export class ProductModel {
         return updatedProduct;
     }
 
+    async findByCategory(productCategory) {
+        const products = await Product.find({
+            productCategory: productCategory,
+        });
+        return products;
+    }
+
     async findAndDel(productNo) {
         const product = await Product.findOneAndDelete({
             no: productNo,
