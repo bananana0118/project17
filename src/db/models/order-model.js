@@ -15,8 +15,7 @@ class OrderModel {
             orderProduct: orderInfo.orderProduct,
             userId: orderInfo.userId,
         });
-        console.log(orderInfo.orderProduct);
-        console.log(order.orderProduct)
+        
         order.save(function (err) {
             if (err) return console.log(err);
             else {
