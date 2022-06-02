@@ -96,10 +96,10 @@ async function handleProductList() {
                                     <ul class="product-description">
                                         <li class="price">Price : ${addCommas(
                                             productPrice
-                                        )} $</li>
+                                        )} KRW</li>
                                         <li class="sale">Sale : ${addCommas(
                                             productSalePrice
-                                        )} $</li>
+                                        )} KRW</li>
                                     </ul>
                                 </div>
                             </li>`;
