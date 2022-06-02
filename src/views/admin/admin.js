@@ -3,15 +3,20 @@ import * as Api from "/api.js";
 const statisticArrow = document.getElementById("arrow");
 const statisticInfo = document.querySelector(".static-info");
 const manageOrder = document.getElementById("manage-order");
-console.log(manageOrder);
+const registerItem = document.getElementById('register-item');
+
 
 const handlerOnClick = () => {
     onClickArrow();
 };
 
 const handlerOnClickManage = () => {
-    routeMange();
+    routeManage();
 };
+
+const handlerOnClickRegister = () => {
+    routeRegiterItem();
+}
 
 const onClickArrow = async () => {
     if (statisticInfo.style.display === "block") {
@@ -21,9 +26,13 @@ const onClickArrow = async () => {
     }
 };
 
-const routeMange = () => {
-    window.location.href = "/admin/manage";
+const routeManage = () => {
+    window.location.href = "/manageorder";
 };
+
+const routeRegiterItem = () => {
+    window.location.href = "/productregister"
+}
 
 const checkAdmin = async function () {
     const isAdmin = await Api.get("/api/admin/adminPage");
@@ -35,3 +44,4 @@ await checkAdmin();
 
 statisticArrow.addEventListener("click", handlerOnClick);
 manageOrder.addEventListener("click", handlerOnClickManage);
+registerItem.addEventListener('click', handlerOnClickRegister);

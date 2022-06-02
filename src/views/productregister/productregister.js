@@ -15,6 +15,16 @@ inputItems[0].focus();
 let uploadFiles = []
 let formData = new FormData();
 
+const onLoad = async () => {
+    const userInfo = await Api.get('/api/profile/myProfile')
+    if(userInfo !== "admin"){
+        alert("권한이 없습니다!!!")
+        window.location.href = '/';
+        return 
+    }
+}
+
+onLoad();
 /* 리펙토링 필요 
 *  EnterKey 입력시 focus 이동 
 */

@@ -34,7 +34,7 @@ const register = async () => {
         zipcode.focus();
     }
     else{
-        const res = Api.post('/api/order/cart', data);
+        const res = await Api.post('/api/order/cart', data);
         // window.location.href = '/';
     }
 }
