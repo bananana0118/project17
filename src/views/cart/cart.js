@@ -2,6 +2,7 @@ import { addCommas } from "../useful-functions.js";
 import { createItem } from "../common.js";
 import * as Api from "../api.js";
 import { loadCartItem } from "../navAndLogin.js";
+
 // const dummycartItems = [
 //     {
 //         productName:"Short Sleeve Comfor Shirt-Navy",

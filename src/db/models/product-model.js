@@ -19,15 +19,8 @@ export class ProductModel {
         return product;
     }
 
-    async findByCategory(productCategory) {
-        const products = await Product.find({
-            productCategory: productCategory,
-        });
-        return products;
-    }
-
     async findByName() {
-        const product = await Product.findOne({ productName: name });
+        const name = await Product.findOne({ productName: name });
         return product;
     }
 
@@ -40,17 +33,17 @@ export class ProductModel {
         const filter = { no: productNo };
         const option = { returnOriginal: false };
 
-        const updatedProduct = await Product.findOneAndUpdate({
+        const updatedProduct = await Product.findOneAndUpdate(
             filter,
             update,
             option
-        });
+        );
         return updatedProduct;
     }
 
     async findAndDel(productNo) {
         const product = await Product.findOneAndDelete({
-        no: productNo,
+            no: productNo,
         });
         return product;
     }
