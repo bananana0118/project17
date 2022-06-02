@@ -1,6 +1,5 @@
 import * as Api from '../api.js';
 import { createOrderItem } from '../common.js';
-const stateChangeBtn = document.querySelector('#state-change-btn');
 
 const popUp = () => {
     console.log('asdf')
@@ -13,11 +12,9 @@ const onload = async () => {
         const divChild = createOrderItem(el);
         const btn = divChild.querySelector('#state-change-btn');
         btn.addEventListener('click', popUp);
+        divChild.className = 'manage-info'
         div.appendChild(divChild);
-    })
-
-    
+    })    
 }
-
 
 onload();

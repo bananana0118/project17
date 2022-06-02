@@ -11,7 +11,7 @@ class OrderModel {
             address: orderInfo.address,
             phoneNumber: orderInfo.phoneNumber,
             totalPrice: orderInfo.totalPrice,
-            orderProduct: orderInfo.productId,
+            orderProduct: orderInfo.orderProduct,
             userId: orderInfo.userId,
         });
 
@@ -19,6 +19,7 @@ class OrderModel {
             if (err) return console.log(err);
             else {
                 console.log("order가 생성됐습니다.");
+                console.log(order);
             }
         });
 

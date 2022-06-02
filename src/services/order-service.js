@@ -9,12 +9,11 @@ class OrderService {
   }
 
   async addOrder(orderInfo) {
-    const newOrderInfo = {
-      userId: orderInfo.userId,
-      orderProduct: orderInfo.productId,
-    };
-    const newOrder = await orderModel.addOrder(newOrderInfo);
-
+    // const newOrderInfo = {
+    //   userId: orderInfo.userId,
+    //   orderProduct: orderInfo.orderedProduct,
+    // };
+    const newOrder = await orderModel.create(orderInfo);
     return newOrder;
   }
 

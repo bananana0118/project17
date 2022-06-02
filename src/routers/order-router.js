@@ -52,12 +52,10 @@ orderRouter.post(
     async (req, res, next) => {
         const { address, phoneNumber, totalPrice } = req.body;
         const orderInfo = req.orderInfo;
-
+        
         orderInfo.address = address;
         orderInfo.phoneNumber = phoneNumber;
         orderInfo.totalPrice = totalPrice;
-
-        console.log(orderInfo);
 
         const myOrder = await orderModel.create(orderInfo);
 
