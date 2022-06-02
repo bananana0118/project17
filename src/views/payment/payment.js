@@ -20,6 +20,7 @@ let orderItems = !localStorage.getItem('buyOne')
 
 const register = async () => {
     const orderProduct = orderItems;
+    console.log(orderProduct)
     const address = document.querySelector('#input-address1').value + document.querySelector('#input-address2').value;
     const phoneNumber = '010' + document.querySelector('#input-middle-num').value + document.querySelector('#input-last-num').value
     const totalprice = sumPrice;
