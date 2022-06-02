@@ -33,16 +33,24 @@ class ProductService {
 
         // db에서 찾지 못한 경우, 에러 메시지 반환
         if (!product) {
-        throw new Error("상품 내역이 없습니다. 다시 한 번 확인해 주세요.");
+            throw new Error("상품 내역이 없습니다. 다시 한 번 확인해 주세요.");
         }
 
         // 업데이트 진행
         product = await this.productModel.update({
-        productNo,
-        update: toUpdate,
+            productNo,
+            update: toUpdate,
         });
 
         return product;
+    }
+
+    // 카테고리 상품 보기
+    async getProductByCategory(productCategory) {
+        const products = await this.productModel.findByCategory(
+            productCategory
+        );
+        return products;
     }
 
     // 상품 삭제
@@ -53,10 +61,9 @@ class ProductService {
     }
 
     async getProductById(productId) {
-            const product = await this.productModel.findById(productId);
-            return product;
-        }
-
+        const product = await this.productModel.findById(productId);
+        return product;
+    }
 }
 
 const productService = new ProductService(productModel);

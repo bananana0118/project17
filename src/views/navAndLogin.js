@@ -9,6 +9,7 @@ import { validateEmail } from "/useful-functions.js";
 function navBarCreate() {
     const nav = document.querySelector("nav");
     const loginModal = document.querySelector(".loginModal");
+    const footer = document.querySelector("footer");
 
     nav.innerHTML = `<div class="navBar-container">
                         <a href="/" class="nav-brand">
@@ -17,13 +18,13 @@ function navBarCreate() {
                         </a>
                         <ul class="nav-category">
                             <li class="nav-category_list"><a href="#">new</a></li>
-                            <li class="nav-category_list"><a href="/product">product</a></li>
-                            <li class="nav-category_list"><a href="/shop">shop</a></li>
+                            <li class="nav-category_list"><a href="/product">event</a></li>
+                            <li class="nav-category_list"><a href="/shop">product</a></li>
                             <li class="nav-category_list"><a href="#">about</a></li>
                         </ul>
                         <div class="nav-menu">
                             <a href="#">
-                                <i class="material-symbols-outlined nav-menu_icon">
+                                <i class="material-symbols-outlined nav-menu_icon search">
                                     search
                                 </i>
                             </a>
@@ -93,6 +94,12 @@ function navBarCreate() {
                                     </form>
                                 </div>
                             </div>`;
+
+    footer.innerHTML = `<div class="footer-col">
+                            <div class="footer-brandName" style="margin-right:1rem;">Project17</div>
+                            <div class="footer-slogan">/SIMPLE IS BEST/</div>
+                            <div class="footer-contributor">Contributed By @강예정 @김동철 @이용준 @조희승 @심주용</div>
+                        </div>`;
 }
 
 //navBar component 분리
@@ -130,6 +137,7 @@ function kakaoLogin() {
                     const password = "Q1W2E3R4T5Y7U8Z0K3ADN9";
 
                     // 이미 등록된 이메일인지 확인
+
                     const isEmail = await Api.post("/api/checkUser", { email });
                     const data = { email, fullName, password };
 
@@ -276,9 +284,7 @@ async function handleSubmit(e) {
         loginCheckAppear();
     } catch (err) {
         console.error(err.stack);
-        alert(
-            `문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`
-        );
+        alert(`${err.message}`);
     }
 }
 
@@ -296,8 +302,10 @@ loginCheckAppear();
 // 장바구니 아이콘 아이템 수
 var count = 0;
 export const loadCartItem = () => {
-    count = 0
-    let cartItems = !JSON.parse(localStorage.getItem('cart')) ? [] : JSON.parse(localStorage.getItem('cart'));
+    count = 0;
+    let cartItems = !JSON.parse(localStorage.getItem("cart"))
+        ? []
+        : JSON.parse(localStorage.getItem("cart"));
 
     if (cartItems === []) {
         count = 0;
@@ -308,8 +316,6 @@ export const loadCartItem = () => {
     }
     const addShoppingCart = document.querySelector(".count");
     addShoppingCart.innerHTML = `<span>${count}</span>`;
-}
+};
 
 loadCartItem();
-
-

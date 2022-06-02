@@ -4,6 +4,7 @@ import is from "@sindresorhus/is";
 import { loginRequired } from "../middlewares";
 import { userService, productService } from "../services";
 import { productModel, userModel } from "../db";
+import bcrypt from "bcrypt";
 
 const profileRouter = Router();
 
@@ -75,22 +76,19 @@ profileRouter.delete("/quit", loginRequired, async function (req, res, next) {
     try {
         //** 현재의 비밀번호가 일치할때 탈퇴 가능하게  */
         const userId = req.currentUserId;
-        const user = userService.getUser(userId);
+        const password = req.body.password;
+        const user = await userService.getUser(userId);
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
-        const userInfo = { email: user.email, password: user.password };
-        const token = userService.getUserToken(userInfo);
-
-        //token이 없다면
-        if (!token) {
-            console.log("이메일 또는 비밀번호를 확인해주세요.");
-            return;
+        if (!isPasswordCorrect) {
+            throw new Error("비밀번호가 일치하지 않습니다.");
+        } else {
+            const deletedUser = await userService.deleteUser(userId);
+            res.status(200).json(deletedUser);
         }
-
-        const deletedUser = await userService.deleteUser(userId);
-        console.log(deletedUser);
-        res.status(200);
     } catch (error) {
         console.log("탈퇴하기 백엔드에서 에러가 났습니다.");
+        next(error);
     }
 });
 

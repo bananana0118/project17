@@ -12,9 +12,11 @@ const fullNameInput = document.querySelector("#fullNameInput");
 const emailInput = document.querySelector("#emailInput");
 const passwordInput = document.querySelector("#passwordInput");
 const passwordConfirmInput = document.querySelector("#passwordConfirmInput");
-const greeting = document.querySelector(".greetings");
-// const mobileNumberInput = document.querySelector("#mobileNumber");
-// const addressInput = document.querySelector("#address");
+const greeting = document.querySelector(".greetings-name");
+const phoneNumberInput = document.querySelector("#phoneNumber");
+const zipcodeInput = document.querySelector("#zipcode");
+const address1Input = document.querySelector("#input-address1");
+const address2Input = document.querySelector("#input-address2");
 
 // =================================================
 //GET: 사용자 정보가져오기
@@ -22,25 +24,32 @@ const greeting = document.querySelector(".greetings");
 
 const getAcountInfo = async function () {
     const user = await Api.get("/api/profile/myProfile");
-    console.log(user);
     fullNameInput.value = user.fullName;
     emailInput.value = user.email;
-    greeting.innerHTML = `${user.fullName}님 환영합니다!`;
+    if (user.phoneNumber) phoneNumberInput.value = user.phoneNumber;
+    if (user.address) {
+        zipcodeInput.value = user.address.postalCode;
+        address1Input.value = user.address.address1;
+        address2Input.value = user.address.address2;
+    }
+    greeting.innerHTML = `${user.fullName}`;
 };
 
 // ================================================
 // PATCH : 사용자 정보 수정 (오류 생길 수 있음)
 // ================================================
 const updateAccountInfo = async function (e) {
-
     e.preventDefault();
     const currentPassword = prompt("현재 비밀번호를 입력하세요");
     const fullName = fullNameInput.value;
     const email = emailInput.value;
     const password = passwordInput.value;
     const passwordConfirm = passwordConfirmInput.value;
-    // const mobileNumber = mobileNumberInput.value;
-    // const address = addressInput.value;
+    const phoneNumber = phoneNumberInput.value;
+    const postalCode = zipcodeInput.value;
+    const address1 = address1Input.value;
+    const address2 = address2Input.value;
+    const address = { postalCode, address1, address2 };
 
     // 잘 입력했는지 확인
     const isFullNameValid = fullName.length >= 2;
@@ -48,16 +57,25 @@ const updateAccountInfo = async function (e) {
     const isPasswordValid = password.length >= 4;
     const isPasswordSame = password === passwordConfirm;
 
-    if (!isFullNameValid || !isPasswordValid) {
-        return alert("이름은 2글자 이상, 비밀번호는 4글자 이상이어야 합니다.");
+    if (fullName) {
+        if (!isFullNameValid) {
+            return alert("이름은 2글자 이상이어야 합니다.");
+        }
     }
 
-    if (!isEmailValid) {
-        return alert("이메일 형식이 맞지 않습니다.");
+    if (email) {
+        if (!isEmailValid) {
+            return alert("이메일 형식이 맞지 않습니다.");
+        }
     }
 
-    if (!isPasswordSame) {
-        return alert("비밀번호가 일치하지 않습니다.");
+    if (password) {
+        if (!isPasswordValid) {
+            return alert("비밀번호는 4글자 이상이어야 합니다.");
+        }
+        if (!isPasswordSame) {
+            return alert("비밀번호가 일치하지 않습니다.");
+        }
     }
 
     try {
@@ -66,16 +84,17 @@ const updateAccountInfo = async function (e) {
             email,
             password,
             passwordConfirm,
+            phoneNumber,
+            address,
             currentPassword,
         };
         const userUpdate = await Api.patch("/api/profile/edit", "", data);
         console.log(userUpdate);
-        alert("정보 수정 완료");
+        alert("계정 정보가 수정되었습니다.");
     } catch (err) {
         console.error(err.stack);
-        alert(`문제 발생: ${err.message}`);
+        alert(`${err.message}`);
     }
-
 };
 
 // ===================================================
@@ -86,11 +105,16 @@ const deleteAccount = async function (e) {
     e.preventDefault();
     const confirm = window.confirm("정말 탈퇴하시나요?");
     if (confirm) {
-        const password = prompt("비밀번호를 입력해주세요");
-        await Api.delete("/api/profile/quit", "", { password: password });
-        alert("회원 탈퇴 완료");
-        sessionStorage.removeItem("token");
-        location.href = "/";
+        try {
+            const password = prompt("비밀번호를 입력해주세요");
+            await Api.delete("/api/profile/quit", "", { password: password });
+            alert("회원 탈퇴 완료");
+            sessionStorage.removeItem("token");
+            location.href = "/";
+        } catch (err) {
+            console.log(err.stack);
+            alert(`${err.message}`);
+        }
     }
 };
 profileDelete.addEventListener("click", deleteAccount);

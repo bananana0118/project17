@@ -38,6 +38,23 @@
         <script src="../navAndLogin.js" type="module" defer></script>
         <!-- 카카오 로그인 -->
         <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <!-- 주소검색 -->
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script>
+            function kakaopost() {
+                document.querySelector("#zipcode");
+                new daum.Postcode({
+                    oncomplete: function (data) {
+                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+                        // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+                        document.querySelector("#zipcode").value =
+                            data.zonecode;
+                        document.querySelector("#input-address1").value =
+                            data.address;
+                    },
+                }).open();
+            }
+        </script>
     </head>
     <body>
         <!-- nav bar -->
@@ -53,7 +70,10 @@
         <!-- main -->
         <main class="personalPage">
             <div class="personalPage-menu">
-                <div class="greetings"></div>
+                <span class="greetings"
+                    ><span class="greetings-name"></span>&nbsp;&nbsp;&nbsp;님
+                    환영합니다!</span
+                >
                 <div class="personalPage-menu_Btns">
                     <button>주문내역</button>
                     <button><a href="/profile">계정관리</a></button>
@@ -78,26 +98,51 @@
                                 class="input"
                                 id="emailInput"
                                 type="email"
-                                placeholder="이메일 주소"
+                                placeholder="변경할 이메일 주소"
                                 autocomplete="on"
                             />
                         </div>
                         <div class="control">
                             <input
                                 class="input"
-                                id="mobileNumber"
-                                type="number"
+                                id="phoneNumber"
+                                type="tel"
                                 placeholder="휴대폰 번호 ( - 없이 입력)"
                                 autocomplete="on"
                             />
                         </div>
                         <div class="control">
-                            <input
+                            <!-- <input
                                 class="input"
                                 id="address"
                                 type="text"
                                 placeholder="주소찾기"
                                 autocomplete="off"
+                            /> -->
+                            <div>
+                                <input
+                                    type="text"
+                                    id="zipcode"
+                                    style="width: 30%"
+                                    readonly
+                                />
+                                <button
+                                    onclick="event.preventDefault() ;kakaopost()"
+                                    id="find-address-btn"
+                                >
+                                    주소검색
+                                </button>
+                            </div>
+                            <input
+                                type="text"
+                                id="input-address1"
+                                style="width: 100%; margin-top: 5px"
+                                readonly
+                            />
+                            <input
+                                type="text"
+                                id="input-address2"
+                                style="width: 100%; margin-top: 5px"
                             />
                         </div>
                         <div class="control">
@@ -105,7 +150,7 @@
                                 class="input"
                                 id="passwordInput"
                                 type="password"
-                                placeholder="비밀번호"
+                                placeholder="변경할 비밀번호"
                                 autocomplete="off"
                             />
                         </div>
@@ -125,19 +170,6 @@
         </main>
 
         <!-- footer -->
-        <footer>
-            <div class="footer-col">
-                <span style="margin-right: 1rem">Project17</span>
-            </div>
-            <div class="footer-col">
-                <span
-                    >Contributors<br /><br /><br />Lorem, ipsum dolor sit amet
-                    consectetur adipisicing elit. Laudantium, quaerat.</span
-                >
-            </div>
-            <div class="footer-col">
-                <span>Links<br /><br /><br />KDC</span>
-            </div>
-        </footer>
+        <footer></footer>
     </body>
 </html>
