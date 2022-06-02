@@ -15,6 +15,7 @@ mailRouter.post(
     "/send-message",
     asyncHandler(async (req, res) => {
         const { email } = req.body;
+        console.log(email);
 
         await sendMail(
             email,
