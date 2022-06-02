@@ -94,7 +94,19 @@ function navBarCreate() {
                                         </div>
                                     </form>
                                 </div>
-                            </div>`;
+                            </div>
+                            <div id="findPW">
+                                <div class="findPW-container">
+                                    <span>가입하신 이메일을 입력해주세요</span>
+                                    <input class="findPW-input"
+                                           type="email"
+                                           placeholder="Email Address"
+                                           autocomplete="on"
+                                    />
+                                    <button class="transferPW">임시비밀번호 받기</button>
+                                </div>
+                            </div>                   
+                                    `;
 
     footer.innerHTML = `<div class="footer-col">
                             <div class="footer-brandName" style="margin-right:1rem;">Project17</div>
