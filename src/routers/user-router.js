@@ -50,7 +50,6 @@ userRouter.post("/register", async (req, res, next) => {
 //***로그인 미들웨어로 true/false검사하기
 userRouter.post("/login", passwordResetCheck, async function (req, res, next) {
     try {
-        console.log(req.body);
         // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.
         if (is.emptyObject(req.body)) {
             throw new Error(

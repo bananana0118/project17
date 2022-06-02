@@ -220,7 +220,7 @@
 }
 
 /* media query */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 600px) {
     html {
         font-size: 10px;
     }

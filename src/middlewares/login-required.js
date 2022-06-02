@@ -32,8 +32,6 @@ async function loginRequired(req, res, next) {
         req.role = role;
         req.cartData = req.body;
 
-
-
         next();
     } catch (error) {
         // jwt.verify 함수가 에러를 발생시키는 경우는 토큰이 정상적으로 decode 안되었을 경우임.

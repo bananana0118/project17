@@ -15,14 +15,14 @@ mailRouter.post(
     "/send-message",
     asyncHandler(async (req, res) => {
         const { email } = req.body;
-        console.log(email);
 
         await sendMail(
             email,
             "안녕하세요~ project 17에서 인사드립니다~~~~~~~~~😘",
             "비밀번호는 1234,입니다."
         );
-        res.send("메일이 발송되었습니다.");
+
+        res.json("메일이 발송되었습니다.");
     })
 );
 
@@ -36,7 +36,7 @@ mailRouter.post(
         const { email } = req.body;
         const user = await userModel.findByEmail(email); //** */
         if (!user) {
-            return res.status(300).json({
+            return res.status(400).json({
                 msg: "이 이메일로 가입된 사용자가 없습니다.",
             });
             //throw new Error("해당 메일로 가입된사용자가 없습니다.");

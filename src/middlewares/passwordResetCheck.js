@@ -13,20 +13,21 @@ async function passwordResetCheck(req, res, next) {
         const userId = jwtDecoded.userId;
         const user = await userService.getUser(userId);
 
-        console.log(user);
+        next();
+        // console.log(user);
 
         /** @param {passwordReset} */
 
-        if (user.passwordReset) {
-            res.status(200).send(user.passwordReset);
-            return;
-        } else {
-            next();
-        }
+        // if (user.passwordReset) {
+        //     res.status(200).json(user.passwordReset);
+        //     return;
+        // } else {
+        //     next();
+        // }
     } catch (error) {
         res.status(403).json({
             result: "forbidden-approach",
-            reason: "정상적인 토큰이 아닙니다.",
+            reason: "정상적인 토큰이 아닙니다.??",
         });
 
         return;

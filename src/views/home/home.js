@@ -78,6 +78,8 @@ function moveToShopAll(e) {
 // }
 
 clickForMoreBtn.addEventListener("click", moveToShopAll);
+mainSlides.addEventListener("click", moveToShopAll);
+
 // topBtn.addEventListener("click", moveToShopTop);
 // bottomBtn.addEventListener("click", moveToShopBottom);
 // outerBtn.addEventListener("click", moveToShopOuter);
