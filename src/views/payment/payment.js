@@ -14,10 +14,11 @@ selectedEmail.addEventListener('change', changeDomain);
 let sumPrice = 0;
 
 // 더미데이터 -> 장바구니 데이터로 교체 예정 
-let orderItems = !localStorage.getItem('buyOne') 
+let orderItems = ! localStorage.getItem('buyOne') 
                  ? JSON.parse(localStorage.getItem('cart'))
                  : JSON.parse(localStorage.getItem('buyOne'));
 
+localStorage.removeItem('buyOne');
 const register = async () => {
     const orderProduct = orderItems;
     console.log(orderProduct)
