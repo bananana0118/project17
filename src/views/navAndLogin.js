@@ -81,6 +81,7 @@ function navBarCreate() {
                                                     autocomplete="on"
                                                 />
                                             </div>
+                                            <span class="findPassword">비밀번호 찾기</span>
                                         </div>
                                         <div class="submitBtns">
                                             <button class="loginButton">로그인</button>

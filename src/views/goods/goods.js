@@ -32,7 +32,6 @@ window.onload = async function () {
                                 <li class="price">KRW ${addCommas(
                                     productPrice
                                 )}</li>
-                                <br>
                                 <hr>
                                 <li class="description">${productDescription}
                                     <div class="delivery-info">
@@ -52,7 +51,6 @@ window.onload = async function () {
                                     <option value="2">M</option>
                                     <option value="3">L</option>
                                 </select>
-                                <br><br>
                             </ul>
                             <button class="cartBtn">장바구니</button>
                             <button class="buyBtn">구매하기</button>
