@@ -168,15 +168,20 @@ footer {
     width: 90%;
 }
 
+.footer-brandName,
+.footer-slogan {
+    color: rgb(114, 114, 114);
+}
+
 .footer-brandName {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .footer-slogan {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 .footer-contributor {
-    font-size: 1rem;
+    font-size: 0.5rem;
     color: rgb(177, 177, 177);
 }
 

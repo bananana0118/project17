@@ -85,21 +85,30 @@
 
 .magazine-product span {
     position: absolute;
-    width: 40%;
+    width: 50%;
     font-weight: bold;
 }
 
 .magazine-product:first-child span {
-    top: 20px;
-    right: 10%;
+    right: -15%;
 }
 .magazine-product:nth-child(2) span {
     position: static;
     align-self: center;
 }
 .magazine-product:nth-child(3) span {
-    bottom: 20px;
-    right: 0%;
+    bottom: 5px;
+    right: -33%;
+}
+
+.magazine-product_info {
+    font-size: 1.6rem;
+}
+
+.magazine-product_details {
+    font-size: 1.1rem;
+    font-weight: 100;
+    color: rgb(145, 145, 145);
 }
 
 /* product */
@@ -193,6 +202,9 @@
 
 /* media query */
 @media screen and (max-width: 900px) {
+    html {
+        font-size: 10px;
+    }
     .magazine {
         margin-top: 4vh;
     }

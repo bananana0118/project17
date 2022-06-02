@@ -4,6 +4,7 @@ import is from "@sindresorhus/is";
 import { loginRequired } from "../middlewares";
 import { userService, productService } from "../services";
 import { productModel, userModel } from "../db";
+import bcrypt from "bcrypt";
 
 const profileRouter = Router();
 
@@ -73,11 +74,19 @@ profileRouter.patch("/edit", loginRequired, async function (req, res, next) {
 profileRouter.delete("/quit", loginRequired, async function (req, res, next) {
     try {
         const userId = req.currentUserId;
-        const deletedUser = await userService.deleteUser(userId);
-        console.log(deletedUser);
-        res.status(200);
+        const password = req.body.password;
+        const user = await userService.getUser(userId);
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
+        if (!isPasswordCorrect) {
+            throw new Error("비밀번호가 일치하지 않습니다.");
+        } else {
+            const deletedUser = await userService.deleteUser(userId);
+            res.status(200).json(deletedUser);
+        }
     } catch (error) {
         console.log("탈퇴하기 백엔드에서 에러가 났습니다.");
+        next(error);
     }
 });
 

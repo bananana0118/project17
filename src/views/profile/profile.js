@@ -93,7 +93,7 @@ const updateAccountInfo = async function (e) {
         alert("계정 정보가 수정되었습니다.");
     } catch (err) {
         console.error(err.stack);
-        alert(`문제 발생: ${err.message}`);
+        alert(`${err.message}`);
     }
 };
 
@@ -113,7 +113,7 @@ const deleteAccount = async function (e) {
             location.href = "/";
         } catch (err) {
             console.log(err.stack);
-            alert(`문제 : ${err.message}`);
+            alert(`${err.message}`);
         }
     }
 };
