@@ -81,7 +81,7 @@ function navBarCreate() {
                                                     autocomplete="on"
                                                 />
                                             </div>
-                                            <span class="findPassword">비밀번호 찾기</span>
+                                            <a href="/findpassword" class="findPassword">비밀번호 찾기</a>
                                         </div>
                                         <div class="submitBtns">
                                             <button class="loginButton">로그인</button>
@@ -94,18 +94,7 @@ function navBarCreate() {
                                         </div>
                                     </form>
                                 </div>
-                            </div>
-                            <div id="findPW">
-                                <div class="findPW-container">
-                                    <span>가입하신 이메일을 입력해주세요</span>
-                                    <input class="findPW-input"
-                                           type="email"
-                                           placeholder="Email Address"
-                                           autocomplete="on"
-                                    />
-                                    <button class="transferPW">임시비밀번호 받기</button>
-                                </div>
-                            </div>                   
+                            </div>                 
                                     `;
 
     footer.innerHTML = `<div class="footer-col">
