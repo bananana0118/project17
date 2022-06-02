@@ -1,12 +1,12 @@
 import * as Api from "/api.js";
 import { addCommas } from "../useful-functions.js";
+import {loadCartItem} from '../navAndLogin.js';
 
 window.onload = async function() {
     const product = await Api.get("/api/product/get/5");
-    console.log(product);
-
+    
     const {
-            productNo,
+            _id,
             productName,
             productPrice,
             productCategory,
@@ -18,7 +18,7 @@ window.onload = async function() {
     
     const section = document.querySelector(".section");
     section.innerHTML = `<div class="main-image">
-                            <img src="${productImg}">
+                            <img src="" class="image-image">
                         </div>
                         <div class="image-info">
                             <ul>
@@ -70,7 +70,7 @@ window.onload = async function() {
             alert("필수 옵션을 선택해주세요.");
         } else {
             var itemData = {
-                productNo,
+                _id,
                 productName,
                 productPrice: Number(productPrice),
                 productSize: Number(sizeOption.value),
@@ -78,12 +78,13 @@ window.onload = async function() {
                 productImg
             };
 
-           
+
             //추후 id로 변경
-            if (cartItems.find(x => x.productNo === itemData.productNo && x.productSize === itemData.productSize)) {
+            if (cartItems.find(x => x._id === itemData._id && x.productSize === itemData.productSize)) {
                 var confirm = window.confirm(`장바구니에 동일한 상품이 있습니다. \n장바구니로 이동하시겠어요?`);
                 if (confirm === true) {
                     window.location.href ="/cart";
+                    return 
                 } else {
                     //아래 분기를 안타고 return
                     return
@@ -91,12 +92,11 @@ window.onload = async function() {
             }   
 
             // 최신 추가 아이템
-            localStorage.setItem("addCart", JSON.stringify(itemData));
-            cartItems.push(JSON.parse(localStorage.getItem("addCart")));
-
+            // localStorage.setItem("addCart", JSON.stringify(itemData));
+            // cartItems.push(JSON.parse(localStorage.getItem("addCart")));
+            cartItems.push(itemData)
             localStorage.setItem("cart", JSON.stringify(cartItems));
-            localStorage.removeItem("addCart");
-
+            loadCartItem();
             // 장바구니에 추가 되었다는 Modal
             basketAdd.style.display = "block";
 
@@ -111,5 +111,18 @@ window.onload = async function() {
         basketAdd.style.display = "none";
         document.querySelector("section").style.opacity = 1;
     }
+
+    function showImage() {
+        const objImg = document.querySelector(".image-image");
+        objImg.src = productImg[0];
+
+        setInterval(() => {
+            objImg.src = productImg[1];
+        }, 2000);
+
+        setTimeout(showImage, 4000);
+    }
+
+    showImage();
 }
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- 폰트 어썸: 아이콘 -->
+    <script
+        defer
+        src="https://kit.fontawesome.com/7630448495.js"
+        crossorigin="anonymous"
+    ></script>
+    <!-- google fonts icon -->
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+            rel="stylesheet"
+    />
+    <script src="../navAndLogin.js" type="module" defer></script>
+    <link rel="stylesheet" href="../navAndLogin.css" />
+    <link rel="stylesheet" href="manageorder.css" />
+    <!-- 카카오 로그인 -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script src="manageorder.js" type="module" defer></script>
+</head>
+<body>
+    <!-- nav bar -->
+    <nav class="navBar">
+    </nav>
+
+    <!-- login modal -->
+    <div class="loginModal">
+    </div>
+
+    <div class="order-manage-container">
+        <span id="header-text">주문 관리</span>
+        <div class="order-manage-header">
+            <div id="data-info">날짜</div>
+            <div id="order-info">주문정보</div>
+            <div id="user-name">주문자</div>
+            <div id="order-state-info">상태</div>
+            <div id="order-application-info">변경</div>
+        </div>
+        <div class="order-manage-info">
+            <div class="manage-info">
+                <div id="data-info">날짜</div>
+                <div id="order-info">주문정보</div>
+                <div id="user-name">주문자</div>
+                <div id="order-state-info">상태</div>
+                <button id="state-change-btn"> 상태 변경</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
