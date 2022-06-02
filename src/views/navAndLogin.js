@@ -118,7 +118,7 @@ const modalClose = document.querySelector(".closeBtn");
 const modalOverlay = document.querySelector(".modal-overlay");
 const loginCheck = document.querySelector(".check");
 
-//카카오 로그인(잘못된 로직으로 판명되었지만 어떤게 )
+//카카오 로그인(잘못된 로직으로 판명... 카카오톡 로그인 정보를 데이터에 넣는 건 백단에서 해야할 문제 )
 const kakaoLoginBtn = document.querySelector(".kakao-login");
 Kakao.init("738b82b958ee938f73a2a62aaecce547");
 
@@ -134,6 +134,7 @@ function kakaoLogin() {
                     const fullName = kakao_account.profile.nickname;
                     // 임의의 비밀번호를 어떻게 처리해야할 지 모르겠음. (현재 그냥 임의로 설정)
                     // 이러면 모든 카카오계정의 비밀번호가 똑같다.
+                    // 보안 취약.(여기서가 크리티컬한 문제인듯)
                     const password = "Q1W2E3R4T5Y7U8Z0K3ADN9";
 
                     // 이미 등록된 이메일인지 확인

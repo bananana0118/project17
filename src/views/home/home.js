@@ -19,7 +19,7 @@ let currentSlide = 0;
 setInterval(function () {
     let from;
     let to;
-    if (matchMedia("screen and (max-width: 900px").matches) {
+    if (matchMedia("screen and (max-width: 700px").matches) {
         from = -(100 * currentSlide);
         to = from - 100;
     } else {
