@@ -9,7 +9,7 @@ import * as Api from '/api.js';
     const li = document.createElement('li');
     const html = `
         <div class="item-list-img">
-            <img src="${item.productImg}" class="item-img">
+            <img src="${item.productImg[0]}" class="item-img">
         </div>
         <div class="item-list-product">
             <div class="cart-list-name">

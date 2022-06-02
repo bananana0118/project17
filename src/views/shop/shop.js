@@ -1,8 +1,7 @@
 import * as Api from "/api.js";
 import { addCommas } from "../useful-functions.js";
 
-const urlParams = new URLSearchParams(window.location.href);
-const productCa = urlParams.get("shop/product");
+const urlParams = new URLSearchParams(location.search).get("productNo");
 
 async function render() {
     const categoryList = await Api.get(`/api/product/get/category/1`);
@@ -62,7 +61,7 @@ async function handleProductList() {
         const itemBox = document.querySelector(".item-box");
         itemBox.innerHTML += `<li class="item" id="item-1">
                                 <div class="thumbnail">
-                                    <a href="../product/get?productNo=${no}">
+                                    <a href="../goods?productNo=${no}">
                                         <img class="introimg" src="">
                                         <div class="white_cover"> </div>
                                     </a>

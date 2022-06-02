@@ -17,7 +17,8 @@ let formData = new FormData();
 
 const onLoad = async () => {
     const userInfo = await Api.get('/api/profile/myProfile')
-    if(userInfo !== "admin"){
+    
+    if(userInfo.role !== "admin"){
         alert("권한이 없습니다!!!")
         window.location.href = '/';
         return 
