@@ -1,9 +1,8 @@
 import * as Api from "/api.js";
 import { addCommas } from "../useful-functions.js";
 
-const urlParams = new URLSearchParams(location.search).get("productNo");
-
 async function render() {
+<<<<<<< HEAD
     const categoryList = await Api.get(`/api/product/get/category/1`);
     const cate = categoryList.map((el) => el.productCategory);
     var categoryName;
@@ -19,17 +18,40 @@ async function render() {
         case 3:
             categoryName = "양말";
             break;
+=======
+    const urlParams = new URLSearchParams(location.search).get("category");
+    //const categoryList = await Api.get(`/api/product/get/category/${urlParams}`);
+    var categoryName;
+    
+    if (urlParams === null) {
+        var categoryList = await Api.get("/api/product/productlist");
+        categoryName = "ALL";
+    } else {
+        categoryList = await Api.get(`/api/product/get/category/${urlParams}`);
+        const cate = categoryList.map(el => el.productCategory);
+        switch (cate[0]) {
+            case 1:
+                categoryName = "상의"
+                break;
+            case 2:
+                categoryName = "하의"
+                break;
+            case 3:
+                categoryName = "아우터"
+                break;
+            case 4:
+                categoryName = "신발"
+                break;
+        }
+>>>>>>> e9e59389c3f3bbe387125ee420393eebe4b46852
     }
-
+    
     const category = document.querySelector(".items");
     category.insertAdjacentHTML(
         "afterbegin",
         `<div class="category">${categoryName}</div>
                 <div class="category-detail">
                     <li><a href="">ALL</a></li>
-                    <li><a href="">롱팬츠</a></li>
-                    <li><a href="">숏팬츠</a></li>
-                    <li><a href="">슬랙스</a></li>
                 </div>
                 `
     );
@@ -40,7 +62,15 @@ async function render() {
 
 // 상품 이름, 가격, 할인 가격 불러오기
 async function handleProductList() {
-    const productList = await Api.get("/api/product/productlist");
+    const urlParams = new URLSearchParams(location.search).get("category");
+    
+    if (urlParams === null) {
+        var productList = await Api.get("/api/product/productlist");
+    } else {
+        productList = await Api.get(`/api/product/get/category/${urlParams}`);
+    }
+
+    //productList = await Api.get(`/api/product/get/category/${urlParams}`);
     console.log(productList);
 
     productList.forEach(function (product) {

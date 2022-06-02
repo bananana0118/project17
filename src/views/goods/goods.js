@@ -11,6 +11,7 @@ window.onload = async function () {
     // const product = await Api.get(`/api/product/get/${urlParams}`);
 
     const {
+<<<<<<< HEAD
         _id,
         productName,
         productPrice,
@@ -19,6 +20,17 @@ window.onload = async function () {
         productSize,
         productManufacturer,
         productImg,
+=======
+            _id,
+            productName,
+            productPrice,
+            productCategory,
+            productDescription,
+            productSize,
+            productManufacturer,
+            productImg, 
+            no
+>>>>>>> e9e59389c3f3bbe387125ee420393eebe4b46852
     } = product;
 
     const section = document.querySelector(".section");
@@ -28,14 +40,18 @@ window.onload = async function () {
                         <div class="image-info">
                             <ul>
                                 <li class="name">${productName}</li>
-                                <li class="price">KRW ${productPrice}</li>
+                                <li class="price">KRW ${addCommas(productPrice)}</li>
                                 <br>
                                 <hr>
                                 <li class="description">${productDescription}
                                     <div class="delivery-info">
+<<<<<<< HEAD
                                         구매혜택 ${
                                             productPrice * 0.01
                                         } 포인트 적립예정<br>
+=======
+                                        구매혜택 ${addCommas(productPrice * 0.01)} 포인트 적립예정<br>
+>>>>>>> e9e59389c3f3bbe387125ee420393eebe4b46852
                                         배송 방법 택배<br>
                                         배송비 3,500원 (30,000원 이상 무료배송)
                                     </div>
@@ -86,6 +102,10 @@ window.onload = async function () {
                 productSize: Number(sizeOption.value),
                 productQuantity: Number(quantityOption.value),
                 productImg,
+<<<<<<< HEAD
+=======
+                href: `/goods?productNo=${no}`
+>>>>>>> e9e59389c3f3bbe387125ee420393eebe4b46852
             };
 
             //추후 id로 변경
@@ -136,10 +156,18 @@ window.onload = async function () {
                 productQuantity: Number(quantityOption.value),
                 productManufacturer,
                 productImg,
+<<<<<<< HEAD
             };
 
             localStorage.setItem("buyItem", JSON.stringify(itemData));
 
+=======
+                href: `/goods?productNo=${no}`
+            };
+    
+            localStorage.setItem("buyOne", JSON.stringify(itemData));
+            
+>>>>>>> e9e59389c3f3bbe387125ee420393eebe4b46852
             window.location.href = "/payment";
             return;
         }
