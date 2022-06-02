@@ -155,7 +155,7 @@ ul {
     color: rgb(255, 56, 56);
 }
 
-.search {
+.shop {
     display: none;
 }
 
@@ -186,15 +186,6 @@ footer {
 }
 
 /* nav media query */
-@media screen and (max-width: 550px) {
-    html {
-        font-size: 10px;
-    }
-    footer {
-        width: 90%;
-    }
-}
-
 @media screen and (max-width: 900px) {
     .nav-category {
         visibility: hidden;
@@ -204,6 +195,18 @@ footer {
         margin: 0;
         width: 100%;
         justify-content: space-between;
+    }
+    .shop {
+        display: inline;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    html {
+        font-size: 10px;
+    }
+    footer {
+        width: 90%;
     }
 }
 
@@ -337,7 +340,7 @@ footer {
 }
 
 /* modal media query */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
     .login-form-container {
         width: 250px;
         height: 400px;

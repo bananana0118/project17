@@ -54,14 +54,16 @@ async function getDataFromApi() {
 
 async function moveToShopAll() {
     const urlParams = new URLSearchParams(widow.location.search);
-    const categoryID = urlParams.get('categoryNo');
-    window.location.href = '/order?storeName=order'; 
+    const categoryID = urlParams.get("categoryNo");
+    window.location.href = "/order?storeName=order";
     console.log(result);
 }
 
 function moveToShopTop(e) {
     e.preventDefault();
-    window.location.href = "shop/category?=1";
+    window.location.href = "/shop";
 }
 
-topBtn.addEventListener("click", moveToShopTop);
+const mainSlideLinkTo = document.querySelector(".main-slide");
+
+mainSlideLinkTo.addEventListener("click", moveToShopTop);

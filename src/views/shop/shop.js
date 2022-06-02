@@ -53,6 +53,7 @@ async function handleProductList() {
             productSize,
             productManufacturer,
             productImg,
+            no,
         } = product;
 
         const productSalePrice = productPrice * 0.9;

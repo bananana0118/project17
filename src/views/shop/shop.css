@@ -2,7 +2,7 @@
 .items {
     text-align: center;
     display: block;
-    padding-top: 10vh;
+    padding-top: 6em;
 }
 
 .items .category {
@@ -86,7 +86,7 @@ li {
     margin-bottom: 0.2em;
     padding: 0 0.3em 1.4em;
     border-bottom: 1px solid #ececec;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .item-box .description .product-description {
@@ -101,20 +101,20 @@ li {
 
 .item-box .description .product-description li {
     line-height: 1.5em;
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: 0;
     width: 100%;
     padding-left: 0.5em;
 }
 
 /* media query */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
     .items .category {
-        font-size: 2.5em;
+        font-size: 2em;
     }
 
     .items .category-detail {
-        font-size: 1.4rem;
+        font-size: 1rem;
     }
 
     .items .category-detail .line {
@@ -131,6 +131,15 @@ li {
     }
 
     .item-box .thumbnail a img {
-        height: 30vh;
+        height: 35vh;
+    }
+    .item-box .description .product-description li {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    html {
+        font-size: 10px;
     }
 }

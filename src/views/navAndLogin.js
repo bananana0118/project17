@@ -23,9 +23,9 @@ function navBarCreate() {
                             <li class="nav-category_list"><a href="#">about</a></li>
                         </ul>
                         <div class="nav-menu">
-                            <a href="#">
-                                <i class="material-symbols-outlined nav-menu_icon search">
-                                    search
+                            <a href="/shop">
+                                <i class="material-symbols-outlined nav-menu_icon shop">
+                                    checkroom
                                 </i>
                             </a>
                             <a class="cart" href="/cart">
@@ -145,7 +145,12 @@ function kakaoLogin() {
                     if (!isEmail) {
                         try {
                             await Api.post("/api/register", data);
-                            alert("카카오 계정으로 가입되었습니다");
+
+                            const result = await Api.post("/api/login", data);
+                            const token = result.token;
+                            sessionStorage.setItem("token", token);
+
+                            alert("카카오 계정으로 가입 및 로그인 되었습니다");
                             loginModal.classList.add("hidden");
                             loginCheckAppear();
                         } catch (err) {
