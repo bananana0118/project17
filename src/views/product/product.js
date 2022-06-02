@@ -21,7 +21,7 @@ async function addAllElements() {}
 
 // 여러 개의 addEventListener들을 묶어주어서 코드를 깔끔하게 하는 역할임.
 function addAllEvents() {
-    submitButton.addEventListener('click', handleSubmit);
+    submitButton.addEventListener("click", handleSubmit);
     productImageInput.addEventListener("change", (e) => {
         formData.append("image", e.target.files[0]);
         console.log(formData);
@@ -53,9 +53,9 @@ async function handleSubmit(e) {
             productImg,
         };
 
-        await Api.post("/api/product/up", formData);
+        // await Api.post("/api/product/up", formData);
 
-        // await Api.post("/api/product/addproduct", data);
+        await Api.post("/api/product/addproduct", data);
 
         alert(`정상적으로 등록되었습니다.`);
 
