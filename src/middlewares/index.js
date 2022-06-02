@@ -5,3 +5,4 @@ export * from "./error-handler";
 export * from "./login-required";
 export * from "./areYouAdmin";
 export * from "./cart-ordered";
+export * from "./passwordResetCheck";

@@ -1,5 +1,44 @@
 import { productModel } from "../db";
+import { S3 } from "aws-sdk";
+import multer from "multer";
+require("dotenv").config();
 
+// 이미지 업로드 서버 설정
+const storage = multer.memoryStorage();
+
+// 이미지 업로드 서버 통신 환경 변수 및 메타데이터 설정
+const s3Uploadv2 = async (files) => {
+    const s3 = new S3();
+
+    const params = files.map((file) => {
+        return {
+            Bucket: process.env.AWS_BUCKET_NAME,
+            Key: `uploads/${file.originalname}`,
+            Body: file.buffer,
+            ContentType: "image/png",
+        };
+    });
+
+    return await Promise.all(params.map((param) => s3.upload(param).promise()));
+};
+
+// 이미지 업로드 파일 필터 설정
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype.split("/")[0] === "image") {
+        cb(null, true);
+    } else {
+        cb(new multer.MulterError("LIMIT_UNEXPECTED_FILE"), false);
+    }
+};
+
+// 이미지 업로드용 multer 설정 (사이즈, 최대 갯수)
+const upload = multer({
+    storage,
+    fileFilter,
+    limits: { fileSize: 10000000, files: 3 },
+});
+
+// 상품 관련 메소드 class
 class ProductService {
     // 본 파일의 맨 아래에서, new UserService(userModel) 하면, 이 함수의 인자로 전달됨
     constructor(productModel) {
@@ -60,6 +99,7 @@ class ProductService {
         return products;
     }
 
+    // 상품 ID로 상품 정보 확인
     async getProductById(productId) {
         const product = await this.productModel.findById(productId);
         return product;
@@ -68,4 +108,4 @@ class ProductService {
 
 const productService = new ProductService(productModel);
 
-export { productService };
+export { productService, s3Uploadv2, upload };

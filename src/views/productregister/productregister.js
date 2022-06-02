@@ -57,7 +57,7 @@ const register = async () => {
                 productDescription: productDescription.value,
                 productQuantity: productQuantity.value,
                 productManufacturer: productManufacturer.value,
-                productImg: formData
+                files: uploadFiles
             }
 
     if(data.productName === ''){
@@ -86,7 +86,8 @@ const register = async () => {
         productDescription.focus();
     }
     else{
-        const res = await Api.post("/api/product/addproduct", data);
+        console.log(formData)
+        const res = await Api.post("/api/product/addproduct", formData);
         
         if(res.ok){
             window.location.href = "/";
@@ -119,13 +120,13 @@ const createElement = (e, file) => {
  * 추가된 파일의 이미지 파일을 가지고 온다.
  */
 const getImageFiles = (e) => {
-    uploadFiles = []
     const files = e.currentTarget.files;
+    formData.append('files', files);
+    
     if(files.length > 3){
         alert('사진은 3장 이하로 올려주세요!')
         return 
     }
-    formData.append('image', e.target.files[0]);
     
     const imgPreview = document.querySelector('.image-preview');
     
@@ -138,7 +139,6 @@ const getImageFiles = (e) => {
     [...files].forEach(file =>{
         const reader = new FileReader();
         
-        uploadFiles.push(file);
         reader.onload = (e) => {
             const preview = createElement(e, file);
             imgPreview.appendChild(preview);
