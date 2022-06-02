@@ -1,149 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/elice-rabbit-favicon.png"
-    />
-    <!-- 폰트 어썸: 아이콘 -->
-    <script
-    defer
-    src="https://kit.fontawesome.com/7630448495.js"
-    crossorigin="anonymous"
-    ></script>
-    <!-- google fonts icon -->
-    <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"
-    />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-        rel="stylesheet"
-    />
-    <script src="../navAndLogin.js" type="module" defer></script>
-    <script src="admin.js" type="module" defer></script>
-    <link rel="stylesheet" href="admin.css"/>
-    <link rel="stylesheet" href="../navAndLogin.css" />
-    <!-- 카카오 로그인 -->
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <!-- chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Document</title>
-</head>
-<body>
-    <!-- nav bar -->
-    <nav class="navBar">
-    </nav>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/elice-rabbit-favicon.png"
+        />
+        <!-- 폰트 어썸: 아이콘 -->
+        <script
+            defer
+            src="https://kit.fontawesome.com/7630448495.js"
+            crossorigin="anonymous"
+        ></script>
+        <!-- google fonts icon -->
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+            rel="stylesheet"
+        />
+        <script src="../navAndLogin.js" type="module" defer></script>
+        <script src="admin.js" type="module" defer></script>
+        <link rel="stylesheet" href="admin.css" />
+        <link rel="stylesheet" href="../navAndLogin.css" />
+        <!-- 카카오 로그인 -->
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <!-- chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- nav bar -->
+        <nav class="navBar"></nav>
 
-    <!-- login modal -->
-    <div class="loginModal">
-    </div>
-    <div class="manage-container">
-        <p id = 'header-text'>관리자페이지</p>
-        <div class="menu-box">
-            <div class='menu'>
-                <div class="menu-text-icon" id="manage-order">
-                    <i class="fa-solid fa-bag-shopping" style="font-size:40px;color:#81b5d5"></i>
-                    <div id='manage-font'>주문관리</div>
+        <!-- login modal -->
+        <div class="loginModal"></div>
+        <div class="manage-container">
+            <p id="header-text">관리자페이지</p>
+            <div class="menu-box">
+                <div class="menu">
+                    <div class="menu-text-icon" id="manage-order">
+                        <i
+                            class="fa-solid fa-bag-shopping"
+                            style="font-size: 40px; color: #81b5d5"
+                        ></i>
+                        <div id="manage-font">주문관리</div>
+                    </div>
+                </div>
+                <div class="menu">
+                    <div class="menu-text-icon">
+                        <i
+                            class="fa-solid fa-person"
+                            style="font-size: 40px; color: #81b5d5"
+                        ></i>
+                        <div id="manage-font">회원관리</div>
+                    </div>
+                </div>
+                <div class="menu">
+                    <div class="menu-text-icon">
+                        <i
+                            class="fa-solid fa-won-sign"
+                            style="font-size: 40px; color: #81b5d5"
+                        ></i>
+                        <div id="manage-font">상품등록</div>
+                    </div>
+                </div>
+                <div class="menu">
+                    <div class="menu-text-icon">
+                        <i
+                            class="fas fa-comment"
+                            style="font-size: 40px; color: #81b5d5"
+                        ></i>
+                        <div id="manage-font">리뷰관리</div>
+                    </div>
+                </div>
+                <div class="menu">
+                    <div class="menu-text-icon">
+                        <i
+                            class="fa-solid fa-won-sign"
+                            style="font-size: 40px; color: #81b5d5"
+                        ></i>
+                        <div id="manage-font">----</div>
+                    </div>
                 </div>
             </div>
-            <div class='menu'>
-                <div class="menu-text-icon">
-                    <i class="fa-solid fa-person" style="font-size:40px;color:#81b5d5"></i>
-                    <div id='manage-font'>회원관리</div>
+
+            <div class="static-box">
+                <div class="graph">
+                    <i class="fa-solid fa-arrow-right" id="arrow"></i>
+                    <div id="header-text">통계</div>
+                    <div>
+                        <select name="choice" id="menu-select">
+                            <option value="">Choose Option!</option>
+                            <option value="day">일별</option>
+                            <option value="month">월별</option>
+                            <option value="year">년별</option>
+                        </select>
+                    </div>
+                    <canvas id="myChart"></canvas>
                 </div>
-            </div>
-            <div class='menu'>
-                <div class="menu-text-icon">
-                    <i class="fa-solid fa-won-sign" style="font-size:40px;color:#81b5d5"></i>
-                    <div id='manage-font'>상품등록</div>
-                </div>
-            </div>
-            <div class='menu'>
-                <div class="menu-text-icon">
-                    <i class="fas fa-comment" style="font-size:40px;color:#81b5d5"></i>
-                    <div id='manage-font'>리뷰관리</div>
-                </div>
-            </div>
-            <div class='menu'>
-                <div class="menu-text-icon">
-                    <i class="fa-solid fa-won-sign" style="font-size:40px;color:#81b5d5"></i>
-                    <div id='manage-font'>----</div>
-                </div>
+
+                <div class="static-info">
+                    <div style="font-size: 18px; font-weight: 400">
+                        통계상세
+                    </div>
+                    <div class="static-header-box">
+                        <span class="admin-sale-date-txt"> 판매 날짜 </span>
+                        <span class="admin-sale-order-txt"> 주문 번호 </span>
+                        <span class="admin-sale-id-txt"> 구매자ID </span>
+                        <span class="admin-sale-price-txt"> 거래금액 </span>
+                    </div>
+
             </div>
         </div>
-
-        <div class="static-box">
-            <div class="graph">
-                <i class="fa-solid fa-arrow-right" id="arrow"></i>
-                <div id="header-text"> 통계</div>
-                <div>
-                    <select name="choice" id="menu-select">
-                        <option value="">Choose Option!</option>
-                        <option value="day">일별</option>
-                        <option value="month">월별</option>
-                        <option value="year">년별</option>
-                    </select>
-                </div>
-                <canvas id="myChart"></canvas>
-            </div>
-            <div class="static-info">
-                <div style="font-size:18px;font-weight:400">통계상세</div>
-                <div class="static-header-box">
-                    <span class="admin-sale-date-txt"> 판매 날짜 </span>
-                    <span class="admin-sale-order-txt"> 주문 번호 </span>
-                    <span class="admin-sale-id-txt"> 구매자ID </span>
-                    <span class="admin-sale-price-txt"> 거래금액  </span>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript">
-            var context = document
-                .getElementById('myChart')
-                .getContext('2d');
+        <script type="text/javascript">
+            var context = document.getElementById("myChart").getContext("2d");
             var myChart = new Chart(context, {
-                type: 'line', // 차트의 형태 
-                data: { // 차트에 들어갈 데이터
+                type: "line", // 차트의 형태
+                data: {
+                    // 차트에 들어갈 데이터
                     labels: [
                         //x 축
-                        'January',
-                        'February',
-                        'March',
-                        'April',
-                        'May',
-                        'June',
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
                     ],
                     datasets: [
-                        { //데이터
-                            label: '판매량', //차트 제목
+                        {
+                            //데이터
+                            label: "판매량", //차트 제목
                             fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
                             data: [
-                                4,19,25,20,23,26,25 //x축 label에 대응되는 데이터 값
+                                4,
+                                19,
+                                25,
+                                20,
+                                23,
+                                26,
+                                25, //x축 label에 대응되는 데이터 값
                             ],
-                            backgroundColor: 'rgb(255, 99, 132)',
-                            borderColor: 'rgb(255, 99,',
-                            borderWidth: 1 //경계선 굵기
-                        }
-                    ]
+                            backgroundColor: "rgb(255, 99, 132)",
+                            borderColor: "rgb(255, 99,",
+                            borderWidth: 1, //경계선 굵기
+                        },
+                    ],
                 },
                 options: {
                     maintainAspectRatio: true, // true -> 상위 div의 크기에 맞게 그려진다.
-                    scales:{
+                    scales: {
                         y: {
-                            beginAtZero: true
-                            }
-                    }       
-                }
+                            beginAtZero: true,
+                        },
+                    },
+                },
             });
         </script>
+        <footer></footer>
     </body>
-</html>
-</body>
 </html>

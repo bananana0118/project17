@@ -6,6 +6,7 @@ require("dotenv").config();
 // 이미지 업로드 서버 설정
 const storage = multer.memoryStorage();
 
+// 이미지 업로드 서버 통신 환경 변수 및 메타데이터 설정
 const s3Uploadv2 = async (files) => {
     const s3 = new S3();
 
@@ -21,6 +22,7 @@ const s3Uploadv2 = async (files) => {
     return await Promise.all(params.map((param) => s3.upload(param).promise()));
 };
 
+// 이미지 업로드 파일 필터 설정
 const fileFilter = (req, file, cb) => {
     if (file.mimetype.split("/")[0] === "image") {
         cb(null, true);
@@ -29,6 +31,7 @@ const fileFilter = (req, file, cb) => {
     }
 };
 
+// 이미지 업로드용 multer 설정 (사이즈, 최대 갯수)
 const upload = multer({
     storage,
     fileFilter,

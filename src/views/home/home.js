@@ -5,6 +5,12 @@
 import * as Api from "/api.js";
 import { randomId } from "/useful-functions.js";
 
+const allBtn = document.querySelector("#All");
+const topBtn = document.querySelector("#top");
+const bottomBtn = document.querySelector("#bottom");
+const outerBtn = document.querySelector("#outer");
+const shoesBtn = document.querySelector("#shoes");
+
 const mainSlides = document.querySelector(".main-slide_contents");
 const mainSlide = document.querySelectorAll(".main-slide_content");
 
@@ -45,3 +51,34 @@ async function getDataFromApi() {
     console.log({ data });
     console.log({ random });
 }
+
+function moveToShopAll(e) {
+    e.preventDefault();
+    window.location.href = "/shop";
+}
+
+function moveToShopTop(e) {
+    e.preventDefault();
+    window.location.href = "/shop?category=1";
+}
+
+function moveToShopBottom(e) {
+    e.preventDefault();
+    window.location.href = "/shop?category=2";
+}
+
+function moveToShopOuter(e) {
+    e.preventDefault();
+    window.location.href = "/shop?category=3";
+}
+
+function moveToShopShoes(e) {
+    e.preventDefault();
+    window.location.href = "/shop?category=4";
+}
+
+allBtn.addEventListener("click", moveToShopAll);
+topBtn.addEventListener("click", moveToShopTop);
+bottomBtn.addEventListener("click", moveToShopBottom);
+outerBtn.addEventListener("click", moveToShopOuter);
+shoesBtn.addEventListener("click", moveToShopShoes);

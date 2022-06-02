@@ -2,7 +2,7 @@
 .items {
     text-align: center;
     display: block;
-    padding-top: 10vh;
+    padding-top: 6em;
 }
 
 .items .category {
@@ -41,7 +41,7 @@ li {
     width: 20vw;
     float: left;
     margin: 0 1.2vw;
-    text-align: center;
+    text-align: left;
     vertical-align: middle;
 }
 
@@ -58,7 +58,7 @@ li {
 
 .item-box .thumbnail a img {
     width: 100%;
-    height: 55vh;
+    height: 45vh;
     box-sizing: border-box;
 }
 
@@ -83,10 +83,10 @@ li {
 .item-box .description .name {
     display: block;
     text-align: left;
-    margin-bottom: 1em;
+    margin-bottom: 0.2em;
     padding: 0 0.3em 1.4em;
     border-bottom: 1px solid #ececec;
-    font-size: 20px;
+    font-size: 1rem;
 }
 
 .item-box .description .product-description {
@@ -100,20 +100,21 @@ li {
 }
 
 .item-box .description .product-description li {
-    line-height: 2em;
-    font-size: 20px;
+    line-height: 1.5em;
+    font-size: 0.8rem;
     margin: 0;
     width: 100%;
+    padding-left: 0.5em;
 }
 
 /* media query */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
     .items .category {
-        font-size: 2.5em;
+        font-size: 2em;
     }
 
     .items .category-detail {
-        font-size: 1.4rem;
+        font-size: 1rem;
     }
 
     .items .category-detail .line {
@@ -130,6 +131,15 @@ li {
     }
 
     .item-box .thumbnail a img {
-        height: 60vh;
+        height: 35vh;
+    }
+    .item-box .description .product-description li {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    html {
+        font-size: 10px;
     }
 }
