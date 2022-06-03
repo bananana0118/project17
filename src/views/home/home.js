@@ -3,7 +3,7 @@
 // 코드 예시를 남겨 두었습니다.
 
 import * as Api from "/api.js";
-import { randomId } from "/useful-functions.js";
+import { randomId, addCommas } from "/useful-functions.js";
 
 const clickForMoreBtn = document.querySelector("#clickForMore");
 // const topBtn = document.querySelector("#top");
@@ -57,6 +57,46 @@ function moveToShopAll(e) {
     window.location.href = "/shop";
 }
 
+async function bestItem() {
+    var productList = await Api.get("/api/product/productlist/5");
+    const productName = productList.map((el) => el.productName);
+    const productPrice = productList.map((el) => el.productPrice);
+
+    for (let i = 0; i < 7; i++) {
+        const productItems = document.querySelector(".product-items");
+        productItems.innerHTML += `<li class="product-item">
+                        <div class="product-item_imgCover">
+                            <img src="" href="" class="introimg">
+                        </div>
+                        <div class="product-item_info">
+                            <span>Name : ${productName[i]}</span>
+                            <span>Price : KRW ${addCommas(
+                                productPrice[i]
+                            )}</span>
+                        </div>
+                    </li>`;
+    }
+
+    async function showImage() {
+        const imgArray = productList.map((el) => el.productImg);
+        const objImg = document.getElementsByClassName("introimg");
+
+        for (let i = 0; i < 7; i++) {
+            objImg[i].src = imgArray[i][0];
+        }
+
+        setInterval(() => {
+            for (let i = 0; i < 7; i++) {
+                objImg[i].src = imgArray[i][1];
+            }
+        }, 2000);
+
+        setTimeout(showImage, 4000);
+    }
+    showImage();
+}
+
+bestItem();
 // function moveToShopTop(e) {
 //     e.preventDefault();
 //     window.location.href = "/shop?category=1";

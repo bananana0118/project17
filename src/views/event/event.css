@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#container {
+    width: 100%;
+    min-width: 1020px;
+    display: flex;
+}
+
+img {
+    margin: 20vh 10vh 0 20vh;
+    width: 30%;
+    height: 70%;
+    padding-right: 1vw;
+    border-right: 2.5px solid #808080;
+}
+
+.detail {
+    margin: 23vh 0;
+    line-height: 50px;
+}
+
+.detail h4 {
+    line-height: 70px;
+}
+
+/* media query */
+@media screen and (max-width: 900px) {
+    #container {
+        display: block;
+        text-align: center;
+    }
+
+    img {
+        margin: 0;
+        text-align: center;
+        border: 0;
+    }
+
+    .detail {
+        margin: 10vh 0;
+        font-size: small;
+        text-align: center;
+        word-break: break-all;
+    }
+}

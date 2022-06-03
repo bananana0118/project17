@@ -1,6 +1,6 @@
 import mongoose, { model } from "mongoose";
 import { userModel, productModel } from "..";
-import { OrderSchema } from "../schemas/order-Schema";
+import { OrderSchema } from "../schemas/order-schema";
 
 const Order = model("orders", OrderSchema); //db에는 orders 변수는 Order로 접근
 class OrderModel {
@@ -28,6 +28,11 @@ class OrderModel {
     //orderId로 주문 찾기
     async findById(orderId) {
         const order = await Order.findOne({ _id: orderId });
+        return order;
+    }
+
+    async findByNo(orderNuber) {
+        const order = await Order.findOne({ orderNuber });
         return order;
     }
 
@@ -70,13 +75,26 @@ class OrderModel {
         return orders;
     }
 
-    //   async update({ userId, update }) {
-    //     const filter = { _id: userId };6293cb0c798cdac70151c319
-    //     const option = { returnOriginal: false };
+    async findDate(dateInfo) {
+        const orders = await Order.find({ createAt: { $gt: dateInfo } });
 
-    //     const updatedUser = await User.findOneAndUpdate(filter, update, option);
-    //     return updatedUser;
-    //   }
+        return dateOrders;
+    }
+
+    /** @param {orderByDay} */
+
+    async getOrderByday({ year, month, day }) {
+        const orders = await Order.find({
+            createdAt: {
+                $gte: new Date(year, month, day, 0, 0, 0),
+                $lt: new Date(year, month, day, 23, 59, 59),
+            },
+        });
+
+        return orders;
+
+        // console.log(today.toLocaleString());
+    }
 }
 
 const orderModel = new OrderModel();

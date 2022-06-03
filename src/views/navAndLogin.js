@@ -10,15 +10,15 @@ function navBarCreate() {
     const nav = document.querySelector("nav");
     const loginModal = document.querySelector(".loginModal");
     const footer = document.querySelector("footer");
-
+    
     nav.innerHTML = `<div class="navBar-container">
                         <a href="/" class="nav-brand">
                             <!-- 로고 이미지 추가 시 추가 작성-->
                             <span class="nav-brand_name">Project17</span>
                         </a>
                         <ul class="nav-category">
-                            <li class="nav-category_list"><a href="#">new</a></li>
-                            <li class="nav-category_list"><a href="/product">event</a></li>
+                            <li class="nav-category_list"><a onclick="window.scrollTo({top: 9999, behavior: 'smooth'});">best</a></li>
+                            <li class="nav-category_list"><a href="/event">event</a></li>
                             <li class="nav-category_list"><a href="/shop">product</a></li>
                             <li class="nav-category_list"><a href="#">about</a></li>
                         </ul>
@@ -296,6 +296,7 @@ async function handleSubmit(e) {
     } catch (err) {
         console.error(err.stack);
         alert("이메일 계정 및 비밀번호를 확인해주세요");
+
     }
 }
 

@@ -79,7 +79,7 @@ class UserService {
             {
                 userId: user._id,
                 role: user.role,
-                // passwordReset: user.passwordReset,
+                passwordReset: user.passwordReset,
             },
             secretKey
         );
