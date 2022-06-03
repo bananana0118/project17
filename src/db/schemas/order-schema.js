@@ -19,11 +19,13 @@ const OrderSchema = new Schema(
       ref: "users",
       required: true,
     },
-    orderProduct: 
+    orderProduct: [
       {
-        type: Array,
+        type: Schema.Types.ObjectId,
+        ref: "products",
         required: true,
       },
+    ],
     address: {
       type: String,
       required: true,
