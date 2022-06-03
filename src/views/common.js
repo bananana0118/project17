@@ -98,6 +98,36 @@ export const createUserOrderItem = (item) => {
     return div
 }
 
+
+export const createManageItem = (item) => {
+    var categoryName;
+    switch (item.productCategory) {
+        case 1:
+                categoryName = "상의";
+                break;
+            case 2:
+                categoryName = "하의";
+                break;
+            case 3:
+                categoryName = "아우터";
+                break;
+            case 4:
+                categoryName = "신발";
+                break;
+    }
+    const div = document.createElement('div');
+    const html = `
+        <div id="category-info">${categoryName}</div>
+            <div id="item-info">${item.productName}</div>
+            <div id="brand-name">${item.productManufacturer}</a></div>
+            <div id="price-info">${item.productPrice}</div>
+            <button id="item-revise-btn">상품 수정</button>
+        </div>
+    `
+    div.innerHTML = html;
+    return div
+}
+
 export const isAdmin = async () => {
     const userInfo = await Api.get('/api/profile/myProfile')
     

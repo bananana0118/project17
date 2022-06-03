@@ -5,7 +5,7 @@ const statisticArrow = document.getElementById("arrow");
 const statisticInfo = document.querySelector(".static-info");
 const manageOrder = document.getElementById("manage-order");
 const registerItem = document.getElementById('register-item');
-
+const manageItem = document.getElementById('manage-item');
 
 isAdmin();
 
@@ -21,6 +21,10 @@ const handlerOnClickRegister = () => {
     routeRegiterItem();
 }
 
+const handlerOnClickManageProduct = () => {
+    routeManageItem();
+}
+
 const onClickArrow = async () => {
     if (statisticInfo.style.display === "block") {
         statisticInfo.style.display = "none";
@@ -34,7 +38,11 @@ const routeManage = () => {
 };
 
 const routeRegiterItem = () => {
-    window.location.href = "/productregister"
+    window.location.href = "/productregister";
+}
+
+const routeManageItem = () => {
+    window.location.href = "/manageproduct";
 }
 
 const checkAdmin = async function () {
@@ -48,3 +56,4 @@ await checkAdmin();
 statisticArrow.addEventListener("click", handlerOnClick);
 manageOrder.addEventListener("click", handlerOnClickManage);
 registerItem.addEventListener('click', handlerOnClickRegister);
+manageItem.addEventListener("click", handlerOnClickManageProduct);
