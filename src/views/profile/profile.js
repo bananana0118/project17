@@ -96,7 +96,6 @@ const updateAccountInfo = async function (e) {
             currentPassword,
         };
         const userUpdate = await Api.patch("/api/profile/edit", "", data);
-        console.log(userUpdate);
         alert("계정 정보가 수정되었습니다.");
     } catch (err) {
         console.error(err.stack);
