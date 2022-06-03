@@ -91,18 +91,10 @@ class OrderModel {
             },
         });
 
-        return orders
+        return orders;
 
         // console.log(today.toLocaleString());
     }
-
-    //   async update({ userId, update }) {
-    //     const filter = { _id: userId };6293cb0c798cdac70151c319
-    //     const option = { returnOriginal: false };
-
-    //     const updatedUser = await User.findOneAndUpdate(filter, update, option);
-    //     return updatedUser;
-    //   }
 }
 
 const orderModel = new OrderModel();

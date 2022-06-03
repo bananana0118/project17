@@ -57,11 +57,10 @@ function moveToShopAll(e) {
     window.location.href = "/shop";
 }
 
-<<<<<<< Updated upstream
 async function bestItem() {
     var productList = await Api.get("/api/product/productlist");
-    const productName = productList.map(el => el.productName);
-    const productPrice = productList.map(el => el.productPrice);
+    const productName = productList.map((el) => el.productName);
+    const productPrice = productList.map((el) => el.productPrice);
 
     for (let i = 0; i < 7; i++) {
         const productItems = document.querySelector(".product-items");
@@ -71,7 +70,9 @@ async function bestItem() {
                         </div>
                         <div class="product-item_info">
                             <span>Name : ${productName[i]}</span>
-                            <span>Price : KRW ${addCommas(productPrice[i])}</span>
+                            <span>Price : KRW ${addCommas(
+                                productPrice[i]
+                            )}</span>
                         </div>
                     </li>`;
     }
@@ -123,32 +124,3 @@ mainSlides.addEventListener("click", moveToShopAll);
 // bottomBtn.addEventListener("click", moveToShopBottom);
 // outerBtn.addEventListener("click", moveToShopOuter);
 // shoesBtn.addEventListener("click", moveToShopShoes);
-=======
-// function moveToShopTop(e) {
-//     e.preventDefault();
-//     window.location.href = "/shop?category=1";
-// }
-
-// function moveToShopBottom(e) {
-//     e.preventDefault();
-//     window.location.href = "/shop?category=2";
-// }
-
-// function moveToShopOuter(e) {
-//     e.preventDefault();
-//     window.location.href = "/shop?category=3";
-// }
-
-// function moveToShopShoes(e) {
-//     e.preventDefault();
-//     window.location.href = "/shop?category=4";
-// }
-
-clickForMoreBtn.addEventListener("click", moveToShopAll);
-mainSlides.addEventListener("click", moveToShopAll);
-
-// topBtn.addEventListener("click", moveToShopTop);
-// bottomBtn.addEventListener("click", moveToShopBottom);
-// outerBtn.addEventListener("click", moveToShopOuter);
-// shoesBtn.addEventListener("click", moveToShopShoes);
->>>>>>> Stashed changes
