@@ -278,22 +278,24 @@ async function handleSubmit(e) {
         const data = { email, password };
         const result = await Api.post("/api/login", data);
         const token = result.token;
-        console.log(result);
+        const isPasswordReset = result.passwordReset;
 
         // 로그인 성공, 토큰을 세션 스토리지에 저장
         // 물론 다른 스토리지여도 됨
         sessionStorage.setItem("token", token);
 
-        alert(`정상적으로 로그인되었습니다.`);
+        if (isPasswordReset) {
+            alert("임시 비밀번호로 로그인되었습니다. 비밀번호를 수정해주세요");
+            location.href = "/profile";
+        } else {
+            alert(`정상적으로 로그인되었습니다.`);
+        }
 
-        // 로그인 성공
-
-        // 로그인모달 없애서 현재 페이지에 잔류
         loginModal.classList.add("hidden");
         loginCheckAppear();
     } catch (err) {
         console.error(err.stack);
-        alert("해당 이메일은 가입 내역이 없습니다.");
+        alert("이메일 계정 및 비밀번호를 확인해주세요");
     }
 }
 

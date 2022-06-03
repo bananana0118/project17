@@ -18,10 +18,12 @@ const phoneNumberInput = document.querySelector("#phoneNumber");
 const zipcodeInput = document.querySelector("#zipcode");
 const address1Input = document.querySelector("#input-address1");
 const address2Input = document.querySelector("#input-address2");
-const orderContainer = document.querySelector('.myOrderContainer');
-const profileUpdateContainer = document.querySelector('.profileUpdate-form-container');
-const orderListBtn = document.querySelector('#orderListBtn');
-const userInfoBtn = document.querySelector('#userInfoBtn');
+const orderContainer = document.querySelector(".myOrderContainer");
+const profileUpdateContainer = document.querySelector(
+    ".profileUpdate-form-container"
+);
+const orderListBtn = document.querySelector("#orderListBtn");
+const userInfoBtn = document.querySelector("#userInfoBtn");
 
 // =================================================
 //GET: 사용자 정보가져오기
@@ -128,20 +130,20 @@ profileDelete.addEventListener("click", deleteAccount);
 profileUpdate.addEventListener("click", updateAccountInfo);
 
 const loadOrder = async () => {
-    const myOrderBox = document.querySelector('.myOrderBox');
-    while(myOrderBox.hasChildNodes()){
+    const myOrderBox = document.querySelector(".myOrderBox");
+    while (myOrderBox.hasChildNodes()) {
         myOrderBox.removeChild(myOrderBox.firstChild);
     }
     orderListBtn.disabled = true;
     userInfoBtn.disabled = false;
     orderContainer.style.display = "flex";
     profileUpdateContainer.style.display = "none";
-    const myOrders = await Api.get('/api/order/myOrder');
-    myOrders.map(myOrder => {
+    const myOrders = await Api.get("/api/order/myOrder");
+    myOrders.map((myOrder) => {
         const div = createMyOrderItem(myOrder);
         myOrderBox.appendChild(div);
-    })
-}
+    });
+};
 
 const loadUserInfo = () => {
     orderListBtn.disabled = false;
@@ -149,8 +151,21 @@ const loadUserInfo = () => {
     orderContainer.style.display = "none";
     profileUpdateContainer.style.display = "flex";
     getAcountInfo();
-}
+};
 
-orderListBtn.addEventListener('click', loadOrder);
-userInfoBtn.addEventListener('click', loadUserInfo);
-loadOrder();
+// 임시 비밀번호를 발급받아 로그인 한 유저는 정보수정 페이지로 이동하기 위해 밑 코드 추가
+const passwordResetLoadPage = async () => {
+    const user = await Api.get("/api/profile/myProfile");
+    const isPasswordReset = user.passwordReset;
+    if (isPasswordReset) {
+        loadUserInfo();
+    } else {
+        loadOrder();
+    }
+};
+
+orderListBtn.addEventListener("click", loadOrder);
+userInfoBtn.addEventListener("click", loadUserInfo);
+// loadOrder();
+
+passwordResetLoadPage();
