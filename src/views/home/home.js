@@ -6,11 +6,6 @@ import * as Api from "/api.js";
 import { randomId, addCommas } from "/useful-functions.js";
 
 const clickForMoreBtn = document.querySelector("#clickForMore");
-// const topBtn = document.querySelector("#top");
-// const bottomBtn = document.querySelector("#bottom");
-// const outerBtn = document.querySelector("#outer");
-// const shoesBtn = document.querySelector("#shoes");
-
 const mainSlides = document.querySelector(".main-slide_contents");
 const mainSlide = document.querySelectorAll(".main-slide_content");
 
@@ -43,22 +38,14 @@ setInterval(function () {
     }
 }, 2000);
 
-// async function getDataFromApi() {
-//     // 예시 URI입니다. 현재 주어진 프로젝트 코드에는 없는 URI입니다.
-//     const data = await Api.get("/api/user/data");
-//     const random = randomId();
-
-//     console.log({ data });
-//     console.log({ random });
-// }
-
 function moveToShopAll(e) {
     e.preventDefault();
     window.location.href = "/shop";
 }
 
 async function bestItem() {
-    var productList = await Api.get("/api/product/productlist/5");
+    var productList = await Api.get("/api/product/productlist/7");
+    const productNo = productList.map((el) => el.no);
     const productName = productList.map((el) => el.productName);
     const productPrice = productList.map((el) => el.productPrice);
 
@@ -66,13 +53,15 @@ async function bestItem() {
         const productItems = document.querySelector(".product-items");
         productItems.innerHTML += `<li class="product-item">
                         <div class="product-item_imgCover">
-                            <img src="" href="" class="introimg">
+                            <a href="/goods?productNo=${productNo[i]}">
+                                <img src="" class="introimg">
+                            </a>
                         </div>
                         <div class="product-item_info">
                             <span>Name : ${productName[i]}</span>
-                            <span>Price : KRW ${addCommas(
+                            <span>Price &nbsp;&nbsp;: ${addCommas(
                                 productPrice[i]
-                            )}</span>
+                            )} KRW</span>
                         </div>
                     </li>`;
     }
@@ -89,43 +78,19 @@ async function bestItem() {
             for (let i = 0; i < 7; i++) {
                 objImg[i].src = imgArray[i][1];
             }
-        }, 2000);
+        }, 3000);
 
-        setTimeout(showImage, 4000);
+        setTimeout(showImage, 6000);
     }
     showImage();
 }
 
 bestItem();
-// function moveToShopTop(e) {
-//     e.preventDefault();
-//     window.location.href = "/shop?category=1";
-// }
-
-// function moveToShopBottom(e) {
-//     e.preventDefault();
-//     window.location.href = "/shop?category=2";
-// }
-
-// function moveToShopOuter(e) {
-//     e.preventDefault();
-//     window.location.href = "/shop?category=3";
-// }
-
-// function moveToShopShoes(e) {
-//     e.preventDefault();
-//     window.location.href = "/shop?category=4";
-// }
 
 clickForMoreBtn.addEventListener("click", moveToShopAll);
 mainSlides.addEventListener("click", moveToShopAll);
 
-// topBtn.addEventListener("click", moveToShopTop);
-// bottomBtn.addEventListener("click", moveToShopBottom);
-// outerBtn.addEventListener("click", moveToShopOuter);
-// shoesBtn.addEventListener("click", moveToShopShoes);
-
 const bestBtn = document.querySelector(".best-btn");
 bestBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 9999, behavior: 'smooth' });
+    window.scrollTo({ top: 9999, behavior: "smooth" });
 });

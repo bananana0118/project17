@@ -39,6 +39,10 @@ const getAcountInfo = async function () {
         address1Input.value = user.address.address1;
         address2Input.value = user.address.address2;
     }
+};
+
+const greetings = async function () {
+    const user = await Api.get("/api/profile/myProfile");
     greeting.innerHTML = `${user.fullName}`;
 };
 
@@ -97,6 +101,7 @@ const updateAccountInfo = async function (e) {
         };
         const userUpdate = await Api.patch("/api/profile/edit", "", data);
         alert("계정 정보가 수정되었습니다.");
+        location.href = "/";
     } catch (err) {
         console.error(err.stack);
         alert(`${err.message}`);
@@ -124,8 +129,6 @@ const deleteAccount = async function (e) {
     }
 };
 profileDelete.addEventListener("click", deleteAccount);
-// getAcountInfo();
-
 profileUpdate.addEventListener("click", updateAccountInfo);
 
 const loadOrder = async () => {
@@ -153,18 +156,21 @@ const loadUserInfo = () => {
 };
 
 // 임시 비밀번호를 발급받아 로그인 한 유저는 정보수정 페이지로 이동하기 위해 밑 코드 추가
-const passwordResetLoadPage = async () => {
+// nav Bar personalMenu 클릭한 버튼에 따라 보여지는 화면 다르게 분기
+const LoadPage = async () => {
     const user = await Api.get("/api/profile/myProfile");
     const isPasswordReset = user.passwordReset;
-    if (isPasswordReset) {
+    const localStorageLoadInfo = localStorage.getItem("myPageLoad");
+    if (isPasswordReset || localStorageLoadInfo === "accountInfoLoad") {
         loadUserInfo();
     } else {
         loadOrder();
     }
+    greetings();
+    localStorage.removeItem("myPageLoad");
 };
 
 orderListBtn.addEventListener("click", loadOrder);
 userInfoBtn.addEventListener("click", loadUserInfo);
-// loadOrder();
 
-passwordResetLoadPage();
+LoadPage();

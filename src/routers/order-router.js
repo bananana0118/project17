@@ -21,29 +21,6 @@ orderRouter.get(
     }
 );
 
-//2. 결제 시 주문 생성하기
-// orderRouter.post("/orderPage", loginRequired, async (req, res, next) => {
-//     const { address, phoneNumber, totalPrice, no } = req.body;
-//     const productNo = parseInt(no);
-//     const userId = req.currentUserId;
-//     const user = await userService.getUser(userId);
-//     const orderedProduct = await productService.getProduct(productNo); //프로덕트 데이터 가져오기
-//     const orderInfo = {
-//         //주문 정보 가져오기
-//         address: address,
-//         phoneNumber: phoneNumber,
-//         totalPrice: totalPrice,
-//         productId: orderedProduct._id,
-//         userId: user._id,
-//     };
-
-//     console.log("orderInfo ", orderInfo);
-
-//     const order = await orderModel.create(orderInfo);
-
-//     res.status(200).send(order);
-// });
-
 //3. 결제 시 주문 생성하기
 orderRouter.post(
     "/cart",
@@ -74,11 +51,32 @@ orderRouter.get("/myOrder", loginRequired, async (req, res, next) => {
         console.log(orderInfo);
         const myOrder = await orderModel.findByUserId(orderInfo);
 
-        res.status(200).send(myOrder);
+        res.status(200).json(myOrder);
     } catch (error) {
         next(error);
     }
 });
+
+orderRouter.get(
+    "/myOrder/:email",
+    loginRequired,
+    areYouAdmin,
+    async (req, res, next) => {
+        try {
+            const email = req.params.email;
+            const user = await userService.getUserByEmail(email);
+            const orderInfo = {
+                userId: user._id,
+            };
+            console.log(orderInfo);
+            const emailOrder = await orderModel.findByUserId(orderInfo);
+
+            res.status(200).json(emailOrder);
+        } catch (error) {
+            next(error);
+        }
+    }
+);
 
 //3. 주문 취소
 orderRouter.delete(

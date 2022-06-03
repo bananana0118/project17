@@ -10,14 +10,14 @@ function navBarCreate() {
     const nav = document.querySelector("nav");
     const loginModal = document.querySelector(".loginModal");
     const footer = document.querySelector("footer");
-    
+
     nav.innerHTML = `<div class="navBar-container">
                         <a href="/" class="nav-brand">
                             <!-- 로고 이미지 추가 시 추가 작성-->
-                            <span class="nav-brand_name">Project17</span>
+                            <span class="nav-brand_name">PROJECT 17</span>
                         </a>
                         <ul class="nav-category">
-                            <li class="nav-category_list"><a class="best-btn">best</a></li>
+                            <li class="nav-category_list"><a class="best-btn">Best</a></li>
                             <li class="nav-category_list"><a href="/event">event</a></li>
                             <li class="nav-category_list"><a href="/shop">product</a></li>
                             <li class="nav-category_list"><a href="#">about</a></li>
@@ -43,8 +43,8 @@ function navBarCreate() {
                                     </i>
                                 </button>
                                 <div class="personalMenu-buttons">
-                                    <button>마이페이지</button>
-                                    <button>계정관리</button>
+                                    <button class="myPageOrderLoad">주문내역</button>
+                                    <button class="myPageAccountLoad">계정관리</button>
                                     <button id="logout">로그아웃</button>
                                 </div>
                                 <div class="check">
@@ -88,9 +88,6 @@ function navBarCreate() {
                                             <button class="kakao-login" onclick="event.preventDefault()">
                                                 카카오계정 로그인
                                             </button>
-                                            <button class="login-submitButton" onclick="event.preventDefault()">
-                                                구글계정 로그인
-                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -98,7 +95,7 @@ function navBarCreate() {
                                     `;
 
     footer.innerHTML = `<div class="footer-col">
-                            <div class="footer-brandName" style="margin-right:1rem;">Project17</div>
+                            <div class="footer-brandName" style="margin-right:1rem;">PROJECT 17</div>
                             <div class="footer-slogan">/SIMPLE IS BEST/</div>
                             <div class="footer-contributor">Contributed By @강예정 @김동철 @이용준 @조희승 @심주용</div>
                         </div>`;
@@ -109,7 +106,6 @@ navBarCreate();
 const logoutBtn = document.querySelector("#logout");
 const personalIcon = document.querySelector("#personalIcon");
 const personalMenu = document.querySelector(".personalMenu-buttons");
-// const allArea = document.querySelector("main");
 
 //login modal
 const loginModal = document.querySelector(".modal");
@@ -120,7 +116,11 @@ const modalClose = document.querySelector(".closeBtn");
 const modalOverlay = document.querySelector(".modal-overlay");
 const loginCheck = document.querySelector(".check");
 
-//카카오 로그인(잘못된 로직으로 판명... 카카오톡 로그인 정보를 데이터에 넣는 건 백단에서 해야할 문제 )
+//personalPage 이동 버튼 분기처리
+const myPageBtn = document.querySelector(".myPageOrderLoad");
+const myPageAccountBtn = document.querySelector(".myPageAccountLoad");
+
+//카카오 로그인(잘못된 로직으로 판명... 카카오톡 로그인 정보를 데이터에 넣는 건 이렇게 하는게 아니라 백단에서 해야할 문제 )
 const kakaoLoginBtn = document.querySelector(".kakao-login");
 Kakao.init("738b82b958ee938f73a2a62aaecce547");
 
@@ -290,13 +290,15 @@ async function handleSubmit(e) {
         } else {
             alert(`정상적으로 로그인되었습니다.`);
         }
-
+        if (location.href === "http://localhost:3000/payment/") {
+            location.reload();
+            console.log("a");
+        }
         loginModal.classList.add("hidden");
         loginCheckAppear();
     } catch (err) {
         console.error(err.stack);
         alert("이메일 계정 및 비밀번호를 확인해주세요");
-
     }
 }
 
@@ -331,3 +333,18 @@ export const loadCartItem = () => {
 };
 
 loadCartItem();
+
+// personalIcon 클릭 시 메뉴에 따른 분기처리
+
+const myPageOrderLoad = (e) => {
+    e.preventDefault();
+    localStorage.setItem("myPageLoad", "orderLoad");
+};
+
+const myPageAccountLoad = (e) => {
+    e.preventDefault();
+    localStorage.setItem("myPageLoad", "accountInfoLoad");
+};
+
+myPageBtn.addEventListener("click", myPageOrderLoad);
+myPageAccountBtn.addEventListener("click", myPageAccountLoad);
