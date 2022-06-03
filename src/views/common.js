@@ -97,8 +97,6 @@ export const createUserOrderItem = (item) => {
     return div
 }
 
-<<<<<<< Updated upstream
-
 export const createManageItem = (item) => {
     var categoryName;
     switch (item.productCategory) {
@@ -124,7 +122,10 @@ export const createManageItem = (item) => {
             <button id="item-revise-btn">상품 수정</button>
         </div>
     `
-=======
+    div.innerHTML = html;
+    return div
+}
+
 export const createStaticItem = (item) => {
     console.log(item);
     const div = document.createElement('div');
@@ -139,8 +140,7 @@ export const createStaticItem = (item) => {
             <span class="admin-sale-price-txt"> ${item.totalPrice}</span>
         </div>
     `
-
->>>>>>> Stashed changes
+    
     div.innerHTML = html;
     return div
 }

@@ -108,7 +108,7 @@ orderRouter.patch(
 //month 는 5 -> 6월이라 하나 뺸 값으로 요청 주셔야 합니다
 //timestamps 값은 UTC라 today.toLocaleString()하시면 한국시간으로 나옵니다.
 
-orderRouter.get("/getOrderByday", async (req, res, next) => {
+orderRouter.post("/getOrderByday", async (req, res, next) => {
     const { year, month, day } = req.body;
     const dayOrders = await orderModel.getOrderByday({ year, month, day });
 

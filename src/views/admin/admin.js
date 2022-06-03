@@ -6,14 +6,11 @@ const statisticArrow = document.getElementById("arrow");
 const statisticInfo = document.querySelector(".static-info");
 const manageOrder = document.getElementById("manage-order");
 const registerItem = document.getElementById('register-item');
-<<<<<<< Updated upstream
 const manageItem = document.getElementById('manage-item');
-=======
 const selectBox = document.getElementById('day-box');
 const dateText = document.getElementById('date-txt');
 const totalText = document.getElementById('total-txt');
 const statisticInfoBox = document.querySelector('.static-info-box')
->>>>>>> Stashed changes
 
 isAdmin();
 
@@ -93,8 +90,5 @@ await checkAdmin();
 statisticArrow.addEventListener("click", handlerOnClick);
 manageOrder.addEventListener("click", handlerOnClickManage);
 registerItem.addEventListener('click', handlerOnClickRegister);
-<<<<<<< Updated upstream
 manageItem.addEventListener("click", handlerOnClickManageProduct);
-=======
 selectBox.addEventListener('change', onLoad);
->>>>>>> Stashed changes
