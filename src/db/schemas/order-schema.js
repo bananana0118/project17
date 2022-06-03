@@ -1,7 +1,7 @@
 import mongoose, { Schema, Types } from "mongoose";
 import { model } from "mongoose";
 import { UserSchema } from "../schemas/user-schema";
-import { stringify } from "nodemon/lib/utils";
+//import shortId from "shortid";
 
 const autoIncrement = require("mongoose-auto-increment");
 const User = model("users", UserSchema);
