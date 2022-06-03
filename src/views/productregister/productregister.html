@@ -37,89 +37,91 @@
     <div class="loginModal">
     </div>
 
-    <div class="product-register-container">
-        <span style="width:100%;font-size:14px;margin-bottom: 50px; text-align: center;">상품등록</span>
-        <div class="register-box">
-            <div>
-                <span>상품명</span>
+    <form action="http://localhost:5001/api/product/addproduct" method="post" enctype="multipart/form-data">
+        <div class="product-register-container">
+            <span style="width:100%;font-size:14px;margin-bottom: 50px; text-align: center;">상품등록</span>
+            <div class="register-box">
+                <div>
+                    <span>상품명</span>
+                    <br>
+                    <input id="product-name" type="text" name="productname" placeholder="상품명을 입력하세요.">
+                </div>
                 <br>
-                <input id="product-name" type="text" name="product-input" placeholder="상품명을 입력하세요.">
-            </div>
-            <br>
-            <div>
-                <span>카테고리</span>
-                <br>
-                <select id="input-category" name="product-input">
-                    <option value="">Choose Option!</option>
-                    <option value="top">상의</option>
-                    <option value="bottom">하의</option>
-                    <option value="outer">아우터</option>
-                </select>
-            </div>
-
-            <div class="price-container">
-                <div class="sale-price">
-                    <span>판매가(KRW)</span>
-                    <i class="fa-regular fa-circle-question"></i>
-                    <div class="price-input-box">
-                        <span>W</span>
-                        <input id="product-price" type="text" placeholder="판매가격을 입력하세요." name="product-input">
-                    </div>
-                        <input type="checkbox" id="onSale">
-                        <label> 세금포함</label>
-                        
-                </div>
-                <div class="sale-price">
-                    <span>할인이전 가격(KRW)</span>
-                    <i class="fa-regular fa-circle-question"></i>
-                    <div class="price-input-box">
-                        <span>W</span>
-                        <input id="product-price" type="text" placeholder="할인이전가격을 입력하세요." name="product-input">
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-sale-info">
                 <div>
-                    <span>상품수량</span>
-                    <input type="text" id="input-quantity" placeholder="수량을 입력하세요" name="product-input">
-                </div>
-                <div>
-                    <span>상품 제조사</span>
-                    <input type="text" id="input-manufacturer" placeholder="수량을 입력하세요" name="product-input">
-                </div>
-                <div>
-                    <span>사이즈</span>
-                    <select id="input-size" style="border:none" name="product-input">
-                        <option value="">SIZE</option>
-                        <option value="s">S</option>
-                        <option value="m">M</option>
-                        <option value="l">L</option>
+                    <span>카테고리</span>
+                    <br>
+                    <select id="input-category" name="category">
+                        <option value="">Choose Option!</option>
+                        <option value="1">상의</option>
+                        <option value="2">하의</option>
+                        <option value="3">아우터</option>
                     </select>
                 </div>
-        
-            </div>
-            <textarea id="input-product-detail" placeholder="제품에 대한 상세 설명을 적어주세요." name="product-input"></textarea>
-            <label for="image-input" class="image-register-btn">
-                <div id="image-box">
-                    <i class="fa-regular fa-image" ></i>
+
+                <div class="price-container">
+                    <div class="sale-price">
+                        <span>판매가(KRW)</span>
+                        <i class="fa-regular fa-circle-question"></i>
+                        <div class="price-input-box">
+                            <span>W</span>
+                            <input id="product-price" type="text" placeholder="판매가격을 입력하세요." name="productprice">
+                        </div>
+                            <input type="checkbox" id="onSale">
+                            <label> 세금포함</label>
+                            
+                    </div>
+                    <div class="sale-price">
+                        <span>할인이전 가격(KRW)</span>
+                        <i class="fa-regular fa-circle-question"></i>
+                        <div class="price-input-box">
+                            <span>W</span>
+                            <input id="product-price" type="text" placeholder="할인이전가격을 입력하세요." name="product-input">
+                        </div>
+                    </div>
                 </div>
-            </label>
-            <input 
-                type="file"
-                id="image-input"
-                accept="Image/*"
-                required
-                multiple
-                style="display:none"
-            >
-            <div class="image-preview"></div>
-            <div>
-                <button class="product-register-btn" name="product-input">등록</button>
+
+                <div class="product-sale-info">
+                    <div>
+                        <span>상품수량</span>
+                        <input type="text" id="input-quantity" placeholder="수량을 입력하세요" name="productquantity">
+                    </div>
+                    <div>
+                        <span>상품 제조사</span>
+                        <input type="text" id="input-manufacturer" placeholder="수량을 입력하세요" name="productmanufacturer">
+                    </div>
+                    <div>
+                        <span>사이즈</span>
+                        <select id="input-size" style="border:none" name="productsize">
+                            <option value="">SIZE</option>
+                            <option value="s">S</option>
+                            <option value="m">M</option>
+                            <option value="l">L</option>
+                        </select>
+                    </div>
+            
+                </div>
+                <textarea id="input-product-detail" placeholder="제품에 대한 상세 설명을 적어주세요." name="productdescription"></textarea>
+                <label for="image-input" class="image-register-btn">
+                    <div id="image-box">
+                        <i class="fa-regular fa-image" ></i>
+                    </div>
+                </label>
+                <input 
+                    type="file"
+                    id="image-input"
+                    accept="Image/*"
+                    name="image"
+                    required
+                    multiple
+                    style="display:none"
+                >
+                <div class="image-preview"></div>
+                <div>
+                    <button class="product-register-btn" name="product-input">등록</button>
+                </div>
             </div>
         </div>
-       
-    </div>
+    </form>
     <footer></footer>
 </body>
 </html>

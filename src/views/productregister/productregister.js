@@ -10,11 +10,10 @@ const productManufacturer = document.querySelector('#input-manufacturer');
 const productSize = document.querySelector('#input-size');
 const productQuantity = document.querySelector('#input-quantity');    
 const productDescription = document.querySelector('#input-product-detail')
-const inputItems = document.getElementsByName('product-input')
+const inputItems = document.getElementsByTagName('input');
 
-inputItems[0].focus();
+productName.focus();
 let uploadFiles = []
-let formData = new FormData();
 
 isAdmin();
 /* 리펙토링 필요 
@@ -25,6 +24,7 @@ function keyevent(event){
     const idx = Array.from(inputItems).indexOf(event.target);
     
     if(code === 'Enter'){
+        event.preventDefault();
         if(event.shiftKey){}
         else{
             if(idx === (inputItems.length -2)){}
@@ -77,8 +77,8 @@ const register = async () => {
         productDescription.focus();
     }
     else{
-        console.log(formData)
-        const res = await Api.post("/api/product/addproduct", formData);
+        // console.log(formData)
+        // const res = await Api.post("/api/product/addproduct", formData);
         
         if(res.ok){
             window.location.href = "/";
@@ -112,7 +112,6 @@ const createElement = (e, file) => {
  */
 const getImageFiles = (e) => {
     const files = e.currentTarget.files;
-    formData.append('files', files);
     
     if(files.length > 3){
         alert('사진은 3장 이하로 올려주세요!')

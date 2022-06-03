@@ -9,7 +9,7 @@ const storage = multer.memoryStorage();
 // 이미지 업로드 서버 통신 환경 변수 및 메타데이터 설정
 const s3Uploadv2 = async (files) => {
     const s3 = new S3();
-
+    console.log(files)
     const params = files.map((file) => {
         return {
             Bucket: process.env.AWS_BUCKET_NAME,
