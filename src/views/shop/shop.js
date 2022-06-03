@@ -3,7 +3,6 @@ import { addCommas } from "../useful-functions.js";
 
 async function render() {
     const urlParams = new URLSearchParams(location.search).get("category");
-    //const categoryList = await Api.get(`/api/product/get/category/${urlParams}`);
     var categoryName;
 
     if (urlParams === null) {
@@ -41,8 +40,6 @@ async function render() {
                 </div>
                 `
     );
-
-    console.log(document.querySelector(".items"));
     await handleProductList();
 }
 
@@ -55,9 +52,6 @@ async function handleProductList() {
     } else {
         productList = await Api.get(`/api/product/get/category/${urlParams}`);
     }
-
-    //productList = await Api.get(`/api/product/get/category/${urlParams}`);
-    console.log(productList);
 
     productList.forEach(function (product) {
         const {
@@ -85,12 +79,12 @@ async function handleProductList() {
                                 <div class="description">
                                     <strong class="name">${productName}</strong>
                                     <ul class="product-description">
-                                        <li class="price">Price : ${addCommas(
+                                        <li class="price">Price : ${addCommas(Math.floor(
                                             productPrice
-                                        )} KRW</li>
-                                        <li class="sale">Sale : ${addCommas(
+                                        ))} KRW</li>
+                                        <li class="sale">Sale : ${addCommas(Math.floor(
                                             productSalePrice
-                                        )} KRW</li>
+                                        ))} KRW</li>
                                     </ul>
                                 </div>
                             </li>`;
@@ -109,13 +103,12 @@ async function handleProductList() {
             for (let i = 0; i < imgArray.length; i++) {
                 objImg[i].src = imgArray[i][1];
             }
-        }, 2000);
+        }, 3000);
 
-        setTimeout(showImage, 4000);
+        setTimeout(showImage, 6000);
     }
 
     showImage();
 }
 
-//await handleProductList();
 await render();

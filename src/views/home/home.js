@@ -6,11 +6,6 @@ import * as Api from "/api.js";
 import { randomId, addCommas } from "/useful-functions.js";
 
 const clickForMoreBtn = document.querySelector("#clickForMore");
-// const topBtn = document.querySelector("#top");
-// const bottomBtn = document.querySelector("#bottom");
-// const outerBtn = document.querySelector("#outer");
-// const shoesBtn = document.querySelector("#shoes");
-
 const mainSlides = document.querySelector(".main-slide_contents");
 const mainSlide = document.querySelectorAll(".main-slide_content");
 
@@ -42,15 +37,6 @@ setInterval(function () {
         currentSlide = 0;
     }
 }, 2000);
-
-// async function getDataFromApi() {
-//     // 예시 URI입니다. 현재 주어진 프로젝트 코드에는 없는 URI입니다.
-//     const data = await Api.get("/api/user/data");
-//     const random = randomId();
-
-//     console.log({ data });
-//     console.log({ random });
-// }
 
 function moveToShopAll(e) {
     e.preventDefault();
@@ -97,30 +83,11 @@ async function bestItem() {
 }
 
 bestItem();
-// function moveToShopTop(e) {
-//     e.preventDefault();
-//     window.location.href = "/shop?category=1";
-// }
-
-// function moveToShopBottom(e) {
-//     e.preventDefault();
-//     window.location.href = "/shop?category=2";
-// }
-
-// function moveToShopOuter(e) {
-//     e.preventDefault();
-//     window.location.href = "/shop?category=3";
-// }
-
-// function moveToShopShoes(e) {
-//     e.preventDefault();
-//     window.location.href = "/shop?category=4";
-// }
 
 clickForMoreBtn.addEventListener("click", moveToShopAll);
 mainSlides.addEventListener("click", moveToShopAll);
 
-// topBtn.addEventListener("click", moveToShopTop);
-// bottomBtn.addEventListener("click", moveToShopBottom);
-// outerBtn.addEventListener("click", moveToShopOuter);
-// shoesBtn.addEventListener("click", moveToShopShoes);
+const bestBtn = document.querySelector(".best-btn");
+bestBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 9999, behavior: 'smooth' });
+});

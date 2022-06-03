@@ -8,8 +8,6 @@ window.onload = async function () {
         ? await Api.get(`/api/product/get/40`)
         : await Api.get(`/api/product/get/${urlParams}`);
 
-    // const product = await Api.get(`/api/product/get/${urlParams}`);
-
     const {
         _id,
         productName,
@@ -29,21 +27,21 @@ window.onload = async function () {
                         <div class="image-info">
                             <ul>
                                 <li class="name">${productName}</li>
-                                <li class="price">KRW ${addCommas(
+                                <li class="price">KRW ${addCommas(Math.floor(
                                     productPrice
-                                )}</li>
+                                ))}</li>
                                 <hr>
                                 <li class="description">${productDescription}
                                     <div class="delivery-info">
-                                        구매혜택 ${addCommas(
+                                        구매혜택 ${addCommas(Math.floor(
                                             productPrice * 0.01
-                                        )} 포인트 적립예정<br>
+                                        ))} 포인트 적립예정<br>
                                         배송 방법 택배<br>
                                         배송비 3,500원 (30,000원 이상 무료배송)
                                     </div>
                                 </li>
                                 <li class="quantity">수량</li>
-                                <input type="number" value="1" class="quantity-option" />
+                                <input type="number" value="1" class="quantity-option" min=1 />
                                 <li class="size">SIZE*</li>
                                 <select class="size-option">
                                     <option value="0">SIZE (필수)</option>
@@ -83,10 +81,10 @@ window.onload = async function () {
             var itemData = {
                 _id,
                 productName,
-                productPrice: Number(productPrice),
+                productPrice: Math.floor(Number(productPrice)),
                 productSize: Number(sizeOption.value),
                 productQuantity: Number(quantityOption.value),
-                productTotalprice: Number(productPrice) * Number(quantityOption.value),
+                productTotalprice: Math.floor(Number(productPrice)) * Number(quantityOption.value),
                 productImg,
                 href: `/goods?productNo=${no}`,
             };
@@ -112,8 +110,6 @@ window.onload = async function () {
             }
 
             // 최신 추가 아이템
-            // localStorage.setItem("addCart", JSON.stringify(itemData));
-            // cartItems.push(JSON.parse(localStorage.getItem("addCart")));
             cartItems.push(itemData);
             localStorage.setItem("cart", JSON.stringify(cartItems));
             loadCartItem();
@@ -174,6 +170,5 @@ window.onload = async function () {
         setTimeout(showImage, 4000);
     }
 
-    // window.location.href = `/shop?category=1`
     showImage();
 };
