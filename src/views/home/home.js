@@ -44,7 +44,8 @@ function moveToShopAll(e) {
 }
 
 async function bestItem() {
-    var productList = await Api.get("/api/product/productlist/5");
+    var productList = await Api.get("/api/product/productlist/7");
+    const productNo = productList.map((el) => el.no);
     const productName = productList.map((el) => el.productName);
     const productPrice = productList.map((el) => el.productPrice);
 
@@ -52,7 +53,9 @@ async function bestItem() {
         const productItems = document.querySelector(".product-items");
         productItems.innerHTML += `<li class="product-item">
                         <div class="product-item_imgCover">
-                            <img src="" href="" class="introimg">
+                            <a href="/goods?productNo=${productNo[i]}">
+                                <img src="" class="introimg">
+                            </a>
                         </div>
                         <div class="product-item_info">
                             <span>Name : ${productName[i]}</span>
@@ -75,9 +78,9 @@ async function bestItem() {
             for (let i = 0; i < 7; i++) {
                 objImg[i].src = imgArray[i][1];
             }
-        }, 2000);
+        }, 3000);
 
-        setTimeout(showImage, 4000);
+        setTimeout(showImage, 6000);
     }
     showImage();
 }
