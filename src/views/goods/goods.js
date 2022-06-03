@@ -27,8 +27,11 @@ window.onload = async function () {
                         <div class="image-info">
                             <ul>
                                 <li class="name">${productName}</li>
-                                <li class="price">KRW ${addCommas(Math.floor(
+                                <li class="price" style="text-decoration: line-through">KRW ${addCommas(Math.floor(
                                     productPrice
+                                ))}</li>
+                                <li class="sale-price">KRW ${addCommas(Math.floor(
+                                    productPrice * 0.9
                                 ))}</li>
                                 <hr>
                                 <li class="description">${productDescription}

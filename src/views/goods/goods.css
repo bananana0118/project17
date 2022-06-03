@@ -13,7 +13,7 @@
 
 .main-image img {
     width: 55%;
-    height: auto;
+    height: 55vh;
     margin: 6em 20vw;
 }
 
@@ -33,7 +33,7 @@
     font-weight: bolder;
 }
 
-.image-info .price {
+.image-info .sale-price {
     font-style: italic;
     color: black;
     margin-bottom: 1em;

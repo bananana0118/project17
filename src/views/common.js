@@ -31,7 +31,7 @@ export const createItem = (item) => {
             </div>
             <div>
                 <b>금액</b>
-                <span>KRW ${addCommas(item.productTotalprice)}</span>
+                <span>KRW ${addCommas(item.productTotalprice * 0.9)}</span>
             </div>
         </div>
         <div id="delete-item">X</div>`
