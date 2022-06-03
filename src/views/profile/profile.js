@@ -3,6 +3,7 @@
 // 수정하면 요청보내서 DB의 정보가 수정되어야 함.(완료 시 알려주기)
 // 수정된 정보로 토큰 다시 저장?
 
+import { createMyOrderItem } from "../common.js";
 import * as Api from "/api.js";
 import { validateEmail } from "/useful-functions.js";
 
@@ -17,6 +18,10 @@ const phoneNumberInput = document.querySelector("#phoneNumber");
 const zipcodeInput = document.querySelector("#zipcode");
 const address1Input = document.querySelector("#input-address1");
 const address2Input = document.querySelector("#input-address2");
+const orderContainer = document.querySelector('.myOrderContainer');
+const profileUpdateContainer = document.querySelector('.profileUpdate-form-container');
+const orderListBtn = document.querySelector('#orderListBtn');
+const userInfoBtn = document.querySelector('#userInfoBtn');
 
 // =================================================
 //GET: 사용자 정보가져오기
@@ -118,6 +123,34 @@ const deleteAccount = async function (e) {
     }
 };
 profileDelete.addEventListener("click", deleteAccount);
-getAcountInfo();
+// getAcountInfo();
 
 profileUpdate.addEventListener("click", updateAccountInfo);
+
+const loadOrder = async () => {
+    const myOrderBox = document.querySelector('.myOrderBox');
+    while(myOrderBox.hasChildNodes()){
+        myOrderBox.removeChild(myOrderBox.firstChild);
+    }
+    orderListBtn.disabled = true;
+    userInfoBtn.disabled = false;
+    orderContainer.style.display = "flex";
+    profileUpdateContainer.style.display = "none";
+    const myOrders = await Api.get('/api/order/myOrder');
+    myOrders.map(myOrder => {
+        const div = createMyOrderItem(myOrder);
+        myOrderBox.appendChild(div);
+    })
+}
+
+const loadUserInfo = () => {
+    orderListBtn.disabled = false;
+    userInfoBtn.disabled = true;
+    orderContainer.style.display = "none";
+    profileUpdateContainer.style.display = "flex";
+    getAcountInfo();
+}
+
+orderListBtn.addEventListener('click', loadOrder);
+userInfoBtn.addEventListener('click', loadUserInfo);
+loadOrder();

@@ -37,7 +37,8 @@ const register = async () => {
     }
     else{
         const res = await Api.post('/api/order/cart', data);
-        // window.location.href = '/';
+        alert('결제가 완료되었습니다!')
+        window.location.href = '/profile';
     }
 }
 

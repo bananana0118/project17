@@ -75,8 +75,8 @@
                     환영합니다!</span
                 >
                 <div class="personalPage-menu_Btns">
-                    <button>주문내역</button>
-                    <button><a href="/profile">계정관리</a></button>
+                    <button id="orderListBtn">주문내역</button>
+                    <button id="userInfoBtn">계정관리</button>
                     <button id="profileDeleteButton">회원탈퇴</button>
                 </div>
             </div>
@@ -166,6 +166,18 @@
                     </div>
                     <button id="updateSubmitButton">수정하기</button>
                 </form>
+            </div>
+            <div class="myOrderContainer">
+                <span id="headText">주문 내역</span>
+                <div class="myOrderHeader">
+                    <div id="myOrderDate">날짜</div>
+                    <div id="myOrderInfo">주문정보</div>
+                    <div id="myOrderState">상태</div>
+                    <div id="ask">문의</div>
+                </div>
+                <div class="myOrderBox" style="width: 100%">
+
+                </div>
             </div>
         </main>
 

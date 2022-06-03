@@ -37,8 +37,8 @@ const OrderSchema = new Schema(
             type: Number,
             required: true,
             default: 11,
-        },
-
+    },
+        
         //[상품준비중,배송준비중, 배송중, 배송완료]
         status: {
             type: String,
