@@ -59,8 +59,8 @@ function moveToShopAll(e) {
 
 async function bestItem() {
     var productList = await Api.get("/api/product/productlist");
-    const productName = productList.map(el => el.productName);
-    const productPrice = productList.map(el => el.productPrice);
+    const productName = productList.map((el) => el.productName);
+    const productPrice = productList.map((el) => el.productPrice);
 
     for (let i = 0; i < 7; i++) {
         const productItems = document.querySelector(".product-items");
@@ -70,7 +70,9 @@ async function bestItem() {
                         </div>
                         <div class="product-item_info">
                             <span>Name : ${productName[i]}</span>
-                            <span>Price : KRW ${addCommas(productPrice[i])}</span>
+                            <span>Price &nbsp;&nbsp;: ${addCommas(
+                                productPrice[i]
+                            )} KRW</span>
                         </div>
                     </li>`;
     }

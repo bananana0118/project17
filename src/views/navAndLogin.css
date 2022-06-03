@@ -238,7 +238,7 @@ footer {
     align-items: center;
     justify-content: center;
     width: 350px;
-    height: 500px;
+    height: 450px;
     border-radius: 20px;
     background-color: #f8f8ff;
 }
@@ -356,11 +356,15 @@ footer {
     cursor: pointer;
 }
 
+.nav-category_list:first-child a {
+    cursor: pointer;
+}
+
 /* modal media query */
 @media screen and (max-width: 600px) {
     .login-form-container {
         width: 250px;
-        height: 400px;
+        height: 350px;
     }
     .login-form_input,
     .login-form .submitBtns {

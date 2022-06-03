@@ -42,7 +42,6 @@ async function render() {
                 `
     );
 
-    console.log(document.querySelector(".items"));
     await handleProductList();
 }
 
@@ -57,7 +56,6 @@ async function handleProductList() {
     }
 
     //productList = await Api.get(`/api/product/get/category/${urlParams}`);
-    console.log(productList);
 
     productList.forEach(function (product) {
         const {

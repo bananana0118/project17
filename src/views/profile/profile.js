@@ -101,6 +101,7 @@ const updateAccountInfo = async function (e) {
         };
         const userUpdate = await Api.patch("/api/profile/edit", "", data);
         alert("계정 정보가 수정되었습니다.");
+        location.href = "/";
     } catch (err) {
         console.error(err.stack);
         alert(`${err.message}`);
