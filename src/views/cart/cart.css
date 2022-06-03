@@ -209,6 +209,10 @@
     color: #a9a9a9;
 }
 
+footer {
+    margin-top: 40vh;
+}
+
 /* media query */
 @media screen and (max-width: 900px) {
     .cart-container {

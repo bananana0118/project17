@@ -14,13 +14,13 @@ function navBarCreate() {
     nav.innerHTML = `<div class="navBar-container">
                         <a href="/" class="nav-brand">
                             <!-- 로고 이미지 추가 시 추가 작성-->
-                            <span class="nav-brand_name">Project17</span>
+                            <span class="nav-brand_name">PROJECT 17</span>
                         </a>
                         <ul class="nav-category">
-                            <li class="nav-category_list"><a onclick="window.scrollTo({top: 9999, behavior: 'smooth'});">best</a></li>
-                            <li class="nav-category_list"><a href="/event">event</a></li>
-                            <li class="nav-category_list"><a href="/shop">product</a></li>
-                            <li class="nav-category_list"><a href="#">about</a></li>
+                            <li class="nav-category_list"><a onclick="window.scrollTo({top: 9999, behavior: 'smooth'});">Best</a></li>
+                            <li class="nav-category_list"><a href="/event">Event</a></li>
+                            <li class="nav-category_list"><a href="/shop">Product</a></li>
+                            <li class="nav-category_list"><a href="#">About</a></li>
                         </ul>
                         <div class="nav-menu">
                             <a href="/shop">
@@ -43,7 +43,7 @@ function navBarCreate() {
                                     </i>
                                 </button>
                                 <div class="personalMenu-buttons">
-                                    <button class="myPageOrderLoad">마이페이지</button>
+                                    <button class="myPageOrderLoad">주문내역</button>
                                     <button class="myPageAccountLoad">계정관리</button>
                                     <button id="logout">로그아웃</button>
                                 </div>
@@ -98,7 +98,7 @@ function navBarCreate() {
                                     `;
 
     footer.innerHTML = `<div class="footer-col">
-                            <div class="footer-brandName" style="margin-right:1rem;">Project17</div>
+                            <div class="footer-brandName" style="margin-right:1rem;">PROJECT 17</div>
                             <div class="footer-slogan">/SIMPLE IS BEST/</div>
                             <div class="footer-contributor">Contributed By @강예정 @김동철 @이용준 @조희승 @심주용</div>
                         </div>`;

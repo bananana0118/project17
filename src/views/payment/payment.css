@@ -286,6 +286,15 @@ ul {
     color: #a9a9a9;
 }
 
+#payment-btn:hover {
+    background-color: rgb(82, 92, 143);
+    color: white;
+}
+
+.item-list-product {
+    font-size: 0.8rem;
+}
+
 /* media query */
 @media screen and (max-width: 900px) {
     .payment-container {
