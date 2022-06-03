@@ -1,10 +1,13 @@
 import * as Api from "/api.js";
+import { isAdmin } from "../common.js";
 
 const statisticArrow = document.getElementById("arrow");
 const statisticInfo = document.querySelector(".static-info");
 const manageOrder = document.getElementById("manage-order");
 const registerItem = document.getElementById('register-item');
 
+
+isAdmin();
 
 const handlerOnClick = () => {
     onClickArrow();

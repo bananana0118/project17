@@ -1,4 +1,5 @@
 import * as Api from '../api.js';
+import { isAdmin } from '../common.js';
 import { createOrderItem } from '../common.js';
 
 const popUp = () => {
@@ -17,4 +18,5 @@ const onload = async () => {
     })    
 }
 
+isAdmin();
 onload();

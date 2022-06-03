@@ -1,4 +1,5 @@
 import * as Api from "../api.js";
+import { isAdmin } from "../common.js";
 
 const submmitBtn = document.querySelector('.product-register-btn')
 const inputFile = document.querySelector('#image-input')
@@ -15,17 +16,7 @@ inputItems[0].focus();
 let uploadFiles = []
 let formData = new FormData();
 
-const onLoad = async () => {
-    const userInfo = await Api.get('/api/profile/myProfile')
-    
-    if(userInfo.role !== "admin"){
-        alert("권한이 없습니다!!!")
-        window.location.href = '/';
-        return 
-    }
-}
-
-onLoad();
+isAdmin();
 /* 리펙토링 필요 
 *  EnterKey 입력시 focus 이동 
 */

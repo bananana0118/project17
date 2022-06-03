@@ -75,3 +75,13 @@ export const createMyOrderItem = (item) => {
     div.innerHTML = html;
     return div
 }
+
+export const isAdmin = async () => {
+    const userInfo = await Api.get('/api/profile/myProfile')
+    
+    if(userInfo.role !== "admin"){
+        alert("권한이 없습니다!!!")
+        window.location.href = '/';
+        return 
+    }
+}
