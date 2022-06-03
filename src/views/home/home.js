@@ -124,3 +124,8 @@ mainSlides.addEventListener("click", moveToShopAll);
 // bottomBtn.addEventListener("click", moveToShopBottom);
 // outerBtn.addEventListener("click", moveToShopOuter);
 // shoesBtn.addEventListener("click", moveToShopShoes);
+
+const bestBtn = document.querySelector(".best-btn");
+bestBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 9999, behavior: 'smooth' });
+});
