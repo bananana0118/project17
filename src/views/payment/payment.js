@@ -57,13 +57,14 @@ const register = async () => {
         "010" +
         document.querySelector("#input-middle-num").value +
         document.querySelector("#input-last-num").value;
-    const totalprice = sumPrice;
+    const totalPrice = sumPrice;
 
     //로그인하지 않은 사용자 alert 추가
     const token = sessionStorage.getItem("token");
 
     if (token) {
-        const data = { orderProduct, address, phoneNumber, totalprice };
+        const data = { orderProduct, address, phoneNumber, totalPrice };
+        console.log(data);
         if (phoneNumber.length < 11) {
             alert("전화번호를 입력해주세요!");
             document.querySelector("#input-middle-num").focus();

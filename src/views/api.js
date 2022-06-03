@@ -3,7 +3,7 @@
 //                  Api.get(/profile,?=)
 async function get(endpoint, params = "") {
     const apiUrl = `${endpoint}/${params}`;
-
+    console.log(apiUrl)
     const res = await fetch(apiUrl, {
         // JWT 토큰을 헤더에 담아 백엔드 서버에 보냄.
         headers: {

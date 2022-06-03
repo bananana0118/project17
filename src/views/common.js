@@ -67,7 +67,7 @@ export const createMyOrderItem = (item) => {
     const date = createDate.getFullYear() + "-" + (createDate.getMonth() + 1) + "-" + createDate.getDate() + " " + createDate.getHours() + ":" + createDate.getMinutes() + ":" + createDate.getSeconds();
     const style = item.status === "배송 준비 중" ? "color: blue" : "color:red"
     const html = `
-            <div id="myOrderDate">${date.toLocaleString()}</div>
+            <div id="myOrderDate">${date}</div>
             <div id="myOrderInfo">${item.orderProduct[0].productName} 외 ${item.orderProduct.length -1}</div>
             <div id="myOrderState" style="${style}">${item.status}</div>
             <div id="askInfo">문의</div>
@@ -76,7 +76,6 @@ export const createMyOrderItem = (item) => {
     div.innerHTML = html;
     return div
 }
-
 
 /**
  * 
@@ -98,6 +97,7 @@ export const createUserOrderItem = (item) => {
     return div
 }
 
+<<<<<<< Updated upstream
 
 export const createManageItem = (item) => {
     var categoryName;
@@ -124,16 +124,41 @@ export const createManageItem = (item) => {
             <button id="item-revise-btn">상품 수정</button>
         </div>
     `
+=======
+export const createStaticItem = (item) => {
+    console.log(item);
+    const div = document.createElement('div');
+    const userId = !item.userId ? "탈퇴한 계정입니다.!" : item.userId.email
+    // const email = await Api.get('/api/user/')
+    const date = new Date(item.createdAt);
+    const html = `
+        <div class="static-body-box">
+            <span class="admin-sale-date-txt"> ${date.toLocaleString()} </span>
+            <span class="admin-sale-order-txt"> ${item.orderProduct[0].productName} 외 ${item.orderProduct.length -1}종 </span>
+            <span class="admin-sale-id-txt"> ${userId}</span>
+            <span class="admin-sale-price-txt"> ${item.totalPrice}</span>
+        </div>
+    `
+
+>>>>>>> Stashed changes
     div.innerHTML = html;
     return div
 }
 
 export const isAdmin = async () => {
-    const userInfo = await Api.get('/api/profile/myProfile')
+    const islogin = sessionStorage.getItem('token');
     
-    if(userInfo.role !== "admin"){
-        alert("권한이 없습니다!!!")
+    if(!islogin){
+        alert("로그인을 해주세요!");
         window.location.href = '/';
-        return 
+    }
+    else{
+        const userInfo = await Api.get('/api/profile/myProfile')
+    
+        if(userInfo.role !== "admin"){
+            alert("권한이 없습니다!!!")
+            window.location.href = '/';
+            return 
+        }
     }
 }

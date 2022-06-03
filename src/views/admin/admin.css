@@ -80,7 +80,13 @@
 .static-box {
     display: flex;
     flex-direction: row;
-    margin-bottom: 200px;
+    margin-bottom: 50px;
+}
+
+#day-box{
+    position: absolute;
+    z-index: 1;
+    top: 10px; right: 10px;
 }
 
 .graph {
@@ -111,6 +117,7 @@
 .static-info {
     display: none;
     flex-direction: column;
+    position: relative;
     align-items: center;
     text-align: center;
     border: 1px solid #ddd;
@@ -118,11 +125,15 @@
     border-radius: 5%;
     padding: 10px;
     width: 600px;
+    height: 400px;
+    overflow-y: scroll;
     animation-duration: 1s;
+    font-size: 12px;
     animation-name: slidein;
 }
 
-.static-header-box {
+
+.static-header-box{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -132,10 +143,32 @@
     height: 40px;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
-    font-size: 15px;
+    font-size: 12px;
     padding: 0 10px;
     letter-spacing: -.5px;
     margin-top: 20px;
+}
+
+.static-body-box{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-bottom: 1px solid #a9a9a9;
+    padding: 5px;
+    width: 100%;
+}
+
+#summary{
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+}
+
+#date-txt,
+#total-txt{
+    font-weight: bold;
+    font-size: 17px;
 }
 
 .admin-sale-date-txt {
