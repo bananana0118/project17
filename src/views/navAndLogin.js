@@ -43,8 +43,8 @@ function navBarCreate() {
                                     </i>
                                 </button>
                                 <div class="personalMenu-buttons">
-                                    <button>마이페이지</button>
-                                    <button>계정관리</button>
+                                    <button class="myPageOrderLoad">마이페이지</button>
+                                    <button class="myPageAccountLoad">계정관리</button>
                                     <button id="logout">로그아웃</button>
                                 </div>
                                 <div class="check">
@@ -120,7 +120,12 @@ const modalClose = document.querySelector(".closeBtn");
 const modalOverlay = document.querySelector(".modal-overlay");
 const loginCheck = document.querySelector(".check");
 
-//카카오 로그인(잘못된 로직으로 판명... 카카오톡 로그인 정보를 데이터에 넣는 건 백단에서 해야할 문제 )
+//personalPage 이동 버튼 분기처리
+const myPageBtn = document.querySelector(".myPageOrderLoad");
+console.log(myPageBtn);
+const myPageAccountBtn = document.querySelector(".myPageAccountLoad");
+
+//카카오 로그인(잘못된 로직으로 판명... 카카오톡 로그인 정보를 데이터에 넣는 건 이렇게 하는게 아니라 백단에서 해야할 문제 )
 const kakaoLoginBtn = document.querySelector(".kakao-login");
 Kakao.init("738b82b958ee938f73a2a62aaecce547");
 
@@ -330,3 +335,18 @@ export const loadCartItem = () => {
 };
 
 loadCartItem();
+
+// personalIcon 클릭 시 메뉴에 따른 분기처리
+
+const myPageOrderLoad = (e) => {
+    e.preventDefault();
+    localStorage.setItem("myPageLoad", "orderLoad");
+};
+
+const myPageAccountLoad = (e) => {
+    e.preventDefault();
+    localStorage.setItem("myPageLoad", "accountInfoLoad");
+};
+
+myPageBtn.addEventListener("click", myPageOrderLoad);
+myPageAccountBtn.addEventListener("click", myPageAccountLoad);
