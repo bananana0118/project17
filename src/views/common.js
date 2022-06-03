@@ -41,7 +41,6 @@ export const createItem = (item) => {
 
 export const createOrderItem = (item) => {
     const div = document.createElement('div');
-    console.log(item)
     const date = new Date(item.createdAt);
     const style = item.status === "배송 준비 중" ? "color: blue" : "color:red"
     const html = `
@@ -52,6 +51,27 @@ export const createOrderItem = (item) => {
             <button id="state-change-btn" >상태 변경</button>
         </div>
     `
+    div.innerHTML = html;
+    return div
+}
+
+
+/**
+ * 
+ * @param {myOrder} item 
+ */
+export const createMyOrderItem = (item) => {
+    const div = document.createElement('div');
+    const createDate = new Date(item.createdAt);
+    const date = createDate.getFullYear() + "-" + (createDate.getMonth() + 1) + "-" + createDate.getDate() + " " + createDate.getHours() + ":" + createDate.getMinutes() + ":" + createDate.getSeconds();
+    const style = item.status === "배송 준비 중" ? "color: blue" : "color:red"
+    const html = `
+            <div id="myOrderDate">${date.toLocaleString()}</div>
+            <div id="myOrderInfo">${item.orderProduct[0].productName} 외 ${item.orderProduct.length -1}</div>
+            <div id="myOrderState" style="${style}">${item.status}</div>
+            <div id="askInfo">문의</div>
+        `
+    div.classList.add('myOrderBody')
     div.innerHTML = html;
     return div
 }
