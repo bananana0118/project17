@@ -88,9 +88,6 @@ function navBarCreate() {
                                             <button class="kakao-login" onclick="event.preventDefault()">
                                                 카카오계정 로그인
                                             </button>
-                                            <button class="login-submitButton" onclick="event.preventDefault()">
-                                                구글계정 로그인
-                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -294,7 +291,10 @@ async function handleSubmit(e) {
         } else {
             alert(`정상적으로 로그인되었습니다.`);
         }
-
+        if (location.href === "http://localhost:3000/payment/") {
+            location.reload();
+            console.log("a");
+        }
         loginModal.classList.add("hidden");
         loginCheckAppear();
     } catch (err) {

@@ -3,9 +3,34 @@ import * as Api from "../api.js";
 const ul = document.querySelector(".order-item-list");
 const selectedEmail = document.querySelector("#select-email");
 const paymentBtn = document.querySelector("#payment-btn");
+const fullName = document.querySelector("#input-name");
+const phoneNumberMiddle = document.querySelector("#input-middle-num");
+const phoneNumberLast = document.querySelector("#input-last-num");
+const emailHead = document.querySelector("#input-email-head");
+const emailTail = document.querySelector("#input-email-tail");
 const zipcode = document.querySelector("#zipcode");
+const address1 = document.querySelector("#input-address1");
+const address2 = document.querySelector("#input-address2");
 const loginModal = document.querySelector(".login");
-console.log(loginModal);
+
+const getUserInfo = async () => {
+    const user = await Api.get("/api/profile/myProfile");
+
+    const splitPhoneNumberMiddle = user.phoneNumber.substr(3, 4);
+    const splitPhoneNumberLast = user.phoneNumber.substr(7, 4);
+    const splitEmail = user.email.split("@");
+
+    fullName.value = user.fullName;
+    phoneNumberMiddle.value = splitPhoneNumberMiddle;
+    phoneNumberLast.value = splitPhoneNumberLast;
+    emailHead.value = splitEmail[0];
+    emailTail.value = splitEmail[1];
+    zipcode.value = user.address.postalCode;
+    address1.value = user.address.address1;
+    address2.value = user.address.address2;
+};
+
+getUserInfo();
 
 const changeDomain = () => {
     document.querySelector("#input-email-tail").value = selectedEmail.value;

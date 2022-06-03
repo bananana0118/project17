@@ -86,9 +86,13 @@ ul {
 }
 
 #find-address-btn {
-    background: transparent;
+    background: #001b7b;
+    color: white;
     border: none;
-    font-size: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 3px 5px;
+    cursor: pointer;
 }
 
 .order-ship-address-container {
@@ -157,7 +161,7 @@ ul {
 }
 
 #header-text:last-child {
-    background-color: rgb(228, 231, 239);
+    background-color: rgb(233, 233, 233);
 }
 
 #header-text:last-child {

@@ -14,13 +14,13 @@
 .main-image img {
     width: 55%;
     height: auto;
-    margin: 20vh 20vw;
+    margin: 6em 20vw;
 }
 
 .image-info {
     width: 30%;
     float: left;
-    margin: 20vh 0;
+    margin: 6em 0;
     line-height: 4vh;
 }
 
@@ -197,6 +197,10 @@
 .buyBtn:hover {
     background-color: rgb(195, 40, 40);
     transition: background-color 0.3s;
+}
+
+footer {
+    border-top: none;
 }
 
 @keyframes modalAppear {
