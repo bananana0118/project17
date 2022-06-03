@@ -17,10 +17,10 @@ function navBarCreate() {
                             <span class="nav-brand_name">PROJECT 17</span>
                         </a>
                         <ul class="nav-category">
-                            <li class="nav-category_list"><a onclick="window.scrollTo({top: 9999, behavior: 'smooth'});">Best</a></li>
-                            <li class="nav-category_list"><a href="/event">Event</a></li>
-                            <li class="nav-category_list"><a href="/shop">Product</a></li>
-                            <li class="nav-category_list"><a href="#">About</a></li>
+                            <li class="nav-category_list"><a class="best-btn">Best</a></li>
+                            <li class="nav-category_list"><a href="/event">event</a></li>
+                            <li class="nav-category_list"><a href="/shop">product</a></li>
+                            <li class="nav-category_list"><a href="#">about</a></li>
                         </ul>
                         <div class="nav-menu">
                             <a href="/shop">
@@ -106,7 +106,6 @@ navBarCreate();
 const logoutBtn = document.querySelector("#logout");
 const personalIcon = document.querySelector("#personalIcon");
 const personalMenu = document.querySelector(".personalMenu-buttons");
-// const allArea = document.querySelector("main");
 
 //login modal
 const loginModal = document.querySelector(".modal");

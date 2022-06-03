@@ -115,7 +115,7 @@ const renderPage = (cartItems) => {
                 sumPrice
             )}<span style="font-productSize:14px">원</span>`;
     } else {
-        document.getElementById("ship-pay").innerHTML = "3500원";
+        document.getElementById("ship-pay").innerHTML = "3,500원";
         document.getElementById("payment").innerHTML = `
             ${addCommas(
                 sumPrice + 3500

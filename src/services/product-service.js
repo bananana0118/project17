@@ -59,6 +59,12 @@ class ProductService {
         return products;
     }
 
+    /**@override @param {findAll}  */
+    async getProducts(num) {
+        const products = await this.productModel.findAll(num);
+        return products;
+    }
+
     // 상품 상세 정보 확인
     async getProduct(productNo) {
         const product = await this.productModel.findByNo(productNo);

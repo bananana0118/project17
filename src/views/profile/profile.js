@@ -129,8 +129,6 @@ const deleteAccount = async function (e) {
     }
 };
 profileDelete.addEventListener("click", deleteAccount);
-// getAcountInfo();
-
 profileUpdate.addEventListener("click", updateAccountInfo);
 
 const loadOrder = async () => {
@@ -174,6 +172,5 @@ const LoadPage = async () => {
 
 orderListBtn.addEventListener("click", loadOrder);
 userInfoBtn.addEventListener("click", loadUserInfo);
-// loadOrder();
 
 LoadPage();

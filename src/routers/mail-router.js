@@ -39,7 +39,6 @@ mailRouter.post(
             return res.status(400).json({
                 msg: "이 이메일로 가입된 사용자가 없습니다.",
             });
-            //throw new Error("해당 메일로 가입된사용자가 없습니다.");
         }
         //랜덤 패스워드 생성하기!
         const password = generateRandomPassword();

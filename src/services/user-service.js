@@ -79,7 +79,7 @@ class UserService {
             {
                 userId: user._id,
                 role: user.role,
-                // passwordReset: user.passwordReset,
+                passwordReset: user.passwordReset,
             },
             secretKey
         );
@@ -93,6 +93,10 @@ class UserService {
         return users;
     }
 
+    async getUserByEmail(email) {
+        const user = await this.userModel.findByEmail(email);
+        return user;
+    }
     // 유저정보 수정, 현재 비밀번호가 있어야 수정 가능함.
     async setUser(userInfoRequired, toUpdate) {
         // 객체 destructuring

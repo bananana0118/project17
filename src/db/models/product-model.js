@@ -10,7 +10,13 @@ export class ProductModel {
     }
 
     async findAll() {
-        const products = await Product.find({});
+        const products = await Product.find({}).sort({ no: -1 });
+        return products;
+    }
+
+    /**@override @param {findAll}  */
+    async findAll(num) {
+        const products = await Product.find({}).sort({ no: -1 }).limit(num);
         return products;
     }
 
@@ -44,7 +50,7 @@ export class ProductModel {
     async findByCategory(productCategory) {
         const products = await Product.find({
             productCategory: productCategory,
-        });
+        }).sort({ no: -1 });
         return products;
     }
 

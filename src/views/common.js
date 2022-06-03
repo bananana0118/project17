@@ -1,4 +1,5 @@
 import * as Api from '/api.js';
+import { addCommas } from "../useful-functions.js";
 
 /**
  * Template literal을 사용하여 생성된 html 반환
@@ -30,7 +31,7 @@ export const createItem = (item) => {
             </div>
             <div>
                 <b>금액</b>
-                <span>KRW ${item.productTotalprice}</span>
+                <span>KRW ${addCommas(item.productTotalprice)}</span>
             </div>
         </div>
         <div id="delete-item">X</div>`
@@ -46,7 +47,7 @@ export const createOrderItem = (item) => {
     const html = `
         <div id="data-info">${date.toLocaleString()}</div>
             <div id="order-info">${item.orderProduct[0].productName} 외 ${item.orderProduct.length -1}종</div>
-            <div id="user-name">${item.userId.email}</div>
+            <div id="user-name"><a href="/userorder?email=${item.userId.email}">${item.userId.email}</a></div>
             <div id="order-state-info" style="${style}">${item.status}</div>
             <button id="state-change-btn" >상태 변경</button>
         </div>
@@ -72,6 +73,27 @@ export const createMyOrderItem = (item) => {
             <div id="askInfo">문의</div>
         `
     div.classList.add('myOrderBody')
+    div.innerHTML = html;
+    return div
+}
+
+
+/**
+ * 
+ * @param {myOrder} item 
+ */
+export const createUserOrderItem = (item) => {
+    const div = document.createElement('div');
+    const date = new Date(item.createdAt);
+    const style = item.status === "배송 준비 중" ? "color: blue" : "color:red"
+    const html = `
+        <div id="data-info">${date.toLocaleString()}</div>
+            <div id="order-info">${item.orderProduct[0].productName} 외 ${item.orderProduct.length -1}종</div>
+            <div id="user-name">${item.userId.email}</a></div>
+            <div id="order-state-info" style="${style}">${item.status}</div>
+            <button id="state-change-btn" >상태 변경</button>
+        </div>
+    `
     div.innerHTML = html;
     return div
 }

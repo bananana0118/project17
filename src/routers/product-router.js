@@ -25,9 +25,9 @@ productRouter.post("/addproduct", upload.array("image"), async (req, res) => {
     const newProduct = await productService.addProduct({
         productName,
         productPrice,
-        productCategory,
-        productDescription,
         productSize,
+        productDescription,
+        productCategory,
         productManufacturer,
         productImg,
     });
@@ -38,6 +38,20 @@ productRouter.post("/addproduct", upload.array("image"), async (req, res) => {
 
 // 전체 상품 리스트 JSON 응답
 productRouter.get("/productlist", async function (req, res, next) {
+    try {
+        // 전체 상품 목록을 얻음
+        const products = await productService.getProducts();
+
+        // 상품 목록(배열)을 JSON 형태로 프론트에 보냄
+
+        res.status(200).json(products);
+    } catch (error) {
+        next(error);
+    }
+});
+
+/**@override @param {productlist}  */
+productRouter.get("/productlist/:num", async function (req, res, next) {
     try {
         // 전체 상품 목록을 얻음
         const products = await productService.getProducts();

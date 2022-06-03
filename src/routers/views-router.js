@@ -19,10 +19,11 @@ viewsRouter.use("/shop", serveStatic("shop"));
 viewsRouter.use("/goods", serveStatic("goods"));
 viewsRouter.use("/admin", serveStatic("admin"));
 viewsRouter.use("/productregister", serveStatic("productregister"));
-viewsRouter.use("/order", serveStatic("order"));
 viewsRouter.use("/payment", serveStatic("payment"));
 viewsRouter.use("/manageorder", serveStatic("manageorder"));
 viewsRouter.use("/findpassword", serveStatic("findpassword"));
+viewsRouter.use("/event", serveStatic("event"));
+viewsRouter.use("/userorder", serveStatic("userorder"));
 
 // views 폴더의 최상단 파일인 rabbit.png, api.js 등을 쓸 수 있게 함
 viewsRouter.use("/", serveStatic("")); //없어지면 navBar 안보임 삭제하지 말것
