@@ -50,6 +50,20 @@ productRouter.get("/productlist", async function (req, res, next) {
     }
 });
 
+/**@override @param {productlist}  */
+productRouter.get("/productlist/:num", async function (req, res, next) {
+    try {
+        // 전체 상품 목록을 얻음
+        const products = await productService.getProducts();
+
+        // 상품 목록(배열)을 JSON 형태로 프론트에 보냄
+
+        res.status(200).json(products);
+    } catch (error) {
+        next(error);
+    }
+});
+
 // 특정 상품 정보 JSON 응답
 productRouter.get("/get/:productNo", async function (req, res, next) {
     try {

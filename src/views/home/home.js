@@ -58,7 +58,7 @@ function moveToShopAll(e) {
 }
 
 async function bestItem() {
-    var productList = await Api.get("/api/product/productlist");
+    var productList = await Api.get("/api/product/productlist/5");
     const productName = productList.map((el) => el.productName);
     const productPrice = productList.map((el) => el.productPrice);
 
