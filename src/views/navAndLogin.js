@@ -17,8 +17,8 @@ function navBarCreate() {
                             <span class="nav-brand_name">Project17</span>
                         </a>
                         <ul class="nav-category">
-                            <li class="nav-category_list"><a href="#">new</a></li>
-                            <li class="nav-category_list"><a href="/product">event</a></li>
+                            <li class="nav-category_list"><a onclick="window.scrollTo({top: 9999, behavior: 'smooth'});">best</a></li>
+                            <li class="nav-category_list"><a href="/event">event</a></li>
                             <li class="nav-category_list"><a href="/shop">product</a></li>
                             <li class="nav-category_list"><a href="#">about</a></li>
                         </ul>
