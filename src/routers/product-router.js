@@ -34,7 +34,7 @@ productRouter.post("/addproduct", upload.array("image"), async (req, res) => {
 
     // 상품이 등록 되었으면, 전체 상품 페이지로 돌아감
     res.write("<script>alert('product register success!')</script>");
-    res.write("<script>window.location=\"/\"</script>");
+    res.write('<script>window.location="/"</script>');
 });
 
 // 전체 상품 리스트 JSON 응답
@@ -147,7 +147,7 @@ productRouter.patch("/patch/:productNo", async function (req, res, next) {
 });
 
 // 특정 상품 정보 삭제
-productRouter.delete("/delete/:productNo", async (req, res) => {
+productRouter.delete("/delete/:productNo", async (req, res, next) => {
     try {
         // content-type 을 application/json 로 프론트에서
         // 설정 안 하고 요청하면, body가 비어 있게 됨.
