@@ -92,8 +92,6 @@ class OrderModel {
         });
 
         return orders;
-
-        // console.log(today.toLocaleString());
     }
 }
 

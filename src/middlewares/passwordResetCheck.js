@@ -26,15 +26,9 @@ async function passwordResetCheck(req, res, next) {
         } else {
             next();
         }
-        // console.log(user);
+
         /** @param {passwordReset} */
 
-        // if (user.passwordReset) {
-        //     res.status(200).json(user.passwordReset);
-        //     return;
-        // } else {
-        //     next();
-        // }
     } catch (error) {
         res.status(403).json({
             result: "forbidden-approach",

@@ -3,7 +3,6 @@ import { addCommas } from "../useful-functions.js";
 
 async function render() {
     const urlParams = new URLSearchParams(location.search).get("category");
-    //const categoryList = await Api.get(`/api/product/get/category/${urlParams}`);
     var categoryName;
 
     if (urlParams === null) {
@@ -41,8 +40,6 @@ async function render() {
                 </div>
                 `
     );
-
-    console.log(document.querySelector(".items"));
     await handleProductList();
 }
 
@@ -55,9 +52,6 @@ async function handleProductList() {
     } else {
         productList = await Api.get(`/api/product/get/category/${urlParams}`);
     }
-
-    //productList = await Api.get(`/api/product/get/category/${urlParams}`);
-    console.log(productList);
 
     productList.forEach(function (product) {
         const {
@@ -117,5 +111,4 @@ async function handleProductList() {
     showImage();
 }
 
-//await handleProductList();
 await render();

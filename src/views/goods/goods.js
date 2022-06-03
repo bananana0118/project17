@@ -8,8 +8,6 @@ window.onload = async function () {
         ? await Api.get(`/api/product/get/40`)
         : await Api.get(`/api/product/get/${urlParams}`);
 
-    // const product = await Api.get(`/api/product/get/${urlParams}`);
-
     const {
         _id,
         productName,
@@ -112,8 +110,6 @@ window.onload = async function () {
             }
 
             // 최신 추가 아이템
-            // localStorage.setItem("addCart", JSON.stringify(itemData));
-            // cartItems.push(JSON.parse(localStorage.getItem("addCart")));
             cartItems.push(itemData);
             localStorage.setItem("cart", JSON.stringify(cartItems));
             loadCartItem();
@@ -174,6 +170,5 @@ window.onload = async function () {
         setTimeout(showImage, 4000);
     }
 
-    // window.location.href = `/shop?category=1`
     showImage();
 };

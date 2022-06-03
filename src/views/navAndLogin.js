@@ -109,7 +109,6 @@ navBarCreate();
 const logoutBtn = document.querySelector("#logout");
 const personalIcon = document.querySelector("#personalIcon");
 const personalMenu = document.querySelector(".personalMenu-buttons");
-// const allArea = document.querySelector("main");
 
 //login modal
 const loginModal = document.querySelector(".modal");

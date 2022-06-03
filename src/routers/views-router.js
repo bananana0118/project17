@@ -19,7 +19,6 @@ viewsRouter.use("/shop", serveStatic("shop"));
 viewsRouter.use("/goods", serveStatic("goods"));
 viewsRouter.use("/admin", serveStatic("admin"));
 viewsRouter.use("/productregister", serveStatic("productregister"));
-viewsRouter.use("/order", serveStatic("order"));
 viewsRouter.use("/payment", serveStatic("payment"));
 viewsRouter.use("/manageorder", serveStatic("manageorder"));
 viewsRouter.use("/findpassword", serveStatic("findpassword"));

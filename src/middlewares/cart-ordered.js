@@ -7,12 +7,6 @@ async function cartOrdered(req, res, next) {
 
     //prodjct id 가져오기
     const cartData = req.cartData.orderProduct;
-    
-    // let orderedProduct = [];
-    // for (let i = 0; i < cartData.length; i++) {
-    //     let orderData = await productService.getProductById(cartData[i]._id);
-    //     orderedProduct.push(orderData._id);
-    // }
 
     const orderInfo = {
         userId: user._id,
