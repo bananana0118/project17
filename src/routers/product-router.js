@@ -25,9 +25,9 @@ productRouter.post("/addproduct", upload.array("image"), async (req, res) => {
     const newProduct = await productService.addProduct({
         productName,
         productPrice,
-        productCategory,
-        productDescription,
         productSize,
+        productDescription,
+        productCategory,
         productManufacturer,
         productImg,
     });
