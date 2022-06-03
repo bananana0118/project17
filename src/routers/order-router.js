@@ -57,6 +57,27 @@ orderRouter.get("/myOrder", loginRequired, async (req, res, next) => {
     }
 });
 
+orderRouter.get(
+    "/myOrder/:email",
+    loginRequired,
+    areYouAdmin,
+    async (req, res, next) => {
+        try {
+            const email = req.params.email;
+            const user = await userService.getUserByEmail(email);
+            const orderInfo = {
+                userId: user._id,
+            };
+            console.log(orderInfo);
+            const emailOrder = await orderModel.findByUserId(orderInfo);
+
+            res.status(200).json(emailOrder);
+        } catch (error) {
+            next(error);
+        }
+    }
+);
+
 //3. 주문 취소
 orderRouter.delete(
     "/deleteOrder/:orderNumber",
