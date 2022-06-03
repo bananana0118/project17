@@ -296,6 +296,7 @@ async function handleSubmit(e) {
     } catch (err) {
         console.error(err.stack);
         alert("이메일 계정 및 비밀번호를 확인해주세요");
+
     }
 }
 
