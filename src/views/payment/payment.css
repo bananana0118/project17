@@ -295,6 +295,14 @@ ul {
     font-size: 0.8rem;
 }
 
+#top-text {
+    padding-top: 8em;
+}
+
+.order-ship-address-container {
+    border-bottom: none;
+}
+
 /* media query */
 @media screen and (max-width: 900px) {
     .payment-container {
@@ -307,5 +315,11 @@ ul {
         width: 100%;
         margin: 0 auto;
         margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #top-text {
+        padding-top: 4em;
     }
 }

@@ -122,7 +122,6 @@ const loginCheck = document.querySelector(".check");
 
 //personalPage 이동 버튼 분기처리
 const myPageBtn = document.querySelector(".myPageOrderLoad");
-console.log(myPageBtn);
 const myPageAccountBtn = document.querySelector(".myPageAccountLoad");
 
 //카카오 로그인(잘못된 로직으로 판명... 카카오톡 로그인 정보를 데이터에 넣는 건 이렇게 하는게 아니라 백단에서 해야할 문제 )
