@@ -50,7 +50,7 @@ li {
     width: 260px;
     float: left;
     margin: 0 1.2vw;
-    text-align: center;
+    text-align: start;
 }
 
 .item-box .thumbnail {

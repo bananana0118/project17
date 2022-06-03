@@ -125,6 +125,7 @@ ul {
     box-shadow: 1px 1px 8px rgb(163, 163, 163);
     border-radius: 8px;
     animation: personalMenuAppear 0.5s;
+    z-index: 10;
 }
 
 #personalIcon {
