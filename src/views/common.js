@@ -1,4 +1,5 @@
 import * as Api from '/api.js';
+import { addCommas } from "../useful-functions.js";
 
 /**
  * Template literal을 사용하여 생성된 html 반환
@@ -30,7 +31,7 @@ export const createItem = (item) => {
             </div>
             <div>
                 <b>금액</b>
-                <span>KRW ${item.productTotalprice}</span>
+                <span>KRW ${addCommas(item.productTotalprice)}</span>
             </div>
         </div>
         <div id="delete-item">X</div>`

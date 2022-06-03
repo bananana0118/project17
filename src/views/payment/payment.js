@@ -1,5 +1,7 @@
 import { createItem } from "../common.js";
 import * as Api from '../api.js';
+import { addCommas } from "../useful-functions.js";
+
 const ul = document.querySelector('.order-item-list');
 const selectedEmail = document.querySelector('#select-email')
 const paymentBtn = document.querySelector('#payment-btn');
@@ -52,8 +54,9 @@ const renderItems = () => {
         sumPrice += el.productTotalprice
     })
     
-    document.querySelector('.sumprice').innerHTML = Number(sumPrice);
-    document.querySelector('.totalprice').innerHTML = Number(sumPrice)
+    document.querySelector('.sumprice').innerHTML = addCommas(Number(sumPrice));
+    document.querySelector('.saleinfo').innerHTML = addCommas(Math.floor(Number(sumPrice) * 0.1));
+    document.querySelector('.totalprice').innerHTML = addCommas(Math.floor(Number(sumPrice) * 0.9));
 }
 
 renderItems();
