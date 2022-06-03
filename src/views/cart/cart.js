@@ -48,7 +48,7 @@ const plusQueantity = (e) => {
 
     cartItems[idx].productQuantity += 1;
     cartItems[idx].productTotalprice =
-        cartItems[idx].productQuantity * cartItems[idx].productprice;
+        cartItems[idx].productQuantity * cartItems[idx].productPrice;
     localStorage.setItem("cart", JSON.stringify(cartItems));
     renderPage((cartItems = cartItems));
 };
@@ -66,7 +66,7 @@ const minusQueantity = (e) => {
     }
 
     cartItems[idx].productTotalprice =
-        cartItems[idx].productQuantity * cartItems[idx].productprice;
+        cartItems[idx].productQuantity * cartItems[idx].productPrice;
     localStorage.setItem("cart", JSON.stringify(cartItems));
     renderPage((cartItems = cartItems));
 };

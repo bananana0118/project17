@@ -6,7 +6,6 @@ const Order = model("orders", OrderSchema); //db에는 orders 변수는 Order로
 class OrderModel {
     //order생성
     async create(orderInfo) {
-        
         const order = new Order({
             _id: new mongoose.Types.ObjectId(),
             address: orderInfo.address,
@@ -15,13 +14,11 @@ class OrderModel {
             orderProduct: orderInfo.orderProduct,
             userId: orderInfo.userId,
         });
-        console.log(orderInfo.orderProduct);
-        console.log(order.orderProduct)
+
         order.save(function (err) {
             if (err) return console.log(err);
             else {
                 console.log("order가 생성됐습니다.");
-                console.log(order);
             }
         });
 
@@ -36,7 +33,7 @@ class OrderModel {
 
     //user가 시킨 주문 보기
     async findByUserId(orderInfo) {
-        const order = await Order.findOne({ userId: orderInfo.userId })
+        const order = await Order.find({ userId: orderInfo.userId })
             .populate("userId")
             .populate("orderProduct");
         return order;
@@ -57,7 +54,6 @@ class OrderModel {
             " 배송완료",
         ];
         for (let i = 0; i < 4; i++) {
-            console.log(order.status);
             if (order.status === productStatus[i]) {
                 order.status = productStatus[i + 1];
                 break;

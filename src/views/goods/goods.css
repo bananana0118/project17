@@ -3,6 +3,7 @@
     width: 100%;
     height: 100%;
     float: left;
+    padding-top: 3em;
 }
 
 .main-image {
@@ -21,18 +22,27 @@
     width: 30%;
     float: left;
     margin: 20vh 0;
-    font-size: 1.2vw;
     line-height: 4vh;
+}
+
+.image-info ul {
+    margin-bottom: 2em;
+}
+
+.image-info .name {
+    font-size: 1.5rem;
+    font-weight: bolder;
 }
 
 .image-info .price {
     font-style: italic;
-    color: rgb(255, 133, 202);
+    color: black;
+    margin-bottom: 1em;
 }
 
 .image-info .description {
     font-size: 1vw;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgb(146, 146, 146);
 }
 
 .image-info .description .delivery-info {
@@ -65,17 +75,17 @@
 
 .image-info .cartBtn {
     border: none;
-    width: 13.3vw;
     height: 5vh;
-    background: linear-gradient(
+    /* background: linear-gradient(
         90deg,
         rgba(129, 230, 217, 1) 0%,
         rgba(79, 209, 197, 1) 100%
-    );
+    ); */
+    background-color: #4d61a9;
     border-radius: 5em;
-    color: darkslategray;
+    color: white;
     cursor: pointer;
-    box-shadow: 1vh 1vh 2vh rgba(79, 209, 197, 0.64);
+    box-shadow: 1px 1px 5px rgba(193, 193, 193, 0.64);
     font-weight: 700;
     transition: 0.3s;
     margin: 0.5vw;
@@ -83,20 +93,25 @@
 
 .image-info .buyBtn {
     border: none;
-    width: 13.3vw;
     height: 5vh;
-    background: linear-gradient(
+    /* background: linear-gradient(
         90deg,
         rgba(129, 230, 217, 1) 0%,
         rgba(79, 209, 197, 1) 100%
-    );
+    ); */
+    background-color: #00092a;
     border-radius: 5em;
-    color: darkslategray;
+    color: white;
     cursor: pointer;
-    box-shadow: 1vh 1vh 2vh rgba(79, 209, 197, 0.64);
+    box-shadow: 1px 1px 5px rgba(193, 193, 193, 0.64);
     font-weight: 700;
     transition: 0.3s;
     margin: 0.5vw;
+}
+
+.cartBtn,
+.buyBtn {
+    width: 100%;
 }
 
 /* Cart Popup */
@@ -105,6 +120,10 @@
     top: 35%;
     left: 35%;
     width: 30vw;
+    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 1px 1px 15px black;
     background-color: #fff;
     animation: modalAppear 0.5s;
 }
@@ -112,7 +131,9 @@
 .basket-add .header {
     padding: 0.2em 1em;
     color: #fff;
-    background: #8c8c8c;
+    background-color: #00092a;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     display: flex;
     justify-content: space-between;
 }
@@ -125,23 +146,32 @@
 .basket-add .header .close {
     padding: 0.3em 0;
     font-size: 1.2em;
-    background: #8c8c8c;
     border: none;
+    background-color: #00092a;
     color: #fff;
 }
 
 .basket-add .content {
-    padding: 10vh 2vw 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7em;
     text-align: center;
-    font-size: 0.9em;
+    font-size: 1.5rem;
     font-weight: 600;
 }
 
 .basket-add .base-button {
     padding: 1vw;
     text-align: center;
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
     font-size: 1vw;
+    border-radius: 3px;
+}
+
+.base-button a {
+    border-radius: 15px;
+    cursor: pointer;
 }
 
 .move-to-cart,
@@ -149,15 +179,19 @@
     width: 9vw;
     word-break: keep-all;
     word-wrap: break-word;
-    margin: 1em;
-    padding: 0.5em 1em;
-    border: 1px solid black;
+    padding: 5px 8px;
+    font-size: 1rem;
 }
 
-.move-to-cart:hover,
-.stay-here:hover {
+.move-to-cart {
+    margin-right: 15px;
+    background-color: #f38989;
     color: white;
-    background-color: black;
+}
+
+.stay-here {
+    background-color: #00092a;
+    color: white;
 }
 
 @keyframes modalAppear {
@@ -194,12 +228,14 @@ footer {
 @media screen and (max-width: 900px) {
     .main-image img {
         width: 100%;
+        height: 50vh;
         margin: 5vh 50%;
     }
 
     .image-info {
         width: 50%;
         margin: 0 25%;
+        margin-bottom: 5em;
     }
 
     .image-info .cart,
@@ -210,13 +246,17 @@ footer {
     }
 
     .basket-add {
-        left: 30%;
-        width: 40vw;
+        left: 25%;
+        width: 50vw;
     }
 
     .basket-add .base-button {
         text-align: center;
-        margin-bottom: 4em;
+        margin-bottom: 15px;
         font-size: 0.1vw;
+    }
+
+    .image-info button {
+        font-size: 0.8rem;
     }
 }

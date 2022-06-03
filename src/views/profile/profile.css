@@ -52,7 +52,7 @@
     margin: auto;
     margin-top: 3em;
     padding: 3em 0;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 30em;
@@ -63,6 +63,62 @@
 
 .profileUpdate-form {
     width: 80%;
+}
+
+.myOrderContainer {
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.myOrderHeader {
+    display: flex;
+    text-align: center;
+    padding: 8px 5px;
+    background-color: #bfbfbf;
+    font-size: 12px;
+    width: 100%;
+}
+
+.myOrderBody {
+    display: flex;
+    text-align: center;
+    padding: 5px;
+    font-size: 12px;
+    width: 100%;
+    border-bottom: 0.5px solid #a9a9a9;
+}
+
+#headText {
+    border-bottom: 1px solid #000;
+    margin-bottom: 2em;
+}
+
+#myOrderDate {
+    width: 20%;
+}
+
+#myOrderInfo {
+    width: 40%;
+}
+
+#myOrderState {
+    width: 20%;
+}
+
+#ask,
+#askInfo {
+    width: 20%;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    transition: ease 0.5s;
+}
+
+#askInfo:hover {
+    color: #a9a9a9;
 }
 
 .title {

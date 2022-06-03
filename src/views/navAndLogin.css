@@ -250,6 +250,10 @@ footer {
     flex-direction: column;
     justify-content: space-around;
     margin-top: 1em;
+    height: 190px;
+}
+
+.login-form .submitBtns {
     height: 170px;
 }
 
@@ -257,10 +261,16 @@ footer {
     margin-top: 3em;
 }
 
-.login-form_input .register {
+.login-form_input .register,
+.login-form_input .findPassword {
     text-align: end;
     font-size: 0.8rem;
     margin-top: 3em;
+}
+
+.login-form_input .findPassword {
+    margin-top: 0em;
+    cursor: pointer;
 }
 
 .login-form_input input,
@@ -346,6 +356,9 @@ footer {
         height: 400px;
     }
     .login-form_input,
+    .login-form .submitBtns {
+        height: 120px;
+    }
     .login-form .submitBtns {
         height: 100px;
     }

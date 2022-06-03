@@ -1,7 +1,7 @@
 import { Router } from "express";
 import is from "@sindresorhus/is";
 // 폴더에서 import하면, 자동으로 폴더의 index.js에서 가져옴
-import { loginRequired } from "../middlewares";
+import { loginRequired, passwordResetCheck } from "../middlewares";
 import { userService } from "../services";
 
 const userRouter = Router();
@@ -16,6 +16,7 @@ userRouter.post("/register", async (req, res, next) => {
                 "headers의 Content-Type을 application/json으로 설정해주세요"
             );
         }
+        ``;
 
         // req (request)의 body 에서 데이터 가져오기
         const fullName = req.body.fullName;
@@ -45,10 +46,10 @@ userRouter.post("/register", async (req, res, next) => {
     }
 });
 
-// 로그인 api (아래는 /login 이지만, 실제로는 /api/login로 요청해야 함.)
-userRouter.post("/login", async function (req, res, next) {
+// 로그인 api (아래는 /login 이지만, 실제로는 /api/login로 요청해야 함.
+//***로그인 미들웨어로 true/false검사하기
+userRouter.post("/login", passwordResetCheck, async function (req, res, next) {
     try {
-        console.log(req.body);
         // application/json 설정을 프론트에서 안 하면, body가 비어 있게 됨.
         if (is.emptyObject(req.body)) {
             throw new Error(
@@ -59,7 +60,6 @@ userRouter.post("/login", async function (req, res, next) {
         // req (request) 에서 데이터 가져오기
         const email = req.body.email;
         const password = req.body.password;
-
         // 로그인 진행 (로그인 성공 시 jwt 토큰을 프론트에 보내 줌)
         const userToken = await userService.getUserToken({ email, password });
 

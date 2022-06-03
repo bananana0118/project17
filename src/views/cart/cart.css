@@ -63,7 +63,8 @@
 }
 
 .cart-list-name a {
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 #item-info-text,
@@ -228,7 +229,7 @@
     }
 
     #delete-all-item {
-        top: -3%;
+        top: -5%;
     }
 }
 

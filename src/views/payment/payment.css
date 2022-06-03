@@ -145,7 +145,7 @@ ul {
 .payment-info-header,
 .payment-text {
     display: flex;
-    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid #cfcfcf;
 }
 
 #header-text {
@@ -153,11 +153,11 @@ ul {
     font-size: 12px;
     text-align: center;
     padding: 10px;
-    border-right: 1px solid #e1e1e1;
+    border-right: 1px solid #cfcfcf;
 }
 
 #header-text:last-child {
-    background-color: #ecece2;
+    background-color: rgb(228, 231, 239);
 }
 
 #header-text:last-child {
@@ -165,7 +165,8 @@ ul {
 }
 
 .cart-list-name a {
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: bold;
 }
 
 .cart-list-quantity {
@@ -185,7 +186,8 @@ ul {
 #payment-btn {
     background: transparent;
     border: none;
-    background-color: #ddd;
+    background-color: #00092a;
+    color: white;
     width: 90%;
     text-align: center;
     padding: 10px;

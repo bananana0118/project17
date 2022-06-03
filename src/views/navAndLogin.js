@@ -48,7 +48,7 @@ function navBarCreate() {
                                     <button id="logout">로그아웃</button>
                                 </div>
                                 <div class="check">
-                                    <span>✔️</span>
+                                    <span>✔</span>
                                 </div>
                             </div>
                         </div>
@@ -81,6 +81,7 @@ function navBarCreate() {
                                                     autocomplete="on"
                                                 />
                                             </div>
+                                            <a href="/findpassword" class="findPassword">비밀번호 찾기</a>
                                         </div>
                                         <div class="submitBtns">
                                             <button class="loginButton">로그인</button>
@@ -93,7 +94,8 @@ function navBarCreate() {
                                         </div>
                                     </form>
                                 </div>
-                            </div>`;
+                            </div>                 
+                                    `;
 
     footer.innerHTML = `<div class="footer-col">
                             <div class="footer-brandName" style="margin-right:1rem;">Project17</div>
@@ -118,7 +120,7 @@ const modalClose = document.querySelector(".closeBtn");
 const modalOverlay = document.querySelector(".modal-overlay");
 const loginCheck = document.querySelector(".check");
 
-//카카오 로그인(잘못된 로직으로 판명되었지만 어떤게 )
+//카카오 로그인(잘못된 로직으로 판명... 카카오톡 로그인 정보를 데이터에 넣는 건 백단에서 해야할 문제 )
 const kakaoLoginBtn = document.querySelector(".kakao-login");
 Kakao.init("738b82b958ee938f73a2a62aaecce547");
 
@@ -134,6 +136,7 @@ function kakaoLogin() {
                     const fullName = kakao_account.profile.nickname;
                     // 임의의 비밀번호를 어떻게 처리해야할 지 모르겠음. (현재 그냥 임의로 설정)
                     // 이러면 모든 카카오계정의 비밀번호가 똑같다.
+                    // 보안 취약.(여기서가 크리티컬한 문제인듯)
                     const password = "Q1W2E3R4T5Y7U8Z0K3ADN9";
 
                     // 이미 등록된 이메일인지 확인
@@ -275,21 +278,24 @@ async function handleSubmit(e) {
         const data = { email, password };
         const result = await Api.post("/api/login", data);
         const token = result.token;
+        const isPasswordReset = result.passwordReset;
 
         // 로그인 성공, 토큰을 세션 스토리지에 저장
         // 물론 다른 스토리지여도 됨
         sessionStorage.setItem("token", token);
 
-        alert(`정상적으로 로그인되었습니다.`);
+        if (isPasswordReset) {
+            alert("임시 비밀번호로 로그인되었습니다. 비밀번호를 수정해주세요");
+            location.href = "/profile";
+        } else {
+            alert(`정상적으로 로그인되었습니다.`);
+        }
 
-        // 로그인 성공
-
-        // 로그인모달 없애서 현재 페이지에 잔류
         loginModal.classList.add("hidden");
         loginCheckAppear();
     } catch (err) {
         console.error(err.stack);
-        alert(`${err.message}`);
+        alert("이메일 계정 및 비밀번호를 확인해주세요");
     }
 }
 
