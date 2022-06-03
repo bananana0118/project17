@@ -33,7 +33,11 @@ async function render() {
         "afterbegin",
         `<div class="category">${categoryName}</div>
                 <div class="category-detail">
-                    <li><a href="">ALL</a></li>
+                    <li><a href="/shop">ALL</a></li>
+                    <li><a href="/shop?category=1">상의</a></li>
+                    <li><a href="/shop?category=2">하의</a></li>
+                    <li><a href="/shop?category=3">아우터</a></li>
+                    <li><a href="/shop?category=4">신발</a></li>
                 </div>
                 `
     );
