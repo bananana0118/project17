@@ -33,7 +33,7 @@ productRouter.post("/addproduct", upload.array("image"), async (req, res) => {
     });
 
     // 상품이 등록 되었으면, 전체 상품 페이지로 돌아감
-    res.write("<script>alert('상품이 생성되었습니다.!')</script>");
+    res.write("<script>alert('product register success!')</script>");
     res.write("<script>window.location=\"/\"</script>");
 });
 
