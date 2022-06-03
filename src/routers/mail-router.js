@@ -51,8 +51,9 @@ mailRouter.post(
 
         await sendMail(
             email,
-            "비밀번호가 변경되었습니다.😎",
-            `변경된 비밀번호는 ${password}입니다. 😘`
+            "Project17 | 임시 비밀번호가 발급되었습니다",
+            `변경된 임시 비밀번호는 ${password}입니다.
+        ✔️ 로그인 후 계정관리에서 비밀번호를 꼭 변경해주세요! ✔️`
         );
 
         res.status(200).json({ msg: "메일발송이 완료되었습니다." });

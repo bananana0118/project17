@@ -13,8 +13,8 @@ async function passwordResetCheck(req, res, next) {
         const userId = jwtDecoded.userId;
         const user = await userService.getUser(userId);
 
-        next();
         // console.log(user);
+        next();
 
         /** @param {passwordReset} */
 
