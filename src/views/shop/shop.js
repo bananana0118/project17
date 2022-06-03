@@ -85,12 +85,12 @@ async function handleProductList() {
                                 <div class="description">
                                     <strong class="name">${productName}</strong>
                                     <ul class="product-description">
-                                        <li class="price">Price : ${addCommas(
+                                        <li class="price">Price : ${addCommas(Math.floor(
                                             productPrice
-                                        )} KRW</li>
-                                        <li class="sale">Sale : ${addCommas(
+                                        ))} KRW</li>
+                                        <li class="sale">Sale : ${addCommas(Math.floor(
                                             productSalePrice
-                                        )} KRW</li>
+                                        ))} KRW</li>
                                     </ul>
                                 </div>
                             </li>`;
@@ -109,9 +109,9 @@ async function handleProductList() {
             for (let i = 0; i < imgArray.length; i++) {
                 objImg[i].src = imgArray[i][1];
             }
-        }, 2000);
+        }, 3000);
 
-        setTimeout(showImage, 4000);
+        setTimeout(showImage, 6000);
     }
 
     showImage();
