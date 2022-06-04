@@ -48,9 +48,9 @@ window.onload = async function () {
                                 <li class="size">SIZE*</li>
                                 <select class="size-option">
                                     <option value="0">SIZE (필수)</option>
-                                    <option value="1">S</option>
-                                    <option value="2">M</option>
-                                    <option value="3">L</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
                                 </select>
                             </ul>
                             <button class="cartBtn">장바구니</button>
@@ -85,7 +85,7 @@ window.onload = async function () {
                 _id,
                 productName,
                 productPrice: Math.floor(Number(productPrice)),
-                productSize: Number(sizeOption.value),
+                productSize: sizeOption.value,
                 productQuantity: Number(quantityOption.value),
                 productTotalprice: Math.floor(Number(productPrice)) * Number(quantityOption.value),
                 productImg,
@@ -134,7 +134,7 @@ window.onload = async function () {
                 productCategory,
                 productDescription,
                 productPrice: Number(productPrice),
-                productSize: Number(sizeOption.value),
+                productSize: sizeOption.value,
                 productQuantity: Number(quantityOption.value),
                 productTotalprice: Number(productPrice) * Number(quantityOption.value),
                 productManufacturer,
