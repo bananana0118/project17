@@ -91,3 +91,7 @@ ul {
     padding: 10px 0px;
     font-size: 12px;
 }
+
+#item-revise-btn {
+    cursor: pointer;
+}
