@@ -1,10 +1,12 @@
 import * as Api from "../api.js";
 import { isAdmin } from "../common.js";
 
-const submmitBtn = document.querySelector('.product-register-btn')
+const modifyBtn = document.querySelector('.product-modify-btn')
+const deleteBtn = document.querySelector('.product-delete-btn');
 const inputFile = document.querySelector('#image-input')
 const productName = document.querySelector('#product-name');
 const productPrice = document.querySelector('#product-price');
+const productSalePrice = document.querySelector('#product-sale-price');
 const productCategory = document.querySelector('#input-category');
 const productManufacturer = document.querySelector('#input-manufacturer');
 const productSize = document.querySelector('#input-size');
@@ -14,6 +16,82 @@ const inputItems = document.getElementsByTagName('input');
 
 productName.focus();
 let uploadFiles = []
+
+async function getProductInfo() {
+    const urlParams = new URLSearchParams(location.search).get("productNo");
+    const product = !urlParams
+        ? await Api.get(`/api/product/get/40`)
+        : await Api.get(`/api/product/get/${urlParams}`);
+    productName.value = product.productName;
+    productCategory.value  = product.productCategory;
+    productPrice.value  = product.productPrice;
+    productManufacturer.value  = product.productManufacturer;
+    productDescription.value = product.productDescription;
+    productSalePrice.value = (product.productPrice) * 0.9;
+}
+
+getProductInfo();
+
+// ================================================
+// PATCH : 상품 정보 수정 (오류 생길 수 있음)
+// ================================================
+const updateItemInfo = async function (e) {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(location.search).get("productNo");
+    const product = !urlParams
+        ? await Api.get(`/api/product/get/40`)
+        : await Api.get(`/api/product/get/${urlParams}`);
+
+    const name = productName.value;
+    const category = productCategory.value;
+    const price = productPrice.value;
+    const manufacturer = productManufacturer.value;
+    const description = productDescription.value;
+    const size = productSize.value;
+    try {
+        const data = {
+            name,
+            category,
+            price,
+            manufacturer,
+            description,
+            size,
+        }
+        await Api.patch(`/api/product/patch/${product.no}`, "", data);
+        alert("상품 정보가 수정되었습니다.");
+        location.href = "/manageproduct";
+    } catch (err) {
+        console.error(err.stack);
+        alert(`${err.message}`);
+    }
+}
+
+// ===================================================
+// DELETE:상품 정보 지우기
+// ===================================================
+const deleteItem = async function (e) {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(location.search).get("productNo");
+    const product = !urlParams
+        ? await Api.get(`/api/product/get/40`)
+        : await Api.get(`/api/product/get/${urlParams}`);
+    
+    const confirm = window.confirm("정말 삭제하시나요?");
+    if (confirm) {
+        try {
+            const password = prompt("관리자 계정 비밀번호를 입력해주세요");
+            await Api.delete(`/api/product/delete/${product.no}`, "", { password: password });
+            alert("상품 삭제 완료");
+            location.href = "/manageproduct";
+        } catch (err) {
+            console.log(err.stack);
+            alert(`${err.message}`);
+        }
+    }
+}
+
+modifyBtn.addEventListener("click", updateItemInfo);
+deleteBtn.addEventListener("click", deleteItem);
 
 isAdmin();
 /* 리펙토링 필요 
@@ -39,7 +117,7 @@ for(var i=0; i<inputItems.length; i++){
     inputItems[i].addEventListener('keydown', keyevent)        
 };
 
-export const register = async () => {
+const register = async () => {
     const data = { 
                 productName: productName.value, 
                 productPrice: productPrice.value,
@@ -85,8 +163,6 @@ export const register = async () => {
         }
     } 
 }
-
-submmitBtn.addEventListener('click', register)
 
 /**
  * 

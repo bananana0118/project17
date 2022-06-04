@@ -74,7 +74,7 @@ class ProductService {
     // 상품정보 수정
     async setProduct(productNo, toUpdate) {
         // 우선 해당 상품 이름이 db에 있는지 확인
-        const product = await this.productModel.findByNo(productNo);
+        let product = await this.productModel.findByNo(productNo);
 
         // db에서 찾지 못한 경우, 에러 메시지 반환
         if (!product) {
