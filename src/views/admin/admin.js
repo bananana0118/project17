@@ -1,6 +1,7 @@
 import * as Api from "/api.js";
 import { isAdmin } from "../common.js";
 import { createStaticItem } from "../common.js";
+import { addCommas } from "../useful-functions.js";
 
 const statisticArrow = document.getElementById("arrow");
 const statisticInfo = document.querySelector(".static-info");
@@ -62,7 +63,7 @@ const onLoad = async () => {
         statisticInfoBox.appendChild(divChild);
         sumPrice += el.totalPrice
     })
-    totalText.innerText = sumPrice + '원'
+    totalText.innerText = addCommas(sumPrice) + '원'
 }
 
 onLoad();
