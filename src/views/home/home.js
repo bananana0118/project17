@@ -3,8 +3,9 @@
 // 코드 예시를 남겨 두었습니다.
 
 import * as Api from "/api.js";
-import { randomId } from "/useful-functions.js";
+import { randomId, addCommas } from "/useful-functions.js";
 
+const clickForMoreBtn = document.querySelector("#clickForMore");
 const mainSlides = document.querySelector(".main-slide_contents");
 const mainSlide = document.querySelectorAll(".main-slide_content");
 
@@ -13,7 +14,7 @@ let currentSlide = 0;
 setInterval(function () {
     let from;
     let to;
-    if (matchMedia("screen and (max-width: 900px").matches) {
+    if (matchMedia("screen and (max-width: 700px").matches) {
         from = -(100 * currentSlide);
         to = from - 100;
     } else {
@@ -37,11 +38,59 @@ setInterval(function () {
     }
 }, 2000);
 
-async function getDataFromApi() {
-    // 예시 URI입니다. 현재 주어진 프로젝트 코드에는 없는 URI입니다.
-    const data = await Api.get("/api/user/data");
-    const random = randomId();
-
-    console.log({ data });
-    console.log({ random });
+function moveToShopAll(e) {
+    e.preventDefault();
+    window.location.href = "/shop";
 }
+
+async function bestItem() {
+    var productList = await Api.get("/api/product/productlist/7");
+    const productNo = productList.map((el) => el.no);
+    const productName = productList.map((el) => el.productName);
+    const productPrice = productList.map((el) => el.productPrice);
+
+    for (let i = 0; i < 7; i++) {
+        const productItems = document.querySelector(".product-items");
+        productItems.innerHTML += `<li class="product-item">
+                        <div class="product-item_imgCover">
+                            <a href="/goods?productNo=${productNo[i]}">
+                                <img src="" class="introimg">
+                            </a>
+                        </div>
+                        <div class="product-item_info">
+                            <span>Name : ${productName[i]}</span>
+                            <span>Price &nbsp;&nbsp;: ${addCommas(
+                                productPrice[i]
+                            )} KRW</span>
+                        </div>
+                    </li>`;
+    }
+
+    async function showImage() {
+        const imgArray = productList.map((el) => el.productImg);
+        const objImg = document.getElementsByClassName("introimg");
+
+        for (let i = 0; i < 7; i++) {
+            objImg[i].src = imgArray[i][0];
+        }
+
+        setInterval(() => {
+            for (let i = 0; i < 7; i++) {
+                objImg[i].src = imgArray[i][1];
+            }
+        }, 3000);
+
+        setTimeout(showImage, 6000);
+    }
+    showImage();
+}
+
+bestItem();
+
+clickForMoreBtn.addEventListener("click", moveToShopAll);
+mainSlides.addEventListener("click", moveToShopAll);
+
+const bestBtn = document.querySelector(".best-btn");
+bestBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 9999, behavior: "smooth" });
+});

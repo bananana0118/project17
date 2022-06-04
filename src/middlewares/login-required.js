@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
+import { userService } from "../services";
 
-function loginRequired(req, res, next) {
+async function loginRequired(req, res, next) {
     // request 헤더로부터 authorization bearer 토큰을 받음.
     const userToken = req.headers["authorization"]?.split(" ")[1];
 
@@ -29,6 +30,7 @@ function loginRequired(req, res, next) {
         // 라우터에서 req.currentUserId를 통해 유저의 id에 접근 가능하게 됨
         req.currentUserId = userId;
         req.role = role;
+        req.cartData = req.body;
 
         next();
     } catch (error) {

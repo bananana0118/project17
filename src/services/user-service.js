@@ -2,6 +2,7 @@ import { userModel } from "../db";
 
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import res from "express/lib/response";
 
 class UserService {
     // 본 파일의 맨 아래에서, new UserService(userModel) 하면, 이 함수의 인자로 전달됨
@@ -76,7 +77,11 @@ class UserService {
 
         // 2개 프로퍼티를 jwt 토큰에 담음
         const token = jwt.sign(
-            { userId: user._id, role: user.role },
+            {
+                userId: user._id,
+                role: user.role,
+                passwordReset: user.passwordReset,
+            },
             secretKey
         );
 
@@ -89,6 +94,10 @@ class UserService {
         return users;
     }
 
+    async getUserByEmail(email) {
+        const user = await this.userModel.findByEmail(email);
+        return user;
+    }
     // 유저정보 수정, 현재 비밀번호가 있어야 수정 가능함.
     async setUser(userInfoRequired, toUpdate) {
         // 객체 destructuring
@@ -116,6 +125,7 @@ class UserService {
                 "현재 비밀번호가 일치하지 않습니다. 다시 한 번 확인해 주세요."
             );
         }
+
 
         // 이제 드디어 업데이트 시작
 
@@ -145,12 +155,9 @@ class UserService {
         return userModel.delete(userId);
     }
 
-    //email찾기 - kakao 이메일 검사
-
     // email찾기 - kakao 이메일 검사
     async isEmailExist(email) {
         const isExist = await userModel.findByEmail(email);
-        console.log(isExist);
         const isEmailExist = isExist ? true : false;
         return isEmailExist;
     }

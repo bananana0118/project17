@@ -9,22 +9,23 @@ import { validateEmail } from "/useful-functions.js";
 function navBarCreate() {
     const nav = document.querySelector("nav");
     const loginModal = document.querySelector(".loginModal");
+    const footer = document.querySelector("footer");
 
     nav.innerHTML = `<div class="navBar-container">
                         <a href="/" class="nav-brand">
                             <!-- 로고 이미지 추가 시 추가 작성-->
-                            <span class="nav-brand_name">Project17</span>
+                            <span class="nav-brand_name">PROJECT 17</span>
                         </a>
                         <ul class="nav-category">
-                            <li class="nav-category_list"><a href="#">new</a></li>
-                            <li class="nav-category_list"><a href="/product">product</a></li>
-                            <li class="nav-category_list"><a href="/shop">shop</a></li>
+                            <li class="nav-category_list"><a class="best-btn">Best</a></li>
+                            <li class="nav-category_list"><a href="/event">event</a></li>
+                            <li class="nav-category_list"><a href="/shop">product</a></li>
                             <li class="nav-category_list"><a href="#">about</a></li>
                         </ul>
                         <div class="nav-menu">
-                            <a href="#">
-                                <i class="material-symbols-outlined nav-menu_icon">
-                                    search
+                            <a href="/shop">
+                                <i class="material-symbols-outlined nav-menu_icon shop">
+                                    checkroom
                                 </i>
                             </a>
                             <a class="cart" href="/cart">
@@ -42,12 +43,12 @@ function navBarCreate() {
                                     </i>
                                 </button>
                                 <div class="personalMenu-buttons">
-                                    <button>마이페이지</button>
-                                    <button>계정관리</button>
+                                    <button class="myPageOrderLoad">주문내역</button>
+                                    <button class="myPageAccountLoad">계정관리</button>
                                     <button id="logout">로그아웃</button>
                                 </div>
                                 <div class="check">
-                                    <span>✔️</span>
+                                    <span>✔</span>
                                 </div>
                             </div>
                         </div>
@@ -80,19 +81,24 @@ function navBarCreate() {
                                                     autocomplete="on"
                                                 />
                                             </div>
+                                            <a href="/findpassword" class="findPassword">비밀번호 찾기</a>
                                         </div>
                                         <div class="submitBtns">
                                             <button class="loginButton">로그인</button>
                                             <button class="kakao-login" onclick="event.preventDefault()">
                                                 카카오계정 로그인
                                             </button>
-                                            <button class="login-submitButton" onclick="event.preventDefault()">
-                                                구글계정 로그인
-                                            </button>
                                         </div>
                                     </form>
                                 </div>
-                            </div>`;
+                            </div>                 
+                                    `;
+
+    footer.innerHTML = `<div class="footer-col">
+                            <div class="footer-brandName" style="margin-right:1rem;">PROJECT 17</div>
+                            <div class="footer-slogan">/SIMPLE IS BEST/</div>
+                            <div class="footer-contributor">Contributed By @강예정 @김동철 @이용준 @조희승 @심주용</div>
+                        </div>`;
 }
 
 //navBar component 분리
@@ -100,7 +106,6 @@ navBarCreate();
 const logoutBtn = document.querySelector("#logout");
 const personalIcon = document.querySelector("#personalIcon");
 const personalMenu = document.querySelector(".personalMenu-buttons");
-// const allArea = document.querySelector("main");
 
 //login modal
 const loginModal = document.querySelector(".modal");
@@ -111,7 +116,11 @@ const modalClose = document.querySelector(".closeBtn");
 const modalOverlay = document.querySelector(".modal-overlay");
 const loginCheck = document.querySelector(".check");
 
-//카카오 로그인
+//personalPage 이동 버튼 분기처리
+const myPageBtn = document.querySelector(".myPageOrderLoad");
+const myPageAccountBtn = document.querySelector(".myPageAccountLoad");
+
+//카카오 로그인(잘못된 로직으로 판명... 카카오톡 로그인 정보를 데이터에 넣는 건 이렇게 하는게 아니라 백단에서 해야할 문제 )
 const kakaoLoginBtn = document.querySelector(".kakao-login");
 Kakao.init("738b82b958ee938f73a2a62aaecce547");
 
@@ -127,9 +136,11 @@ function kakaoLogin() {
                     const fullName = kakao_account.profile.nickname;
                     // 임의의 비밀번호를 어떻게 처리해야할 지 모르겠음. (현재 그냥 임의로 설정)
                     // 이러면 모든 카카오계정의 비밀번호가 똑같다.
+                    // 보안 취약.(여기서가 크리티컬한 문제인듯)
                     const password = "Q1W2E3R4T5Y7U8Z0K3ADN9";
 
                     // 이미 등록된 이메일인지 확인
+
                     const isEmail = await Api.post("/api/checkUser", { email });
                     const data = { email, fullName, password };
 
@@ -137,7 +148,12 @@ function kakaoLogin() {
                     if (!isEmail) {
                         try {
                             await Api.post("/api/register", data);
-                            alert("카카오 계정으로 가입되었습니다");
+
+                            const result = await Api.post("/api/login", data);
+                            const token = result.token;
+                            sessionStorage.setItem("token", token);
+
+                            alert("카카오 계정으로 가입 및 로그인 되었습니다");
                             loginModal.classList.add("hidden");
                             loginCheckAppear();
                         } catch (err) {
@@ -262,23 +278,27 @@ async function handleSubmit(e) {
         const data = { email, password };
         const result = await Api.post("/api/login", data);
         const token = result.token;
+        const isPasswordReset = result.passwordReset;
 
         // 로그인 성공, 토큰을 세션 스토리지에 저장
         // 물론 다른 스토리지여도 됨
         sessionStorage.setItem("token", token);
 
-        alert(`정상적으로 로그인되었습니다.`);
-
-        // 로그인 성공
-
-        // 로그인모달 없애서 현재 페이지에 잔류
+        if (isPasswordReset) {
+            alert("임시 비밀번호로 로그인되었습니다. 비밀번호를 수정해주세요");
+            location.href = "/profile";
+        } else {
+            alert(`정상적으로 로그인되었습니다.`);
+        }
+        if (location.href === "http://localhost:3000/payment/") {
+            location.reload();
+            console.log("a");
+        }
         loginModal.classList.add("hidden");
         loginCheckAppear();
     } catch (err) {
         console.error(err.stack);
-        alert(
-            `문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`
-        );
+        alert("이메일 계정 및 비밀번호를 확인해주세요");
     }
 }
 
@@ -296,8 +316,10 @@ loginCheckAppear();
 // 장바구니 아이콘 아이템 수
 var count = 0;
 export const loadCartItem = () => {
-    count = 0
-    let cartItems = !JSON.parse(localStorage.getItem('cart')) ? [] : JSON.parse(localStorage.getItem('cart'));
+    count = 0;
+    let cartItems = !JSON.parse(localStorage.getItem("cart"))
+        ? []
+        : JSON.parse(localStorage.getItem("cart"));
 
     if (cartItems === []) {
         count = 0;
@@ -308,8 +330,21 @@ export const loadCartItem = () => {
     }
     const addShoppingCart = document.querySelector(".count");
     addShoppingCart.innerHTML = `<span>${count}</span>`;
-}
+};
 
 loadCartItem();
 
+// personalIcon 클릭 시 메뉴에 따른 분기처리
 
+const myPageOrderLoad = (e) => {
+    e.preventDefault();
+    localStorage.setItem("myPageLoad", "orderLoad");
+};
+
+const myPageAccountLoad = (e) => {
+    e.preventDefault();
+    localStorage.setItem("myPageLoad", "accountInfoLoad");
+};
+
+myPageBtn.addEventListener("click", myPageOrderLoad);
+myPageAccountBtn.addEventListener("click", myPageAccountLoad);

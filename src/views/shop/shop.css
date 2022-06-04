@@ -2,7 +2,7 @@
 .items {
     text-align: center;
     display: block;
-    padding-top: 10vh;
+    padding-top: 6em;
 }
 
 .items .category {
@@ -24,9 +24,22 @@
 /* Item list */
 
 /* ul */
+li {
+    list-style: none;
+}
+
+.item-container {
+    display: flex;
+    justify-content: center;
+}
+
 .item-box {
-    display: inline-block;
-    min-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    vertical-align: center;
+    width: 1600px;
     margin: 2vw;
     font-size: 0;
     line-height: 0;
@@ -34,16 +47,10 @@
 
 .item-box li {
     position: relative;
-    width: 20vw;
+    width: 260px;
     float: left;
-    margin-left: 3vw;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.item-box .item:nth-of-type(7n-2) {
-    display: block;
-    clear: left;
+    margin: 0 1.2vw;
+    text-align: start;
 }
 
 .item-box .thumbnail {
@@ -59,7 +66,10 @@
 
 .item-box .thumbnail a img {
     width: 100%;
+    height: 45vh;
     box-sizing: border-box;
+    object-fit: cover;
+    text-align: center;
 }
 
 .item-box .thumbnail .white_cover {
@@ -83,10 +93,10 @@
 .item-box .description .name {
     display: block;
     text-align: left;
-    margin-bottom: 1em;
+    margin-bottom: 0.2em;
     padding: 0 0.3em 1.4em;
     border-bottom: 1px solid #ececec;
-    font-size: small;
+    font-size: 1rem;
 }
 
 .item-box .description .product-description {
@@ -100,20 +110,21 @@
 }
 
 .item-box .description .product-description li {
-    line-height: 2em;
-    font-size: small;
+    line-height: 1.5em;
+    font-size: 0.8rem;
     margin: 0;
     width: 100%;
+    padding-left: 0.5em;
 }
 
 /* media query */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
     .items .category {
-        font-size: 2.5em;
+        font-size: 2em;
     }
 
     .items .category-detail {
-        font-size: 1.4rem;
+        font-size: 1rem;
     }
 
     .items .category-detail .line {
@@ -129,8 +140,16 @@
         width: 100%;
     }
 
-    .item-box .item:nth-of-type(2n-9) {
-        display: block;
-        clear: left;
+    .item-box .thumbnail a img {
+        height: 350px;
+    }
+    .item-box .description .product-description li {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    html {
+        font-size: 10px;
     }
 }

@@ -1,9 +1,15 @@
+/* noto-sans font */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Water+Brush&display=swap");
 /* 모든페이지에 적용되는 navBar, footer 분리 */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
 a {
@@ -58,7 +64,7 @@ ul {
 
 .nav-category {
     justify-content: space-around;
-    font-size: 1rem;
+    font-size: 0.75rem;
 }
 
 .nav-menu {
@@ -67,8 +73,12 @@ ul {
 
 .nav-menu_icon,
 .nav-brand {
-    font-size: 2.3rem;
+    font-size: 1.7rem;
     vertical-align: baseline;
+}
+
+.nav-brand_name {
+    font-family: "Water Brush", cursive;
 }
 
 .cart {
@@ -115,6 +125,7 @@ ul {
     box-shadow: 1px 1px 8px rgb(163, 163, 163);
     border-radius: 8px;
     animation: personalMenuAppear 0.5s;
+    z-index: 10;
 }
 
 #personalIcon {
@@ -151,33 +162,39 @@ ul {
     color: rgb(255, 56, 56);
 }
 
+.shop {
+    display: none;
+}
+
 /* footer  */
 footer {
     margin: 0 auto;
-    margin-top: 5vh;
-    padding: 0 0.7em;
-    padding-top: 5vh;
+    margin-top: 4em;
+    padding: 1em 0;
     border-top: 1px solid rgba(0, 0, 0, 0.081);
-    display: flex;
-    justify-content: space-between;
-    height: 20vh;
-    width: 70%;
+    width: 90%;
 }
 
-.footer-col:first-child span {
-    font-size: 2rem;
+.footer-brandName,
+.footer-slogan {
+    color: rgb(114, 114, 114);
+}
+
+.footer-brandName {
+    font-size: 1.5rem;
+    font-family: "Water Brush", cursive;
+    margin-bottom: 0.5em;
+}
+
+.footer-slogan {
+    font-size: 1rem;
+}
+.footer-contributor {
+    font-size: 0.5rem;
+    color: rgb(177, 177, 177);
 }
 
 /* nav media query */
-@media screen and (max-width: 500px) {
-    html {
-        font-size: 10px;
-    }
-    footer {
-        width: 90%;
-    }
-}
-
 @media screen and (max-width: 900px) {
     .nav-category {
         visibility: hidden;
@@ -187,6 +204,18 @@ footer {
         margin: 0;
         width: 100%;
         justify-content: space-between;
+    }
+    .shop {
+        display: inline;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    html {
+        font-size: 10px;
+    }
+    footer {
+        width: 90%;
     }
 }
 
@@ -209,18 +238,18 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 450px;
-    height: 650px;
+    width: 350px;
+    height: 450px;
     border-radius: 20px;
     background-color: #f8f8ff;
 }
 
 .login-form .title {
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .login-form .subtitle {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-top: 10px;
 }
 
@@ -229,23 +258,41 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin-top: 50px;
-    height: 170px;
+    margin-top: 1em;
+    height: 150px;
 }
 
-.login-form_input .register {
+.login-form .submitBtns {
+    height: 5.3em;
+}
+
+.login-form .submitBtns {
+    margin-top: 3em;
+}
+
+.login-form_input .register,
+.login-form_input .findPassword {
     text-align: end;
-    font-size: 0.8rem;
+    font-size: 0.5rem;
+    margin-top: 3em;
+}
+
+.login-form_input .findPassword {
+    margin-top: 0em;
+    cursor: pointer;
 }
 
 .login-form_input input,
 .submitBtns button {
     width: 100%;
-    height: 2.8rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     padding: 0.5rem;
     border: none;
     border-radius: 3px;
+}
+
+.login-form_input input {
+    border: 1px solid rgb(235, 235, 235);
 }
 
 .submitBtns button {
@@ -310,15 +357,21 @@ footer {
     cursor: pointer;
 }
 
+.nav-category_list:first-child a {
+    cursor: pointer;
+}
+
 /* modal media query */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
     .login-form-container {
         width: 250px;
-        height: 400px;
+        height: 350px;
     }
     .login-form_input,
     .login-form .submitBtns {
-        margin-top: 30px;
-        height: 100px;
+        height: 120px;
+    }
+    .login-form .submitBtns {
+        height: 60px;
     }
 }
