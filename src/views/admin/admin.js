@@ -82,7 +82,6 @@ const routeManageItem = () => {
 
 const checkAdmin = async function () {
     const isAdmin = await Api.get("/api/admin/adminPage");
-    console.log(isAdmin);
 };
 
 //admin인지 체크하는 함수입니다.

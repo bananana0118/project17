@@ -29,7 +29,7 @@ orderRouter.post(
     async (req, res, next) => {
         const { address, phoneNumber, totalPrice } = req.body;
         const orderInfo = req.orderInfo;
-        
+
         orderInfo.address = address;
         orderInfo.phoneNumber = phoneNumber;
         orderInfo.totalPrice = totalPrice;
@@ -48,7 +48,6 @@ orderRouter.get("/myOrder", loginRequired, async (req, res, next) => {
         const orderInfo = {
             userId: user._id,
         };
-        console.log(orderInfo);
         const myOrder = await orderModel.findByUserId(orderInfo);
 
         res.status(200).json(myOrder);
@@ -68,7 +67,6 @@ orderRouter.get(
             const orderInfo = {
                 userId: user._id,
             };
-            console.log(orderInfo);
             const emailOrder = await orderModel.findByUserId(orderInfo);
 
             res.status(200).json(emailOrder);

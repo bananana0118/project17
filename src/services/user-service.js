@@ -2,6 +2,7 @@ import { userModel } from "../db";
 
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import res from "express/lib/response";
 
 class UserService {
     // 본 파일의 맨 아래에서, new UserService(userModel) 하면, 이 함수의 인자로 전달됨
@@ -125,6 +126,7 @@ class UserService {
             );
         }
 
+
         // 이제 드디어 업데이트 시작
 
         // 비밀번호도 변경하는 경우에는, 회원가입 때처럼 해쉬화 해주어야 함.
@@ -135,7 +137,6 @@ class UserService {
             toUpdate.password = newPasswordHash;
         }
 
-        console.log(toUpdate);
         // 업데이트 진행
         user = await this.userModel.update({
             userId,
@@ -157,7 +158,6 @@ class UserService {
     // email찾기 - kakao 이메일 검사
     async isEmailExist(email) {
         const isExist = await userModel.findByEmail(email);
-        console.log(isExist);
         const isEmailExist = isExist ? true : false;
         return isEmailExist;
     }

@@ -123,7 +123,6 @@ const deleteAccount = async function (e) {
             sessionStorage.removeItem("token");
             location.href = "/";
         } catch (err) {
-            console.log(err.stack);
             alert(`${err.message}`);
         }
     }

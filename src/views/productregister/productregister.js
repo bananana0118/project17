@@ -100,7 +100,7 @@ const createElement = (e, file) => {
     img.setAttribute('src', e.target.result);
     img.setAttribute('data-file', file.name);
     img.addEventListener('click', function(){
-        console.log('clicked')
+
     })
     return img;
 }

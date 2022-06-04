@@ -145,7 +145,6 @@ export const createManageItem = (item) => {
 };
 
 export const createStaticItem = (item) => {
-    console.log(item);
     const div = document.createElement("div");
     const userId = !item.userId ? "탈퇴한 계정입니다.!" : item.userId.email;
     // const email = await Api.get('/api/user/')
@@ -157,7 +156,9 @@ export const createStaticItem = (item) => {
                 item.orderProduct[0].productName
             } 외 ${item.orderProduct.length - 1}종 </span>
             <span class="admin-sale-id-txt"> ${userId}</span>
-            <span class="admin-sale-price-txt" style ="color:blue"> ${addCommas(item.totalPrice)}원</span>
+            <span class="admin-sale-price-txt" style ="color:blue"> ${addCommas(
+                item.totalPrice
+            )}원</span>
         </div>
     `;
 
