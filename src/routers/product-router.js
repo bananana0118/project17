@@ -115,12 +115,12 @@ productRouter.patch("/patch/:productNo", async function (req, res, next) {
         const productNo = req.params.productNo;
 
         // body data 로부터 업데이트할 사용자 정보를 추출함.
-        const productName = req.body.productName;
-        const productPrice = req.body.productPrice;
-        const productCategory = req.body.productCategory;
-        const productDescription = req.body.productDescription;
-        const productSize = req.body.productSize;
-        const productManufacturer = req.body.productManufacturer;
+        const productName = req.body.name;
+        const productPrice = req.body.price;
+        const productCategory = req.body.category;
+        const productDescription = req.body.description;
+        const productSize = req.body.size;
+        const productManufacturer = req.body.manufacturer;
 
         // 위 데이터가 undefined가 아니라면, 즉, 프론트에서 업데이트를 위해
         // 보내주었다면, 업데이트용 객체에 삽입함.

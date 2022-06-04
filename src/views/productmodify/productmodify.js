@@ -41,8 +41,6 @@ const updateItemInfo = async function (e) {
     const product = !urlParams
         ? await Api.get(`/api/product/get/40`)
         : await Api.get(`/api/product/get/${urlParams}`);
-    console.log(product);
-    console.log(product.no);
 
     const name = productName.value;
     const category = productCategory.value;
@@ -59,7 +57,6 @@ const updateItemInfo = async function (e) {
             description,
             size,
         }
-        console.log(data);
         await Api.patch(`/api/product/patch/${product.no}`, "", data);
         alert("상품 정보가 수정되었습니다.");
         location.href = "/manageproduct";
