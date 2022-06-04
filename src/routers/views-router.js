@@ -24,6 +24,8 @@ viewsRouter.use("/manageorder", serveStatic("manageorder"));
 viewsRouter.use("/findpassword", serveStatic("findpassword"));
 viewsRouter.use("/event", serveStatic("event"));
 viewsRouter.use("/userorder", serveStatic("userorder"));
+viewsRouter.use("/manageproduct", serveStatic("manageproduct"));
+viewsRouter.use("/productmodify", serveStatic("productmodify"));
 
 // views 폴더의 최상단 파일인 rabbit.png, api.js 등을 쓸 수 있게 함
 viewsRouter.use("/", serveStatic("")); //없어지면 navBar 안보임 삭제하지 말것

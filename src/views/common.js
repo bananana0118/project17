@@ -31,7 +31,7 @@ export const createItem = (item) => {
             </div>
             <div>
                 <b>금액</b>
-                <span>KRW ${addCommas(item.productTotalprice)}</span>
+                <span>KRW ${addCommas(item.productTotalprice * 0.9)}</span>
             </div>
         </div>
         <div id="delete-item">X</div>`
@@ -67,7 +67,7 @@ export const createMyOrderItem = (item) => {
     const date = createDate.getFullYear() + "-" + (createDate.getMonth() + 1) + "-" + createDate.getDate() + " " + createDate.getHours() + ":" + createDate.getMinutes() + ":" + createDate.getSeconds();
     const style = item.status === "배송 준비 중" ? "color: blue" : "color:red"
     const html = `
-            <div id="myOrderDate">${date.toLocaleString()}</div>
+            <div id="myOrderDate">${date}</div>
             <div id="myOrderInfo">${item.orderProduct[0].productName} 외 ${item.orderProduct.length -1}</div>
             <div id="myOrderState" style="${style}">${item.status}</div>
             <div id="askInfo">문의</div>
@@ -76,7 +76,6 @@ export const createMyOrderItem = (item) => {
     div.innerHTML = html;
     return div
 }
-
 
 /**
  * 
@@ -98,12 +97,68 @@ export const createUserOrderItem = (item) => {
     return div
 }
 
-export const isAdmin = async () => {
-    const userInfo = await Api.get('/api/profile/myProfile')
+export const createManageItem = (item) => {
+    var categoryName;
+    switch (item.productCategory) {
+        case 1:
+                categoryName = "상의";
+                break;
+            case 2:
+                categoryName = "하의";
+                break;
+            case 3:
+                categoryName = "아우터";
+                break;
+            case 4:
+                categoryName = "신발";
+                break;
+    }
+    const div = document.createElement('div');
+    const html = `
+        <div id="category-info">${categoryName}</div>
+            <div id="item-info">${item.productName}</div>
+            <div id="brand-name">${item.productManufacturer}</a></div>
+            <div id="price-info">${item.productPrice}</div>
+            <button id="item-revise-btn">상품 수정</button>
+        </div>
+    `
+    div.innerHTML = html;
+    return div
+}
+
+export const createStaticItem = (item) => {
+    console.log(item);
+    const div = document.createElement('div');
+    const userId = !item.userId ? "탈퇴한 계정입니다.!" : item.userId.email
+    // const email = await Api.get('/api/user/')
+    const date = new Date(item.createdAt);
+    const html = `
+        <div class="static-body-box">
+            <span class="admin-sale-date-txt"> ${date.toLocaleString()} </span>
+            <span class="admin-sale-order-txt"> ${item.orderProduct[0].productName} 외 ${item.orderProduct.length -1}종 </span>
+            <span class="admin-sale-id-txt"> ${userId}</span>
+            <span class="admin-sale-price-txt"> ${item.totalPrice}</span>
+        </div>
+    `
     
-    if(userInfo.role !== "admin"){
-        alert("권한이 없습니다!!!")
+    div.innerHTML = html;
+    return div
+}
+
+export const isAdmin = async () => {
+    const islogin = sessionStorage.getItem('token');
+    
+    if(!islogin){
+        alert("로그인을 해주세요!");
         window.location.href = '/';
-        return 
+    }
+    else{
+        const userInfo = await Api.get('/api/profile/myProfile')
+    
+        if(userInfo.role !== "admin"){
+            alert("권한이 없습니다!!!")
+            window.location.href = '/';
+            return 
+        }
     }
 }

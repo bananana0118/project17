@@ -106,13 +106,13 @@ const renderPage = (cartItems) => {
     );
 
     totalprice.innerHTML = `
-        ${addCommas(sumPrice)}<span style="font-productSize:14px">원</span>`;
+        ${addCommas(sumPrice*0.9)}<span style="font-productSize:14px">원</span>`;
 
     if (sumPrice > 30000) {
         document.getElementById("ship-pay").innerHTML = "무료";
         document.getElementById("payment").innerHTML = `
             ${addCommas(
-                sumPrice
+                sumPrice*0.9
             )}<span style="font-productSize:14px">원</span>`;
     } else {
         document.getElementById("ship-pay").innerHTML = "3,500원";

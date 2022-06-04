@@ -135,6 +135,7 @@ class UserService {
             toUpdate.password = newPasswordHash;
         }
 
+        console.log(toUpdate);
         // 업데이트 진행
         user = await this.userModel.update({
             userId,

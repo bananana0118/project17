@@ -89,7 +89,7 @@ class OrderModel {
                 $gte: new Date(year, month, day, 0, 0, 0),
                 $lt: new Date(year, month, day, 23, 59, 59),
             },
-        });
+        }).populate("userId");
 
         return orders;
     }

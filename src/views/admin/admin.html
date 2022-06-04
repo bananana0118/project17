@@ -81,17 +81,17 @@
                     </div>
                 </div>
                 <div class="menu">
-                    <div class="menu-text-icon">
+                    <div class="menu-text-icon" id="manage-item">
                         <i
-                            class="fa-solid fa-won-sign"
+                            class="fa-solid fa-won-manage"
                             style="font-size: 40px; color: #81b5d5"
                         ></i>
-                        <div id="manage-font">----</div>
+                        <div id="manage-font">상품관리</div>
                     </div>
                 </div>
             </div>
 
-            <div class="static-box">
+            <div class="static-box">                
                 <div class="graph">
                     <i class="fa-solid fa-arrow-right" id="arrow"></i>
                     <div id="header-text">통계</div>
@@ -107,32 +107,89 @@
                 </div>
 
                 <div class="static-info">
-                    <div style="font-size: 18px; font-weight: 400">
-                        통계상세
+                    <select id="day-box">
+                        <option value="5">오늘</option>
+                        <option value="4">1일전</option>
+                        <option value="3">2일전</option>
+                        <option value="2">3일전</option>
+                        <option value="1">4일전</option>
+                        <option value="0">5일전</option>
+                    </select>
+                    <div style="font-size: 12px; font-weight: bold;" >
+                        <span>통계상세</span>
                     </div>
                     <div class="static-header-box">
                         <span class="admin-sale-date-txt"> 판매 날짜 </span>
-                        <span class="admin-sale-order-txt"> 주문 번호 </span>
+                        <span class="admin-sale-order-txt"> 주문 내용 </span>
                         <span class="admin-sale-id-txt"> 구매자ID </span>
                         <span class="admin-sale-price-txt"> 거래금액 </span>
                     </div>
+                    <div class="static-info-box">
 
+                    </div>
             </div>
         </div>
+        <div id="summary">
+            <span>날짜</span>
+            <span id="date-txt"> </span>
+            <span>판매금액</span>
+            <span id="total-txt"></span>
+        </div>
+       
         <script type="text/javascript">
-            var context = document.getElementById("myChart").getContext("2d");
-            var myChart = new Chart(context, {
+            var context = document.getElementById("myChart").getContext("2d"); 
+            const nowDate = new Date();
+            
+            const getData = async (year, month, day) => {
+                const dateData = { year, month, day };
+                const bodyData = JSON.stringify(dateData);
+                
+                const d = await fetch('/api/order/getOrderByday', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(dateData)
+                })
+
+                const result = await d.json();
+                return result;
+            }
+
+            
+            const days = [
+                new Date(nowDate.setDate(nowDate.getDate() - 5)),
+                new Date(nowDate.setDate(nowDate.getDate() + 1)),
+                new Date(nowDate.setDate(nowDate.getDate() + 1)),
+                new Date(nowDate.setDate(nowDate.getDate() + 1)),
+                new Date(nowDate.setDate(nowDate.getDate() + 1)),
+                new Date(nowDate.setDate(nowDate.getDate() + 1))
+            ];
+            
+            const loadData = async () => {
+                const data = []
+                for(let i = 0 ; i < days.length; i++){
+                    const d = await getData(days[i].getFullYear(), days[i].getMonth(), days[i].getDate())
+                    data.push(d.length);
+                }
+                
+                return data;
+            }
+
+            loadData().then((data) => 
+            {
+                var myChart = new Chart(context, {
                 type: "line", // 차트의 형태
                 data: {
                     // 차트에 들어갈 데이터
                     labels: [
                         //x 축
-                        "January",
-                        "February",
-                        "March",
-                        "April",
-                        "May",
-                        "June",
+                        days[0].getDate() + '일',
+                        days[1].getDate() + '일',
+                        days[2].getDate() + '일',
+                        days[3].getDate() + '일',
+                        days[4].getDate() + '일',
+                        days[5].getDate() + '일',
                     ],
                     datasets: [
                         {
@@ -140,13 +197,12 @@
                             label: "판매량", //차트 제목
                             fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
                             data: [
-                                4,
-                                19,
-                                25,
-                                20,
-                                23,
-                                26,
-                                25, //x축 label에 대응되는 데이터 값
+                                data[0],
+                                data[1],
+                                data[2],
+                                data[3],
+                                data[4],
+                                data[5]
                             ],
                             backgroundColor: "rgb(255, 99, 132)",
                             borderColor: "rgb(255, 99,",
@@ -162,7 +218,10 @@
                         },
                     },
                 },
+            });                  
             });
+
+            
         </script>
         <footer></footer>
     </body>
