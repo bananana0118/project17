@@ -17,7 +17,7 @@ function navBarCreate() {
                             <span class="nav-brand_name">PROJECT 17</span>
                         </a>
                         <ul class="nav-category">
-                            <li class="nav-category_list"><a class="best-btn">Best</a></li>
+                            <li class="nav-category_list"><a class="best-btn">New</a></li>
                             <li class="nav-category_list"><a href="/event">event</a></li>
                             <li class="nav-category_list"><a href="/shop">product</a></li>
                             <li class="nav-category_list"><a href="#">about</a></li>
