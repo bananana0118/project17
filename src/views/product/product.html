@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>쇼핑-데모</title>
+    <title>Project17</title>
     <!-- <script src="product.js" type="module" defer></script> -->
-    <script src="product.js" type="module" defer></script>
+    <!-- <script src="product.js" type="module" defer></script> -->
 </head>
 <body>
     <h1>Prodcut Specification</h1>
-    <form action="http://localhost:3000/api/product/addproduct" method="post" enctype="multipart/form-data">
+    <form action="http://localhost:5001/api/product/addproduct" method="post" enctype="multipart/form-data">
         <h2>상품 이름</h2>
         <input type="text" id="productName" name="productname">
         <h2>상품 가격</h2>
@@ -17,9 +17,9 @@
         <h2>상품 카테고리</h2>
         <select class="Category" size="1" name="category">
             <option name="">SIZE (필수)</option>
-            <option name="top">상의</option>
-            <option name="bottn">하의</option>
-            <option name="outer">양말</option>
+            <option value="1">상의</option>
+            <option value="2">하의</option>
+            <option value="3">양말</option>
         </select>
         <!-- <input type="radio" name="productCategory" id="top" value= 1> 상의 <br>  
         <input type="radio" name="productCategory" id="bottom" value= 2> 하의 <br>

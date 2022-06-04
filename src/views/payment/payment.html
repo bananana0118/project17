@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Project17</title>
     <!-- 아이콘 -->
     <link rel="icon" type="image/png" sizes="16x16" href="/elice-rabbit-favicon.png" />
     <!-- 폰트 어썸: 아이콘 -->
@@ -13,11 +13,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <!-- 커스텀 css, js -->
+    <script src="../navAndLogin.js" type="module" defer></script>
     <script src="payment.js" type="module" defer></script>
     <link rel="stylesheet" href="../navAndLogin.css" />
+    <link rel="stylesheet" href="payment.css" />
     <!-- daum 우편번호 검색 서비스-->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="../navAndLogin.js" type="module" defer></script>
     <!-- 카카오 로그인 -->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
@@ -32,7 +33,6 @@
         }).open();
         }
     </script>
-    <link rel="stylesheet" href="payment.css" />
 </head>
 <body>
     <!-- nav bar -->
@@ -44,7 +44,7 @@
     <div class="loginModal">
     </div>
     
-    <div id="top-text" style="margin-top:100px;">
+    <div id="top-text">
         상품결제   
     </div>
     <div class="payment-container">
@@ -69,7 +69,7 @@
                 <span id="title-text">고객 정보</span>
                 <div class="info-box">
                     <label>이름</label>
-                    <input type="text" id="input-name" placeholder="이름을 입력하세요." style="width:19%">
+                    <input type="text" id="input-name" placeholder="이름을 입력하세요." style="width:23%">
                 </div>
                 <div class="info-box">
                     <label>핸드폰 번호</label>
@@ -117,5 +117,6 @@
         
         
     </div>
+    <footer></footer>
 </body>
 </html>

@@ -7,9 +7,8 @@ const emailInput = document.querySelector("#emailInput");
 const passwordInput = document.querySelector("#passwordInput");
 const passwordConfirmInput = document.querySelector("#passwordConfirmInput");
 const submitButton = document.querySelector("#submitButton");
-// ------------------------------------------------------------------------------
-// HTML 구조 짜고나서 확인해야함. ＾
-// -------------------------------------------------------------------------------
+const loginModal = document.querySelector(".modal");
+
 addAllElements();
 addAllEvents();
 
@@ -50,19 +49,21 @@ async function handleSubmit(e) {
 
     // 회원가입 api 요청
     try {
-        const data = { fullName, email, password };
+        const registerData = { fullName, email, password };
+        const loginData = { email, password };
 
-        await Api.post("/api/register", data);
+        await Api.post("/api/register", registerData);
+        const login = await Api.post("/api/login", loginData);
+        const token = login.token;
+        sessionStorage.setItem("token", token);
 
-        alert(`정상적으로 회원가입되었습니다.`);
+        alert(`정상적으로 회원가입 및 로그인되었습니다.`);
 
         // 로그인 페이지 이동
         // 로그인 창을 모달로 구현함에 따라 이전페이지로 이동으로 변경
-        history.back();
+        location.href = document.referrer;
     } catch (err) {
         console.error(err.stack);
-        alert(
-            `문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`
-        );
+        alert(`${err.message}`);
     }
 }

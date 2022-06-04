@@ -7,3 +7,4 @@ export * from "./order-router";
 export * from "./profile-router";
 export * from "./product-router";
 export * from "./admin-router";
+export * from "./mail-router";
